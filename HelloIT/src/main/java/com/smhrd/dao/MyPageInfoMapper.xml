@@ -5,7 +5,7 @@
 	<!-- 1. 회원가입 -->
 	<insert id="insertMyPage" 
 			parameterType="com.smhrd.entity.MyPageInfo"> 
-			INSERT INTO user_info
+			INSERT INTO my_page_info
 			VALUES
 			    (#{u_email}, 
 			     #{u_introduction}, 
@@ -13,7 +13,15 @@
 			     #{u_interest}
 			     )
 	</insert>
-	
+	<update id="updateMyPage"
+			parameterType="com.smhrd.entity.MyPageInfo">
+			UPDATE my_page_info
+			SET
+				u_email = #{u_email},
+				u_introduction = #{u_introduction},
+				u_idea = #{u_idea},
+				u_interest = #{u_interest}
+	</update>
 	
 
 </mapper>

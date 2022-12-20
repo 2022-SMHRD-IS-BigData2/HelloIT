@@ -4,7 +4,7 @@
 
 	<insert id="insertMyLanguage"
 			parameterType="com.smhrd.entity.UserLanguageInfo">
-			INSERT INTO user_info
+			INSERT INTO user_language_info
 			VALUES
 			    (#{u_email}, 
 			     #{html}, 
@@ -27,9 +27,37 @@
 			     #{haskell},
 			     #{clojure},
 			     #{sql},
-			     #{language_etc},			     
+			     #{language_etc}			     
 			     )
 	</insert>
+	<update id="updateMyLanguage"
+			parameterType="com.smhrd.entity.UserLanguageInfo">
+			UPDATE user_language_info
+			SET
+			    u_email = #{u_email}, 
+			    html = #{html}, 
+			    css = #{css}, 
+			    javascript = #{javascript}, 
+			    c_sharp = #{c_sharp}, 
+			    java = #{java}, 
+			    python = #{python},
+			    php = #{php},
+			    dart = #{dart},
+			    typescript = #{typescript},
+			    kotlin = #{kotlin},
+			    go = #{go},
+			    rust = #{rust},
+			    swift = #{swift},
+			    scala = #{scala},
+			    objective_c = #{objective_c},
+			    r = #{r},
+			    ruby = #{ruby},
+			    haskell = #{haskell},
+			    clojure = #{clojure},
+			    sql = #{sql},
+			    language_etc = #{language_etc}	
+			WHERE u_email = #{u_email};
+	</update>
 	
 	
 </mapper>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.UserRoleInfoDAO">
-
-	<insert id="insertMyLanguage"
+	
+	
+	<!-- 회원 역할 선택 -->
+	<insert id="insertMyRole"
 			parameterType="com.smhrd.entity.UserRoleInfo">
-			INSERT INTO user_info
+			INSERT INTO user_role_info
 			VALUES
 			    (#{u_email}, 
 			     #{frontend}, 
@@ -13,4 +15,17 @@
 			     #{other_skill}
 			     )
 	</insert>
+	
+	<!-- 회원 역할 수정 -->	
+	<update id="updateMyRole"
+			parameterType="com.smhrd.entity.UserRoleInfo">
+			UPDATE user_role_info
+			SET
+			    u_email = #{u_email}, 
+			    frontend = #{frontend}, 
+			    backend = #{backend}, 
+			    data_etc = #{data_etc}, 
+			    other_skill = #{other_skill}
+			WHERE u_email = #{u_email};
+	</update>
 </mapper>

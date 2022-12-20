@@ -22,4 +22,19 @@ public class UserRoleInfoDAO {
 		// 4) 실행결과 리턴
 		return cnt;
 	}
+	
+	public int updateRole( UserRoleInfo dto ) {
+		
+		SqlSession session = sqlSessionFactory.openSession( true );
+		
+		// 2) SQL문 실행
+		int cnt = session.insert("updateRole", dto);
+		
+		// 3) 빌린 Connection 반환
+		session.close();
+		
+		// 4) 실행결과 리턴
+		return cnt;
+		
+	}
 }
