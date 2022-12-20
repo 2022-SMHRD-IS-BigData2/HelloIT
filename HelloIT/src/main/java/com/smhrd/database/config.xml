@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- .properties파일 불러오기 -->
+	<properties resource="com/smhrd/database/db.properties"></properties>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <!-- 
+      	DBCP 생성을 위해 필요한 정보를 기술
+      
+       -->
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- 
+  	Mybatis의 특징
+  	DAO(Java)  <== Mapping ==>  XML(SQL)
+  	
+  	XML(SQL)의 위치를 지정하는 태그
+  	
+   -->
+  <mappers>
+    <mapper resource="com/smhrd/dao/MemberMapper.xml"/>
+    <mapper resource="com/smhrd/dao/BoardMapper.xml"/>
+  </mappers>
+</configuration>
