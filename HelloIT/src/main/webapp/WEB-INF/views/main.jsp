@@ -44,13 +44,38 @@
 						</ul>
 						<ul class="actions vertical">
 							<li><h5>회원가입</h5></li>
-								<form action="join.do" method="post">
-									<li><input type="text" name="email" placeholder="Email을 입력하세요"></li>
-									<li><input type="password" name="pw" placeholder="PW를 입력하세요"></li>
-									<li><input type="text" name="tel" placeholder="전화번호를 입력하세요"></li>
-									<li><input type="text" name="address" placeholder="집주소를 입력하세요"></li>
-									<li><input type="submit" value="JoinUs" class="button fit"></li>
+								<form action="goJoin.do" method="post">
+								<table>
+									<tr>
+										<td><input type="text" name="u_email" placeholder="Email을 입력하세요"></td>
+									</tr>
+									<tr>
+										<td><input type="password" name="u_pw" placeholder="PW를 입력하세요"></td>
+									</tr>
+									<tr>
+										<td><input type="text" name="u_name" placeholder="이름을 입력하세요"></td>
+									</tr>
+									<tr>
+										<td><input type="text" name="u_nick" placeholder="별명을 입력하세요"></td>
+									</tr>
+									<tr>
+										<td>생일:<input type="date" name="u_birthdate"></td>
+									</tr>
+									<tr>
+										<td><input type="text" name="u_job" placeholder="직업을 입력하세요"></td>
+									</tr>
+									<tr>
+										<td><input type="text" name="u_gender" placeholder="성별을 입력하세요"></td>
+									</tr>
+									<tr>
+										<td><input type="text" name="u_level" placeholder="레벨을 입력하세요"></td>
+									</tr>
+									<tr>
+										<td><input type="submit" value="JoinUs" class="button fit"></td>
+									</tr>
+								</table>
 								</form>
+									
 						</ul>
 					</nav>			
 				<!-- Banner -->

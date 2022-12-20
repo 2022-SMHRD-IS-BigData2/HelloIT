@@ -24,4 +24,18 @@ values( board_num_seq.nextval,
 		sysdate, 
 		'Hello, 게시판 만들기 3', 
 		null );
+		
+insert into USER_INFO
+values( 'test@hs.com',
+		'123',
+		'test_name_hs',
+		'test_nick_hs',
+		sysdate,
+		'test_job_hs',
+		'm',
+		'test_level_hs',
+		0,
+		'u',
+		sysdate
+		);
 
