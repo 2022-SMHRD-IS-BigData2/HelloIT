@@ -1,0 +1,16 @@
+@charset "EUC-KR";
+	#board{
+		width: 1000px !important;
+		margin: 0px auto !important;
+		text-align: center !important;
+		margin-top: 100px !important;
+	}
+	#list{
+		margin: 0px auto !important;
+	}
+	#writer{
+		margin-top: 50px !important;
+	}
+	a{
+		text-decoration: none !important;
+	}
