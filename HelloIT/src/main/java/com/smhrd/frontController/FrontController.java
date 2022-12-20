@@ -13,8 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.Controller;
+import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoMainCon;
+import com.smhrd.controller.GoViewCon;
+import com.smhrd.controller.GoWriteCon;
+import com.smhrd.controller.WriteCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -28,6 +32,13 @@ public class FrontController extends HttpServlet {
 		handlerMapping = new HashMap<>();
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 메인 이동
+		
+		
+		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 이동
+		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
+		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 컨트롤러 이동
+		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
+		
 		
 	}
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.PostInfoDAO">
+
+	<select id="postInfoList" resultType="com.smhrd.entity.PostInfo">
+		select *
+		from post_info
+	</select>
+
+	<insert id="postInfoWrite" parameterType="com.smhrd.entity.PostInfo">
+		insert into post_info
+		values(
+			post_info_seq.nextval,
+			#{post_title},
+			#{post_content},
+			#{post_file, jdbcType=VARCHAR}, <!-- null 값을 허용하기 위해 Type 설정 -->
+			sysdate,
+			#{u_email},
+			0,
+			0,
+			#{post_kind},
+			0
+		)
+	</insert>
+	
+	<select id="postInfoView" resultType="com.smhrd.entity.PostInfo">
+		select * from post_info
+		where post_seq=#{post_seq}
+	</select>
+
+</mapper>
