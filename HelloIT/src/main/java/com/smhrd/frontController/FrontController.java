@@ -13,33 +13,43 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.Controller;
+import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoMainCon;
+
 import com.smhrd.controller.GoMyCareerCon;
 import com.smhrd.controller.GoMyPageCon;
 import com.smhrd.controller.GoSuccessCon;
 
+import com.smhrd.controller.GoViewCon;
+import com.smhrd.controller.GoWriteCon;
+import com.smhrd.controller.WriteCon;
+
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	HashMap<String, Controller> handlerMapping;
-	
+
 	public void init(ServletConfig config) throws ServletException {
-		
+
 		handlerMapping = new HashMap<>();
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goSuccess.do", new GoSuccessCon()); // 회원가입 성공시 이동
 		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 회원가입 성공시 이동
 		handlerMapping.put("/goMyCareer.do", new GoMyCareerCon()); // 회원가입 성공시 이동
-		
-		
+
+		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 이동
+		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
+		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 컨트롤러 이동
+		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
+
 	}
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		// 1. urlMapping 확인
 		// 전체 주소 : FrontController/join.do (FrontController/guest/join.do)
@@ -55,14 +65,14 @@ public class FrontController extends HttpServlet {
 
 // ----------------------------------------------------------------------------------------------------------------
 		// Command Pattern
-		 String nextPage = null;
+		String nextPage = null;
 
 		// Controller Interface로 업캐스팅해서 모든 Con들을 담아줄 수 있게 만듦.
-		 Controller con = null;
+		Controller con = null;
 
 		// 요청에 맞는 POJO 꺼내기
-		 con = handlerMapping.get( mapping );		
-		
+		con = handlerMapping.get(mapping);
+
 		if (con != null) {
 			try {
 				nextPage = con.execute(request, response);
@@ -81,13 +91,13 @@ public class FrontController extends HttpServlet {
 			if (nextPage.contains("redirect:/")) {
 				response.sendRedirect(nextPage.split(":/")[1]);
 			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/"+nextPage+".jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + nextPage + ".jsp");
 				// forward이동하는 코드
 				rd.forward(request, response);
 			}
-			
+
 		}
-	
+
 	}
 
 }
