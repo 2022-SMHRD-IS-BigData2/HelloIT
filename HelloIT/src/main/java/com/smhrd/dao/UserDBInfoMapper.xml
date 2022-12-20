@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.UserDBInfoDAO">
 	
-	<insert id="insertMyLanguage"
+	<insert id="insertMyDB"
 			parameterType="com.smhrd.entity.UserDBInfo">
-			INSERT INTO user_info
+			INSERT INTO user_db_info
 			VALUES
 			    (#{u_email}, 
 			     #{mysql}, 
@@ -24,5 +24,26 @@
 			     #{db_etc},
 			     )
 	</insert>
-	
+	<update id="updateMyDB"
+			parameterType="com.smhrd.entity.UserDBInfo">
+			UPDATE user_db_info
+			SET
+			    u_email = #{u_email}, 
+			    mysql = #{mysql}, 
+			    oracle = #{oracle}, 
+			    mariadb = #{mariadb}, 
+			    pstgresql = #{pstgresql}, 
+			    mongodb = #{mongodb}, 
+			    redis = #{redis},
+			    sqlite = #{sqlite},
+			    aws_aurora = #{aws_aurora},
+			    elasticsearch = #{elasticsearch},
+			    dynamodb = #{dynamodb},
+			    firebase = #{firebase},
+			    tibero = #{tibero},
+			    hive = #{hive},
+			    cassandra = #{cassandra},
+			    db_etc = #{db_etc},
+			WHERE u_email = #{u_email};
+	</update>
 </mapper>

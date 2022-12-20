@@ -25,4 +25,19 @@ public class UserDBInfoDAO {
 		return cnt;
 	}
 	
+	public int updateDB( UserDBInfo dto ) {
+		
+		SqlSession session = sqlSessionFactory.openSession( true );
+		
+		// 2) SQL문 실행
+		int cnt = session.insert("updateDB", dto);
+		
+		// 3) 빌린 Connection 반환
+		session.close();
+		
+		// 4) 실행결과 리턴
+		return cnt;
+		
+	}
+	
 }
