@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.UserInfoDAO">
+	
+	<!-- 1. 회원가입 -->
+	<insert id="join" 
+			parameterType="com.smhrd.entity.UserInfo"> 
+			INSERT INTO user_info
+			VALUES
+			    (#{u_email}, 
+			     #{u_pw}, 
+			     #{u_name}, 
+			     #{u_nick}, 
+			     #{u_birthdate}, 
+			     #{u_job}, 
+			     'N', 
+			     #{u_level}, 
+			     0, 
+			     'N', 
+			     #{u_joindate})
+	</insert>
+	
+	<!-- 2. 로그인 -->
+	<select id="login"
+			resultType="com.smhrd.entity.UserInfo" 
+			parameterType="com.smhrd.entity.UserInfo">
+			<!-- resultType은 DB에서 DAO로 전달되는 값의 데이터형 -->
+			<!-- parameterType은 DAO에서 DB로 전달되는 값의 데이터형 -->
+			select * from user_info
+			where u_email=#{u_email} 
+			and u_pw=#{u_pw}
+	</select>
+	
+	
+
+</mapper>
+

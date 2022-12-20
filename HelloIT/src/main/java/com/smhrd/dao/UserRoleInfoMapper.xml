@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.UserRoleInfoDAO">
+
+	<insert id="insertMyLanguage"
+			parameterType="com.smhrd.entity.UserRoleInfo">
+			INSERT INTO user_info
+			VALUES
+			    (#{u_email}, 
+			     #{frontend}, 
+			     #{backend}, 
+			     #{data_etc}, 
+			     #{other_skill}
+			     )
+	</insert>
+</mapper>

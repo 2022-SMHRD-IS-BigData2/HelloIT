@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.UserLanguageInfoDAO">
+
+	<insert id="insertMyLanguage"
+			parameterType="com.smhrd.entity.UserLanguageInfo">
+			INSERT INTO user_info
+			VALUES
+			    (#{u_email}, 
+			     #{html}, 
+			     #{css}, 
+			     #{javascript}, 
+			     #{c_sharp}, 
+			     #{java}, 
+			     #{python},
+			     #{php},
+			     #{dart},
+			     #{typescript},
+			     #{kotlin},
+			     #{go},
+			     #{rust},
+			     #{swift},
+			     #{scala},
+			     #{objective_c},
+			     #{r},
+			     #{ruby},
+			     #{haskell},
+			     #{clojure},
+			     #{sql},
+			     #{language_etc},			     
+			     )
+	</insert>
+	
+	
+</mapper>

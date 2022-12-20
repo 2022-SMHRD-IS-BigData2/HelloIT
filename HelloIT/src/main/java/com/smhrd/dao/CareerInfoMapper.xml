@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.CareerInfoDAO">
+	
+		<insert id="insertMyCarrer" 
+			parameterType="com.smhrd.entity.CareerInfo"> 
+			INSERT INTO career_info
+			VALUES
+			    (CAREER_INFO_SEQ.nextval, 
+			     #{career_period}, 
+			     #{career_content}, 
+			     #{u_email}
+			     )
+	</insert>
+	
+
+</mapper>

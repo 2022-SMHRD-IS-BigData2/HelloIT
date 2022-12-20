@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.dao.UserInfoDAO;
 import com.smhrd.entity.UserInfo;
 
-import lombok.NonNull;
-
 public class GoJoinCon implements Controller {
 	
 	@Override
@@ -21,12 +19,12 @@ public class GoJoinCon implements Controller {
 			throws ServletException, IOException, ParseException{
 		request.setCharacterEncoding("UTF-8");
 
+		SimpleDateFormat formatter = new SimpleDateFormat();
 		// 1. 데이터(파라미터) 수집
 		String u_email = request.getParameter("u_email");
 		String u_pw = request.getParameter("u_pw");
 		String u_name = request.getParameter("u_name");
 		String u_nick = request.getParameter("u_nick");
-		SimpleDateFormat formatter = new SimpleDateFormat();
 		Date u_birthdate = (Date) formatter.parse(request.getParameter("u_birthdate"));
 		String u_job = request.getParameter("u_job");
 		String u_gender = request.getParameter("u_gender");
@@ -42,7 +40,6 @@ public class GoJoinCon implements Controller {
 
 		// 2. DTO에 데이터 묶기
 		UserInfo dto = new UserInfo(u_email, u_pw, u_name, u_nick, u_birthdate, u_job, u_gender, u_level, u_activity_score, u_type, u_joindate);
-
 		// 3. 받아온 데이터를 DB에 저장 (DAO의 join 메소드 사용
 		UserInfoDAO dao = new UserInfoDAO();
 		int cnt = dao.join(dto);

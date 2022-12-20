@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.FollowingInfoDAO">
+
+	<insert id="followingInfo"
+			parameterType="com.smhrd.entity.FollowingInfo">
+			INSERT INTO following_info
+			VALUES
+				(following_info_seq.nextval,
+				#{u_email},
+				#{follower_email},
+				#{following_dt}
+				)
+	</insert>
+</mapper>

@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoMainCon;
+import com.smhrd.controller.GoMyCareerCon;
+import com.smhrd.controller.GoMyPageCon;
+import com.smhrd.controller.GoSuccessCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -27,7 +30,11 @@ public class FrontController extends HttpServlet {
 		
 		handlerMapping = new HashMap<>();
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
-		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 메인 이동
+		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
+		handlerMapping.put("/goSuccess.do", new GoSuccessCon()); // 회원가입 성공시 이동
+		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 회원가입 성공시 이동
+		handlerMapping.put("/goMyCareer.do", new GoMyCareerCon()); // 회원가입 성공시 이동
+		
 		
 	}
 
