@@ -40,7 +40,9 @@ body {
       
       <a href="">회원이 아니신가요?</a>
 <br>
-
+<img src="./img/google.png" id="google" width="50" alt="">
+<img src="./img/naver.png" id="naver" width="50" alt="">
+<p>소셜 계정으로 로그인</p>
     </div>
     
 </div>
