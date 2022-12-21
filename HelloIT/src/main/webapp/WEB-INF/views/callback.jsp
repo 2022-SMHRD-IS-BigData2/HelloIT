@@ -1,3 +1,5 @@
+<%@page import="com.google.gson.JsonParser"%>
+<%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.smhrd.utils.NaverApiUserInfo2"%>
 <%@page import="com.smhrd.utils.NaverApiUserInfo"%>
 <%@ page import="java.net.URLEncoder" %>
@@ -45,7 +47,20 @@
       }
       br.close();
       if (responseCode == 200) {
-        out.println(res.toString());
+        //out.println(res.toString()); // 출력 문장
+        JsonParser parser = new JsonParser();
+        Object obj = parser.parse(res.toString());
+      	JsonObject json = (JsonObject)obj;
+      	
+      	accessToken = json.get("access_token").toString();
+      	refresh_token = json.get("refresh_token").toString();
+      	
+      	session.setAttribute("access_token", accessToken);
+      	session.setAttribute("refresh_token", refresh_token);
+      	
+      	response.sendRedirect("goJoin.do");
+      	
+      	
       }
     } catch (Exception e) {
       // Exception 로깅

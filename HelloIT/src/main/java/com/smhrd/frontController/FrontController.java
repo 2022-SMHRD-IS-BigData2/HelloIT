@@ -18,6 +18,7 @@ import com.smhrd.controller.CheckRoleCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
+import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoSuccessCon;
@@ -61,8 +62,9 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
 		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
-		
-		
+		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 
+
+
 		
 		
 		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 이동

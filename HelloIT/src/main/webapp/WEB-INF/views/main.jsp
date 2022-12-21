@@ -11,9 +11,5 @@
 <body>
 	
 	로그인 성공!
-	<%NaverApiUserInfo2 ninfo = new NaverApiUserInfo2();
-	ninfo.toString();
-	NaverApiUserInfo ninfo1 = new NaverApiUserInfo();
-	%>
 </body>
 </html>
