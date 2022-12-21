@@ -18,6 +18,7 @@ import com.smhrd.controller.CheckRoleCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
+import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoSuccessCon;
 import com.smhrd.controller.GoViewCon;
@@ -55,6 +56,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
 		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
 		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
 		
 		
 		
