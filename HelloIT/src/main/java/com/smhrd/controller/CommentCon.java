@@ -20,10 +20,6 @@ public class CommentCon implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
 		
-
-		// 인코딩 방식
-		String encoding = "UTF-8";
-
 		// 1. 데이터(파라미터) 수집
 		String u_email = request.getParameter("u_email");
 		String cmt_content = request.getParameter("cmt_content");

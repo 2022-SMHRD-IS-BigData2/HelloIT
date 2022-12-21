@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.PostInfoDAO">
+
+	<!-- 북마크 조회 -->
+	<select id="bookmarkInfoList" parameterType="com.smhrd.entity.BookmarkInfo" resultType="int">
+		select post_seq from bookmark_info
+		where u_email=#{u_email}
+	</select>
+	
+	<!-- 북마크 추가 -->
+	<insert id="bookmarkInfoInsert" parameterType="com.smhrd.entity.BookmarkInfo">
+		insert into comment_info
+		values(
+			bookmark_info_seq.nextval,
+			#{u_email},
+			#{post_seq},
+			sysdate
+		)
+	</insert>
+	
+	<!-- 북마크수 조회 -->
+	<select id="bookmarkLikesView" parameterType="com.smhrd.entity.BookmarkInfo" resultType="int">
+		select count(*)
+		from bookmark_info
+		where post_seq=#{post_seq}
+	</select>
+
+</mapper>
