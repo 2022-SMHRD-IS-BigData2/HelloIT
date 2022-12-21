@@ -33,18 +33,27 @@ body {
       <input type="text" placeholder= "ID :" /><br>
       <input type="text"placeholder="PW :" /><br>
       <br>
-      <button>Login</button>
-      <button>Sign-in</button>
+      <a href="">
+      <button>Login</button></a>
+      <a href="">
+      <button>Sign-in</button></a>
       <br>
       <br>
-      
+
       <a href="">회원이 아니신가요?</a>
 <br>
-<img src="./img/google.png" id="google" width="50" alt="">
-<img src="./img/naver.png" id="naver" width="50" alt="">
+
+<a href="">
+<img src="./img/google.png" id="google" width="50" alt=""></a>
+<a href="">
+<img src="./img/naver.png" id="naver" width="50" alt=""></a>
+<a href="">
+<img src="./img/kakao.png" id="kakao" width="50" alt=""></a>
 <p>소셜 계정으로 로그인</p>
-    </div>
-    
+
+
+</div>
+
 </div>
 </center>
 </body>
