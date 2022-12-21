@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.entity.CommentInfo"%>
+<%@page import="com.smhrd.entity.UserInfo"%>
 <%@page import="com.smhrd.entity.PostInfo"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
@@ -17,8 +19,14 @@
 	<%
 	// request 영역에서 게시글 정보 가져오기
 	PostInfo PostInfo = (PostInfo) request.getAttribute("PostInfo");
+	// 세션에서 사용자 정보 가져오기
+	UserInfo info = (UserInfo)session.getAttribute("info");
+	// request 영역에서 list 꺼내서 출력하기
+	/* List<CommentInfo> list = (List<CommentInfo>) request.getAttribute("list"); */
 	%>
+	
 	<div id="PostInfo">
+		<form action="comment.do">
 		<table id="list">
 			<tr>
 				<td>제목</td>
@@ -37,9 +45,19 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2"><a href="PostInfoMain.jsp"><button>뒤로가기</button></a></td>
+				<td colspan="2">댓글</td>
+			</tr>
+			<tr>
+				<td><input readonly value=<%=info.getU_email()%> type="text" name="u_email"></td>
+				<td><input type="text" name="cmt_content"><input type="submit" value="댓글 등록"></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td colspan="2"><a href="boardMain.jsp"><button>뒤로가기</button></a></td>
 			</tr>
 		</table>
+		</form>
 	</div>
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoJoinCon;
@@ -45,6 +46,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 컨트롤러 이동
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
+		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
 
 	}
 

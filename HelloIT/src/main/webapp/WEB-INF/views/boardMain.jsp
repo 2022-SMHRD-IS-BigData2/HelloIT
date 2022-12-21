@@ -35,7 +35,7 @@
 			%>
 			<tr>
 				<td><%=PostInfo.getPost_seq()%></td>
-				<td><a href="goView.do?num=<%=PostInfo.getPost_seq()%>"><%=PostInfo.getPost_title()%></a></td>
+				<td><a href="goView.do?post_seq=<%=PostInfo.getPost_seq()%>"><%=PostInfo.getPost_title()%></a></td>
 				<td><%=PostInfo.getU_email()%></td>
 				<td><%=PostInfo.getPost_dt()%></td>
 			</tr>

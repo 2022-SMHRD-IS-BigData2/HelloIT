@@ -11,7 +11,6 @@
 	<body>
 		<%
 			// 세션에서 사용자 정보 가져오기
-			// 
 			UserInfo info = (UserInfo)session.getAttribute("info");
 		%>
 
