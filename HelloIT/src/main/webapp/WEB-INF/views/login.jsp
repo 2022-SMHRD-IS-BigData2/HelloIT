@@ -30,13 +30,17 @@ body {
             <img src="./img/hello.gif" alt="error" width="150" >
     <div class="window-body">
       <h4>Please Login</h4>
-      <input type="text" placeholder= "ID :" /><br>
-      <input type="text"placeholder="PW :" /><br>
+      <form action="">
+      <input name="u_email" type="email" placeholder= "ID :" /><br>
+      <input name="u_pw" type="password" placeholder="PW :" /><br>
       <br>
       <a href="">
       <button>Login</button></a>
+      </form>
       <a href="">
+      <form>
       <button>Sign-in</button></a>
+      </form>
       <br>
       <br>
 
