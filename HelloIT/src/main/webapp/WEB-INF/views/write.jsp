@@ -21,7 +21,6 @@ body {
 </head>
 <body>
 
-	<% UserInfo info = (UserInfo)session.getAttribute("info");%>
 	<form>
 	<center>
 		<div class="window" style="width: 800px">
