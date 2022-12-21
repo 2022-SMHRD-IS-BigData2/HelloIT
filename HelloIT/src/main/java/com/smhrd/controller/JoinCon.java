@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.smhrd.dao.UserInfoDAO;
 import com.smhrd.entity.UserInfo;
 
-public class GoJoinCon implements Controller {
+public class JoinCon implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)

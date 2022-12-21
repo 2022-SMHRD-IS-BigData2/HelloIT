@@ -7,29 +7,29 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.dao.CareerInfoDAO;
-import com.smhrd.entity.CareerInfo;
+import com.smhrd.dao.MyPageInfoDAO;
+import com.smhrd.entity.MyPageInfo;
 
-public class GoMyCareerCon implements Controller {
+public class InsertMyPageCon implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
 		
 		request.setCharacterEncoding("UTF-8");
-		Double career_seq = Double.parseDouble(request.getParameter("career_seq"));
-		String career_period = request.getParameter("career_period");
-		String career_content = request.getParameter("career_content");
 		String u_email = request.getParameter("u_email");
+		String u_introduction = request.getParameter("u_introduction");
+		String u_idea = request.getParameter("u_idea");
+		String u_interest = request.getParameter("u_interest");
 		
-		CareerInfo dto = new CareerInfo();
-		dto.setCareer_content(career_content);
-		dto.setCareer_period(career_period);
+		MyPageInfo dto = new MyPageInfo();
 		dto.setU_email(u_email);
-		dto.setCareer_seq(career_seq);
+		dto.setU_idea(u_idea);
+		dto.setU_interest(u_interest);
+		dto.setU_introduction(u_introduction);
 		
-		CareerInfoDAO dao = new CareerInfoDAO();
-		int cnt = dao.insertMyCareer(dto);
+		MyPageInfoDAO dao =  new MyPageInfoDAO();
+		int cnt = dao.insertMyPage(dto);
 		
 		String nextPage = "";
 		if (cnt > 0) {
@@ -46,7 +46,6 @@ public class GoMyCareerCon implements Controller {
 			nextPage = "redirect:/goMyPage.do";
 		}
 		return nextPage;
-		
 	}
 
 }
