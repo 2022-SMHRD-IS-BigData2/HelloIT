@@ -20,6 +20,7 @@ public class PostInfoDAO {
 		return list;
 	}
 	
+	// 2. 게시글 작성
 	public int postInfoWrite(PostInfo dto) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
 		int cnt = session.insert("postInfoWrite", dto);
@@ -27,10 +28,20 @@ public class PostInfoDAO {
 		return cnt;
 	}
 	
+	// 3. 게시글 1개 조회
 	public PostInfo postInfoView(int post_seq) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
 		PostInfo post_info = session.selectOne("postInfoView", post_seq);
 		session.close();
 		return post_info;
 	}
+	
+	// 4. 게시물 좋아요 카운트
+	public int postLikesView(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.selectOne("postLikesView", post_seq);
+		session.close();
+		return cnt;
+	}
+	
 }
