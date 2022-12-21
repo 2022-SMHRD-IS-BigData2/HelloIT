@@ -29,7 +29,14 @@
   	
    -->
   <mappers>
-    <mapper resource="com/smhrd/dao/MemberMapper.xml"/>
-    <mapper resource="com/smhrd/dao/BoardMapper.xml"/>
+    <mapper resource="com/smhrd/dao/CareerInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/CommentInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/FollowingInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/MyPageInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/PostInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/UserDBInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/UserInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/UserLanguageInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/UserRoleInfoMapper.xml"/>
   </mappers>
 </configuration>

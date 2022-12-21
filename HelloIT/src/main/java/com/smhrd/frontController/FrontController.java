@@ -28,6 +28,8 @@ import com.smhrd.controller.InsertCareerCon;
 import com.smhrd.controller.InsertMyPageCon;
 import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.LikeCon;
+import com.smhrd.controller.LoginCon;
+import com.smhrd.controller.NaverLoginSuccessCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
@@ -59,6 +61,9 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
 		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
+		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
+		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
+		
 		
 		
 		
