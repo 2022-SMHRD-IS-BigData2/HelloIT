@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smhrd.controller.BookmarkCon;
 import com.smhrd.controller.CheckDBCon;
 import com.smhrd.controller.CheckLanguageCon;
 import com.smhrd.controller.CheckRoleCon;
@@ -27,6 +28,7 @@ import com.smhrd.controller.GoWriteCon;
 import com.smhrd.controller.InsertCareerCon;
 import com.smhrd.controller.InsertMyPageCon;
 import com.smhrd.controller.JoinCon;
+import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
 import com.smhrd.controller.UpdateCareerCon;
@@ -67,12 +69,16 @@ public class FrontController extends HttpServlet {
 
 		
 		
-		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 이동
+		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 페이지 이동
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
-		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 컨트롤러 이동
+		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
+		
+		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
 		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
-
+		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
+		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

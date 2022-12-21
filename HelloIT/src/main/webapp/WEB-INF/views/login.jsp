@@ -16,7 +16,6 @@ body {
 	background: url(./img/backck.webp) no-repeat center;
 	background-size: cover;
 }
-
 </style>
 
 </head>
@@ -44,21 +43,19 @@ body {
 				<form action="login.do" method="post">
 					<input name="u_email" type="email" placeholder="ID :" /><br>
 					<input name="u_pw" type="password" placeholder="PW :" /><br>
-					<br>
-						<input type="submit" value="Login">
-					
-				<a href="">
-					<button>Sign-in</button>
-				</a>
-			
+					<br> <input type="submit" value="Login"> <a href="">
+						<button>Sign-in</button>
+					</a>
+
 				</form>
-			
-			<br> <br> 회원이 아니신가요? <br> 
+
+				<br> <br> 회원이 아니신가요? <br>
 				<p>소셜 계정으로 로그인</p>
-				<a href=""><img src="./img/google.png" id="google" width="50" alt="">
-				</a> <a href="<%=apiURL%>"> <img src="./img/naver.png" id="naver" width="50"
-					alt=""></a> <a href=""> <img src="./img/kakao.png" id="kakao"
-					width="50" alt=""></a>
+				<a href=""><img src="./img/google.png" id="google" width="50"
+					alt=""> </a> <a href="<%=apiURL%>"> <img
+					src="./img/naver.png" id="naver" width="50" alt=""></a> <a
+					href=""> <img src="./img/kakao.png" id="kakao" width="50"
+					alt=""></a>
 
 
 			</div>

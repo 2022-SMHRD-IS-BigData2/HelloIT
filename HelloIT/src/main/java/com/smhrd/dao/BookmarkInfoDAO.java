@@ -1,6 +1,5 @@
 package com.smhrd.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,8 +7,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.BookmarkInfo;
-import com.smhrd.entity.CommentInfo;
-import com.smhrd.entity.PostInfo;
 
 public class BookmarkInfoDAO {
 	

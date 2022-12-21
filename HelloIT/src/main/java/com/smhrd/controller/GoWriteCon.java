@@ -14,6 +14,6 @@ public class GoWriteCon implements Controller {
 			throws ServletException, IOException, ParseException {
 		// 페이지 이동
 		// Controller >> jsp
-		return "writerBoard"; // WEB-INF/views/writerBoard.jsp
+		return "write"; // WEB-INF/views/writerBoard.jsp
 	}
 }
