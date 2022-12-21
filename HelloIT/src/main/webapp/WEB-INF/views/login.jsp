@@ -31,7 +31,7 @@ body {
     <div class="window-body">
       <h4>Please Login</h4>
       <input type="text" placeholder= "ID :" /><br>
-      <input type="text"placeholder="PW :" /><br>
+      <input type="password"placeholder="PW :" /><br>
       <br>
       <a href="">
       <button>Login</button></a>

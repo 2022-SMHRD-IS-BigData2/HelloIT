@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.PostInfoDAO">
+
+	<!-- 좋아요 추가 -->
+	<insert id="likeInfoInsert" parameterType="com.smhrd.entity.LikeInfo">
+		insert into like_info
+		values(
+			like_info_seq.nextval,
+			#{u_email},
+			#{post_seq},
+			#{cmt_seq}
+		)
+	</insert>
+	
+</mapper>

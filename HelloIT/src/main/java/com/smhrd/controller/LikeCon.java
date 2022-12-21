@@ -11,11 +11,13 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.dao.CommentInfoDAO;
+import com.smhrd.dao.LikeInfoDAO;
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.CommentInfo;
+import com.smhrd.entity.LikeInfo;
 import com.smhrd.entity.PostInfo;
 
-public class CommentCon implements Controller {
+public class LikeCon implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -23,25 +25,25 @@ public class CommentCon implements Controller {
 		
 		// 1. 데이터(파라미터) 수집
 		int post_seq = Integer.parseInt(request.getParameter("post_seq"));
+		int cmt_seq = Integer.parseInt(request.getParameter("cmt_seq"));
 		String u_email = request.getParameter("u_email");
-		String cmt_content = request.getParameter("cmt_content");
 
 		// 2. DTO에 데이터 묶기
-		CommentInfo dto = new CommentInfo();
+		LikeInfo dto = new LikeInfo(); 
 		dto.setU_email(u_email);
-		dto.setCmt_content(cmt_content);
+		dto.setPost_seq(post_seq);
+		dto.setCmt_seq(cmt_seq);
 
 		// 3. DAO의 commentWrite 사용
-		CommentInfoDAO dao = new CommentInfoDAO();
-		int cnt = dao.commentInfoWrite(dto);
+		LikeInfoDAO dao = new LikeInfoDAO();
+		int cnt = dao.likeInfoInsert(dto);
 
 		// 4. 성공 여부에 따라 페이지 이동
 		if (cnt > 0) {
-			System.out.println("댓글 작성 성공");
+			System.out.println("좋아요 성공");
 			request.setAttribute("post_seq", post_seq);
 		} else {
-			System.out.println("댓글 작성 실패");
-			return "redirect:/comment.do";
+			System.out.println("좋아요 실패");
 		}
 		// 5. 페이지이동
 		return "redirect:/goView.do";
