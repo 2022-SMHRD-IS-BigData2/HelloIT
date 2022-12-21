@@ -27,5 +27,12 @@
 		select * from post_info
 		where post_seq=#{post_seq}
 	</select>
+	
+	<select id="postLikesView" parameterType="com.smhrd.entity.PostInfo" resultType="int">
+		select count(*)
+		from like_info
+		where post_seq=#{post_seq}
+	</select>
+	
 
 </mapper>

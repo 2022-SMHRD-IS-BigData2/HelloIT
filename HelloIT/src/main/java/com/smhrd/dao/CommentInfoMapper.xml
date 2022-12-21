@@ -19,5 +19,11 @@
 			0
 		)
 	</insert>
+	
+	<select id="cmtLikesView" parameterType="com.smhrd.entity.CommentInfo" resultType="int">
+		select count(*)
+		from like_info
+		where cmt_seq=#{cmt_seq}
+	</select>
 
 </mapper>
