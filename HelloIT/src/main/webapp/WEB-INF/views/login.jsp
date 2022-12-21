@@ -7,9 +7,19 @@
 <html>
 <head>
 <title>HelloIt_Login</title>
+<meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
-
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script type="text/javascript">
+		function onSignIn(googleUser) {
+			var profile = googleUser.getBasicProfile();
+			console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+			console.log('Name: ' + profile.getName());
+			console.log('Image URL: ' + profile.getImageUrl());
+			console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+		}
+	</script>
 <style>
 body {
 	height: 100vh;
@@ -51,8 +61,9 @@ body {
 
 				<br> <br> 회원이 아니신가요? <br>
 				<p>소셜 계정으로 로그인</p>
-				<a href=""><img src="./img/google.png" id="google" width="50"
-					alt=""> </a> <a href="<%=apiURL%>"> <img
+				<div class="g-signin2" data-onsuccess="onSignIn"><img src="./img/google.png" id="google" width="50"
+					alt=""></div>
+					<a href="<%=apiURL%>"> <img
 					src="./img/naver.png" id="naver" width="50" alt=""></a> <a
 					href=""> <img src="./img/kakao.png" id="kakao" width="50"
 					alt=""></a>
@@ -62,5 +73,6 @@ body {
 
 		</div>
 	</center>
+	
 </body>
 </html>

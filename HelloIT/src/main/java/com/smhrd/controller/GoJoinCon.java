@@ -12,7 +12,7 @@ public class GoJoinCon implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
-		return "join";
+		return "naverJoin";
 	}
 
 }

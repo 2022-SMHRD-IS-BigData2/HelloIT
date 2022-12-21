@@ -17,7 +17,7 @@ public class NaverLoginSuccessCon implements Controller {
 		
 		
 		
-		return "callback";
+		return "naverCallback";
 	}
 
 }

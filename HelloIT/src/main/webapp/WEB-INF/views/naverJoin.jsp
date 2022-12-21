@@ -1,3 +1,6 @@
+<%@page import="org.json.JSONObject"%>
+<%@page import="org.json.JSONArray"%>
+<%@page import="org.json.JSONObject"%>
 <%@page import="com.google.gson.JsonParser"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="com.smhrd.utils.NaverApiUserInfo2"%>
@@ -20,9 +23,9 @@
 		String accessToken = (String)session.getAttribute("access_token");
 		String refreshToken = (String)session.getAttribute("refresh_token");
 		
-/* 		out.print(accessToken);
+ 		/* out.print(accessToken);
 		out.print("<br>");
-		out.print(refreshToken); */
+		out.print(refreshToken);  */
 		
 		String header = "Bearer " + accessToken;
 		
@@ -55,7 +58,24 @@
 
 				br.close();
 				
-				out.print(res.toString());
+				JSONObject jObject = new JSONObject(res.toString());
+				JSONObject  resp = jObject.getJSONObject("response");
+				String u_email = resp.getString("email");
+				String u_name = resp.getString("name");
+				String u_nick = resp.getString("nickname");
+				String u_birthdate = resp.getString("birthyear")+"-"+resp.getString("birthday");
+				String u_gender = resp.getString("gender");
+				%><form action="join.do" method="post">
+				<input type="text" name="u_email" value="<%=u_email%>">
+				<input type="password" name="u_pw" value="">
+				<input type="text" name="u_name" value="<%=u_name%>">
+				<input type="text" name="u_nick" value="<%=u_nick%>">
+				<input type="text" name="u_birthdate" value="<%=u_birthdate%>">
+				<input type="text" name="u_job" value="">
+				<input type="text" name="u_gender" value="<%=u_gender%>">
+				<input type="text" name="u_activity_score" value="">
+				<input type="text" name="u_type" value="U">
+			</form><%
 
 		    } catch (Exception e) {
 
@@ -66,8 +86,7 @@
 		}
 	%>
 	
-	<form>
-		<input type="text" value="<%=%>">
-	</form>
+	
+	
 </body>
 </html>

@@ -16,7 +16,7 @@ public class NaverApiUserInfo2{
 
     public static void main(String[] args) {
     	
-        String token = ""; // 네이버 로그인 접근 토큰;
+        String token = "AAAAOE4kc4FxPRXGGLueFHGjNzu0q0pbi-PJCvsYYMb-fbW6T1YSmrOhoQFOctiUD_Cz7zKsEgbuPZM9kWnTMbAOQWk"; // 네이버 로그인 접근 토큰;
         String header = "Bearer " + token; // Bearer 다음에 공백 추가
 
 
@@ -26,9 +26,8 @@ public class NaverApiUserInfo2{
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("Authorization", header);
         String responseBody = get(apiURL,requestHeaders);
-
-
         System.out.println(responseBody);
+        
     }
 
 

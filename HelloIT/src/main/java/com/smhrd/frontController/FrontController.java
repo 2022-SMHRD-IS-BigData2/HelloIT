@@ -25,6 +25,7 @@ import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoSuccessCon;
 import com.smhrd.controller.GoViewCon;
 import com.smhrd.controller.GoWriteCon;
+import com.smhrd.controller.GoogleJoin;
 import com.smhrd.controller.InsertCareerCon;
 import com.smhrd.controller.InsertMyPageCon;
 import com.smhrd.controller.JoinCon;
@@ -66,7 +67,9 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 
 
-
+		
+		// google 로그인 테스트
+		handlerMapping.put("/google.do", new GoogleJoin()); // 
 		
 		
 		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 페이지 이동
@@ -123,7 +126,8 @@ public class FrontController extends HttpServlet {
 
 			if (nextPage.contains("redirect:/")) {
 				response.sendRedirect(nextPage.split(":/")[1]);
-			} else {
+			} 
+			else {
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + nextPage + ".jsp");
 				// forward이동하는 코드
 				rd.forward(request, response);

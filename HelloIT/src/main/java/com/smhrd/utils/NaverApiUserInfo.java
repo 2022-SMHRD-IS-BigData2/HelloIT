@@ -89,6 +89,8 @@ public class NaverApiUserInfo {
             throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
         }
     }
+    
+    
 }
 
 
