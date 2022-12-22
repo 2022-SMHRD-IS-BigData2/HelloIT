@@ -20,6 +20,7 @@ import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoJoinCon;
+import com.smhrd.controller.GoKakaoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
@@ -71,6 +72,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
 		handlerMapping.put("/join.do", new JoinCon()); // 
+		handlerMapping.put("/kakaoJoin.do", new GoKakaoJoinCon()); // 
 		
 		
 		// google 로그인 테스트

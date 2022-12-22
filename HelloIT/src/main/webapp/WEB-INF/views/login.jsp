@@ -82,27 +82,39 @@ body {
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 
-	<script type='text/javascript'>
 	 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	    <script>
 	        // JavaScript key
 	        // 26395d3b640084a40dba5ca075912daf 
 	        window.Kakao.init("26395d3b640084a40dba5ca075912daf");
 	        function kakaoLogin(){
-	            window.Kakao.Auth.login({
-	                scope:'profile_nickname, profile_image, account_email, gender, age_range, birthday',
-	                success: function(authObj){
-	                    console.log(authObj);
-	                    window.Kakao.API.request({
-	                        url:'/v2/user/me',
-	                        success:res => {
-	                            const kakao_account = res.kakao_account;
-	                            console.log(kakao_account);
-	                        }
-	                    });
-	                }
-	            });
-	        }
+	    		window.Kakao.Auth.login({
+	    			scope:'profile_nickname, account_email, gender, birthday',
+	    			success: function(authObj){
+	    				//console.log(authObj);
+	    				window.Kakao.API.request({
+	    					url: '/v2/user/me',
+	    					success: res => {
+	    						const email = res.kakao_account.email;
+	    						const name = res.properties.nickname;
+	    						const birth = res.kakao_account.birthday;
+	    						const gender = res.kakao_account.gender;
+	    						console.log(email);
+	    						console.log(name);
+	    						console.log(birth);
+	    						console.log(gender)
+	    						
+	    						$('#kakaoemail').val(email);
+	    						$('#kakaoname').val(name);
+	    						$('#kakaobirth').val(birth);
+	    						$('#kakaogender').val(birth);
+	    						document.login_frm.submit();
+	    					}
+	    				});
+	    				
+	    			}
+	    		});
+	    	}
 	        
 	       
 	        </script>
