@@ -43,11 +43,8 @@ public class CommentCon implements Controller {
 		// 4. 성공 여부에 따라 페이지 이동
 		if (cnt > 0) {
 			System.out.println("댓글 작성 성공");
-//			HttpSession session = request.getSession();
-//			session.setAttribute("post_seq", post_seq);
 		} else {
 			System.out.println("댓글 작성 실패");
-			return "redirect:/comment.do";
 		}
 		// 5. 페이지이동
 		return "redirect:/goView.do?post_seq="+post_seq;

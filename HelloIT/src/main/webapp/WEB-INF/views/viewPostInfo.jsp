@@ -35,9 +35,9 @@
 			
 			<br>
 			<div id = "board">
+				<form action = "comment.do">
 				<input type="hidden" name="post_seq" value="<%=post_seq%>">
 				<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-				<form action = "comment.do">
 				<table id="list" border="1">
 					<tr>
 						<td>제목</td>
