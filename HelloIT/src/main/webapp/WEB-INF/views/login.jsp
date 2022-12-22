@@ -11,6 +11,8 @@
 	content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript">
 	function onSignIn(googleUser) {
@@ -26,9 +28,9 @@ body {
 	height: 100vh;
 	background: url(./img/backck.webp) no-repeat center;
 	background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 </style>
 
@@ -46,12 +48,15 @@ body {
 	%>
 
 
-	<div class="window" style="margin: 32px; width: 250px; align-self:center;" align="center">
-		<span style="display: flex; flex-direction: column;">
+	<div class="window"
+		style="margin: 32px; width: 250px; align-self: center;" align="center">
+		<div style="display: flex; flex-direction: column;">
 			<div class="title-bar">
 				<div class="title-bar-text">Hello IT</div>
 			</div>
-			<div><img src="./img/hello.gif" alt="error" width="150"></div>
+			<div>
+				<img src="./img/hello.gif" alt="error" width="150">
+			</div>
 			<div class="window-body">
 				<h4>Please Login</h4>
 				<form action="login.do" method="post">
@@ -68,13 +73,43 @@ body {
 					<img src="./img/google.png" id="google" width="50" alt="">
 				</div>
 				<a href="<%=apiURL%>"> <img src="./img/naver.png" id="naver"
-					width="50" alt=""></a> <a href=""> <img src="./img/kakao.png"
-					id="kakao" width="50" alt=""></a>
+					width="50" alt=""></a>
+
+				<a href="javascript:kakaoLogin();">
+					<img src="./img/kakao.png" id="kakao" width="50" alt="kakao">
+				</a>
 
 
 			</div>
-		</span>
+		</div>
 	</div>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 
+
+	<script type='text/javascript'>
+	 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	    <script>
+	        // JavaScript key
+	        // 26395d3b640084a40dba5ca075912daf 
+	        window.Kakao.init("26395d3b640084a40dba5ca075912daf");
+	        function kakaoLogin(){
+	            window.Kakao.Auth.login({
+	                scope:'profile_nickname, profile_image, account_email, gender, age_range, birthday',
+	                success: function(authObj){
+	                    console.log(authObj);
+	                    window.Kakao.API.request({
+	                        url:'/v2/user/me',
+	                        success:res => {
+	                            const kakao_account = res.kakao_account;
+	                            console.log(kakao_account);
+	                        }
+	                    });
+	                }
+	            });
+	        }
+	        
+	       
+	        </script>
+	        
 </body>
 </html>

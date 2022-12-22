@@ -40,5 +40,13 @@ public class UserInfoDAO {
 		
 	}
 	
+	// 3. 아이디비교 메서드
+	public UserInfo compareId(UserInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		UserInfo result = session.selectOne("compareId", dto);
+		session.close();
+		return result;
+	}
+	
 	
 }

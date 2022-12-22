@@ -6,6 +6,14 @@
 	<insert id="join" 
 			parameterType="com.smhrd.entity.UserInfo"> 
 			INSERT INTO user_info
+				(u_email, 
+			     u_pw, 
+			     u_name, 
+			     u_nick, 
+			     u_birthdate, 
+			     u_job, 
+			     u_gender, 
+			     u_joindate)
 			VALUES
 			    (#{u_email}, 
 			     #{u_pw}, 
@@ -14,9 +22,6 @@
 			     #{u_birthdate}, 
 			     #{u_job}, 
 			     #{u_gender}, 
-			     #{u_job}, 
-			     0, 
-			     'U', 
 			     sysdate)
 	</insert>
 	
@@ -31,7 +36,13 @@
 			and u_pw=#{u_pw}
 	</select>
 	
-	
+	<!-- 3. 아이디 비교 -->
+	<select id="compareId"
+			resultType="com.smhrd.entity.UserInfo"
+			parameterType="com.smhrd.entity.UserInfo">
+			select * from user_info
+			where u_email=#{u_email}			
+	</select>
 
 </mapper>
 
