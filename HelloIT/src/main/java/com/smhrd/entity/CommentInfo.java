@@ -11,12 +11,17 @@ import lombok.NonNull;
 public class CommentInfo {
 	
 	private int cmt_seq;
+	
 	private int post_seq;
-	@NonNull
+	
 	private String cmt_content;
+	
 	private Date cmt_dt;
+	
 	private String u_email;
-	private int cmt_cnt; 
+	
+	private int cmt_cnt;
+	
 	private int cmt_likes;
 	
 }

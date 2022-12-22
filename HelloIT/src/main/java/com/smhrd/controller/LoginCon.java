@@ -31,7 +31,7 @@ public class LoginCon implements Controller {
 			System.out.println("로그인 성공");
 			
 			HttpSession session = request.getSession();
-			session.setAttribute("info", session);
+			session.setAttribute("info", result);
 		} else {
 			System.out.println("로그인 실패");
 		}
