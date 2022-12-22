@@ -26,9 +26,7 @@ body {
 	height: 100vh;
 	background: url(./img/backck.webp) no-repeat center;
 	background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+   
 }
 </style>
 

@@ -23,7 +23,7 @@
 <body>
 
   <br><br><br><br><br>
- 
+ <!--<center>  --> 
     <!-- <div class="window" style="margin: 150px; width: 250px">
       <div class="title-bar">
         <div class="title-bar-text">
@@ -64,7 +64,7 @@
             <br>
       
     </div>
-
+ <!-- </center> --> 
 
   </body>
 </html>

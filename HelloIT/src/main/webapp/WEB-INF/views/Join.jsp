@@ -15,9 +15,7 @@ body {
 	height: 100vh;
 	background: url(./img/backck.webp) no-repeat center;
 	background-size: cover;
-	display: flex; flex-direction : column;
-	justify-content: center;
-	flex-direction: column;
+	
 }
 </style>
 </head>
@@ -34,7 +32,7 @@ body {
 						<td colspan="2">
 							<h5 align="center">개인정보</h5>
 						</td>
-
+						<img src="./img/com.gif" width="250" alt="">
 					</tr>
 					<tr>
 						<td align="right">아이디(이메일) :</td>
