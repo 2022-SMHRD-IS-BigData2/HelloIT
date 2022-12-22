@@ -7,16 +7,15 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.CommentInfo;
-import com.smhrd.entity.PostInfo;
 
 public class CommentInfoDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
 	// 1. 댓글 전체 조회
-	public List<CommentInfo> commentInfoList() {
+	public List<CommentInfo> commentInfoList(int post_seq) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		List<CommentInfo> list = session.selectList("commentInfoList");
+		List<CommentInfo> list = session.selectList("commentInfoList", post_seq);
 		session.close();
 		return list;
 	}
@@ -29,7 +28,15 @@ public class CommentInfoDAO {
 		return cnt;
 	}
 	
-	// 3. 댓글 좋아요 카운트
+	// 3. 댓글 좋아요 갱신
+	public int cmtLike(int cmt_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.update("commentLike", cmt_seq);
+		session.close();
+		return cnt;
+	}
+	
+	// 4. 댓글 좋아요 카운트
 	public int cmtLikesView(int cmt_seq) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
 		int cnt = session.selectOne("cmtLikesView", cmt_seq);

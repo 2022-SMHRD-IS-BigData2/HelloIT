@@ -26,7 +26,6 @@
   	DAO(Java)  <== Mapping ==>  XML(SQL)
   	
   	XML(SQL)의 위치를 지정하는 태그
-  	
    -->
   <mappers>
     <mapper resource="com/smhrd/dao/CareerInfoMapper.xml"/>

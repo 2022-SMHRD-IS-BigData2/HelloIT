@@ -4,6 +4,11 @@ drop table like_info;
 drop sequence like_info_SEQ;
 drop trigger like_info_AI_TRG;
 	
+truncate table comment_info;
+
+delete from comment_info
+where u_email = 'test@hs.com';
+
 -- 임시 게시물 추가
 insert into USER_INFO
 values( 'test@hs.com',
@@ -18,6 +23,22 @@ values( 'test@hs.com',
 		'u',
 		sysdate
 		);
+		
+insert into COMMENT_INFO
+values(	comment_info_seq.nextval,
+		2,
+		'test용 댓글',
+		sysdate,
+		'test@hs.com',
+		0,
+		0
+);
+
+select*from comment_info;
+select*from POST_INFO;
+
+select * from comment_info
+		where post_seq=2;
 
 CREATE TABLE like_info
 (
@@ -63,3 +84,10 @@ ALTER TABLE like_info
         REFERENCES comment_info (cmt_seq) ON DELETE cascade ;
         
 select * from like_info;
+
+select * from comment_info
+		where post_seq=2;
+		
+select *
+from comment_info
+where post_seq=2;

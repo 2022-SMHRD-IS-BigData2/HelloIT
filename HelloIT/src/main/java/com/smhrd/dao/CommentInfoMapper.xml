@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.smhrd.dao.PostInfoDAO">
+<mapper namespace="com.smhrd.dao.CommentInfoDAO">
 
 	<select id="commentInfoList" resultType="com.smhrd.entity.CommentInfo">
-		select * from comment_info
+		select *
+		from comment_info
 		where post_seq=#{post_seq}
+		order by cmt_dt
 	</select>
 	
-	<insert id="commentInfoWrite" parameterType="com.smhrd.entity.CommentInfo">
+ 	<insert id="commentInfoWrite" parameterType="com.smhrd.entity.CommentInfo">
 		insert into comment_info
 		values(
 			comment_info_seq.nextval,
@@ -19,11 +21,18 @@
 			0
 		)
 	</insert>
-	
-	<select id="cmtLikesView" parameterType="com.smhrd.entity.CommentInfo" resultType="int">
-		select count(*)
-		from like_info
-		where cmt_seq=#{cmt_seq}
-	</select>
 
+<!-- 	<update id="cmtLike">
+		update comment_info
+		set cmt_likes = (select count(*)
+							from like_info
+							where cmt_seq=#{cmt_seq})
+	</update> -->
+	
+<!-- 	<select id="cmtLikesView" resultType="int">
+		select cmt_likes
+		from comment_info
+		where cmt_seq=#{cmt_seq}
+	</select> -->
+	
 </mapper>

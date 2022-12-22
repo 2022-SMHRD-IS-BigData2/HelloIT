@@ -39,11 +39,10 @@
 	</select>
 	
 	<!-- 게시글 좋아요수 조회 -->
-	<select id="postLikesView" parameterType="com.smhrd.entity.PostInfo" resultType="int">
+	<select id="postLikesView" resultType="int">
 		select count(*)
 		from like_info
 		where post_seq=#{post_seq}
 	</select>
 	
-
 </mapper>

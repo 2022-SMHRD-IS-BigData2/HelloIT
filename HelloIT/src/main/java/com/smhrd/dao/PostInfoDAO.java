@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
+import com.smhrd.entity.CommentInfo;
 import com.smhrd.entity.PostInfo;
 
 public class PostInfoDAO {

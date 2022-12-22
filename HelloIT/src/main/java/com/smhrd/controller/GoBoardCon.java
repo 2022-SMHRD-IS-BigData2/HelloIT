@@ -8,7 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smhrd.dao.CommentInfoDAO;
 import com.smhrd.dao.PostInfoDAO;
+import com.smhrd.entity.CommentInfo;
 import com.smhrd.entity.PostInfo;
 
 public class GoBoardCon implements Controller {
@@ -21,7 +23,7 @@ public class GoBoardCon implements Controller {
 		List<PostInfo> list = dao.postInfoList();
 
 		System.out.println(list.size());
-
+		
 		// 객체바인딩
 		// request 영역에 list를 저장해뒀다가, jsp로 이동하고 나서 꺼내기
 		request.setAttribute("list", list);
