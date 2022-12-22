@@ -11,11 +11,7 @@
 </head>
 <body>
 	
-	로그인 성공!
-	<%NaverApiUserInfo2 ninfo = new NaverApiUserInfo2();
-	ninfo.toString();
-	NaverApiUserInfo ninfo1 = new NaverApiUserInfo();
-	%>
+	메인 !!!
 	
 	<!-- 게시판 가기 -->
 	<a href="goBoard.do">게시판</a>

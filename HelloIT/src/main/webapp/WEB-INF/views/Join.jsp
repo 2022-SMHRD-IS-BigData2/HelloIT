@@ -14,7 +14,7 @@
 
 <body>
 
-    <form action=""><br>
+    <form action="join.do" method="post"><br>
 
         <center>
             <div class="window" style="margin: 10px; width: 300px">
@@ -33,28 +33,29 @@
                     <tr>
                         <td align="right"> 아이디(이메일) : </td>
                         <td>
-                            <input type="text" name="userid">
+                            <input type="email" name="u_email">
                         </td>
                     </tr>
 
                     <tr>
                         <td align="right">비밀번호 : </td>
-                        <td> <input type="password" name="pw"> </td>
+                        <td> <input id="pw1" type="password" name="u_pw"> </td>
                     </tr>
                     <tr>
                         <td align="right">비밀번호확인 :</td>
-                        <td><input type="password" name="repw"></td>
+                        <td><input  id="pw2" type="password">
+                       	</td>
                     </tr>
                     <tr>
                         <td align="right"> 이름 : </td>
                         <td>
-                            <input type="text" name="username">
+                            <input type="text" name="u_name">
                         </td>
                     </tr>
                     <tr>
                         <td align="right"> 닉네임 : </td>
                         <td>
-                            <input type="text" name="usernick">
+                            <input type="text" name="u_nick">
                         </td>
                     </tr>
                     <!-- <tr>
@@ -70,9 +71,9 @@
 
                         <td>
 
-                            <input id="man" type="radio" name="gender">
+                            <input id="man" type="radio" name="u_gender" value="M">
                             <label for="man">남자</label>
-                            <input id="woman" type="radio" name="gender">
+                            <input id="woman" type="radio" name="u_gender" value="W">
                             <label for="woman">여자</label>
 
             </div>
@@ -80,17 +81,17 @@
             </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
                 <td align="right">전화번호 : </td>
-                <td> <input type="tel" id="mobile" class="int" maxlength="16" placeholder="숫자만 입력해주세요"> </td>
-            </tr>
+                <td> <input type="tel" id="mobile" name="u_tel" class="int" maxlength="16" placeholder="숫자만 입력해주세요"> </td>
+            </tr> -->
             <span class="error_next_box"></span>
 
             
             
             <tr>
                 <td align="right"> 직업:</td>
-                <td> <select name="직업">
+                <td> <select name="u_job">
                         <option value="학생">학생</option>
                         <option value="취업준비생">취업준비생</option>
                         <option value="개발자">개발자</option>
@@ -100,7 +101,7 @@
 
             <tr>
                 <td align="right"> 생일:</td>
-                <td> <input type="date" name="birth"></td>
+                <td> <input type="date" name="u_birthdate"></td>
 
            <!--  <tr>
                 <td colspan="2">
@@ -130,7 +131,8 @@
  -->
             <tr>
                 <td colspan="2" align="center">
-                    <button onclick="location.href='#'">가입하기</button>
+                    <!-- <button onclick="location.href=''">가입하기</button> -->
+                    <input type="submit" value="가입하기">
                     <input type="reset" value="초기화">
                 </td>
 
@@ -138,6 +140,7 @@
     </form>
     </table>
     </center>
+
 
 </body>
 

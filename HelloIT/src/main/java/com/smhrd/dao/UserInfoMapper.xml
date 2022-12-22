@@ -13,11 +13,11 @@
 			     #{u_nick}, 
 			     #{u_birthdate}, 
 			     #{u_job}, 
-			     'N', 
-			     #{u_level}, 
+			     #{u_gender}, 
+			     #{u_job}, 
 			     0, 
-			     'N', 
-			     #{u_joindate})
+			     'U', 
+			     sysdate)
 	</insert>
 	
 	<!-- 2. 로그인 -->

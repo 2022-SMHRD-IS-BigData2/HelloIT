@@ -20,6 +20,7 @@ import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoJoinCon;
+import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoSuccessCon;
@@ -50,23 +51,27 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
-		handlerMapping.put("/Join.do", new JoinCon()); // 회원가입창 이동
+		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goSuccess.do", new GoSuccessCon()); // 회원가입 성공시 이동
+		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
+		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 
+		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
 		handlerMapping.put("/insertCareer.do", new InsertCareerCon()); // 커리어 정보 저장 컨트롤러
 		handlerMapping.put("/checkDB.do", new CheckDBCon()); // 회원 DB 정보 저장 컨트롤러
 		handlerMapping.put("/checkLanguage.do", new CheckLanguageCon()); // 회원 언어 정보 저장 컨트롤러
 		handlerMapping.put("/checkRole.do", new CheckRoleCon()); // 회원 역할 저장 컨트롤러
+		
 		handlerMapping.put("/updateMyPage.do", new UpdateMyPageCon()); // 마이페이지 정보 수정 컨트롤러 
 		handlerMapping.put("/updateCareer.do", new UpdateCareerCon()); // 커리어 정보 수정 컨트롤러
 		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
 		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
 		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
-		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
+		
 		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
-		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 
-
+		handlerMapping.put("/join.do", new JoinCon()); // 
+		
 		
 		// google 로그인 테스트
 		handlerMapping.put("/google.do", new GoogleJoin()); // 

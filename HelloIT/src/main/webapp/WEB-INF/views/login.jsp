@@ -48,16 +48,15 @@ body {
 				<div class="title-bar-text">Hello IT</div>
 			</div>
 			<img src="./img/hello.gif" alt="error" width="150">
-			<div class="window-body">
+			<div display="inline" class="window-body">
 				<h4>Please Login</h4>
 				<form action="login.do" method="post">
 					<input name="u_email" type="email" placeholder="ID :" /><br>
 					<input name="u_pw" type="password" placeholder="PW :" /><br>
-					<br> <input type="submit" value="Login"> <a href="">
-						<button>Sign-in</button>
-					</a>
+					<br> <input type="submit" value="Login"> 
 
 				</form>
+					<button onclick='location.href="goJoin.do"'>Sign-in</button>
 
 				<br> <br> 회원이 아니신가요? <br>
 				<p>소셜 계정으로 로그인</p>
