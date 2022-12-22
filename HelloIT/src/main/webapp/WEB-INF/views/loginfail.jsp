@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,7 +45,7 @@
 
     <div class="window"  style="width: 550px">
       <div class="title-bar">
-        <div class="title-bar-text">�߸��� ����</div>
+        <div class="title-bar-text">잘못된 접근</div>
         <div class="title-bar-controls">
           <button aria-label="Minimize"></button>
           <button aria-label="Maximize"></button>
@@ -54,13 +54,13 @@
       </div>
       <div class="window-body">
         <img src="./img/vaporwave (1).gif" width="480px" alt="">
-        <p>��й�ȣ�� ���� �ʽ��ϴ�!<br>
-          �ٽ� �ѹ� Ȯ���� �ּ���
+        <p>비밀번호가 맞지 않습니다!<br>
+          다시 한번 확인해 주세요
         </p>
 
       </div>
       
-        <a href="#"> <button>���ư���</button></a>
+        <a href="#"> <button>돌아가기</button></a>
             <br>
       
     </div>
