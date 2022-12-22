@@ -9,19 +9,28 @@ import lombok.NonNull;
 public class PostInfo {
 	
 	private int post_seq;
+	
 	@NonNull
 	private String post_title;
+	
 	@NonNull
 	private String post_content;
+	
 	@NonNull
 	private String post_file;
+	
 	private String post_dt;
+	
 	@NonNull
 	private String u_email;
+	
 	private int bookmarks;
+	
 	private int cnt;
+	
 	@NonNull
 	private String post_kind;
+	
 	private int likes;
 	
 }

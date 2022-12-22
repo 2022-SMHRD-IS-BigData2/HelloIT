@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.entity.UserInfo"%>
+<%@page import="com.smhrd.entity.CommentInfo"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.entity.PostInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
