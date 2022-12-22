@@ -1,7 +1,7 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -19,19 +19,20 @@ public class JoinCon implements Controller {
 			throws ServletException, IOException, ParseException{
 		request.setCharacterEncoding("UTF-8");
 
-		SimpleDateFormat formatter = new SimpleDateFormat();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		// 1. 데이터(파라미터) 수집
 		String u_email = request.getParameter("u_email");
 		String u_pw = request.getParameter("u_pw");
 		String u_name = request.getParameter("u_name");
 		String u_nick = request.getParameter("u_nick");
-		Date u_birthdate = (Date) formatter.parse(request.getParameter("u_birthdate"));
+		Date _u_birthdate = (Date) formatter.parse(request.getParameter("u_birthdate"));
+		java.sql.Date u_birthdate = new java.sql.Date(_u_birthdate.getTime()); 
 		String u_job = request.getParameter("u_job");
 		String u_gender = request.getParameter("u_gender");
-		String u_level = request.getParameter("u_level");
-		int u_activity_score = Integer.parseInt(request.getParameter("u_activity_score"));
-		String u_type = request.getParameter("u_type");
-		Date u_joindate = (Date) formatter.parse(request.getParameter("u_joindate"));
+//		String u_level = request.getParameter("u_level");
+//		int u_activity_score = Integer.parseInt(request.getParameter("u_activity_score"));
+//		String u_type = request.getParameter("u_type");
+//		Date u_joindate = (Date) formatter.parse(request.getParameter("u_joindate"));
 
 		// 생년월일    private Date u_birthdate;
 	    // 활동점수    private Double u_activity_score;
@@ -39,7 +40,14 @@ public class JoinCon implements Controller {
 	    // 회원 가입일자     private Date u_joindate;
 
 		// 2. DTO에 데이터 묶기
-		UserInfo dto = new UserInfo(u_email, u_pw, u_name, u_nick, u_birthdate, u_job, u_gender, u_level, u_activity_score, u_type, u_joindate);
+		UserInfo dto = new UserInfo();
+		dto.setU_email(u_email);
+		dto.setU_pw(u_pw);
+		dto.setU_name(u_name);
+		dto.setU_nick(u_nick);
+		dto.setU_birthdate(u_birthdate);
+		dto.setU_job(u_job);
+		dto.setU_gender(u_gender);
 		// 3. 받아온 데이터를 DB에 저장 (DAO의 join 메소드 사용
 		UserInfoDAO dao = new UserInfoDAO();
 		int cnt = dao.join(dto);
@@ -56,7 +64,7 @@ public class JoinCon implements Controller {
 			// 메인페이지로
 			// 이미 이동하는 컨트롤러가 있는경우, 컨트롤러로 이동시키자.
 			// redirect를 하 는경우, 앞에 redirect:/ 를 붙이기로 약속
-			nextPage = "redirect:/goSuccess.do";
+			nextPage = "redirect:/goMain.do";
 
 		} else {
 			// 실패

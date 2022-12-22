@@ -12,20 +12,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smhrd.controller.BookmarkCon;
 import com.smhrd.controller.CheckDBCon;
 import com.smhrd.controller.CheckLanguageCon;
 import com.smhrd.controller.CheckRoleCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
+import com.smhrd.controller.GoJoinCon;
+import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoSuccessCon;
 import com.smhrd.controller.GoViewCon;
 import com.smhrd.controller.GoWriteCon;
+import com.smhrd.controller.GoogleJoin;
 import com.smhrd.controller.InsertCareerCon;
 import com.smhrd.controller.InsertMyPageCon;
 import com.smhrd.controller.JoinCon;
+import com.smhrd.controller.LikeCon;
+import com.smhrd.controller.LoginCon;
+import com.smhrd.controller.NaverLoginSuccessCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
@@ -44,28 +51,42 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
-		handlerMapping.put("/Join.do", new JoinCon()); // 회원가입창 이동
+		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goSuccess.do", new GoSuccessCon()); // 회원가입 성공시 이동
+		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
+		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 
+		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
 		handlerMapping.put("/insertCareer.do", new InsertCareerCon()); // 커리어 정보 저장 컨트롤러
 		handlerMapping.put("/checkDB.do", new CheckDBCon()); // 회원 DB 정보 저장 컨트롤러
 		handlerMapping.put("/checkLanguage.do", new CheckLanguageCon()); // 회원 언어 정보 저장 컨트롤러
 		handlerMapping.put("/checkRole.do", new CheckRoleCon()); // 회원 역할 저장 컨트롤러
+		
 		handlerMapping.put("/updateMyPage.do", new UpdateMyPageCon()); // 마이페이지 정보 수정 컨트롤러 
 		handlerMapping.put("/updateCareer.do", new UpdateCareerCon()); // 커리어 정보 수정 컨트롤러
 		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
 		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
 		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
-		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
+		
+		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
+		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
+		handlerMapping.put("/join.do", new JoinCon()); // 
 		
 		
+		// google 로그인 테스트
+		handlerMapping.put("/google.do", new GoogleJoin()); // 
 		
-		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 이동
+		
+		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 페이지 이동
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
-		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 컨트롤러 이동
+		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
+		
+		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
 		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
-
+		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
+		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -110,7 +131,8 @@ public class FrontController extends HttpServlet {
 
 			if (nextPage.contains("redirect:/")) {
 				response.sendRedirect(nextPage.split(":/")[1]);
-			} else {
+			} 
+			else {
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + nextPage + ".jsp");
 				// forward이동하는 코드
 				rd.forward(request, response);
