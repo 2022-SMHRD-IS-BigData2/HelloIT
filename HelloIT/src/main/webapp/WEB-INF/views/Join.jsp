@@ -9,7 +9,13 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
-
+<style>
+body {
+	height: 100vh;
+	background: url(./img/backck.webp) no-repeat center;
+	background-size: cover;
+}
+</style>
 </head>
 
 <body>
