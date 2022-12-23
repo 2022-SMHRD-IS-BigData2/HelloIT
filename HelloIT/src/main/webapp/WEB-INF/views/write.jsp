@@ -13,7 +13,7 @@
 <style> 
     body {
         height: 100vh;
-        background: url(./img/backck.webp) no-repeat center;
+        background: rgba(0,130,128,255);
         background-size: cover;
     }
   
@@ -70,7 +70,7 @@
                     <label for="text20">내용</label>
                     <textarea id="text20" rows="8" style="height: 550px;" name="post_content"></textarea>
                 </div>
-                <input type="file" style=" float: right;" name="file">
+                <input type="file" style=" float: right;" name="post_file">
                     <br>
                 
                 <div class="tag " style="width: 200px">

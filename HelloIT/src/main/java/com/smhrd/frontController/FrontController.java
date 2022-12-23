@@ -40,6 +40,7 @@ import com.smhrd.controller.UpdateLanguageCon;
 import com.smhrd.controller.UpdateMyPageCon;
 import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.WriteCon;
+import com.smhrd.dao.GoIdeaCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -79,6 +80,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/google.do", new GoogleJoin()); // 
 		
 		
+		handlerMapping.put("/goIdea.do", new GoIdeaCon()); // 
 		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 페이지 이동
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동

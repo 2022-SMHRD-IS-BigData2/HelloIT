@@ -22,6 +22,7 @@ public class WriteCon implements Controller {
 		// 저장할 폴더 경로
 		// webapp 밑에있는 images 폴더 경로
 		// request.getServletContext() : Tomcat이 복사해서 만든 폴더 정보들 == webapp
+		
 		// webapp/images
 		String savePath = request.getServletContext().getRealPath("img");
 

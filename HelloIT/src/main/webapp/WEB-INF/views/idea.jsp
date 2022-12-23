@@ -12,7 +12,7 @@
 <style> 
     body {
         height: 100vh;
-        background: url(./img/backck.webp) no-repeat center;
+        background: rgba(0,130,128,255);
         background-size: cover;
     }
 
@@ -89,7 +89,6 @@
 
 </head>
 <body>
-    <center>
     <div class="window" style="width: 800px" >
         <div class="title-bar">
           <div class="title-bar-text">HelloIt
@@ -134,11 +133,9 @@
               </div>
 
         
-        </center>
 
 
         <footer class="main_footer">
-             <center> 
                 <div class="window" id="icons" style="width: 800px" align-self:center; align="center">
                     <a href=""> <img src="./img/dfsfg.png" id="fire" width="50" alt=""></a>
                     <a href=""> <img src="./img/123.png" id="idea"width="40" alt=""></a>          
@@ -147,7 +144,6 @@
                     <a href=""> <img src="./img/icon_15.png" id="my_page" width="40"alt=""></a>
                     <a href=""> <img src="./img/sfsdffd.png" alt="" width="30"> </a>
                 </div>
-           </center> 
         </footer>
 
 

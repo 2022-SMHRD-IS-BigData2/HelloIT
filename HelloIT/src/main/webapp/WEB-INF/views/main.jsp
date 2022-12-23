@@ -47,8 +47,8 @@
 } */
 
 body {
-    height: 100vh;
-    background: url(./img/backck.webp) no-repeat center;
+	height: 100vh;
+    background: rgba(0,130,128,255);
     background-size: cover;
   
 }
@@ -81,6 +81,7 @@ body {
 
 </style>
 <body>
+<center>
     <header class="main_header" >
     <!-- <center> -->
     <div class="window" style="width: 800px"  align-self:center; align="center"><span style="display: flex; flex-direction: column;"></span>
@@ -164,6 +165,7 @@ body {
             <br>
             <a href="goWrite.do"><button id="btn">글쓰기</button></a>
             <a href="goBoard.do"><button id="btn">게시판</button></a>
+            <a href="goIdea.do"><button id="btn">아이디어토론방</button></a>
         <!-- </center> -->
         
     </div>
@@ -182,7 +184,7 @@ body {
         </div>
     <!-- </center>    -->
 </footer>
-
+</center>
 <script>
 
 </script>

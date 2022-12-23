@@ -32,11 +32,12 @@ public class LoginCon implements Controller {
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("info", result);
+			return "redirect:/goMain.do";
 		} else {
 			System.out.println("로그인 실패");
+			return "loginfail";
 		}
 		
-		return "redirect:/goMain.do";
 	}
 
 }

@@ -4,15 +4,17 @@
 
 	<!-- 게시글 전체 리스트 조회 -->
 	<select id="postInfoList" resultType="com.smhrd.entity.PostInfo">
-		select *
-		from post_info
+		select * from  post_info p, user_info u
+		where p.u_email = u.u_email
+		order by post_dt desc
 	</select>
 	
 	<!-- 게시글 종류별 전체 리스트 조회 -->
 	<select id="postKindList" resultType="com.smhrd.entity.PostInfo">
 		select *
-		from post_info
-		where post_kind=#{post_kind}
+		from post_info p, user_info u
+		where p.u_email=u.u_email
+		and p.post_kind=#{post_kind}
 	</select>
 
 	<!-- 게시글 작성 -->
@@ -34,8 +36,9 @@
 	
 	<!-- 게시글 1개 조회 -->
 	<select id="postInfoView" resultType="com.smhrd.entity.PostInfo">
-		select * from post_info
-		where post_seq=#{post_seq}
+		select * from post_info p, user_info u
+		where p.u_email=u.u_email
+		and p.post_seq=#{post_seq}
 	</select>
 	
 	<!-- 게시글 좋아요수 조회 -->

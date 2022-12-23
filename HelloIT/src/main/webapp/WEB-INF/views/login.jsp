@@ -28,7 +28,7 @@
 <style>
 body {
 	height: 100vh;
-	background: url(./img/backck.webp) no-repeat center;
+    background: rgba(0,130,128,255);
 	background-size: cover;
 </style>
 
@@ -45,7 +45,7 @@ body {
 	session.setAttribute("state", state);
 	%>
 
-
+<center>
 	<div class="window"
 		style="margin: 32px; width: 250px; align-self: center;" align="center">
 		<div style="display: flex; flex-direction: column;">
@@ -89,7 +89,7 @@ body {
 			</div>
 		</div>
 	</div>
-	
+	</center>
 	
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	    <script>

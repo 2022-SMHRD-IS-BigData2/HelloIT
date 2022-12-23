@@ -12,7 +12,7 @@
   <style> 
     body {
         height: 100vh;
-        background: url(./img/retrowave.gif) no-repeat center;
+		background: rgba(0,130,128,255);
         background-size: cover;
     }
 
@@ -42,7 +42,7 @@
       </div>
     </div> -->
     
-
+<center>
     <div class="window"  style="width: 550px">
       <div class="title-bar">
         <div class="title-bar-text">잘못된 접근</div>
@@ -60,11 +60,11 @@
 
       </div>
       
-        <a href="#"> <button>돌아가기</button></a>
+        <a href="goLogin.do"> <button>돌아가기</button></a>
             <br>
       
     </div>
  <!-- </center> --> 
-
+</center>
   </body>
 </html>

@@ -31,4 +31,6 @@ public class PostInfo {
 	
 	private int likes;
 	
+	private String u_name;
+	
 }

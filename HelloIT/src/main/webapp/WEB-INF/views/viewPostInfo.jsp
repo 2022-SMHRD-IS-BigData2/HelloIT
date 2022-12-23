@@ -19,7 +19,7 @@
 
 body {
     height: 100vh;
-    background: url(./img/backck.webp) no-repeat center;
+    background: rgba(0,130,128,255);
     background-size: cover;
 }
 
@@ -45,6 +45,7 @@ td {
 			<%
 			// request 영역에서 게시글 정보 가져오기
 			PostInfo PostInfo = (PostInfo)request.getAttribute("PostInfo");
+			
 			int postlikes = (int)request.getAttribute("postlikes");
 					
 			// request 영역에서 list 꺼내서 출력하기
@@ -73,7 +74,7 @@ td {
 						<td>제목</td>
 						<td colspan="3"><%=PostInfo.getPost_title()%></td>
 						<td>작성자</td>
-						<td><%=PostInfo.getU_email()%></td>
+						<td><%=PostInfo.getU_name()%></td>
 					</tr>
 					<tr>
 						<td colspan="6">내용</td>
