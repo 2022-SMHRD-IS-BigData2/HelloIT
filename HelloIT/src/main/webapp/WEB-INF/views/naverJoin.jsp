@@ -83,6 +83,7 @@
 				네이버 직업?   <input type="text" name="u_job" value="none"><br>
 				</form><%
 				} else{
+					System.out.print("이미 가입된 회원");
 				 	response.sendRedirect("goMain.do");
 				}
 
