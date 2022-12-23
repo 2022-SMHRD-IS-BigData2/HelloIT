@@ -34,7 +34,7 @@ public class InsertCareerCon implements Controller {
 		String nextPage = "";
 		if (cnt > 0) {
 			// 성공
-			System.out.println("마이페이지 작성 성공");
+			System.out.println("회원 커리어 작성 성공");
 			// 메인페이지로
 			// 이미 이동하는 컨트롤러가 있는경우, 컨트롤러로 이동시키자.
 			// redirect를 하 는경우, 앞에 redirect:/ 를 붙이기로 약속
@@ -42,7 +42,7 @@ public class InsertCareerCon implements Controller {
 
 		} else {
 			// 실패
-			System.out.println("마이페이지 작성 실패");
+			System.out.println("회원 커리어 작성 실패");
 			nextPage = "redirect:/goMyPage.do";
 		}
 		return nextPage;

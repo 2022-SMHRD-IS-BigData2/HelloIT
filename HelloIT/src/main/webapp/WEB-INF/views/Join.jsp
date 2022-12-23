@@ -10,17 +10,10 @@
 <title>Document</title>
 
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
-<style>
-body {
-    background: rgba(0,130,128,255);
-	background-size: cover;
-	
-}
-</style>
+<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-<center>
 	<div align="center">
 		<form action="join.do" method="post">
 			<div class="window" style="margin: 10px; width: 300px">
@@ -129,7 +122,6 @@ body {
 			</div>
 		</form>
 	</div>
-	</center>
 </body>
 
 </html>

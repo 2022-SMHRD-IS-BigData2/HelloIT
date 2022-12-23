@@ -5,25 +5,17 @@
   <head>
     <title>loginfail</title>
     <meta charset="UTF-8" />
-
     <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.4/build/98.css" />
-  </head>
-
-  <style> 
-    body {
-        height: 100vh;
-		background: rgba(0,130,128,255);
-        background-size: cover;
+    <link rel="stylesheet" href="./css/style.css">
+    <style type="text/css">
+    .window-body{
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
     }
-
-    
-</style>
-
-
+    </style>
+  </head>
 <body>
-
-  <br><br><br><br><br>
- <!--<center>  --> 
     <!-- <div class="window" style="margin: 150px; width: 250px">
       <div class="title-bar">
         <div class="title-bar-text">
@@ -42,7 +34,8 @@
       </div>
     </div> -->
     
-<center>
+    <div class="container">
+    <div class="wrapper">
     <div class="window"  style="width: 550px">
       <div class="title-bar">
         <div class="title-bar-text">잘못된 접근</div>
@@ -58,13 +51,13 @@
           다시 한번 확인해 주세요
         </p>
 
-      </div>
       
         <a href="goLogin.do"> <button>돌아가기</button></a>
             <br>
+      </div>
       
     </div>
- <!-- </center> --> 
-</center>
+    </div>
+    </div>
   </body>
 </html>

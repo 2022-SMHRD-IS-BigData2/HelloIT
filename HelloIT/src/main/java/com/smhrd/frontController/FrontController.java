@@ -23,7 +23,6 @@ import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
-import com.smhrd.controller.GoSuccessCon;
 import com.smhrd.controller.GoViewCon;
 import com.smhrd.controller.GoWriteCon;
 import com.smhrd.controller.GoogleJoin;
@@ -54,7 +53,6 @@ public class FrontController extends HttpServlet {
 		handlerMapping = new HashMap<>();
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
-		handlerMapping.put("/goSuccess.do", new GoSuccessCon()); // 회원가입 성공시 이동
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
 		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 
 		

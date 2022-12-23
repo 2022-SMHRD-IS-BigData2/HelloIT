@@ -2,91 +2,13 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
-    <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
-<style> 
-    body {
-        height: 100vh;
-        background: rgba(0,130,128,255);
-        background-size: cover;
-    }
-
-
-    #form-commentInfo{
-    width: 100%;
-}
-
-#comment-count{
-    margin-bottom: 10px; 
-}
-
-#comment-input{
-    width: 50%;
-    height: 3.3em;
-}
-
-#submit{
-    background-color: rgb(0, 128,255);
-    width: 5.5em;
-    height: 3.3em;;
-    font-size: 15px;
-    font-weight: bold;
-    color: aliceblue;
-}
-
-
-
-#comments{
-    margin-top: 10px;
-}
-
-.eachComment{   
-    width :50%; 
-    margin: 10px;  
-    padding: 0.5em; 
-    border-bottom: 1px solid #c1bcba;
-}
-
-.eachComment .name{
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 0.3em;
-    display: flex;
-    justify-content: space-between;
-}
-
-.eachComment .inputValue{
-    font-size: 1.2em;
-    font-style: italic;    
-}
-
-.eachComment .time{
-    font-size: 0.7em;
-    color: #c1bcba;
-    font-style: oblique;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    
-}
-
-.eachComment .voteDiv{
-    display: flex;
-    justify-content: flex-end;
-}
-
-.eachComment .deleteComment{
-    background-color: red;
-    color: aliceblue;
-}
-
-    
-</style>
-
 </head>
 <body>
     <div class="window" style="width: 800px" >
@@ -122,7 +44,7 @@
                 <div id=comments>
             
                 </div>
-                <script src="index.js"></script>
+                <script src="./js/index.js"></script>
 
 
 
