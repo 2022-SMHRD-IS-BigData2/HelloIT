@@ -54,7 +54,7 @@
 			session.setAttribute("access_token", accessToken);
 			session.setAttribute("refresh_token", refresh_token);
 
-			response.sendRedirect("goJoin.do");
+			response.sendRedirect("goNaverJoin.do");
 
 		}
 	} catch (Exception e) {
