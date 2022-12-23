@@ -23,7 +23,7 @@ public class WriteCon implements Controller {
 		// webapp 밑에있는 images 폴더 경로
 		// request.getServletContext() : Tomcat이 복사해서 만든 폴더 정보들 == webapp
 		// webapp/images
-		String savePath = request.getServletContext().getRealPath("images");
+		String savePath = request.getServletContext().getRealPath("img");
 
 		// 최대 사이즈
 		// byte 단위
@@ -51,11 +51,11 @@ public class WriteCon implements Controller {
 
 		// 2. DTO에 데이터 묶기
 		PostInfo dto = new PostInfo();
-		dto.getPost_title();
-		dto.getPost_content();
-		dto.getU_email();
-		dto.getPost_kind();
-		dto.getPost_file();
+		dto.setPost_title(post_title);
+		dto.setPost_content(post_content);
+		dto.setU_email(u_email);
+		dto.setPost_kind(post_kind);
+		dto.setPost_file(post_file);
 		
 
 		// 3. DAO의 boardWrite 사용

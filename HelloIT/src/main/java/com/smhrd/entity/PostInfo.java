@@ -13,10 +13,8 @@ public class PostInfo {
 	@NonNull
 	private String post_title;
 	
-	@NonNull
 	private String post_content;
 	
-	@NonNull
 	private String post_file;
 	
 	private String post_dt;

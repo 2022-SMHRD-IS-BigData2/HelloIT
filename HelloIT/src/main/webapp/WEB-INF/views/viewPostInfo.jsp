@@ -80,7 +80,7 @@ td {
 					</tr>
 					<tr>
 						<td colspan="6">
-							<img alt="이미지 없음" src="images/<%=PostInfo.getPost_file()%>"><br>
+							<img alt="이미지 없음" src="./img/<%=PostInfo.getPost_file()%>"><br>
 							<%=PostInfo.getPost_content()%>
 						</td>
 					</tr>

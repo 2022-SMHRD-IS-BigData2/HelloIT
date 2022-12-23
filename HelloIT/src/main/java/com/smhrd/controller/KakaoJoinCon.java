@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.smhrd.dao.UserInfoDAO;
 import com.smhrd.entity.UserInfo;
@@ -66,6 +67,8 @@ public class KakaoJoinCon implements Controller {
 			// 메인페이지로
 			// 이미 이동하는 컨트롤러가 있는경우, 컨트롤러로 이동시키자.
 			// redirect를 하 는경우, 앞에 redirect:/ 를 붙이기로 약속
+			HttpSession session = request.getSession();
+			session.setAttribute("info", result);
 			nextPage = "redirect:/goMain.do";
 
 		} else {
@@ -78,6 +81,8 @@ public class KakaoJoinCon implements Controller {
 		// Controller --> Controller
 		}else {
 			System.out.println("이미 가입된 회원");
+			HttpSession session = request.getSession();
+			session.setAttribute("info", result);
 			return "main";
 		}
 

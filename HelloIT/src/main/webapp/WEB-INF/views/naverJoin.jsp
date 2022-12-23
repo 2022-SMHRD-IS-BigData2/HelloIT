@@ -68,24 +68,17 @@
 				String u_birthdate = resp.getString("birthyear")+"-"+resp.getString("birthday");
 				String u_gender = resp.getString("gender");
 				
-				UserInfo dto = new UserInfo();
-				dto.setU_email(u_email);
-				UserInfoDAO dao = new UserInfoDAO();
-				UserInfo result = dao.compareId(dto);
-				if(result==null){
+				
 				%><form name="naverJoin" action="join.do" method="post">
-				네이버 이메일   <input type="text" name="u_email" value="<%=u_email%>"><br>
-				네이버 비밀번호? <input type="text" name="u_pw" value="<%=u_email%>"><br>
-				네이버 이름   <input type="text" name="u_name" value="<%=u_name%>"><br>
-				네이버 닉네임   <input type="text" name="u_nick" value="<%=u_nick%>"><br>
-				네이버 생년월일   <input type="text" name="u_birthdate" value="<%=u_birthdate%>"><br>
-				네이버 성별   <input type="text" name="u_gender" value="<%=u_gender%>"><br>
-				네이버 직업?   <input type="text" name="u_job" value="none"><br>
+				네이버 이메일   <input type="hidden" name="u_email" value="<%=u_email%>"><br>
+				네이버 비밀번호? <input type="hidden" name="u_pw" value="<%=u_email%>"><br>
+				네이버 이름   <input type="hidden" name="u_name" value="<%=u_name%>"><br>
+				네이버 닉네임   <input type="hidden" name="u_nick" value="<%=u_nick%>"><br>
+				네이버 생년월일   <input type="hidden" name="u_birthdate" value="<%=u_birthdate%>"><br>
+				네이버 성별   <input type="hidden" name="u_gender" value="<%=u_gender%>"><br>
+				네이버 직업?   <input type="hidden" name="u_job" value="none"><br>
 				</form><%
-				} else{
-					System.out.print("이미 가입된 회원");
-				 	response.sendRedirect("goMain.do");
-				}
+				
 
 		    } catch (Exception e) {
 

@@ -112,7 +112,7 @@ body {
 	    						console.log(name);
 	    						console.log(birth);
 	    						console.log(gender)
-	    						if(gender=="male"){
+	    						if(gender=="male"){  
 	    							gender = "M"  	
 	    						}else{
 	    							gender ="F"

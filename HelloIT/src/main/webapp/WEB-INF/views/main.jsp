@@ -162,7 +162,7 @@ body {
             </div>
             
             <br>
-            <a href=""><button id="btn">글쓰기</button></a>
+            <a href="goWrite.do"><button id="btn">글쓰기</button></a>
             <a href="goBoard.do"><button id="btn">게시판</button></a>
         <!-- </center> -->
         

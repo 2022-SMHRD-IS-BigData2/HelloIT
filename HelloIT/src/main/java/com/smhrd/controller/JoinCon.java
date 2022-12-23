@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.smhrd.dao.UserInfoDAO;
 import com.smhrd.entity.UserInfo;
@@ -50,20 +51,24 @@ public class JoinCon implements Controller {
 		dto.setU_gender(u_gender);
 		// 3. 받아온 데이터를 DB에 저장 (DAO의 join 메소드 사용
 		UserInfoDAO dao = new UserInfoDAO();
-		int cnt = dao.join(dto);
+		UserInfo result = dao.compareId(dto);
+		String nextPage = "";
+		if(result==null) {
+			int cnt = dao.join(dto);			
 
 		// ========================================
 
 		// 4. 회원가입 성공여부에 따라서
 		// 성공 --> Main.jsp
 		// 실패 --> join.jsp
-		String nextPage = "";
 		if (cnt > 0) {
 			// 성공
 			System.out.println("회원가입 성공");
 			// 메인페이지로
 			// 이미 이동하는 컨트롤러가 있는경우, 컨트롤러로 이동시키자.
 			// redirect를 하 는경우, 앞에 redirect:/ 를 붙이기로 약속
+			HttpSession session = request.getSession();
+			session.setAttribute("info", result);
 			nextPage = "redirect:/goMain.do";
 
 		} else {
@@ -74,9 +79,13 @@ public class JoinCon implements Controller {
 
 		// 5. 다음페이지로 이동
 		// Controller --> Controller
+		}else {
+			System.out.println("이미 가입된 회원");
+			HttpSession session = request.getSession();
+			session.setAttribute("info", result);
+			return "main";
+		}
 
 		return nextPage;
-		
 	}
-	
 }
