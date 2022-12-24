@@ -11,21 +11,31 @@
 
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
+<style type="text/css">
+    .wrap{
+	position:absolute;	
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	}
+	.header{
+		cursor: default;
+		width: 292px;
+	}
+</style>
 </head>
 
 <body>
-	<div align="center">
+<div class="container">
+	<div class="wrapper">
 		<form action="join.do" method="post">
-			<div class="window" style="margin: 10px; width: 300px">
-				<div class="title-bar">
+			<div id="joinMain" class="window wrap" style="width: 300px">
+				<div class="title-bar header">
 					<div class="title-bar-text">회원가입</div>
 				</div>
-				<table>
+				<table style="margin:auto;">
 					<tr>
-						<td colspan="2">
-							<h5 align="center">개인정보</h5>
-						</td>
-						<img src="./img/com.gif" width="250" alt="">
+						<td colspan="2" align="center"><img src="./img/com.gif" width="250" alt=""></td>
 					</tr>
 					<tr>
 						<td align="right">아이디(이메일) :</td>
@@ -122,6 +132,19 @@
 			</div>
 		</form>
 	</div>
+	</div>
+		<div class="status-bar task-bar">
+    <div class="status-bar-field">
+    	<button>시작</button>
+    </div>
+    <div class="status-bar-field"><button id="logWinShow" class="showHide">회원 가입</button></div>
+    <div class="status-bar-field" style="width: 70px;position: absolute;bottom: 3px; right: 3px;">
+    	<div id="hms" align="center"></div>
+    </div>
+	</div>
+	<script src="./js/move.js"></script>
+    <script src="./js/showHideJoin.js"></script>
+    <script src="./js/time.js"></script>
 </body>
 
 </html>

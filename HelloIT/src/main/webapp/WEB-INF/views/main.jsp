@@ -11,8 +11,7 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>Document</title>
 </head>
 <style>
@@ -56,7 +55,6 @@
 }
 </style>
 <body>
-
 	<div class="container">
 		<div class="wrapper">
 			<header class="main_header">
@@ -109,7 +107,7 @@
 						align="center">
 
 						<div class="window" style="width: 600px">
-							<div class="title-bar">
+							<div class="title-bar" style="position:sticky; top:26px;">
 								<div class="title-bar-text">맞춤형</div>
 								<input type="text" style="width: 150pt; height: 15pt;"
 									placeholder="검색창" name="" id=""> <input type="button"
