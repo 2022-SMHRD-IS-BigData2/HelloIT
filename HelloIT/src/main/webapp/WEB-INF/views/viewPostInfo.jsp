@@ -14,15 +14,37 @@
 		<link rel="stylesheet" href="https://unpkg.com/98.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-		<link rel="stylesheet" href="./css/style.css">
 </head>
+<style>
+
+body {
+    height: 100vh;
+    background: url(./img/backck.webp) no-repeat center;
+    background-size: cover;
+}
+
+.window {
+    justify-content: space-between;
+}  
+
+td {
+	width: 130px;
+}
+
+#btn{
+    width: 20px;
+        height: 10px;
+       
+        border-radius: 40px;
+       }
+
+</style>
 <body>
 
 			테스트용 게시글 조회 페이지<br>
 			<%
 			// request 영역에서 게시글 정보 가져오기
 			PostInfo PostInfo = (PostInfo)request.getAttribute("PostInfo");
-			
 			int postlikes = (int)request.getAttribute("postlikes");
 					
 			// request 영역에서 list 꺼내서 출력하기
@@ -34,10 +56,7 @@
 			int post_seq = PostInfo.getPost_seq();
 			%>
 			<a href="goBoard.do"><button>뒤로가기</button></a>
-			
-			<div class="container">
-			<div class="wrapper">
-			<div class="window-body" align="center">
+			<div class="window-body"  align-self:center; align="center">
             
             <div class="window" style="width: 600px" >
                 <div class="title-bar">
@@ -54,7 +73,7 @@
 						<td>제목</td>
 						<td colspan="3"><%=PostInfo.getPost_title()%></td>
 						<td>작성자</td>
-						<td><%=PostInfo.getU_name()%></td>
+						<td><%=PostInfo.getU_email()%></td>
 					</tr>
 					<tr>
 						<td colspan="6">내용</td>
@@ -79,7 +98,7 @@
                     <p class="status-bar-field"><button id="btn"><%=postlikes%>  💖</button></p> 
                     <p class="status-bar-field"><input type="text" name="cmt_content" placeholder= "댓글">
                     <input type="submit" value="등록"></p>
-                    <p class="status-bar-field"><a href="">댓글 n개</a></p>
+                    <a href=""> <p class="status-bar-field">댓글 n개</p></a>
                     <%for(int i = 0; i < list.size(); i++){%>
                 </div>
                 <table border=1 width=600>
@@ -95,10 +114,10 @@
                 </form>
             </div>
             </div>
-            </div>
+            
             <br>
 			<br>
-				
+			0
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
