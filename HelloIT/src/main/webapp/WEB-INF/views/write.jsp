@@ -11,7 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <link rel="stylesheet" href="./css/style.css">
-
+<style type="text/css">
+.container{
+	display:flex;
+	justify-content: center;
+	height:inherit;
+}
+.title-bar{
+	position:sticky;
+	top:0;
+	z-index:300;
+}
+</style>
 </head>
 <body>
 		<% UserInfo info = (UserInfo)session.getAttribute("info");
@@ -19,10 +30,10 @@
 		%>
 		<div class="container">
 		<div class="wrapper">
-        <div class="window" style="width: 800px" align="center">
+        <div class="window" style="width: 800px; top:0" align="center">
 		<form action="write.do" method="post" enctype="multipart/form-data">
             <div class="title-bar">
-                <div class="title-bar-text">맞춤형</div>
+                <div class="title-bar-text">게시물 작성하기</div>
                 <div class="title-bar-controls">
                     <button aria-label="Minimize"></button>
                     <button aria-label="Maximize"></button>
@@ -66,16 +77,16 @@
                 </div>
                 </div>
                 </div>
-            <footer class="main_footer">
-                    <div class="window" id="icons" style="width: 800px" align="center">
-                        <a href=""> <img src="./img/dfsfg.png" id="fire" width="50" alt=""></a>
-                        <a href=""> <img src="./img/123.png" id="idea"width="40" alt=""></a>          
-                        <a href=""> <img src="./img/dff.gif" id="icon" width="50" alt="error"> </a>  
-                        <a href=""> <img src="./img/xml-0.png" id="job" width="40"alt=""></a>          
-                        <a href=""> <img src="./img/icon_15.png" id="my_page" width="40"alt=""></a>
-                        <a href=""> <img src="./img/sfsdffd.png" alt="" width="30"> </a>
-                    </div>
-            </footer>
+           	<footer class="main_footer">
+				<div class="window" id="icons" style="width: 800px" align="center">
+					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+					<a href="goJobHunting.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+					<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+				</div>
+			</footer>
 			
 
 

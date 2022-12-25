@@ -1,22 +1,12 @@
 // 창 클릭하면 나타나면서 사라지기도 하는 동작 구현
 
 
-var logWinShow = document.getElementById('logWinShow')
 
-	logWinShow.onclick = function(){
-        	  if(this.className=='showHide'){
-        		  this.className='active';
-        		  document.getElementById('loginMain').style.display='none';
-        	  }else{
-        		  this.className='showHide'        		  
-        		  document.getElementById('loginMain').style.display='';
-        	  }
-          }
 
 var hideWindow = document.getElementById('hideWindow')
 
 	hideWindow.onclick = function(){
-		document.getElementsByClassName('showHide').className='active';
+		document.getElementById('logWinShow').className='active';
 		document.getElementById('loginMain').style.display='none';
           }
           

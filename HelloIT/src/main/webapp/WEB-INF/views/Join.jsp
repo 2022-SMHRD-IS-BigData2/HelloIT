@@ -12,16 +12,16 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <style type="text/css">
-    .wrap{
+.wrap{
 	position:absolute;	
-  	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
-	}
-	.header{
-		cursor: default;
-		width: 292px;
-	}
+ 	top: 50%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+}
+.header{
+	cursor: default;
+	width: 292px;
+}
 </style>
 </head>
 
