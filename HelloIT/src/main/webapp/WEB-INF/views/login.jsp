@@ -78,6 +78,25 @@
       /* Use the Roboto font that is loaded in the <head> */
       font-family: 'Roboto', sans-serif;
     }
+    .wrap{
+	position:absolute;	
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	}
+	.header{
+		cursor: default;
+		width: 242px;
+	}
+	.window-body{
+	    margin: 8px;
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	}
+	.window.wrap{
+		width:250px;
+	}
   </style>
 </head>
 
@@ -95,10 +114,9 @@
 	%>
 	<div class="container">
 	<div class="wrapper">
-	<div class="window"
-		style="margin: 32px; width: 250px; align-self: center;" align="center">
-		<div style="display: flex; flex-direction: column;">
-			<div class="title-bar">
+	<div id="loginMain" class="window wrap">
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<div class="header title-bar">
 				<div class="title-bar-text">Hello IT</div>
 			</div>
 			<div>
@@ -148,6 +166,15 @@
 		</div>
 	</div>
 	</div>
+	<div class="status-bar task-bar">
+    <div class="status-bar-field">
+    	<button>시작</button>
+    </div>
+    <div class="status-bar-field"><button id="logWinShow" class="showHide">Hello IT Login</button></div>
+    <div class="status-bar-field" style="width: 70px;position: absolute;bottom: 3px; right: 3px;">
+    	<div id="hms" align="center"></div>
+    </div>
+	</div>
 	</div>
 	<%-- 카카오 로그인 회원정보 보내기--%>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -190,5 +217,10 @@
 	    		});
 	    	}
         </script>
+          <script src="./js/move.js"></script>
+          <%-- login 버튼 클릭시 창이 사라지고 사라졌을때 다시 클릭하면 창이 다시 생기는 메소드 구현 --%>
+          <script src="./js/showHideLogin.js"></script>
+          <%-- 시계 나타내기 구현 --%>
+          <script src="./js/time.js"></script>
 </body>
 </html>
