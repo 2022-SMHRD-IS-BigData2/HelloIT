@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>HelloIt_Login</title>
+<title>Hello IT</title>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">

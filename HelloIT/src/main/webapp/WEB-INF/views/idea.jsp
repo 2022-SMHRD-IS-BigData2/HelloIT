@@ -39,7 +39,7 @@
     height: 3.8em;
 }
 </style>
-<title>Document</title>
+<title>Hello IT</title>
 </head>
 <body>
 	<div class="container">

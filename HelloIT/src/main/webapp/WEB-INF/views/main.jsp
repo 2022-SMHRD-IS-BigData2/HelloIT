@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>HelloIT_Main</title>
+<title>Hello IT</title>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
