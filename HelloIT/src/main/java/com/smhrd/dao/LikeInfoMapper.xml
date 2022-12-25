@@ -9,8 +9,29 @@
 			like_info_seq.nextval,
 			#{u_email},
 			#{post_seq},
-			#{cmt_seq}
+			null
 		)
 	</insert>
+	
+	<delete id="likeInfoDelete" parameterType="com.smhrd.entity.LikeInfo">
+		delete from like_info
+		where u_email=#{u_email}
+		and post_seq=#{post_seq}
+	</delete>
+	
+	<update id="likesUpdate" parameterType="com.smhrd.entity.LikeInfo">
+		update post_info
+		set likes = (select count(*)
+						from like_info
+						where post_seq=#{post_seq}
+					)
+	</update>
+	
+	<select id="likeSearch" parameterType="com.smhrd.entity.LikeInfo" 
+	resultType="com.smhrd.entity.LikeInfo">
+		select * from like_info 
+		where u_email = #{u_email}
+		and post_seq = #{post_seq}
+	</select>
 	
 </mapper>

@@ -1,13 +1,23 @@
 select * from user_info;
 select * from post_info;
-drop table like_info;
+
 drop sequence like_info_SEQ;
 drop trigger like_info_AI_TRG;
 	
 truncate table comment_info;
 
+CREATE SEQUENCE like_info_SEQ
+START WITH 0
+INCREMENT BY 1;
+
 delete from comment_info
 where u_email = 'test@hs.com';
+
+alter table like_info modify post_seq null;
+alter table like_info modify cmt_seq null;
+
+SELECT * FROM    ALL_CONSTRAINTS
+WHERE    TABLE_NAME = 'like_info';
 
 -- 임시 게시물 추가
 insert into USER_INFO
@@ -34,6 +44,17 @@ values(	comment_info_seq.nextval,
 		0
 );
 
+drop trigger like_info_AI_TRG;
+
+CREATE OR REPLACE TRIGGER like_info_AI_TRG
+BEFORE INSERT ON like_info 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT like_info_SEQ.NEXTVAL
+    INTO :NEW.like_seq
+    FROM DUAL;
+END;
+
 select*from comment_info;
 select*from POST_INFO;
 
@@ -53,14 +74,6 @@ CREATE SEQUENCE like_info_SEQ
 START WITH 1
 INCREMENT BY 1;
 
-CREATE OR REPLACE TRIGGER like_info_AI_TRG
-BEFORE INSERT ON like_info 
-REFERENCING NEW AS NEW FOR EACH ROW 
-BEGIN 
-    SELECT like_info_SEQ.NEXTVAL
-    INTO :NEW.like_seq
-    FROM DUAL;
-END;
 COMMENT ON TABLE like_info IS '좋아요';
 
 COMMENT ON COLUMN like_info.like_seq IS '좋아요 순번';

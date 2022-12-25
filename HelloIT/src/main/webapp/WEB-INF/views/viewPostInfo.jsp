@@ -89,15 +89,17 @@ td {
 					</tr>
 				</table>
                 </div>
-                <form action = "comment.do">
-				<input type="hidden" name="post_seq" value="<%=post_seq%>">
-				<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+                
                 <div class="status-bar">
                     <p class="status-bar-field"><button id="btn">  <img src="./img/공유.png" width="10" alt="">  </button></p>
                     <p class="status-bar-field"><button id="btn"> 0 <img src="./img/북마크.png" width="15" alt=""> </button></p>
-                    <p class="status-bar-field"><button id="btn"><%=postlikes%>  💖</button></p> 
+                    <p class="status-bar-field"><a href="like.do?post_seq=<%=post_seq%>&u_email=<%=info.getU_email()%>"><button id="btn"><%=postlikes%>  💖</button></a></p>
+                    <form action = "comment.do"> 
+					<input type="hidden" name="post_seq" value="<%=post_seq%>">
+					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
                     <p class="status-bar-field"><input type="text" name="cmt_content" placeholder= "댓글">
                     <input type="submit" value="등록"></p>
+                    </form>
                     <a href=""> <p class="status-bar-field">댓글 n개</p></a>
                     <%for(int i = 0; i < list.size(); i++){%>
                 </div>
@@ -111,13 +113,12 @@ td {
 					</tr>
 					<%} %>
 				</table>
-                </form>
+                
             </div>
             </div>
             
             <br>
 			<br>
-			0
 			</div>
 			<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.LikeInfo;
+import com.smhrd.entity.PostInfo;
 
 public class LikeInfoDAO {
 	
@@ -18,5 +19,26 @@ public class LikeInfoDAO {
 		return cnt;
 	}
 	
+	public int likeInfoDelete(LikeInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("likeInfoDelete", dto);
+		session.close();
+		return cnt;
+	}
+	
+	public int likesUpdate(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("likesUpdate", post_seq);
+		session.close();
+		return cnt;
+	}
+	
+	
+	public LikeInfo likeSearch(LikeInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		LikeInfo like_info = session.selectOne("likeSearch", dto);
+		session.close();
+		return like_info;
+	}
 	
 }
