@@ -263,7 +263,7 @@
 					<div class="title-bar-controls">
 						<button aria-label="Minimize"></button>
 						<button aria-label="Maximize"></button>
-						<button aria-label="Close"></button>
+						<button aria-label="Close" onclick="location.href='goMain.do'"></button>
 					</div>
 				</div>
 				<div class="window-body">
@@ -274,7 +274,7 @@
 								<thead>
 									<tr>
 										<th>번호</th>
-										<th style="width: 1200px">제목</th>
+										<th style="width: 500px">제목</th>
 										<th>작성자</th>
 										<th>작성일</th>
 										<th>조회수</th>

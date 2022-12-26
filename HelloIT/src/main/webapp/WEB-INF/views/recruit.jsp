@@ -314,10 +314,11 @@ function newColour() {
 <div class="wrapper">
 	<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
 		<div class="title-bar" style="position:sticky; top:0">
-			<div class="title-bar-text">
-				채용 공고
-	  </div>
+			<div class="title-bar-text">채용 공고</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close" onclick="location.href='goMain.do'"></button>
 			</div>
+		</div>
 		<div class="window-body">
 						<h5 align="center"> 채용 내용을 클릭하면 해당 공고로 이동합니다.</h5>
 			<input type="text" placeholder="원하는 채용을 검색하세요" style="width:150px;height: 20px; font: size 10px;;">

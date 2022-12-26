@@ -16,6 +16,11 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<style type="text/css">
+	.window.posted{
+		margin:4px;
+	}
+</style>
 <title>Hello IT</title>
 </head>
 
@@ -261,8 +266,6 @@ function newColour() {
 </style>
 <body>
 
-<a href="recruit.do">테스트용</a>
-
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
@@ -276,12 +279,12 @@ function newColour() {
 		<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
 			<div class="title-bar">
 				<div class="title-bar-text">HEllo iT</div>
-				<div class="title-bar-controls">
-					<button aria-label="Minimize"></button>
-					<button aria-label="Maximize"></button>
-					<button aria-label="Close"></button>
+					<div class="title-bar-controls">
+						<button aria-label="Minimize"></button>
+						<button aria-label="Maximize"></button>
+						<button aria-label="Close"></button>
+					</div>
 				</div>
-			</div>
 		</div>
 		<div class="window" style="width: 800px" align="center">
 		<%-- 네이버 구글 유튜브 검색 창 -----------------------------------  --%>
@@ -320,21 +323,23 @@ function newColour() {
 							align="center">
 		-->			
 		<%-- 맞춤형 피드 노출 부분 및 검색어 입력 --%>
-		<div class="window" style="padding-bottom:100px"><!-- style="width: 600px" -->
-			<div class="title-bar" style="position:sticky; top:123.2px;">
+		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
+			<div class="window" style="position:sticky; top:118.2px; margin:-3px">
+				<div class="title-bar">
 				<div class="title-bar-text">맞춤형</div>
 				<div>
 					<input type="text" style="width: 150pt; height: 15pt;" placeholder="검색창" name="" id=""> 
 					<input type="button" style="width: 30pt; height: 15pt;" value="🔍">
 				</div>
 				<div></div>
+				</div>
 			</div>
 			<%for(int i = 0; i < list.size(); i++){ %>
-		<div class="window" style="width: 700px">
+		<div id="checkPost" class="window posted" style="width: 700px">
 			<div class="title-bar">
 				<div class="title-bar-text"><%=list.get(i).getPost_title()%></div>
 			</div>
-
+			
 			<div class="window-body">
 				<table id="list" border="1" bgcolor="white">
 					<tr>
@@ -366,11 +371,9 @@ function newColour() {
 					</a>
 				</p>
 				<p class="status-bar-field">
-					<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>
-					&u_email=<%=info.getU_email()%>">
+					<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=list.get(i).getLikes()%> 💖
-					</button>
-					</a>
+					</button></a>
 				</p>
 				<form action="mainCmt.do">
 					<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
@@ -381,10 +384,10 @@ function newColour() {
 						<input type="submit" value="등록">
 					</p>
 				</form>
-				<a href="">
+				
 					
-					<p class="status-bar-field"><button id="btn">댓글<%=list.get(i).getCmts()%> </button></p>
-				</a>
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=list.get(i).getCmts()%> </button></a></p>
+				
 				<%
 				// comment 출력
 				CommentInfoDAO dao = new CommentInfoDAO();
@@ -407,8 +410,6 @@ function newColour() {
 		<%}%>
 		</div>
 		<%-- -------------------------------------------------------------------------------- --%>
-		<br> 
-		<a href="goBoard.do"><button id="btn">게시판</button></a>
 		</div>
 		<footer class="main_footer">
 		<div class="window" id="icons" style="width: 800px" align="center">
@@ -424,5 +425,9 @@ function newColour() {
 	</div>
 </div>
 	<script src="./js/move.js"></script>
+	<script>
+		var test = '<%=info.getU_email()%>'
+		console.log(test);
+	</script>
 </body>
 </html>

@@ -64,6 +64,12 @@ input[type=checkbox]:checked+label:after {
 	left: -16px;
 	top: 8px;
 }
+.userInfo tbody td:nth-child(1){
+    text-align: right;
+    padding: 2px 15px;
+    border-bottom: 1px solid;
+    width: 100px;
+}
 </style>
 </head>
 <%-- 마우스 움직임 반짝임 설정 --%>
@@ -290,57 +296,57 @@ function newColour() {
 	<div id="myPage" style="display:none;">
 		    <div class="container">
         <div class="wrapper" style="position: sticky; top: 27px;">
-            <div class="window" style="width: 630px; position: sticky; top: 0; max-width: 100%" align="center">
+            <div class="window" style="width: 400px; position: sticky; top: 0; max-width: 100%; width: 400px;display: block; margin: 0 100px; margin-bottom: 50px;" align="center">
                 <div class="title-bar">
                     <div class="title-bar-text">회원 정보</div>
                     <div class="title-bar-controls">
                         <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
                     </div>
                 </div>
-                <div class="window-body" style="justify-content: center;">
-                    <form>
-                        <table border="1">
+                    <form style="margin:20px">
+                        <table class="userInfo">
+                        	<tbody>
                             <tr>
-                                <td>회원 이메일</td>
-                                <td>xeph123@naver.com</td>
+                                <td style="width:140px">회원 이메일</td>
+                                <td style="padding-left:4px"><%=info.getU_email() %></td>
                             </tr>
                             <tr>
                                 <td>이름</td>
-                                <td>유남욱</td>
+                                <td style="padding-left:4px"><%=info.getU_name() %></td>
                             </tr>
                             <tr>
                                 <td>닉네임</td>
-                                <td>피터래빗</td>
+                                <td style="padding-left:4px"><%=info.getU_nick() %></td>
                             </tr>
                             <tr>
                                 <td>현재비밀번호</td>
-                                <td><input type="password" name="pw1" placeholder="현재 비밀번호 입력"></td>
+                                <td style="padding-left:4px"><input type="password" name="pw1" placeholder="현재 비밀번호 입력"></td>
                             </tr>
                             <tr>
                                 <td>변경할 비밀번호</td>
-                                <td><input type="password" name="repw2" placeholder="변경할 비밀번호 입력"></td>
+                                <td style="padding-left:4px"><input type="password" name="repw2" placeholder="변경할 비밀번호 입력"></td>
                             </tr>
                             <tr>
                                 <td>변경할 비밀번호 확인</td>
-                                <td><input type="password" name="repw3" placeholder="변경할 비밀번호 확인"></td>
+                                <td style="padding-left:4px"><input type="password" name="repw3" placeholder="변경할 비밀번호 확인"></td>
                             </tr>
                             <tr>
                                 <td>생년월일</td>
-                                <td>1987년 12월 15일</td>
+                                <td style="padding-left:4px"><%=info.getU_birthdate()%></td>
                             </tr>
                             <tr>
                                 <td>직업</td>
-                                <td>학생</td>
+                                <td style="padding-left:4px"><%=info.getU_job() %></td>
                             </tr>
                             <tr>
                                 <td>활동점수</td>
-                                <td>100p</td>
+                                <td style="padding-left:4px"><%=info.getU_activity_score() %></td>
                             </tr>
+                            </tbody>
                         </table>
                         <br>
                             	<div><input type="submit" value="저장"></div>
                     </form>
-                </div>
             </div>
         </div>
     </div>
@@ -545,7 +551,7 @@ function newColour() {
             <thead>
                 <tr>
                     <th>번호</th>
-                    <th style="width:1200px">제목</th>
+                    <th style="width:380px">제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>조회수</th>
@@ -558,7 +564,7 @@ function newColour() {
                         <a href="#">북마크5</a>
                     </td>
                     <td>개발자</td>
-                    <td>20221226</td>
+                    <td>2022/12/26</td>
                     <td>111</td>
                 </tr>
                 <tr>
@@ -646,7 +652,7 @@ function newColour() {
         </table>
         <br>
 			<div class="pagination_section">
-							<a href="#" class="bt"><< Previous</a>
+							<a href="#" class="bt">＜＜ Previous</a>
 							<a href="#" class="num on">1</a>
 							<a href="#" class="num">2</a>
 							<a href="#" class="num">3</a>
@@ -654,26 +660,26 @@ function newColour() {
 							<a href="#" class="num">5</a>
 							<a href="#" class="num">6</a>
 							<a href="#" class="num">7</a>
-							<a href="#" class="bt">Next >></a>
+							<a href="#" class="bt">Next ＞＞</a>
 				</div>
     </div>
-	
-	
-	
-	
 	
 	</div>
 	<div id="follow" style="display:none;">follow</div>
 	<div id="myIdea" style="display:none;">myIdea</div>
 	<div id="portfolio" style="display:none;">
 	        <form>
-            <div class="window" style="margin: 10px; width: 400px" id="tablecenter">
+            <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
                 <div class="title-bar">
                     <div class="title-bar-text">
                         이력서 및 포트폴리오
                     </div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+                    </div>
                 </div>
-                <table>
+                <table class="userInfo">
+                	<tbody>
                     <tr>
                         <td> <strong> 이름 </strong></td>
                         <td><input type="text"></td>
@@ -776,7 +782,7 @@ function newColour() {
                         <td> <strong>포트폴리오</strong> </td>
                         <td> <input type="file" name="" id=""><br></td>
                     </tr>
-
+					</tbody>
                 </table>
                 <br>
                 <input type="submit" value="이력서 저장하기">
@@ -842,7 +848,10 @@ function newColour() {
   	</div>
 	</div>
 	</div>
-		<footer class="main_footer">
+		
+	</div>
+	</div>
+	<footer class="main_footer">
 				<div class="window" id="icons" style="width: 800px" align="center">
 					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
 					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
@@ -853,8 +862,6 @@ function newColour() {
 					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 				</div>
 		</footer>
-	</div>
-	
 	<script type="text/javascript">
 		$('#listOfMyPage').on('click', function() {
 			$('#myPage').show();
