@@ -20,11 +20,14 @@ public class CheckRoleCon implements Controller {
 		
 		request.setCharacterEncoding("UTF-8");
 		String u_email = request.getParameter("u_email");
-		String[] userRole = request.getParameterValues("userRole");
-		System.out.println(userRole[0]);
-		System.out.println(userRole[1]);
-		System.out.println(userRole[2]);
-		System.out.println(userRole[3]);
+		String[] frontend = request.getParameterValues("frontend");
+		String[] backend = request.getParameterValues("backend");
+		String[] data_etc = request.getParameterValues("data_etc");
+		String[] other_skill = request.getParameterValues("other_skill");
+		System.out.println(frontend[0]);
+		System.out.println(backend[0]);
+		System.out.println(data_etc[0]);
+		System.out.println(other_skill[0]);
 		System.out.println(u_email);
 //	    String frontend = userRole[0];
 //	    String backend  = userRole[1];

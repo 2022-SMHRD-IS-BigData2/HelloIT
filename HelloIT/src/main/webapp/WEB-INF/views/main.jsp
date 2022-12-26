@@ -75,7 +75,7 @@
 		</div>
 		<div class="window" style="width: 800px" align="center">
 		<%-- 네이버 구글 유튜브 검색 창 -----------------------------------  --%>
-		<div class="window"><!--style="--width: 400px"-->
+		<div class="window" style="position:sticky; top:26.6px"><!--style="--width: 400px"-->
 			<div class="title-bar">
 				<div class="title-bar-text">검색창</div>
 			</div>
@@ -111,7 +111,7 @@
 		-->			
 		<%-- 맞춤형 피드 노출 부분 및 검색어 입력 --%>
 		<div class="window" style="padding-bottom:100px"><!-- style="width: 600px" -->
-			<div class="title-bar" style="position:sticky; top:26.6px;">
+			<div class="title-bar" style="position:sticky; top:123.2px;">
 				<div class="title-bar-text">맞춤형</div>
 				<div>
 					<input type="text" style="width: 150pt; height: 15pt;" placeholder="검색창" name="" id=""> 
@@ -154,7 +154,7 @@
 			<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
 			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
 			<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
-			<a href="goJobHunting.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+			<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
 			<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
 			<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
