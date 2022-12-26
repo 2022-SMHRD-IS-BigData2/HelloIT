@@ -61,6 +61,8 @@
 }
 </style>
 <body>
+
+<a href="recruit.do">테스트용</a>
 <div class="container">
 	<div class="wrapper">
 		<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
