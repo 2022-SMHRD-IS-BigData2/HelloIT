@@ -6,6 +6,8 @@ select * from user_role_info;
 select * from user_db_info;
 select * from user_language_info;
 
+delete from POST_INFO where post_seq=18;
+
 update USER_INFO set u_name = '박해성';
 
 update user_info set u_name = '123' where u_email='test@test.com';
@@ -150,3 +152,87 @@ select *
 		where c.post_seq=13
 		and c.u_email = u.u_email
 		order by cmt_dt
+		
+		
+----------------------------------------------------------------------
+-- 임의 역할, 관심분야 등 지정
+select * from USER_SKILL_INFO;
+select * from user_role_info;
+select * from user_db_info;
+select * from user_language_info;
+
+-- 'test@hs.com'
+-- 'fire@test.com'
+-- 'water@test.com'
+-- 'thunder@test.com'
+
+INSERT INTO user_skill_info
+VALUES
+    ('thunder@test.com', 
+     'N', 
+     'N', 
+     'N', 
+     'N',
+     'N',
+     'N',
+     'N',
+     'N'
+     )
+
+INSERT INTO user_role_info
+VALUES
+    ('thunder@test.com', 
+     'N', 
+     'N', 
+     'N', 
+     'N'
+     )
+
+INSERT INTO user_db_info
+VALUES
+    ('thunder@test.com', 
+     'N', 
+     'N', 
+     'N', 
+     'N', 
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N'
+     )
+
+INSERT INTO user_language_info
+VALUES
+	('thunder@test.com', 
+	 'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N',
+     'N'
+     )     
+     

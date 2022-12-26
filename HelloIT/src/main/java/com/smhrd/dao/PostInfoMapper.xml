@@ -30,6 +30,7 @@
 			0,
 			0,
 			#{post_kind},
+			0,
 			0
 		)
 	</insert>
