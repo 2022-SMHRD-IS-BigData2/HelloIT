@@ -23,7 +23,7 @@ public class WriteCon implements Controller {
 		// webapp 밑에있는 images 폴더 경로
 		// request.getServletContext() : Tomcat이 복사해서 만든 폴더 정보들 == webapp
 		
-		// webapp/images
+		// webapp/img
 		String savePath = request.getServletContext().getRealPath("img");
 
 		// 최대 사이즈
@@ -36,9 +36,13 @@ public class WriteCon implements Controller {
 		System.out.println(savePath);
 
 		// MultipartRequest 생성
-		MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, encoding,
+		MultipartRequest multi = new MultipartRequest(
+				request, 
+				savePath, 
+				maxSize, 
+				encoding,
 				new DefaultFileRenamePolicy() // 중복된 파일 이름을 변경
-		);
+				);
 
 		// 1. 데이터(파라미터) 수집
 		String post_title = multi.getParameter("post_title");
@@ -71,7 +75,7 @@ public class WriteCon implements Controller {
 			return "redirect:/write.do";
 		}
 		// 5. 페이지이동
-		return "redirect:/goBoard.do";
+		return "redirect:/goMain.do";
 	}
 
 }

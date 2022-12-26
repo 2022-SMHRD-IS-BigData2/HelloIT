@@ -6,8 +6,9 @@
 
     <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <head>
+	<meta http-equiv="Content-Type">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello IT</title>
 <link rel="stylesheet" href="./css/style.css">
@@ -246,7 +247,7 @@ function newColour() {
                   </select>
                 <div class="field-row-stacked" style="width: 200px">
                     <label for="text18">제목</label>
-                    <input id="text18" type="text" name="post_title" />
+                    <input id="text18" type="text" name="post_title">
                 </div><br> 
             </div>
                 
