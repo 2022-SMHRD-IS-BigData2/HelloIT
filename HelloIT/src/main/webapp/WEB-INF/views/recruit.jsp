@@ -14,6 +14,7 @@
 	String sql = "SELECT * from S_CRAWLING"; 
 	String sql2 = "SELECT * from J_CRAWLING";%>
 	
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +23,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<script src="./js/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/98.css" />
+	<link rel="stylesheet" href="./css/style.css">
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
 
 	<style>
 		body {
@@ -475,7 +478,18 @@ function newColour() {
 
 
 		</div>
-
+		
+		<footer class="main_footer">
+				<div class="window" id="icons" style="width: 800px" align="center">
+					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+					<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+					<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+				</div>
+		</footer>
+		<script src="./js/index.js"></script>
 
 		<script>
 
@@ -495,12 +509,7 @@ function newColour() {
 
 		</script>
 
-		<a href="http://www.naver.com/"><img src="icons/KakaoTalk_20221221_163912885_01.png" alt="인기게시글"
-				width="30px"></a>
-		<a href="#"> <img src="icons/KakaoTalk_20221221_163912885_04.png" alt="아이디어" width="30px"></a>
-		<a href="#"> <img src="icons/KakaoTalk_20221221_163912885.png" alt="메인홈" width="30px"></a>
-		<a href="#"><img src="icons/KakaoTalk_20221221_163912885_02.png" alt="채용공고" width="30px"></a>
-		<a href="#"><img src="icons/KakaoTalk_20221221_163912885_03.png" alt="개인정보" width="30px"></a>
+		
 	</center>
 </body>
 
