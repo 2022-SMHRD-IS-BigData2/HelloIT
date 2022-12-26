@@ -104,3 +104,6 @@ select * from comment_info
 select *
 from comment_info
 where post_seq=2;
+
+select* from s_crawling;
+select*from j_crawling;
