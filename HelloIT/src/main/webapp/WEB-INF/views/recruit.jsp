@@ -78,6 +78,7 @@
 		<div class="title-bar">
 			<div class="title-bar-text">
 				채용 공고
+	  </div>
 			</div>
 		</div>
 		<div class="container">
