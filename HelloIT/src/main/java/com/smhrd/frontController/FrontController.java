@@ -22,6 +22,7 @@ import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoJobHuntingCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
+import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoMyPageCon;
@@ -60,6 +61,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); //
 		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); //
 		handlerMapping.put("/goJobHunting.do", new GoJobHuntingCon()); //
+		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); //
 		
 		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 

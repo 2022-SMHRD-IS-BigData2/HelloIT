@@ -13,7 +13,7 @@ public class GoJobHuntingCon implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
 		// TODO Auto-generated method stub
-		return "jobHunting";
+		return "goRecruit.do";
 	}
 
 }
