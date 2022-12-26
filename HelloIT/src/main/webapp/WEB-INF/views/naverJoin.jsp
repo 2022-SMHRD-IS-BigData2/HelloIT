@@ -32,7 +32,6 @@
 		
 		String header = "Bearer " + accessToken;
 		
-		
 		if(accessToken != null) { // access_token을 잘 받아왔다면
 
 			try {
@@ -68,7 +67,6 @@
 				String u_birthdate = resp.getString("birthyear")+"-"+resp.getString("birthday");
 				String u_gender = resp.getString("gender");
 				
-				
 				%><form name="naverJoin" action="join.do" method="post">
 				<input type="hidden" name="u_email" value="<%=u_email%>"><br>
 				<input type="hidden" name="u_pw" value="<%=u_email%>"><br>
@@ -78,7 +76,6 @@
 				<input type="hidden" name="u_gender" value="<%=u_gender%>"><br>
 				<input type="hidden" name="u_job" value="none"><br>
 				</form><%
-				
 
 		    } catch (Exception e) {
 

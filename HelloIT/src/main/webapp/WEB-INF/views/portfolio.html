@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css" />
+    <style>
+        body {
+            height: 100vh;
+            background: url(./img/KakaoTalk_20221221_111631302.webp) no-repeat center;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form>
+            <div class="window" style="margin: 10px; width: 400px" id="tablecenter">
+                <div class="title-bar">
+                    <div class="title-bar-text">
+                        이력서 및 포트폴리오
+                    </div>
+                </div>
+
+                <table>
+                    <tr>
+                        <td> <strong> 이름 </strong></td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><strong>이메일</strong></td>
+                        <td><input type="email"></td>
+                    </tr>
+                    <tr>
+                        <td> <strong> 전화번호</strong> </td>
+                        <td><input type="tel"></td>
+                    </tr>
+                    <tr>
+                        <td> <strong>자기소개</strong></td>
+                        <td colspan="2"> <textarea name="talk" cols="50" rows="5"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>관심분야</strong></td>
+                        <td>
+                            <input id="back" type="checkbox" name="hobby">
+                            <label for="back">백엔드</label>
+                            <input id="front" type="checkbox" name="hobby">
+                            <label for="front">프론트엔드</label>
+                            <input id="data" type="checkbox" name="hobby">
+                            <label for="data">데이터분야</label>
+                            <input id="etc" type="checkbox" name="hobby">
+                            <label for="etc">기타</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>프론트엔드분야</strong> </td>
+                        <td>
+                            <select name="프론트엔드">
+                                <option value="예비개발자">예비개발자(학생)</option>
+                                <option value="주니어">주니어(사원)</option>
+                                <option value="미드레벨">미드레벨(대리)</option>
+                                <option value="시니어">시니어(과장~ 부장)</option>
+                                <option value="디렉터">디렉터(이사~사장)</option>
+                                <option value="프리랜서">프리랜서</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <br>
+                    <tr>
+                        <td><strong>백엔드분야</strong> </td>
+                        <td>
+                            <select name="백엔드">
+                                <option value="예비개발자">예비개발자(학생)</option>
+                                <option value="주니어">주니어(사원)</option>
+                                <option value="미드레벨">미드레벨(대리)</option>
+                                <option value="시니어">시니어(과장~ 부장)</option>
+                                <option value="디렉터">디렉터(이사~사장)</option>
+                                <option value="프리랜서">프리랜서</option>
+                        </td>
+                    </tr>
+                    <br>
+                    <tr>
+                        <td><strong>데이터분야</strong></td>
+                        <td>
+                            <select name="데이터분야">
+                                <option value="예비개발자">예비개발자(학생)</option>
+                                <option value="주니어">주니어(사원)</option>
+                                <option value="미드레벨">미드레벨(대리)</option>
+                                <option value="시니어">시니어(과장~ 부장)</option>
+                                <option value="디렉터">디렉터(이사~사장)</option>
+                                <option value="프리랜서">프리랜서</option>
+                        </td>
+                    </tr>
+                   
+                    <tr>
+                        <td> <strong> 경력사항</strong></td>
+                    </tr>
+                    <tr>
+                        <td> <strong>근무기간</strong> </td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td> <strong>시작일</strong> </td>
+                        <td> <input type="date" id="start_date"></td>
+                        
+                    </tr>
+                    <tr>
+                        <td> <strong>종료일</strong> </td>
+                        <td> <input type="date" id="start_date"></td>
+                    </tr>
+                    <tr>
+                        <td> <strong>주요성과</strong></td>
+                        <td colspan="2"> <textarea name="talk" cols="50" rows="8"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>사용기술</strong></td>
+                        <td colspan="2"> <textarea name="talk" cols="50" rows="5"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td> <strong>포트폴리오</strong> </td>
+                        <td> <input type="file" name="" id=""><br></td>
+                    </tr>
+
+                </table>
+                <br>
+                <input type="submit" value="이력서 저장하기">
+                
+
+
+
+        </form>
+
+    </center>
+
+
+</body>
+
+</html>
