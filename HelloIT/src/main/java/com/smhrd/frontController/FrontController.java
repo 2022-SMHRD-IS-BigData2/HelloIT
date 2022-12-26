@@ -42,6 +42,7 @@ import com.smhrd.controller.UpdateRecruitCon;
 import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.WriteCon;
+import com.smhrd.controller.recruitCon;
 import com.smhrd.dao.GoIdeaCon;
 
 @WebServlet("*.do")
@@ -95,7 +96,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
-		
+		handlerMapping.put("/recruit.do", new recruitCon());
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

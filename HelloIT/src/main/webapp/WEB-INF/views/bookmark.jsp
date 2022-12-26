@@ -1,21 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello IT</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://unpkg.com/98.css@0.1.4/build/98.css" />
-    <link rel="stylesheet" href="./css/style.css">
-    <style type="text/css">
-    .window-body{
-	    display: flex;
-	    flex-direction: column;
-	    align-items: center;
-    }
-    </style>
-  </head>
-  <script type="text/javascript">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bookmark</title>
+    <link rel="stylesheet" href="./css/bookmark.css">
+</head>
+<script type="text/javascript">
 
 var colour="random"; 
 var sparkles=50;
@@ -208,50 +202,125 @@ function newColour() {
 }
 
 </script>
-  
+
 <body>
-    <!-- <div class="window" style="margin: 150px; width: 250px">
-      <div class="title-bar">
-        <div class="title-bar-text">
-          Hello IT
-        </div>
-
-        <div class="title-bar-controls" >
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body" >
-        
-        
-      </div>
-    </div> -->
-    
-    <div class="container">
-    <div class="wrapper">
-    <div class="window"  style="width: 550px">
-      <div class="title-bar">
-        <div class="title-bar-text">잘못된 접근</div>
-        <div class="title-bar-controls">
-          <button aria-label="Minimize"></button>
-          <button aria-label="Maximize"></button>
-          <button aria-label="Close"></button>
-        </div>
-      </div>
-      <div class="window-body">
-        <img src="./img/vaporwave (1).gif" width="480px" alt="">
-        <p>비밀번호가 맞지 않습니다!<br>
-          다시 한번 확인해 주세요
-        </p>
-
-      
-        <a href="goLogin.do"> <button>돌아가기</button></a>
-            <br>
-      </div>
-      
+    <div class="board_list_wrap">
+        <table class="board_list">
+            <caption>북마크 목록</caption>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td class="tit">
+                        <a href="#">북마크5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="tit">
+                        <a href="#">북마크4</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>222</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="tit">
+                        <a href="#">북마크3</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>333</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="tit">
+                        <a href="#">북마크2</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>222</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+			<div class="pagination_section">
+							<a href="#" class="bt"><< Previous</a>
+							<a href="#" class="num on">1</a>
+							<a href="#" class="num">2</a>
+							<a href="#" class="num">3</a>
+							<a href="#" class="num">4</a>
+							<a href="#" class="num">5</a>
+							<a href="#" class="num">6</a>
+							<a href="#" class="num">7</a>
+							<a href="#" class="bt">Next >></a>
+				</div>
     </div>
-    </div>
-    </div>
-  </body>
+</body>
 </html>
