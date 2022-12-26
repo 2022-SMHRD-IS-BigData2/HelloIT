@@ -4,8 +4,9 @@
 
 	<select id="commentInfoList" resultType="com.smhrd.entity.CommentInfo">
 		select *
-		from comment_info
-		where post_seq=#{post_seq}
+		from comment_info c, user_info u
+		where c.post_seq=#{post_seq}
+		and c.u_email = u.u_email
 		order by cmt_dt
 	</select>
 	
@@ -21,6 +22,16 @@
 			0
 		)
 	</insert>
+	
+	<!-- 댓글수 갱신 -->
+	<update id="cmtCntUpdate" parameterType="com.smhrd.entity.CommentInfo">
+		update post_info
+		set cmts = (select count(*)
+						from comment_info
+						where post_seq=#{post_seq})
+		where post_seq=#{post_seq}
+	</update>
+	
 
 <!-- 	<update id="cmtLike">
 		update comment_info

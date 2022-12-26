@@ -69,12 +69,12 @@ public class JoinCon implements Controller {
 			// redirect를 하 는경우, 앞에 redirect:/ 를 붙이기로 약속
 			HttpSession session = request.getSession();
 			session.setAttribute("info", result);
-			nextPage = "redirect:/goMain.do";
+			nextPage = "redirect:/goLogin.do";
 
 		} else {
 			// 실패
 			System.out.println("회원가입 실패");
-			nextPage = "redirect:/goMain.do";
+			nextPage = "redirect:/goLogin.do";
 		}
 
 		// 5. 다음페이지로 이동

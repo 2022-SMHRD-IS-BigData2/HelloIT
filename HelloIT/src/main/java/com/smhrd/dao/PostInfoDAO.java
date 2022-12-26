@@ -44,5 +44,21 @@ public class PostInfoDAO {
 		session.close();
 		return cnt;
 	}
+
+	// 5. 게시물 북마크 카운트
+	public int bookmarksView(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.selectOne("bookmarksView", post_seq);
+		session.close();
+		return cnt;
+	}
+	
+	// 5. 게시물 댓글수 카운트
+	public int cmtCnt(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.selectOne("cmtCountsView", post_seq);
+		session.close();
+		return cnt;
+	}
 	
 }

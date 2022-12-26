@@ -48,4 +48,11 @@
 		where post_seq=#{post_seq}
 	</select>
 	
+	<!-- 게시글 북마크수 조회 -->
+	<select id="bookmarksView" resultType="int">
+		select count(*)
+		from bookmark_info
+		where post_seq=#{post_seq}
+	</select>
+	
 </mapper>
