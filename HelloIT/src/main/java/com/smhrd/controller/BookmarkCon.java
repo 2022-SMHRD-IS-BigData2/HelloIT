@@ -15,6 +15,7 @@ import com.smhrd.dao.CommentInfoDAO;
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.BookmarkInfo;
 import com.smhrd.entity.CommentInfo;
+import com.smhrd.entity.LikeInfo;
 import com.smhrd.entity.PostInfo;
 
 public class BookmarkCon implements Controller {
@@ -34,17 +35,24 @@ public class BookmarkCon implements Controller {
 
 		// 3. DAO의 commentWrite 사용
 		BookmarkInfoDAO dao = new BookmarkInfoDAO();
-		int cnt = dao.bookmarkInfoInsert(dto);
+		BookmarkInfo result = dao.bookmarkSearch(dto);
+		
+		int cnt = 0;
+		if(result == null) {
+			cnt = dao.bookmarkInfoInsert(dto);
+		}else if(result != null){
+			cnt = dao.bookmarkInfoDelete(dto);
+		}
+		dao.bookmarksUpdate(post_seq);
 
 		// 4. 성공 여부에 따라 페이지 이동
 		if (cnt > 0) {
 			System.out.println("북마크 성공");
-			request.setAttribute("post_seq", post_seq);
 		} else {
 			System.out.println("북마크 실패");
 		}
 		// 5. 페이지이동
-		return "redirect:/goView.do";
+		return "redirect:/goView.do?post_seq="+post_seq;
 	}
 
 }

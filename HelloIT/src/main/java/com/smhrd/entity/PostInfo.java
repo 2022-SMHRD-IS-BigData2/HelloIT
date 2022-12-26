@@ -33,4 +33,6 @@ public class PostInfo {
 	
 	private String u_name;
 	
+	private int cmts;
+	
 }

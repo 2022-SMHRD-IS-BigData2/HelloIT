@@ -30,21 +30,17 @@ public class GoViewCon implements Controller {
 		
 		PostInfo PostInfo = dao.postInfoView(post_seq);
 		int postlikes = dao.postLikesView(post_seq);
+		int bookmarks = dao.bookmarksView(post_seq);
+		int cmts = dao.cmtCnt(post_seq);
 		List<CommentInfo> list = daoC.commentInfoList(post_seq);
 		
 		// 객체바인딩
 		request.setAttribute("PostInfo", PostInfo);
 		request.setAttribute("postlikes", postlikes);
+		request.setAttribute("bookmarks", bookmarks);
+		request.setAttribute("cmts", cmts);
 		request.setAttribute("list", list);
 		
-		// BookmarkInfo
-//		BookmarkInfoDAO dao3 = new BookmarkInfoDAO();
-//		int bookmarklikes = dao3.bookmarkLikesView(post_seq);
-		
-		// 객체바인딩
-		// request 영역에 list를 저장해뒀다가, jsp로 이동하고 나서 꺼내기
-//		request.setAttribute("cmtlikes", cmtlikes);
-//		request.setAttribute("bookmarklikes", bookmarklikes);
 		return "viewPostInfo";
 		
 	}

@@ -18,7 +18,7 @@ import com.smhrd.entity.CommentInfo;
 import com.smhrd.entity.LikeInfo;
 import com.smhrd.entity.PostInfo;
 
-public class LikeCon implements Controller {
+public class MainLikeCon implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -52,7 +52,7 @@ public class LikeCon implements Controller {
 			System.out.println("like/unlike 실패");
 		}
 		// 5. 페이지이동
-		return "redirect:/goView.do?post_seq="+post_seq;
+		return "redirect:/goMain.do";
 	}
 
 }

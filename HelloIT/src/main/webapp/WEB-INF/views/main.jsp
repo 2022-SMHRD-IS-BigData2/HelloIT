@@ -1,3 +1,7 @@
+<%@page import="com.smhrd.entity.CommentInfo"%>
+<%@page import="com.smhrd.dao.CommentInfoDAO"%>
+<%@page import="com.smhrd.entity.PostInfo"%>
+<%@page import="java.util.List"%>
 <%@page import="com.smhrd.entity.UserInfo"%>
 <%@page import="com.smhrd.utils.NaverApiUserInfo"%>
 <%@page import="com.smhrd.utils.NaverApiUserInfo2"%>
@@ -258,6 +262,15 @@ function newColour() {
 <body>
 
 <a href="recruit.do">테스트용</a>
+
+	<%
+	// session 에서 user_info 가져오기
+	UserInfo info = (UserInfo) session.getAttribute("info");
+	
+	// request 영역에서 list 꺼내서 출력하기
+	List<PostInfo> list = (List<PostInfo>) request.getAttribute("list");
+	%>
+	
 <div class="container">
 	<div class="wrapper">
 		<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
@@ -316,30 +329,82 @@ function newColour() {
 				</div>
 				<div></div>
 			</div>
+			<%for(int i = 0; i < list.size(); i++){ %>
+		<div class="window" style="width: 700px">
+			<div class="title-bar">
+				<div class="title-bar-text"><%=list.get(i).getPost_title()%></div>
+			</div>
+
 			<div class="window-body">
-				<img src="./img/test.png" width="600px" alt="">
-				<p>제목</p>
-				<p>내용 (보완중)</p>
-				<p>#hello #front #java #bogoddobogo</p>
+				<table id="list" border="1" bgcolor="white">
+					<tr>
+						<td>작성자</td>
+						<td style="width: 650px"><%=list.get(i).getU_name()%></td>
+					</tr>
+					<tr>
+						<td colspan="2">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><img alt="이미지 없음"
+							src="./img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">#해 #시 #태 #그</td>
+					</tr>
+				</table>
 			</div>
-			<div class="status-bar" style="justify-content: space-between;">
-				<div style="display:flex">
-				<div class="status-bar-field">
-					<button id="btn"><img src="./img/공유.png" width="10" alt=""></button>
-				</div>
-				<div class="status-bar-field">
-					<button id="btn"><img src="./img/북마크.png" width="15" alt=""></button>
-				</div>
-				<div class="status-bar-field"><button id="btn">💖</button>하트수제작중</div>
-				<div class="status-bar-field" style="width:423px">
-					<input style="width:382px" type="text" placeholder="댓글"> 
-					<input type="button" value="등록">
-				</div>
-				</div>
-				<div>
-				<a class="status-bar-field" href="">댓글보기</a>
-				</div>
+
+			<div class="status-bar">
+				<p class="status-bar-field">
+					<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>">
+					<button	id="btn">
+						<%=list.get(i).getBookmarks()%>
+						<img src="./img/북마크.png" width="15" alt="">
+					</button>
+					</a>
+				</p>
+				<p class="status-bar-field">
+					<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=list.get(i).getLikes()%> 💖
+					</button>
+					</a>
+				</p>
+				<form action="mainCmt.do">
+					<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
+					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+					<p class="status-bar-field">
+						<input type="text" name="cmt_content" placeholder="댓글"
+						style="width:360px">
+						<input type="submit" value="등록">
+					</p>
+				</form>
+				<a href="">
+					
+					<p class="status-bar-field"><button id="btn">댓글<%=list.get(i).getCmts()%> </button></p>
+				</a>
+				<%
+				// comment 출력
+				CommentInfoDAO dao = new CommentInfoDAO();
+				List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
+				%>
 			</div>
+			<%for (int j = 0; j < cmtList.size(); j++) {%>			
+			<table border=1 width=700>
+				<tr>
+					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td>좋아요 [<%=cmtList.get(j).getCmt_likes()%>]
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
+				</tr>
+			<%}%>	
+			</table>
+		</div>
+		<%}%>
 		</div>
 		<%-- -------------------------------------------------------------------------------- --%>
 		<br> 

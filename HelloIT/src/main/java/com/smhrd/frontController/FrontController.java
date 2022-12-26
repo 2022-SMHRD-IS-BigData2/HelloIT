@@ -33,6 +33,9 @@ import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.KakaoJoinCon;
 import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
+import com.smhrd.controller.MainBookmarkCon;
+import com.smhrd.controller.MainCommentCon;
+import com.smhrd.controller.MainLikeCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
@@ -92,11 +95,17 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
 		
 		
+		handlerMapping.put("/recruit.do", new recruitCon());
+		
+		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
 		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
+		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
+		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
-		handlerMapping.put("/recruit.do", new recruitCon());
+		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 좋아요 컨트롤러 이동
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

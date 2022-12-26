@@ -13,20 +13,24 @@
 		)
 	</insert>
 	
+	<!-- 좋아요 취소 -->
 	<delete id="likeInfoDelete" parameterType="com.smhrd.entity.LikeInfo">
 		delete from like_info
 		where u_email=#{u_email}
 		and post_seq=#{post_seq}
 	</delete>
 	
+	<!-- 좋아요수 갱신 -->
 	<update id="likesUpdate" parameterType="com.smhrd.entity.LikeInfo">
 		update post_info
 		set likes = (select count(*)
 						from like_info
 						where post_seq=#{post_seq}
 					)
+		where post_seq=#{post_seq}
 	</update>
 	
+	<!-- 좋아요 기록 조회 -->
 	<select id="likeSearch" parameterType="com.smhrd.entity.LikeInfo" 
 	resultType="com.smhrd.entity.LikeInfo">
 		select * from like_info 

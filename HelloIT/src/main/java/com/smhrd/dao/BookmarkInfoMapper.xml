@@ -10,20 +10,38 @@
 	
 	<!-- 북마크 추가 -->
 	<insert id="bookmarkInfoInsert" parameterType="com.smhrd.entity.BookmarkInfo">
-		insert into comment_info
+		insert into bookmark_info
 		values(
-			bookmark_info_seq.nextval,
+			bookmark_info_SEQ.nextval,
 			#{u_email},
 			#{post_seq},
 			sysdate
 		)
 	</insert>
 	
-	<!-- 북마크수 조회 -->
-	<select id="bookmarkLikesView" parameterType="com.smhrd.entity.BookmarkInfo" resultType="int">
-		select count(*)
-		from bookmark_info
+	<!-- 북마크 취소 -->
+	<delete id="bookmarkInfoDelete" parameterType="com.smhrd.entity.BookmarkInfo">
+		delete from bookmark_info
+		where u_email=#{u_email}
+		and post_seq=#{post_seq}
+	</delete>
+	
+	<!-- 북마크수 갱신 -->
+	<update id="bookmarksUpdate" parameterType="com.smhrd.entity.BookmarkInfo">
+		update post_info
+		set bookmarks = (select count(*)
+							from bookmark_info
+							where post_seq=#{post_seq}
+					)
 		where post_seq=#{post_seq}
+	</update>
+	
+	<!-- 북마크 기록 조회 -->
+	<select id="bookmarkSearch" parameterType="com.smhrd.entity.BookmarkInfo" 
+	resultType="com.smhrd.entity.BookmarkInfo">
+		select * from bookmark_info 
+		where u_email = #{u_email}
+		and post_seq = #{post_seq}
 	</select>
 
 </mapper>
