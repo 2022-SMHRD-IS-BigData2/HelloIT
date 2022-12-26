@@ -8,16 +8,30 @@
 <title>Hello IT</title>
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/bookmark.css">
+<link rel="stylesheet" href="./css/FAQ.css">
+   <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">
+body {
+    background: rgba(0,130,128,255);
+	background-size: cover;
+}
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	max-width: 100%;
 }
-
+.window{
+	font-family: "";
+}
 .window-body {
 	display: flex;
 }
@@ -270,9 +284,67 @@ function newColour() {
 		  <li id="listOfFollow" style="cursor:pointer;">팔로잉/팔로워</li>  
 		  <li id="listOfMyIdea" style="cursor:pointer;">나의 아이디어<li>
 		  <li id="listOfPortfolio" style="cursor:pointer;">포트폴리오&자소서<li>
+		  <li id="listOfFAQ" style="cursor:pointer;">FAQ<li>
 	</ul>
 	</div>
-	<div id="myPage" style="display:none;">myPage</div>
+	<div id="myPage" style="display:none;">
+		    <div class="container">
+        <div class="wrapper" style="position: sticky; top: 27px;">
+            <div class="window" style="width: 630px; position: sticky; top: 0; max-width: 100%" align="center">
+                <div class="title-bar">
+                    <div class="title-bar-text">회원 정보</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="justify-content: center;">
+                    <form>
+                        <table border="1">
+                            <tr>
+                                <td>회원 이메일</td>
+                                <td>xeph123@naver.com</td>
+                            </tr>
+                            <tr>
+                                <td>이름</td>
+                                <td>유남욱</td>
+                            </tr>
+                            <tr>
+                                <td>닉네임</td>
+                                <td>피터래빗</td>
+                            </tr>
+                            <tr>
+                                <td>현재비밀번호</td>
+                                <td><input type="password" name="pw1" placeholder="현재 비밀번호 입력"></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호</td>
+                                <td><input type="password" name="repw2" placeholder="변경할 비밀번호 입력"></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호 확인</td>
+                                <td><input type="password" name="repw3" placeholder="변경할 비밀번호 확인"></td>
+                            </tr>
+                            <tr>
+                                <td>생년월일</td>
+                                <td>1987년 12월 15일</td>
+                            </tr>
+                            <tr>
+                                <td>직업</td>
+                                <td>학생</td>
+                            </tr>
+                            <tr>
+                                <td>활동점수</td>
+                                <td>100p</td>
+                            </tr>
+                        </table>
+                        <br>
+                            	<div><input type="submit" value="저장"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div>
     <div class="window" id="checkInterest" style="display:none; margin-left:8px">
         <div class="title-bar" style="position:sticky; top:27px">
             <div class="title-bar-text">관심 분야 Check!!</div>
@@ -466,14 +538,14 @@ function newColour() {
             </div>
         </div>
     </div>
-	<div id="bookmark" style="display:none;">
+	<div id="bookmark" style="display:none; font-family:auto;">
 	<div class="board_list_wrap">
         <table class="board_list" border="1">
             <caption>북마크 목록</caption>
             <thead>
                 <tr>
                     <th>번호</th>
-                    <th>제목</th>
+                    <th style="width:1200px">제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>조회수</th>
@@ -525,10 +597,54 @@ function newColour() {
                     <td>20221226</td>
                     <td>111</td>
                 </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
             </tbody>
         </table>
         <br>
-        <center>
 			<div class="pagination_section">
 							<a href="#" class="bt"><< Previous</a>
 							<a href="#" class="num on">1</a>
@@ -540,7 +656,6 @@ function newColour() {
 							<a href="#" class="num">7</a>
 							<a href="#" class="bt">Next >></a>
 				</div>
-            </center>
     </div>
 	
 	
@@ -668,7 +783,62 @@ function newColour() {
 			</div>
         </form>
 	</div>
-	<div></div>
+	<div id="faq" style="display:none;">
+        <div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
+            <div class="title-bar">
+              <div class="title-bar-text">HEllo iT</div>
+              <div class="title-bar-controls">
+                <button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
+              </div>
+            </div>
+            <br><br>
+       <img src="./img/window.gif" width="200" alt="">
+    <h3>자주 묻는 질문</h3>
+    <div class="faq-container">
+      <div class="faq">
+        <h4 class="faq-title">"Hello it"은 무슨 웹사이트 인가요?</h4>
+
+        <p class="faq-text">안녕하세요 이용자님 "Hello it"은 국내 모든 개발자들을 위한 SNS로 개발관련 정보공유를 보다 손쉽게 캐치 하실 수 있으십니다. </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h4 class="faq-title">아이디어 토론장은 뭐하는 공간인가요?</h4>
+
+        <p class="faq-text">여러분들의 머리속에 있는 프로젝트 주제를 등록 할수 있으면서 동시에 그 주제에 대해 다른 사용자 분들과 토론이 진행가능 하며 채용자들의 스카우트 대상이 될수도 있어요! </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h4 class="faq-title">입문자들은 이용하는데 어려움은 없을까요?</h4>
+
+        <p class="faq-text">네 당연합니다! 우리 Hello it은 개인 역량에 맞춰 언어별로 자신에게 맞는 눈높이로 정보들을 습득할 수 있습니다. </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h4 class="faq-title">개발자의 정보를 알고싶어요!</h4>
+        <p class="faq-text"> 여기로 모시겠습니다! 
+            <br> <br>
+         <a href=""> <img src="./img/KakaoTalk_20221207_141006268.png" width="100" alt=""></a>
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+	
+	</div>
   	</div>
 	</div>
 	</div>
@@ -693,8 +863,10 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
 		$('#listOfInterest').on('click', function() {
+
 			$('#myPage').hide();
 			$('#checkInterest').show();
 			$('#posted').hide();
@@ -702,6 +874,7 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
 		$('#listOfPosted').on('click', function() {
 			$('#myPage').hide();
@@ -711,6 +884,7 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
 		$('#listOfBookmark').on('click', function() {
 			$('#myPage').hide();
@@ -720,6 +894,7 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
 		$('#listOfFollow').on('click', function() {
 			$('#myPage').hide();
@@ -729,6 +904,7 @@ function newColour() {
 			$('#follow').show();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
 		$('#listOfMyIdea').on('click', function() {
 			$('#myPage').hide();
@@ -738,6 +914,7 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').show();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
 		$('#listOfPortfolio').on('click', function() {
 			$('#myPage').hide();
@@ -747,6 +924,17 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').show();
+			$('#faq').hide();
+		});
+		$('#listOfFAQ').on('click', function() {
+			$('#myPage').hide();
+			$('#checkInterest').hide();
+			$('#posted').hide();
+			$('#bookmark').hide();
+			$('#follow').hide();
+			$('#myIdea').hide();
+			$('#portfolio').hide();
+			$('#faq').show();
 		});
 	</script>
 
@@ -864,6 +1052,9 @@ function newColour() {
 		$("#db_etc_hidden").val(db_etc_hidden);
 	</script>
 
-
+    <script src="./js/FAQ.js"></script>
+    <script>
+    	
+    </script>
 </body>
 </html>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +19,7 @@ a {
 }
 
 .board_list_wrap {
-    padding: 50px;
+    padding: 5px;
 }
 
 .board_list {
@@ -31,7 +33,7 @@ a {
 
 .board_list th,
 .board_list td {
-    padding: 10px;
+    padding: 3px;
     font-size: 14px;
 }
 
@@ -63,10 +65,10 @@ a {
     margin-left: 0;
 }
 
-/* .board_list_wrap .pagination_section a.bt {
+.board_list_wrap .pagination_section a.bt {
     border: 1px solid #eee;
     background: wh;
-} */
+}
 
 .board_list_wrap .pagination_section a.num {
     border: 1px solid black;
