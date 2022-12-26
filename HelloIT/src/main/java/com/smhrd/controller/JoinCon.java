@@ -10,8 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.smhrd.dao.MyPageInfoDAO;
+import com.smhrd.dao.UserDBInfoDAO;
 import com.smhrd.dao.UserInfoDAO;
+import com.smhrd.dao.UserLanguageInfoDAO;
+import com.smhrd.dao.UserRoleInfoDAO;
+import com.smhrd.dao.UserSkillInfoDAO;
+import com.smhrd.entity.MyPageInfo;
+import com.smhrd.entity.UserDBInfo;
 import com.smhrd.entity.UserInfo;
+import com.smhrd.entity.UserLanguageInfo;
+import com.smhrd.entity.UserRoleInfo;
+import com.smhrd.entity.UserSkillInfo;
 
 public class JoinCon implements Controller {
 	
@@ -52,11 +62,99 @@ public class JoinCon implements Controller {
 		// 3. 받아온 데이터를 DB에 저장 (DAO의 join 메소드 사용
 		UserInfoDAO dao = new UserInfoDAO();
 		UserInfo result = dao.compareId(dto);
+		
+		int cnt = dao.join(dto);	
+		// 관심분야 자동 체크 설정 !!
+		// 1. 역할 체크
+		UserRoleInfo role =  new UserRoleInfo();
+		role.setU_email(u_email);
+		role.setFrontend("N");
+		role.setBackend("N");
+		role.setData_etc("N");
+		role.setOther_skill("N");
+		UserRoleInfoDAO roledao = new UserRoleInfoDAO();
+		roledao.checkRole(role);
+		
+		//2. 스킬 체크
+		UserSkillInfo skill = new UserSkillInfo();
+		skill.setU_email(u_email);
+		skill.setWeb("N");
+		skill.setIos("N");
+		skill.setAndroid("N");
+		skill.setWindows("N");
+		skill.setMac("N");
+		skill.setLinux("N");
+		skill.setGame("N");
+		skill.setEtc("N");
+		UserSkillInfoDAO skilldao = new UserSkillInfoDAO();
+		skilldao.checkSkill(skill);
+		
+		//3. 언어 체크
+		UserLanguageInfo lang= new UserLanguageInfo();
+		lang.setU_email(u_email);
+		lang.setC("N");
+		lang.setC_pp("N");
+		lang.setC_sharp("N");
+		lang.setClojure("N");
+		lang.setCss("N");
+		lang.setDart("N");
+		lang.setGo("N");
+		lang.setHaskell("N");
+		lang.setHtml("N");
+		lang.setJava("N");
+		lang.setJavascript("N");
+		lang.setKotlin("N");
+		lang.setLanguage_etc("N");
+		lang.setObjective_c("N");
+		lang.setPhp("N");
+		lang.setPython("N");
+		lang.setR("N");
+		lang.setRuby("N");
+		lang.setRust("N");
+		lang.setScala("N");
+		lang.setSql("N");
+		lang.setSwift("N");
+		lang.setTypescript("N");
+		UserLanguageInfoDAO langdao = new UserLanguageInfoDAO();
+		langdao.checkLanguage(lang);
+		
+		// 4. DB 체크
+		UserDBInfo db = new UserDBInfo();
+		db.setU_email(u_email);
+		db.setMysql("N");
+		db.setOracle("N");
+		db.setMariadb("N");
+		db.setPstgresql("N");
+		db.setMongodb("N");
+		db.setRedis("N");
+		db.setSqlite("N");
+		db.setAws_aurora("N");
+		db.setElasticsearch("N");
+		db.setDynamodb("N");
+		db.setFirebase("N");
+		db.setTibero("N");
+		db.setHive("N");
+		db.setCassandra("N");
+		db.setDb_etc("N");
+		UserDBInfoDAO dbdao = new UserDBInfoDAO();
+		dbdao.checkDB(db);
+		
+		// 5. 마이페이지 기본데이터 생성
+		MyPageInfo mypage = new MyPageInfo();
+		mypage.setU_email(u_email);
+		mypage.setU_idea("없음");
+		mypage.setU_interest("없음");
+		mypage.setU_introduction("없음");
+		MyPageInfoDAO mypagedao = new MyPageInfoDAO();
+		mypagedao.insertMyPage(mypage);
+		
+		
+				// ========================================
+				
 		String nextPage = "";
 		if(result==null) {
-			int cnt = dao.join(dto);			
-
-		// ========================================
+		
+		
 
 		// 4. 회원가입 성공여부에 따라서
 		// 성공 --> Main.jsp

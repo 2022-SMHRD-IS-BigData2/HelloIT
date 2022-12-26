@@ -4,7 +4,7 @@
 	
 	
 	<!-- 회원 역할 선택 -->
-	<insert id="insertMyRole"
+	<insert id="checkRole"
 			parameterType="com.smhrd.entity.UserRoleInfo">
 			INSERT INTO user_role_info
 			VALUES
@@ -17,7 +17,7 @@
 	</insert>
 	
 	<!-- 회원 역할 수정 -->	
-	<update id="updateMyRole"
+	<update id="updateRole"
 			parameterType="com.smhrd.entity.UserRoleInfo">
 			UPDATE user_role_info
 			SET
@@ -26,6 +26,6 @@
 			    backend = #{backend}, 
 			    data_etc = #{data_etc}, 
 			    other_skill = #{other_skill}
-			WHERE u_email = #{u_email};
+			WHERE u_email = #{u_email}
 	</update>
 </mapper>

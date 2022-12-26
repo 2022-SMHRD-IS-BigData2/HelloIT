@@ -19,10 +19,8 @@ import com.smhrd.controller.CheckRoleCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
-import com.smhrd.controller.GoJobHuntingCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
-import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoMyPageCon;
@@ -40,7 +38,9 @@ import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
 import com.smhrd.controller.UpdateMyPageCon;
+import com.smhrd.controller.UpdateRecruitCon;
 import com.smhrd.controller.UpdateRoleCon;
+import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.WriteCon;
 import com.smhrd.dao.GoIdeaCon;
 
@@ -57,10 +57,8 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
-		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); //
-		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); //
-		handlerMapping.put("/goJobHunting.do", new GoJobHuntingCon()); //
-		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); //
+		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 네이버 회원가입
+		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 마이페이지 이동
 		
 		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
@@ -74,6 +72,8 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
 		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
 		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/updateSkill.do", new UpdateSkillCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/updateRecruit.do", new UpdateRecruitCon()); // 이력서 포트폴리오
 		
 		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 

@@ -2,14 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.UserLanguageInfoDAO">
 
-	<insert id="insertMyLanguage"
+	<insert id="checkLanguage"
 			parameterType="com.smhrd.entity.UserLanguageInfo">
 			INSERT INTO user_language_info
 			VALUES
 			    (#{u_email}, 
 			     #{html}, 
 			     #{css}, 
-			     #{javascript}, 
+			     #{javascript},
+			     #{c},
+			     #{c_pp}, 
 			     #{c_sharp}, 
 			     #{java}, 
 			     #{python},
@@ -30,7 +32,7 @@
 			     #{language_etc}			     
 			     )
 	</insert>
-	<update id="updateMyLanguage"
+	<update id="updateLanguage"
 			parameterType="com.smhrd.entity.UserLanguageInfo">
 			UPDATE user_language_info
 			SET
@@ -56,7 +58,7 @@
 			    clojure = #{clojure},
 			    sql = #{sql},
 			    language_etc = #{language_etc}	
-			WHERE u_email = #{u_email};
+			WHERE u_email = #{u_email}
 	</update>
 	
 	
