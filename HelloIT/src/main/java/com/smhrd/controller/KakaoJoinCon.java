@@ -83,7 +83,7 @@ public class KakaoJoinCon implements Controller {
 			System.out.println("이미 가입된 회원");
 			HttpSession session = request.getSession();
 			session.setAttribute("info", result);
-			return "main";
+			nextPage = "redirect:/goMain.do";
 		}
 
 		return nextPage;
