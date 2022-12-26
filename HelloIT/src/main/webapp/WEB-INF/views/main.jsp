@@ -346,7 +346,7 @@ function newColour() {
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><img alt="이미지 없음"
-							src="./img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
+							src="img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
 						</td>
 					</tr>
 					<tr>

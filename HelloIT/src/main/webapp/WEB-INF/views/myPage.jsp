@@ -8,6 +8,7 @@
 <title>Hello IT</title>
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/bookmark.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">
 .container{
@@ -458,11 +459,11 @@ function newColour() {
     </div>
 	<div id="bookmark" style="display:none;">
 	<div class="board_list_wrap">
-        <table class="board_list">
+        <table class="board_list" border="1">
             <caption>북마크 목록</caption>
             <thead>
                 <tr>
-                    <th>번호</th>
+                    <th width="1px">번호</th>
                     <th>제목</th>
                     <th>작성자</th>
                     <th>작성일</th>
