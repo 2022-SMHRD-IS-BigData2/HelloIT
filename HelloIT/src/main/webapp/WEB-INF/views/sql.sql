@@ -6,6 +6,8 @@ select * from user_role_info;
 select * from user_db_info;
 select * from user_language_info;
 
+delete from POST_INFO where post_seq=18;
+
 update USER_INFO set u_name = '박해성';
 
 update user_info set u_name = '123' where u_email='test@test.com';

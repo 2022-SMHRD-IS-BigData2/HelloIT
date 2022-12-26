@@ -346,7 +346,7 @@ function newColour() {
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><img alt="이미지 없음"
-							src="./img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
+							src="img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
 						</td>
 					</tr>
 					<tr>
@@ -408,7 +408,7 @@ function newColour() {
 		</div>
 		<%-- -------------------------------------------------------------------------------- --%>
 		<br> 
-		<a href="goWrite.do"><button id="btn">글쓰기</button></a> 
+		<a href="goMainWrite.do"><button id="btn">글쓰기</button></a> 
 		<a href="goBoard.do"><button id="btn">게시판</button></a>
 		</div>
 		<footer class="main_footer">
