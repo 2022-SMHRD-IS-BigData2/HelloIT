@@ -19,10 +19,6 @@ body {
  	left: 50%;
  	transform: translate(-50%, -50%);
 }
-td{
-	width: 130px;
-}
-
 #btn{
 	width: 20px;
 	height: 10px;

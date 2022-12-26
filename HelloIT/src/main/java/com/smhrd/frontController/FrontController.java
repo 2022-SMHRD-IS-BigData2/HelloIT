@@ -46,7 +46,7 @@ import com.smhrd.controller.UpdateRecruitCon;
 import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.WriteCon;
-import com.smhrd.controller.recruitCon;
+import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.dao.GoIdeaCon;
 
 @WebServlet("*.do")
@@ -64,6 +64,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
 		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 네이버 회원가입
 		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 마이페이지 이동
+		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 마이페이지 이동
 		
 		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
@@ -97,7 +98,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
 		
 		
-		handlerMapping.put("/recruit.do", new recruitCon());
+		handlerMapping.put("/recruit.do", new GoRecruitCon());
 		
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동

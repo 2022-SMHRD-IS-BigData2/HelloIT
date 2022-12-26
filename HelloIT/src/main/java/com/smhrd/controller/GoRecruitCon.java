@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class recruitCon implements Controller {
+public class GoRecruitCon implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
