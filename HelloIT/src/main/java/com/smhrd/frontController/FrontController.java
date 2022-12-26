@@ -25,6 +25,7 @@ import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
+import com.smhrd.controller.GoMainWriteCon;
 import com.smhrd.controller.GoMyPageCon;
 import com.smhrd.controller.GoViewCon;
 import com.smhrd.controller.GoWriteCon;
@@ -92,6 +93,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goIdea.do", new GoIdeaCon()); // 
 		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 페이지 이동
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
+		handlerMapping.put("/goMainWrite.do", new GoMainWriteCon()); // 메인에서 게시물 작성 페이지 이동
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
 		
 		
@@ -100,11 +102,11 @@ public class FrontController extends HttpServlet {
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
 		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
-		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 댓글 등록 컨트롤러 이동
+		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 메인에서 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
-		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 좋아요 컨트롤러 이동
+		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 메인에서 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
-		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 좋아요 컨트롤러 이동
+		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 메인에서 북마크 컨트롤러 이동
 		
 	}
 
