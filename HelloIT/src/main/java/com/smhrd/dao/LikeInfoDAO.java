@@ -21,14 +21,14 @@ public class LikeInfoDAO {
 	
 	public int likeInfoDelete(LikeInfo dto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		int cnt = session.insert("likeInfoDelete", dto);
+		int cnt = session.delete("likeInfoDelete", dto);
 		session.close();
 		return cnt;
 	}
 	
 	public int likesUpdate(int post_seq) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		int cnt = session.insert("likesUpdate", post_seq);
+		int cnt = session.update("likesUpdate", post_seq);
 		session.close();
 		return cnt;
 	}

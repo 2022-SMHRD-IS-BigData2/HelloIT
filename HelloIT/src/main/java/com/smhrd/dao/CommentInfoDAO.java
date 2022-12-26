@@ -44,4 +44,12 @@ public class CommentInfoDAO {
 		return cnt;
 	}
 	
+	// 5. 댓글수 업데이트
+	public int cmtCntUpdate(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.update("cmtCntUpdate", post_seq);
+		session.close();
+		return cnt;
+	}
+	
 }

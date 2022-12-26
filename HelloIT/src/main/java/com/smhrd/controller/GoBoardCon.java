@@ -8,9 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.dao.CommentInfoDAO;
 import com.smhrd.dao.PostInfoDAO;
-import com.smhrd.entity.CommentInfo;
 import com.smhrd.entity.PostInfo;
 
 public class GoBoardCon implements Controller {

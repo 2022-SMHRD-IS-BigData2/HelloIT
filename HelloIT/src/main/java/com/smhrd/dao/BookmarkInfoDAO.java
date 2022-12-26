@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.BookmarkInfo;
+import com.smhrd.entity.LikeInfo;
 
 public class BookmarkInfoDAO {
 	
@@ -28,12 +29,28 @@ public class BookmarkInfoDAO {
 		return cnt;
 	}
 	
-	// 3. 북마크 수 카운트
-	public int bookmarkLikesView(int post_seq) {
+	// 3. 북마크 취소
+	public int bookmarkInfoDelete(BookmarkInfo dto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
-		int cnt = session.selectOne("bookmarkLikesView", post_seq);
+		int cnt = session.delete("bookmarkInfoDelete", dto);
 		session.close();
 		return cnt;
+	}
+	
+	// 4. 게시물 북마크수 업데이트
+	public int bookmarksUpdate(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.update("bookmarksUpdate", post_seq);
+		session.close();
+		return cnt;
+	}
+	
+	// 5. 북마크 기록 조회
+	public BookmarkInfo bookmarkSearch(BookmarkInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		BookmarkInfo bookmark_info = session.selectOne("bookmarkSearch", dto);
+		session.close();
+		return bookmark_info;
 	}
 	
 }
