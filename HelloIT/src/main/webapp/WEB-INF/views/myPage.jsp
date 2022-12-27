@@ -10,9 +10,6 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/bookmark.css">
 <link rel="stylesheet" href="./css/myidea.css">
-<<<<<<< HEAD
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-=======
 <link rel="stylesheet" href="./css/FAQ.css">
     <link rel="stylesheet" href="./css/mypost.css">
    <link
@@ -23,7 +20,6 @@
     />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
 <style type="text/css">
 body {
     background: rgba(0,130,128,255);
@@ -680,13 +676,8 @@ function newColour() {
             <caption>북마크 목록</caption>
             <thead>
                 <tr>
-<<<<<<< HEAD
-                    <th width="1px">번호</th>
-                    <th>제목</th>
-=======
                     <th>번호</th>
                     <th style="width:380px">제목</th>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>조회수</th>
@@ -803,14 +794,14 @@ function newColour() {
 	
 	
 	<!--팔로잉 팔로워 기능 추가해야함 -->
-	<div id="follow" style="display:none;">follow</div>
+	<div id="follow" style="display:none; font-family:auto;"></div>
 	
 	
 	
 	
 	
 	<!-- 나의 아이디어 목록 -->
-	  <div id="myIdea" style="display:none;" font-family:auto;">
+	  <div id="myIdea" style="display:none; font-family:auto;">
 	<div class="myIdea_list_wrap">
         <table class="myIdea_list" border="1">
             <caption>나의 아이디어 목록</caption>
@@ -1115,7 +1106,6 @@ function newColour() {
 	</div>
 	</div>
 		
-	</div>
 	</div>
 	<footer class="main_footer">
 				<div class="window" id="icons" style="width: 800px" align="center">
