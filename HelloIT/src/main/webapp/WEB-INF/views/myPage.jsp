@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/bookmark.css">
+<link rel="stylesheet" href="./css/myidea.css">
 <<<<<<< HEAD
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 =======
@@ -799,8 +800,139 @@ function newColour() {
     </div>
 	
 	</div>
+	
+	
+	<!--팔로잉 팔로워 기능 추가해야함 -->
 	<div id="follow" style="display:none;">follow</div>
-	<div id="myIdea" style="display:none;">myIdea</div>
+	
+	
+	
+	
+	
+	<!-- 나의 아이디어 목록 -->
+	  <div id="myIdea" style="display:none;" font-family:auto;">
+	<div class="myIdea_list_wrap">
+        <table class="myIdea_list" border="1">
+            <caption>나의 아이디어 목록</caption>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th style="width:380px">제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>2022/12/26</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>222</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>333</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>222</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">나의 아이디어5</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+			<div class="pagination_section">
+							<a href="#" class="bt">＜＜ Previous</a>
+							<a href="#" class="num on">1</a>
+							<a href="#" class="num">2</a>
+							<a href="#" class="num">3</a>
+							<a href="#" class="num">4</a>
+							<a href="#" class="num">5</a>
+							<a href="#" class="num">6</a>
+							<a href="#" class="num">7</a>
+							<a href="#" class="bt">Next ＞＞</a>
+				</div>
+    </div>
+	
+	</div>
+		
+	</div>
 	<div id="portfolio" style="display:none;">
 	        <form>
             <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
