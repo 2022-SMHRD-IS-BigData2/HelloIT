@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
+import com.smhrd.entity.Tag;
 
 public class GoMainCon implements Controller {
 	

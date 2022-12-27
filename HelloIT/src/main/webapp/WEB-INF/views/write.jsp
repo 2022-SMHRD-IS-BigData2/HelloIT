@@ -23,7 +23,44 @@
 	top:0;
 	z-index:300;
 }
+/* test/박해성 */
+ul {
+  padding: 16px 0;
+}
+
+ul li {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 14px;
+  letter-spacing: -.5px;
+}
+
+form {
+  padding-top: 16px;
+}
+
+ul li.tag-item {
+  padding: 4px 8px;
+  background-color: #777;
+  color: #000;
+}
+
+.tag-item:hover {
+  background-color: #262626;
+  color: #fff;
+}
+
+.del-btn {
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 8px;
+}
+/* test/박해성 */
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 <script type="text/javascript">
 
@@ -219,6 +256,8 @@ function newColour() {
 
 </script>
 
+
+
 <body>
 		<% UserInfo info = (UserInfo)session.getAttribute("info");
 			
@@ -226,7 +265,6 @@ function newColour() {
 		<div class="container">
 		<div class="wrapper">
         <div class="window" style="width: 800px; top:0" align="center">
-		<form action="write.do" method="post" enctype="multipart/form-data">
             <div class="title-bar">
                 <div class="title-bar-text">게시물 작성하기</div>
                 <div class="title-bar-controls">
@@ -236,6 +274,7 @@ function newColour() {
                 </div>
             </div>
 		            
+		<form action="write.do" method="post" enctype="multipart/form-data">
             <!-- <img src="./img/69719.png" width="50" alt=""> -->
             
             <div class="window-body">
@@ -259,13 +298,22 @@ function newColour() {
                 </div>
                 <input type="file" style=" float: right;" name="post_file">
                     <br>
-                
-                <div class="tag " style="width: 200px">
+                	<br>
+                <div class="tag" style="width: 500px;">
                     <label for="tag">해시태그</label>
-                    <input id="tag" type="text" />
+					<div class="tr_hashTag_area">
+						<div class="form-group">
+							<input type="hidden" value="" name="tag" id="rdTag" />
+			            </div>
+                        
+    		        	<div class="form-group">
+            				<input type="text" id="tag" size="7" placeholder="스페이스바로 해시태그를 등록해주세요." style="width: 500px;"/>
+						</div>
+						
+						<ul id="tag-list"></ul>
+					</div>                    
                 </div>
 
-                <br>
                 <input type="hidden" name="u_email" value=<%=info.getU_email() %>>
                 <input type="submit" value="등록">
                 </form>
@@ -282,8 +330,75 @@ function newColour() {
 					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 				</div>
 			</footer>
-			
 
+<script>
+/* test/박해성 */
+$(document).ready(function () {
+    var tag = {};
+    var counter = 0;
+
+    // 입력한 값을 태그로 생성한다.
+    function addTag (value) {
+        tag[counter] = value;
+        counter++; // del-btn 의 고유 id 가 된다.
+    }
+
+    // tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+    function marginTag () {
+        return Object.values(tag).filter(function (word) {
+            return word !== "";
+        });
+    }
+
+    // 서버에 제공
+    $("#tag-form").on("submit", function (e) {
+        var value = marginTag(); // return array
+        $("#rdTag").val(value); 
+
+        $(this).submit();
+    });
+
+    $("#tag").on("keypress", function (e) {
+        var self = $(this);
+
+        //엔터나 스페이스바 눌렀을때 실행
+        if (e.key === "SPACE BAR" || e.keyCode == 32) {
+
+            var tagValue = self.val(); // 값 가져오기
+
+            // 해시태그 값 없으면 실행X
+            if (tagValue !== "") {
+
+                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+                var result = Object.values(tag).filter(function (word) {
+                    return word === tagValue;
+                })
+            
+                // 해시태그가 중복되었는지 확인
+                if (result.length == 0) { 
+                    $("#tag-list").append
+                    ("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>❌</span></li>");
+                    addTag(tagValue);
+                    self.val("");
+                    $("div.tag").append('<input type="hidden" name="tag_content" value="'+tagValue+'">');
+                    
+                } else {
+                    alert("태그값이 중복됩니다.");
+                }
+            }
+            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        }
+    });
+    
+    // 삭제 버튼 
+    // 인덱스 검사 후 삭제
+    $(document).on("click", ".del-btn", function (e) {
+        var index = $(this).attr("idx");
+        tag[index] = "";
+        $(this).parent().remove();
+    });
+})
+</script>
 
 </body>
 </html>

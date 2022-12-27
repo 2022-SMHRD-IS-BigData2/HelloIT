@@ -6,8 +6,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
-import com.smhrd.entity.CommentInfo;
 import com.smhrd.entity.PostInfo;
+import com.smhrd.entity.Tag;
+import com.smhrd.entity.UserLevel;
 
 public class PostInfoDAO {
 	
@@ -59,6 +60,62 @@ public class PostInfoDAO {
 		int cnt = session.selectOne("cmtCountsView", post_seq);
 		session.close();
 		return cnt;
+	}
+	
+	// 6. 세션 유저 레벨 조회
+	public List<UserLevel> userLevelView(UserLevel dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<UserLevel> list = session.selectList("userLevelView", dto);
+		session.close();
+		return list;
+	}
+	
+	// 7. 게시물 유저 레벨 등록
+	public int postLevelSetting(UserLevel dto) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.insert("postLevelSetting", dto);
+		session.close();
+		return cnt;
+	}
+	
+	// 8. 게시글 전체 조회
+	public List<Tag> tagListView() {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<Tag> list = session.selectList("tagListView");
+		session.close();
+		return list;
+	}
+	
+	// 9. 해시태그 시퀀스 조회
+	public Tag tagSeqView(String tag_content) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		Tag result = session.selectOne("tagSeqView", tag_content);
+		session.close();
+		return result;
+	}
+	
+	// 10. 게시물 해시태그 등록
+	public int postTagInsert(int tag_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.insert("postTagInsert", tag_seq);
+		session.close();
+		return cnt;
+	}
+	
+	// 11. 해시태그 추가
+	public int tagInsert(String tag_content) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.insert("tagInsert", tag_content);
+		session.close();
+		return cnt;
+	}
+	
+	// 12. 게시물 해시태그 조회
+	public List<Tag> postTagView(int post_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		List<Tag> list = session.selectList("postTagView", post_seq);
+		session.close();
+		return list;
 	}
 	
 }

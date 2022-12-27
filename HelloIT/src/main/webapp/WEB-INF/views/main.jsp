@@ -1,3 +1,6 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.smhrd.entity.Tag"%>
+<%@page import="com.smhrd.dao.PostInfoDAO"%>
 <%@page import="com.smhrd.entity.CommentInfo"%>
 <%@page import="com.smhrd.dao.CommentInfoDAO"%>
 <%@page import="com.smhrd.entity.PostInfo"%>
@@ -354,8 +357,16 @@ function newColour() {
 							src="img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2">#해 #시 #태 #그</td>
+					<%
+						PostInfoDAO daoTag = new PostInfoDAO();
+						List<Tag> list2 = daoTag.postTagView(list.get(i).getPost_seq());
+					%>
+					<tr style="height: 20px">
+						<td colspan="2">
+						<%for(int k = 0; k < list2.size(); k++){ %>
+						<a><%='#'+list2.get(k).getTag_content()%></a>
+						<%};%>
+						</td>
 					</tr>
 				</table>
 			</div>
