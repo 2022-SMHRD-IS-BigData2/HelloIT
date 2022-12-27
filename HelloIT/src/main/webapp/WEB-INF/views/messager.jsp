@@ -3,16 +3,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://unpkg.com/98.css" />
-    <link rel="stylesheet" href="./css/style.css">
-    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <title>Message</title>
-    <style>
-       * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://unpkg.com/98.css" />
+<link rel="stylesheet" href="./css/style.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<title>Message</title>
+<style>
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 a {

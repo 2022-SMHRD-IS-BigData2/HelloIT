@@ -25,6 +25,7 @@ import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoMainWriteCon;
+import com.smhrd.controller.GoMyIdea;
 import com.smhrd.controller.GoMyPageCon;
 import com.smhrd.controller.GoViewCon;
 import com.smhrd.controller.GoWriteCon;
@@ -41,7 +42,7 @@ import com.smhrd.controller.MainCmtLikeCon;
 import com.smhrd.controller.MainCommentCon;
 import com.smhrd.controller.MainLikeCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
-import com.smhrd.controller.RecruitCon;
+import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
@@ -64,15 +65,15 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
+		handlerMapping.put("/goMyIdea.do", new GoMyIdea()); // 마이페이지 이동
 		
-		handlerMapping.put("/goRecruitTest.do", new RecruitCon()); // 테스트
+		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 테스트
 		
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
 		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 네이버 회원가입
 		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 마이페이지 이동
-		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 마이페이지 이동
 		
 		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
@@ -105,9 +106,6 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
 		handlerMapping.put("/goMainWrite.do", new GoMainWriteCon()); // 메인에서 게시물 작성 페이지 이동
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
-		
-		
-		handlerMapping.put("/recruit.do", new GoRecruitCon());
 		
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동

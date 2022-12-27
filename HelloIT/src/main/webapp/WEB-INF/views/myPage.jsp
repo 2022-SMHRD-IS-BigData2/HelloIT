@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="./css/myidea.css">
 <link rel="stylesheet" href="./css/FAQ.css">
 <link rel="stylesheet" href="./css/mypost.css">
+<link rel="stylesheet" href="./css/mypage.css">
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -20,58 +21,14 @@
     />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
-<style type="text/css">
-body {
-    background: rgba(0,130,128,255);
-	background-size: cover;
-}
-.container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	max-width: 100%;
-}
-.window{
-	font-family: "";
-}
-.window-body {
-	display: flex;
-}
-
-.tree-view {
-	text-align: -webkit-left;
-	font-family: '';
-	width: max-content;
-	position: sticky;
-	top: 27px;
-}
-
-ul.tree-view li, ul.tree-view ul {
-	margin-top: 15px;
-	font-size: initial;
-}
-
-label {
-	font-family: '';
-}
-
-input[type=checkbox]+label, input[type=radio]+label {
-	margin-left: 24px;
-	position: relative;
-	font-size: initial;
-	line-height: 25px;
-}
-
-input[type=checkbox]:checked+label:after {
-	left: -16px;
-	top: 8px;
-}
-.userInfo tbody td:nth-child(1){
-    text-align: right;
-    padding: 2px 15px;
-    border-bottom: 1px solid;
-    width: 100px;
-}
+<style>
+	tr>td:nth-child(1){
+    width: 70px;
+    text-align: center;
+	}
+	tr>td:nth-child(3){
+    width: 1px;
+	}
 </style>
 </head>
 
@@ -111,7 +68,7 @@ input[type=checkbox]:checked+label:after {
                         <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
                     </div>
                 </div>
-                    <form style="margin:20px">
+                    <form style="margin:20px; font-size:initial">
                         <table class="userInfo">
                         	<tbody>
                             <tr>
@@ -168,9 +125,12 @@ input[type=checkbox]:checked+label:after {
           </div>
         <div class="window-body" style="display:block;">
             <h4>관심있는분야나 직장에서 맡고있는 분야를 선택하세요(중복선택 가능), 체크한 분야에 따라서 게시물이 자동 선별됩니다.</h4>
-            <div id="userRole">
-                <h4>맡고싶거나 맡고있는 역할을 선택하세요</h4>
-                <form action="updateRole.do" method="post">
+            <br>
+           	<form action="updateRole.do" method="post">
+            <table>
+            <tr class="interest" id="userRole">
+         	<td><h4>역할</h4></td>
+                <td>
 	                <input type="checkbox" name="frontend" id="frontend" value="Y">
 	                <label for="frontend">프론트엔드</label>
 	                <input type="checkbox" name="backend" id="backend" value="Y">
@@ -185,13 +145,19 @@ input[type=checkbox]:checked+label:after {
 	                <input type="hidden" name="backend" id="backend_hidden" value="N">
 	                <input type="hidden" name="data_etc" id="data_etc_hidden" value="N">
 	                <input type="hidden" name="other_skill" id="other_skill_hidden" value="N">
+	                </td>
+	                <td>
 	                <input type="submit" value="저장">
 	                <input type="reset" value="초기화">
-                </form>
-            </div>
-            <div id="userSkill">
-                <h4>담당했던분야나 관심있는 분야를 선택하세요</h4>
+            	</td>
+            </tr>
+            </table>
+            </form>
                 <form action="" method="post">
+            <table>
+            <tr class="interest" id="userSkill">
+                <td><h4>분야</h4></td>
+                <td>
 	                <input type="checkbox" name="web" id="web" value="Y">
 	                <label for="web">웹</label>
 	                <input type="checkbox" name="ios" id="ios" value="Y">
@@ -218,13 +184,19 @@ input[type=checkbox]:checked+label:after {
 	                <input type="hidden" name="linux" id="linux_hidden" value="N">
 	                <input type="hidden" name="game" id="game_hidden" value="N">
 	                <input type="hidden" name="skill_etc" id="skill_etc_hidden" value="N">
+	                </td><td>
 	                <input type="submit" value="저장">
 	                <input type="reset" value="초기화">
+                </td>
+            </tr>
+            </table>
                 </form>
-            </div>
-            <div id="userLanguage">
-                <h4>사용할줄 아는 언어 또는 관심있는 언어를 선택하세요</h4>
+                
                 <form action="" method="post">
+                <table>
+            <tr class="interest" id="userLanguage">
+                <td><h4>언어</h4></td>
+                <td>
                 <input type="checkbox" name="html" id="html" value="Y">
                 <label for="html">HTML</label>
                 <input type="checkbox" name="css" id="css" value="Y">
@@ -292,13 +264,20 @@ input[type=checkbox]:checked+label:after {
                 <input type="hidden" name="haskell" id="haskell_hidden" value="N">
                 <input type="hidden" name="sql" id="sql_hidden" value="N">
                 <input type="hidden" name="language_etc" id="language_etc_hidden" value="N">
+                </td>
+                <td>
                 <input type="submit" value="저장">
                 <input type="reset" value="초기화">
+                
+                </td>
+            </tr>
+            </table>
                 </form>
-            </div>
-            <div id="userDB">
-                <h4>사용할줄 아는 DB 또는 관심있는 DB를 선택하세요</h4>
                 <form action="" method="post">
+                <table>
+            <tr class="interest" id="userDB">
+                <td><h4>DB</h4></td>
+                <td>
                 <input type="checkbox" name="mysql" id="mysql" value="Y">
                 <label for="mysql">MySQL</label>
                 <input type="checkbox" name="oracle" id="oracle" value="Y">
@@ -346,10 +325,13 @@ input[type=checkbox]:checked+label:after {
                 <input type="hidden" name="hive" id="hive_hidden" value="N">
                 <input type="hidden" name="cassandra" id="cassandra_hidden" value="N">
                 <input type="hidden" name="db_etc" id="db_etc_hidden" value="N">
+                </td><td>
                 <input type="submit" value="저장">
                 <input type="reset" value="초기화">
+                </td>
+            </tr>
+            </table>
                 </form>
-            </div>
         </div>
     </div>
     
@@ -728,8 +710,6 @@ input[type=checkbox]:checked+label:after {
     </div>
 	
 	</div>
-		
-	</div>
 	<div id="portfolio" style="display:none;">
 	        <form>
             <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
@@ -852,6 +832,8 @@ input[type=checkbox]:checked+label:after {
 			</div>
         </form>
 	</div>
+		
+	
 	<div id="faq" style="display:none;">
         <div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
             <div class="title-bar">
@@ -906,7 +888,7 @@ input[type=checkbox]:checked+label:after {
         </button>
       </div>
     </div>
-	
+	</div>
 	</div>
   	</div>
 	</div>
@@ -1123,8 +1105,5 @@ input[type=checkbox]:checked+label:after {
 	</script>
 
     <script src="./js/FAQ.js"></script>
-    <script>
-    	
-    </script>
 </body>
 </html>

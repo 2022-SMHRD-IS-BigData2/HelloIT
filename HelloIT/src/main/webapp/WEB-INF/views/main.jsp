@@ -7,7 +7,6 @@
 <%@page import="com.smhrd.utils.NaverApiUserInfo2"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,65 +14,14 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/login.css">
+
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
-<style type="text/css">
-	.window.posted{
-		margin:4px;
-	}
-</style>
 <title>Hello IT</title>
 </head>
-
-
-<style>
-/* 
-#icon{
-    align-items: center;
-    left: 480px;
-    top: 540px;
-    margin-top: 8px;
-}
-
-#idea{
-    left: 370px;
-    top: 550px;
-    
-}
-#my_page{
-    left: 600px;
-    top: 535px;
-
-}
-#job{
-    left: 700px;
-    top: 550px;
-
-}
-#fire{
-    left: 350px;
-    top: 540px;
-
-} */
-
-/* #icons{
-    display: flex;
-    justify-content: space-between;
-} */
-#btn {
-	width: 20px;
-	height: 10px;
-	border-radius: 40px;
-}
-#search{
-	top: 9.6%;
-	left: 82.6%;
-	position:sticky;
-	display:flex;
-}
-</style>
 <body>
-
+<a href="goMyIdea.do" style="position:fixed; top:0;">테스트</a>
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");

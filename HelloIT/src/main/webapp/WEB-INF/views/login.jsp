@@ -45,57 +45,8 @@
         });
   }
 </script>
-<style type="text/css">
-#customBtn {
-  display: inline-block;
-  color: #444;
-  border-radius: 5px;
-  white-space: nowrap;
-  width: 35px;
-  height: 35px;
-  margin-right: 15px;
-}
-#customBtn:hover {
-  cursor: pointer;
-}
-span.label {
-  font-family: serif;
-  font-weight: normal;
-}
-span.icon {
-  background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
-  display: inline-block;
-  vertical-align: middle;
-  width: 42px;
-  height: 42px;
-}
-span.buttonText {
-  display: inline-block;
-  vertical-align: middle;
-  padding-left: 42px;
-  padding-right: 42px;
-  font-size: 14px;
-  font-weight: bold;
-  /* Use the Roboto font that is loaded in the <head> */
-  font-family: 'Roboto', sans-serif;
-}
-.header{
-	cursor: default;
-	width: 242px;
-}
-.window-body{
-    margin: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.window.wrap{
-	width:250px;
-}
- </style>
 </head>
 <body>
-<a href="goRecruitTest.do">테스트</a>
 	<%-- 네이버 로그인 관련 스크립틀릿 --%>
 	<%
 	String clientId = "zpztEFLfY06RGS88839H";//애플리케이션 클라이언트 아이디값";
