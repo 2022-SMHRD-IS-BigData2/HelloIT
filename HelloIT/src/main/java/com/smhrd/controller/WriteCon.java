@@ -2,6 +2,7 @@ package com.smhrd.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
+import com.smhrd.entity.PostTag;
+import com.smhrd.entity.Tag;
+import com.smhrd.entity.UserLevel;
 
 public class WriteCon implements Controller {
 
@@ -49,7 +53,9 @@ public class WriteCon implements Controller {
 		String post_content = multi.getParameter("post_content");
 		String u_email = multi.getParameter("u_email");
 		String post_kind = multi.getParameter("post_kind");
-
+		
+		String[] tagList = multi.getParameterValues("tag_content");
+		
 		// 이미지파일의 이름 가져오기
 		// 이 때, 파일 저장이 일어난다
 		String post_file = multi.getFilesystemName("post_file");
@@ -62,10 +68,28 @@ public class WriteCon implements Controller {
 		dto.setPost_kind(post_kind);
 		dto.setPost_file(post_file);
 		
+		UserLevel dtou = new UserLevel();
+		dtou.setU_email(u_email);
 
 		// 3. DAO의 boardWrite 사용
 		PostInfoDAO dao = new PostInfoDAO();
 		int cnt = dao.postInfoWrite(dto);
+		
+		List<UserLevel> list = dao.userLevelView(dtou);
+		
+		for(int i = 0; i < list.size(); i++) {
+			UserLevel dtouu = new UserLevel();
+			dtouu.setTag_seq(list.get(i).getTag_seq());
+			dtouu.setTag_level(list.get(i).getTag_level());
+			dao.postLevelSetting(dtouu);
+		}
+		
+		for(int i = 0; i < tagList.length; i++) {
+			if(dao.tagSeqView(tagList[i]) == null) {
+				dao.tagInsert(tagList[i]);
+			}
+			dao.postTagInsert(dao.tagSeqView(tagList[i]).getTag_seq());
+		}
 
 		// 4. 성공 여부에 따라 페이지 이동
 		if (cnt > 0) {

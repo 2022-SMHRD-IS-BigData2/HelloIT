@@ -1,10 +1,15 @@
 select * from user_info;
-select * from post_info order by post_dt;
+select * from post_info order by post_dt desc;
 select * from like_info;
+select * from COMMENT_INFO;
 select * from USER_SKILL_INFO;
 select * from user_role_info;
 select * from user_db_info;
 select * from user_language_info;
+select * from post_level where post_seq=36;
+select * from post_tag;
+select * from post_tag where post_seq=32;
+select * from tag order by tag_seq;
 
 delete from POST_INFO where post_seq=18;
 
@@ -101,6 +106,116 @@ select*from POST_INFO;
 select * from comment_info
 		where post_seq=2;
 
+
+
+-- 해시태그, 맞춤형 게시물 관련 테이블 생성
+CREATE TABLE post_tag
+(
+    post_seq NUMBER(18, 0) NOT NULL,
+    tag_seq	NUMBER(18, 0) NOT NULL,
+    FOREIGN KEY (tag_seq)
+    REFERENCES tag (tag_seq)
+);
+
+CREATE TABLE tag
+(
+    tag_seq NUMBER(18, 0),
+    tag_content	VARCHAR2(50) NOT NULL,
+    primary key (tag_seq)
+);
+CREATE SEQUENCE tag_SEQ
+START WITH 1
+INCREMENT BY 1;
+ALTER TABLE tag ADD CONSTRAINT tag_content_uq UNIQUE (tag_content);
+
+CREATE TABLE user_tag
+(
+    u_email VARCHAR2(50) NOT NULL,
+    tag_seq	NUMBER(18, 0),
+    FOREIGN KEY (tag_seq)
+    REFERENCES tag (tag_seq)
+);
+alter table user_tag add foreign key(u_email) references user_info(u_email);
+
+CREATE TABLE user_level
+(
+    u_email VARCHAR2(50) NOT NULL,
+    tag_seq	NUMBER(18, 0),
+    tag_level CHAR(1),
+    FOREIGN KEY (tag_seq)
+    REFERENCES tag (tag_seq)
+);
+alter table user_level add foreign key(u_email) references user_info(u_email);
+
+CREATE TABLE post_level
+(
+    post_seq NUMBER(18, 0),
+    tag_seq	NUMBER(18, 0),
+    tag_level CHAR(1),
+    FOREIGN KEY (post_seq) REFERENCES post_info (post_seq),
+    FOREIGN KEY (tag_seq) REFERENCES tag (tag_seq)
+);
+
+-- 위 테이블 임의 데이터 추가
+insert into user_tag values('test@hs.com', );
+
+insert into post_tag values(12, 17);
+insert into post_tag values(20, 2);
+
+insert into post_level
+values(12, 2, '1');
+
+insert into user_level
+values('test@hs.com', 1, '1');
+
+insert into user_level
+values('test@hs.com', 2, '1');
+
+insert into user_level
+values('test@hs.com', 3, '1');
+
+-- 맞춤형 게시물 출력
+-- 1. 레벨 일치여부 확인
+select distinct * from post_info
+where 
+post_seq in (select post_seq 
+			from post_level
+			where tag_seq||tag_level in ( select tag_seq||tag_level
+											from user_level
+											where u_email='test@hs.com'))
+-- 2. 태그 일치여부 확인
+and
+post_seq in (select post_seq
+			from post_tag
+			where tag_seq in (select tag_seq
+								from user_tag
+								where u_email='test@hs.com'))
+order by post_dt;
+-- 끝.							
+
+select tag_seq
+from user_tag
+where u_email='test@hs.com'
+
+select * from post_tag;
+select * from post_level;
+select * from user_level;
+select * from post_info where u_email = 'test@hs.com';
+select * from user_tag;
+select * from user_role_info;
+select * from USER_SKILL_INFO;
+select * from user_language_info;
+select * from user_db_info;
+select * from tag order by tag_seq;
+
+insert into tag
+values (tag_SEQ.nextval,
+		'cassandra'
+);
+
+-- 
+
+-- like 관련 테이블 생성
 CREATE TABLE like_info
 (
     like_seq NUMBER(18, 0) NOT NULL, 
@@ -135,24 +250,6 @@ ALTER TABLE like_info
 ALTER TABLE like_info
     ADD CONSTRAINT FK_like_info_cmt_seq_comment FOREIGN KEY (cmt_seq)
         REFERENCES comment_info (cmt_seq) ON DELETE cascade ;
-        
-select * from like_info;
-
-select * from comment_info
-		where post_seq=2;
-		
-select *
-from comment_info
-where post_seq=2;
-
-select* from s_crawling;
-select*from j_crawling;
-select *
-		from comment_info c, user_info u
-		where c.post_seq=13
-		and c.u_email = u.u_email
-		order by cmt_dt
-		
 		
 ----------------------------------------------------------------------
 -- 임의 역할, 관심분야 등 지정
@@ -236,3 +333,27 @@ VALUES
      'N'
      )     
      
+--
+select* from s_crawling;
+select*from j_crawling;
+select *
+		from comment_info c, user_info u
+		where c.post_seq=13
+		and c.u_email = u.u_email
+		order by cmt_dt
+
+select distinct * from post_info p, user_info u
+		where 
+		post_seq in (select post_seq 
+					from post_level
+					where tag_seq||tag_level in ( select tag_seq||tag_level
+													from user_level
+													where u_email='test@hs.com'))
+		and
+		post_seq in (select post_seq
+					from post_tag
+					where tag_seq in (select tag_seq
+										from user_tag
+										where u_email='test@hs.com'))
+		and p.u_email = u.u_email
+		order by post_dt desc;

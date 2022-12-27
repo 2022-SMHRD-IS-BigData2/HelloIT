@@ -9,6 +9,36 @@
 		order by post_dt desc
 	</select>
 	
+	<!-- 맞춤형 게시글 리스트 조회 -->
+	<select id="customizedPostInfoList" resultType="com.smhrd.entity.PostInfo">
+		select distinct * from post_info p, user_info u
+		where 
+		post_seq in (select post_seq 
+					from post_level
+					where tag_seq||tag_level in ( select tag_seq||tag_level
+													from user_level
+													where u_email=#{u_email}))
+		and
+		post_seq in (select post_seq
+					from post_tag
+					where tag_seq in (select tag_seq
+										from user_tag
+										where u_email=#{u_email}))
+		and p.u_email = u.u_email
+		order by post_dt desc
+	</select>	
+	
+	<!-- 태그별 게시글 리스트 조회 -->
+	<select id="tagPostInfoList" resultType="com.smhrd.entity.PostInfo">
+		select distinct * from post_info p, user_info u
+		where post_seq in (select post_seq
+							from post_tag
+							where tag_seq=#{tag_seq})
+		and p.u_email = u.u_email
+		order by post_dt desc
+	</select>	
+	
+	
 	<!-- 게시글 종류별 전체 리스트 조회 -->
 	<select id="postKindList" resultType="com.smhrd.entity.PostInfo">
 		select *
@@ -54,6 +84,62 @@
 		select count(*)
 		from bookmark_info
 		where post_seq=#{post_seq}
+	</select>
+	
+	<!-- 세션 유저 레벨 조회 -->
+	<select id="userLevelView" parameterType="com.smhrd.entity.UserLevel"
+	resultType="com.smhrd.entity.UserLevel">
+		select * from user_level
+		where u_email=#{u_email}
+	</select>
+	
+	<!-- 게시물 유저 레벨 등록 -->
+	<insert id="postLevelSetting" parameterType="com.smhrd.entity.UserLevel">
+		insert into post_level
+		values(
+			post_info_seq.currval,
+			#{tag_seq},
+			#{tag_level}
+		)
+	</insert>
+	
+	<!-- 해시태그 추가 -->
+	<insert id="tagInsert">
+		insert into tag
+		values(
+			tag_seq.nextval,
+			#{tag_seq}
+		)
+	</insert>
+	
+	<!-- 해시태그 전체 조회 -->
+	<select id="tagListView" resultType="com.smhrd.entity.Tag">
+		select * from tag
+	</select>
+	
+	<!-- 해시태그 시퀀스 조회 -->
+	<select id="tagSeqView" parameterType="com.smhrd.entity.Tag"
+	resultType="com.smhrd.entity.Tag">
+		select * from tag
+		where tag_content=#{tag_content}
+	</select>
+	
+	<!-- 게시물 해시태그 등록 -->
+	<insert id="postTagInsert" parameterType="com.smhrd.entity.PostTag">
+		insert into post_tag
+		values(
+			post_info_seq.currval,
+			#{tag_seq}
+		)
+	</insert>
+	
+	<!-- 게시물 해시태그 조회 -->
+	<select id="postTagView" resultType="com.smhrd.entity.Tag">
+		select distinct * from tag
+		where tag_seq in (select tag_seq
+							from post_tag
+							where post_seq=#{post_seq}
+		)
 	</select>
 	
 </mapper>

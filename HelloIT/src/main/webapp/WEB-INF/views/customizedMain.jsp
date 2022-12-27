@@ -10,6 +10,7 @@
 <%@page import="com.smhrd.utils.NaverApiUserInfo2"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,21 +18,71 @@
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/login.css">
-
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
+<style type="text/css">
+	.window.posted{
+		margin:4px;
+	}
+</style>
 <title>Hello IT</title>
 </head>
+
+
+<style>
+/* 
+#icon{
+    align-items: center;
+    left: 480px;
+    top: 540px;
+    margin-top: 8px;
+}
+
+#idea{
+    left: 370px;
+    top: 550px;
+    
+}
+#my_page{
+    left: 600px;
+    top: 535px;
+
+}
+#job{
+    left: 700px;
+    top: 550px;
+
+}
+#fire{
+    left: 350px;
+    top: 540px;
+
+} */
+
+/* #icons{
+    display: flex;
+    justify-content: space-between;
+} */
+#btn {
+	width: 20px;
+	height: 10px;
+	border-radius: 40px;
+}
+#search{
+	top: 9.6%;
+	left: 82.6%;
+	position:sticky;
+	display:flex;
+}
+</style>
 <body>
-<a href="goMyIdea.do" style="position:fixed; top:0;">테스트</a>
-<a href="goCustomizedMain.do">맞춤형게시물조회</a>
+
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
 	
 	// request 영역에서 list 꺼내서 출력하기
-	List<PostInfo> list = (List<PostInfo>) request.getAttribute("list");
+	List<PostInfo> list = (List<PostInfo>) request.getAttribute("ctpList");
 	%>
 	
 <div class="container">
@@ -87,7 +138,7 @@
 		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<div class="window" style="position:sticky; top:118.2px; margin:-3px">
 				<div class="title-bar">
-				<div class="title-bar-text">전체 게시물</div>
+				<div class="title-bar-text">맞춤형</div>
 				<div>
 					<input type="text" style="width: 150pt; height: 15pt;" placeholder="검색창" name="" id=""> 
 					<input type="button" style="width: 30pt; height: 15pt;" value="🔍">

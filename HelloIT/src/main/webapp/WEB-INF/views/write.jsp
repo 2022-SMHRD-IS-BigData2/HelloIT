@@ -24,8 +24,240 @@
 	top:0;
 	z-index:300;
 }
+/* test/박해성 */
+ul {
+  padding: 16px 0;
+}
+
+ul li {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 14px;
+  letter-spacing: -.5px;
+}
+
+form {
+  padding-top: 16px;
+}
+
+ul li.tag-item {
+  padding: 4px 8px;
+  background-color: #777;
+  color: #000;
+}
+
+.tag-item:hover {
+  background-color: #262626;
+  color: #fff;
+}
+
+.del-btn {
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 8px;
+}
+/* test/박해성 */
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
+<script type="text/javascript">
+
+var colour="random"; 
+var sparkles=50;
+
+
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var i, rats, rlef, rdow;
+  for (var i=0; i<sparkles; i++) {
+    var rats=createDiv(3, 3);
+    rats.style.visibility="hidden";
+    rats.style.zIndex="999";
+    document.body.appendChild(tiny[i]=rats);
+    starv[i]=0;
+    tinyv[i]=0;
+    var rats=createDiv(5, 5);
+    rats.style.backgroundColor="transparent";
+    rats.style.visibility="hidden";
+    rats.style.zIndex="999";
+    var rlef=createDiv(1, 5);
+    var rdow=createDiv(5, 1);
+    rats.appendChild(rlef);
+    rats.appendChild(rdow);
+    rlef.style.top="2px";
+    rlef.style.left="0px";
+    rdow.style.top="0px";
+    rdow.style.left="2px";
+    document.body.appendChild(star[i]=rats);
+  }
+  set_width();
+  sparkle();
+}}
+
+function sparkle() {
+  var c;
+  if (Math.abs(x-ox)>1 || Math.abs(y-oy)>1) {
+    ox=x;
+    oy=y;
+    for (c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y+1)+"px";
+      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+      star[c].childNodes[0].style.backgroundColor=star[c].childNodes[1].style.backgroundColor=(colour=="random")?newColour():colour;
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout("sparkle()", 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    starx[i]+=(i%5-2)/5;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      star[i].style.left=starx[i]+"px";
+    }
+    else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  }
+  else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px";
+    tiny[i].style.height="2px";
+    tiny[i].style.backgroundColor=star[i].childNodes[0].style.backgroundColor;
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible"
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px";
+    tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    tinyx[i]+=(i%5-2)/5;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tiny[i].style.left=tinyx[i]+"px";
+    }
+    else {
+      tiny[i].style.visibility="hidden";
+      tinyv[i]=0;
+      return;
+    }
+  }
+  else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  if (e) {
+    y=e.pageY;
+    x=e.pageX;
+  }
+  else {
+    set_scroll();
+    y=event.y+sdown;
+    x=event.x+sleft;
+  }
+}
+
+window.onscroll=set_scroll;
+function set_scroll() {
+  if (typeof(self.pageYOffset)=='number') {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body && (document.body.scrollTop || document.body.scrollLeft)) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+    sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+window.onresize=set_width;
+function set_width() {
+  var sw_min=999999;
+  var sh_min=999999;
+  if (document.documentElement && document.documentElement.clientWidth) {
+    if (document.documentElement.clientWidth>0) sw_min=document.documentElement.clientWidth;
+    if (document.documentElement.clientHeight>0) sh_min=document.documentElement.clientHeight;
+  }
+  if (typeof(self.innerWidth)=='number' && self.innerWidth) {
+    if (self.innerWidth>0 && self.innerWidth<sw_min) sw_min=self.innerWidth;
+    if (self.innerHeight>0 && self.innerHeight<sh_min) sh_min=self.innerHeight;
+  }
+  if (document.body.clientWidth) {
+    if (document.body.clientWidth>0 && document.body.clientWidth<sw_min) sw_min=document.body.clientWidth;
+    if (document.body.clientHeight>0 && document.body.clientHeight<sh_min) sh_min=document.body.clientHeight;
+  }
+  if (sw_min==999999 || sh_min==999999) {
+    sw_min=800;
+    sh_min=600;
+  }
+  swide=sw_min;
+  shigh=sh_min;
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  return (div);
+}
+
+function newColour() {
+  var c=new Array();
+  c[0]=255;
+  c[1]=Math.floor(Math.random()*256);
+  c[2]=Math.floor(Math.random()*(256-c[1]/2));
+  c.sort(function(){return (0.5 - Math.random());});
+  return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
+}
+
+</script>
+
+
 <body>
 		<% UserInfo info = (UserInfo)session.getAttribute("info");
 			
@@ -33,7 +265,6 @@
 		<div class="container">
 		<div class="wrapper">
         <div class="window" style="width: 800px; top:0" align="center">
-		<form action="write.do" method="post" enctype="multipart/form-data">
             <div class="title-bar">
                 <div class="title-bar-text">게시물 작성하기</div>
                 <div class="title-bar-controls">
@@ -43,6 +274,7 @@
                 </div>
             </div>
 		            
+		<form action="write.do" method="post" enctype="multipart/form-data">
             <!-- <img src="./img/69719.png" width="50" alt=""> -->
             
             <div class="window-body">
@@ -66,13 +298,22 @@
                 </div>
                 <input type="file" style=" float: right;" name="post_file">
                     <br>
-                
-                <div class="tag " style="width: 200px">
+                	<br>
+                <div class="tag" style="width: 500px;">
                     <label for="tag">해시태그</label>
-                    <input id="tag" type="text" />
+					<div class="tr_hashTag_area">
+						<div class="form-group">
+							<input type="hidden" value="" name="tag" id="rdTag" />
+			            </div>
+                        
+    		        	<div class="form-group">
+            				<input type="text" id="tag" size="7" placeholder="스페이스바로 해시태그를 등록해주세요." style="width: 500px;"/>
+						</div>
+						
+						<ul id="tag-list"></ul>
+					</div>                    
                 </div>
 
-                <br>
                 <input type="hidden" name="u_email" value=<%=info.getU_email() %>>
                 <input type="submit" value="등록">
                 </form>
@@ -89,8 +330,75 @@
 					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 				</div>
 			</footer>
-			
 
+<script>
+/* test/박해성 */
+$(document).ready(function () {
+    var tag = {};
+    var counter = 0;
+
+    // 입력한 값을 태그로 생성한다.
+    function addTag (value) {
+        tag[counter] = value;
+        counter++; // del-btn 의 고유 id 가 된다.
+    }
+
+    // tag 안에 있는 값을 array type 으로 만들어서 넘긴다.
+    function marginTag () {
+        return Object.values(tag).filter(function (word) {
+            return word !== "";
+        });
+    }
+
+    // 서버에 제공
+    $("#tag-form").on("submit", function (e) {
+        var value = marginTag(); // return array
+        $("#rdTag").val(value); 
+
+        $(this).submit();
+    });
+
+    $("#tag").on("keypress", function (e) {
+        var self = $(this);
+
+        //엔터나 스페이스바 눌렀을때 실행
+        if (e.key === "SPACE BAR" || e.keyCode == 32) {
+
+            var tagValue = self.val(); // 값 가져오기
+
+            // 해시태그 값 없으면 실행X
+            if (tagValue !== "") {
+
+                // 같은 태그가 있는지 검사한다. 있다면 해당값이 array 로 return 된다.
+                var result = Object.values(tag).filter(function (word) {
+                    return word === tagValue;
+                })
+            
+                // 해시태그가 중복되었는지 확인
+                if (result.length == 0) { 
+                    $("#tag-list").append
+                    ("<li class='tag-item'>"+tagValue+"<span class='del-btn' idx='"+counter+"'>❌</span></li>");
+                    addTag(tagValue);
+                    self.val("");
+                    $("div.tag").append('<input type="hidden" name="tag_content" value="'+tagValue+'">');
+                    
+                } else {
+                    alert("태그값이 중복됩니다.");
+                }
+            }
+            e.preventDefault(); // SpaceBar 시 빈공간이 생기지 않도록 방지
+        }
+    });
+    
+    // 삭제 버튼 
+    // 인덱스 검사 후 삭제
+    $(document).on("click", ".del-btn", function (e) {
+        var index = $(this).attr("idx");
+        tag[index] = "";
+        $(this).parent().remove();
+    });
+})
+</script>
 
 </body>
 </html>
