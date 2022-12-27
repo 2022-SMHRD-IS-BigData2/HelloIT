@@ -12,4 +12,5 @@
 	<select id="getListSize" resultType="java.lang.Integer">
 		select * from s_crawling
 	</select>
+	
 </mapper>

@@ -23,4 +23,5 @@ public class RecruitDAO {
 		session.close();
 		return cnt;
 	}
+	
 }

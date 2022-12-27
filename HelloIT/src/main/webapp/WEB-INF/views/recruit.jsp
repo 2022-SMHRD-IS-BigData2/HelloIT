@@ -86,20 +86,27 @@
 			
 			
 			<%-- 잡코리아 --%>
-			<div id="tab-2" style="margin-bottom:50px" class="tab-content">
-				<div id="job-table">		
-					<table style="height: 100px; overflow: auto">
+			<div id="tab-2" style="margin-bottom:50px" class="tab-content" >
+				<div id="job-table">
+				<%-- 페이지 불러오는 테이블 --%>
+					<table style="height: 100px; overflow: auto;">
 						<thead>
 							<tr height="30px">
-								<th>기업명</th>
-								<th>채용 내용</th>
+								<th style="width:100px">기업명</th>
+								<th style="width:400px">채용 내용</th>
 								<th>경력/학력/지역</th>
 								<th>마감일</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="s-recruit">
+							<%for(int i =0;i<10;i++){ %>
 							<tr>
+								<td><%=list.get(i).getCompany_list() %></td>
+								<td><a href="<%=list.get(i).getLink_list()%>"><%=list.get(i).getJob_list()%></a></td>
+								<td><%=list.get(i).getAddr_list() %></td>
+								<td><%=list.get(i).getDate_list()%></td>
 							</tr>
+							<%}%>
 						</tbody>
 					</table>
 				</div>
@@ -107,19 +114,13 @@
 				<br>
 				<div class="pagination_section">
 					<a href="#">＜＜ Previous</a>
-					<a href="#" title="">1</a>
-					<a href="#" title="">2</a>
-					<a href="#" title="">3</a>
-					<a href="#" title="">4</a>
-					<a href="#" title="">5</a>
-					<a href="#" title="">6</a>
-					<a href="#" title="">7</a>
-					<a href="#" title="">8</a>
-					<a href="#" title="">9</a>
-					<a href="#" title="">10</a>
+					<%for(int i=0;i<cnt.size()/10;i++){ %>
+						<a href="goRecruitTest.do?num=<%=i+1%>"><%=i+1%></a>
+						<%} %>		
 					<a href="#">Next ＞＞</a>
 				</div>
-				
+
+
 			</div>
 
 		</div>
