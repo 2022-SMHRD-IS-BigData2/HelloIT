@@ -38,6 +38,7 @@ import com.smhrd.controller.MainBookmarkCon;
 import com.smhrd.controller.MainCommentCon;
 import com.smhrd.controller.MainLikeCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
+import com.smhrd.controller.RecruitCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
@@ -59,6 +60,10 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 
 		handlerMapping = new HashMap<>();
+
+		
+		handlerMapping.put("/goRecruitTest.do", new RecruitCon()); // 테스트
+		
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
