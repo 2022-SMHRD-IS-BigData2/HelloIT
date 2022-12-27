@@ -38,4 +38,40 @@
 		and post_seq = #{post_seq}
 	</select>
 	
+	<!-- 댓글 좋아요 추가 -->
+	<insert id="cmtLikeInfoInsert" parameterType="com.smhrd.entity.LikeInfo">
+		insert into like_info
+		values(
+			like_info_seq.nextval,
+			#{u_email},
+			null,
+			#{cmt_seq}
+		)
+	</insert>
+	
+	<!-- 댓글 좋아요 취소 -->
+	<delete id="cmtLikeInfoDelete" parameterType="com.smhrd.entity.LikeInfo">
+		delete from like_info
+		where u_email=#{u_email}
+		and cmt_seq=#{cmt_seq}
+	</delete>
+	
+	<!-- 댓글 좋아요수 갱신 -->
+	<update id="cmtLikesUpdate" parameterType="com.smhrd.entity.LikeInfo">
+		update comment_info
+		set cmt_likes = (select count(*)
+						 from like_info
+						 where cmt_seq=#{cmt_seq}
+						)
+		where cmt_seq=#{cmt_seq}
+	</update>
+	
+	<!-- 댓글 좋아요 기록 조회 -->
+	<select id="cmtLikeSearch" parameterType="com.smhrd.entity.LikeInfo" 
+	resultType="com.smhrd.entity.LikeInfo">
+		select * from like_info 
+		where u_email = #{u_email}
+		and cmt_seq = #{cmt_seq}
+	</select>
+	
 </mapper>

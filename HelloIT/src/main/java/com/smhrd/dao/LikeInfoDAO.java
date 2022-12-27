@@ -19,9 +19,23 @@ public class LikeInfoDAO {
 		return cnt;
 	}
 	
+	public int cmtLikeInfoInsert(LikeInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.insert("cmtLikeInfoInsert", dto);
+		session.close();
+		return cnt;
+	}
+	
 	public int likeInfoDelete(LikeInfo dto) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		int cnt = session.delete("likeInfoDelete", dto);
+		session.close();
+		return cnt;
+	}
+	
+	public int cmtLikeInfoDelete(LikeInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.delete("cmtLikeInfoDelete", dto);
 		session.close();
 		return cnt;
 	}
@@ -33,6 +47,12 @@ public class LikeInfoDAO {
 		return cnt;
 	}
 	
+	public int cmtLikesUpdate(int cmt_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		int cnt = session.update("cmtLikesUpdate", cmt_seq);
+		session.close();
+		return cnt;
+	}
 	
 	public LikeInfo likeSearch(LikeInfo dto) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
@@ -40,5 +60,13 @@ public class LikeInfoDAO {
 		session.close();
 		return like_info;
 	}
+	
+	public LikeInfo cmtLikeSearch(LikeInfo dto) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		LikeInfo like_info = session.selectOne("cmtLikeSearch", dto);
+		session.close();
+		return like_info;
+	}
+	
 	
 }

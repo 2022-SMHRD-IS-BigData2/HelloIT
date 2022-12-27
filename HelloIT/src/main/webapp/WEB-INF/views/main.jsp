@@ -398,7 +398,10 @@ function newColour() {
 			<table border=1 width=700>
 				<tr>
 					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
-					<td>좋아요 [<%=cmtList.get(j).getCmt_likes()%>]
+					<td>
+					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
+					</button></a>
 					</td>
 				</tr>
 				<tr>

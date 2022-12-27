@@ -16,6 +16,7 @@ import com.smhrd.controller.BookmarkCon;
 import com.smhrd.controller.CheckDBCon;
 import com.smhrd.controller.CheckLanguageCon;
 import com.smhrd.controller.CheckRoleCon;
+import com.smhrd.controller.CmtLikeCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
@@ -35,6 +36,7 @@ import com.smhrd.controller.KakaoJoinCon;
 import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.MainBookmarkCon;
+import com.smhrd.controller.MainCmtLikeCon;
 import com.smhrd.controller.MainCommentCon;
 import com.smhrd.controller.MainLikeCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
@@ -106,6 +108,10 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 메인에서 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
 		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 메인에서 좋아요 컨트롤러 이동
+		
+		
+		handlerMapping.put("/cmtLike.do", new CmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
+		handlerMapping.put("/mainCmtLike.do", new MainCmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
 		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 메인에서 북마크 컨트롤러 이동
 		
