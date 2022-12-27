@@ -23,6 +23,8 @@ public class UpdateLanguageCon implements Controller {
 	    String[] html = request.getParameterValues("html");
 	    String[] css  = request.getParameterValues("css");
 	    String[] javascript = request.getParameterValues("javascript");
+	    String[] c = request.getParameterValues("c");
+	    String[] c_pp = request.getParameterValues("c_pp");
 	    String[] c_sharp = request.getParameterValues("c_sharp");
 	    String[] java = request.getParameterValues("java");
 	    String[] python = request.getParameterValues("python");
@@ -47,6 +49,8 @@ public class UpdateLanguageCon implements Controller {
 	    dto.setHtml(html[0]);
 	    dto.setCss(css[0]);
 	    dto.setJavascript(javascript[0]);
+	    dto.setC(c[0]);
+	    dto.setC_pp(c_pp[0]);
 	    dto.setC_sharp(c_sharp[0]);
 	    dto.setJava(java[0]);
 	    dto.setPython(python[0]);

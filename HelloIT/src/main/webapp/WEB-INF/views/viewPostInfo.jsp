@@ -314,7 +314,10 @@ td {
 			<table border=1 width=600>
 				<tr>
 					<td colspan="5"><b><%=list.get(i).getU_name() %></b></td>
-					<td>좋아요 [<%=list.get(i).getCmt_likes()%>]
+					<td>
+					<a href="cmtLike.do?cmt_seq=<%=list.get(i).getCmt_seq()%>&u_email=<%=info.getU_email()%>&post_seq=<%=post_seq%>">
+					<button	id="btn"><%=list.get(i).getCmt_likes()%> 💖
+					</button></a>
 					</td>
 				</tr>
 				<tr>

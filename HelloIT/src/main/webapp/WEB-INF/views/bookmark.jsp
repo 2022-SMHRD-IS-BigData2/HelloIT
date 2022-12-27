@@ -262,10 +262,54 @@ function newColour() {
                     <td>20221226</td>
                     <td>111</td>
                 </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
             </tbody>
         </table>
         <br>
-        <center>
 			<div class="pagination_section">
 							<a href="#" class="bt"><< Previous</a>
 							<a href="#" class="num on">1</a>
@@ -277,7 +321,6 @@ function newColour() {
 							<a href="#" class="num">7</a>
 							<a href="#" class="bt">Next >></a>
 				</div>
-            </center>
     </div>
 </body>
 </html>

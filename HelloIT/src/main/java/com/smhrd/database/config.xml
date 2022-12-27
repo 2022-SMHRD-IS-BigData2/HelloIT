@@ -37,6 +37,7 @@
     <mapper resource="com/smhrd/dao/UserInfoMapper.xml"/>
     <mapper resource="com/smhrd/dao/UserLanguageInfoMapper.xml"/>
     <mapper resource="com/smhrd/dao/UserRoleInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/UserSkillInfoMapper.xml"/>
     <mapper resource="com/smhrd/dao/BookmarkInfoMapper.xml"/>
     <mapper resource="com/smhrd/dao/LikeInfoMapper.xml"/>
   </mappers>

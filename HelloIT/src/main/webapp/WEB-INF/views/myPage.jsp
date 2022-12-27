@@ -1,6 +1,6 @@
 <%@page import="com.smhrd.entity.UserInfo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,43 +9,74 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/bookmark.css">
+<<<<<<< HEAD
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+=======
+<link rel="stylesheet" href="./css/FAQ.css">
+   <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
 <style type="text/css">
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width:100%;
+body {
+    background: rgba(0,130,128,255);
+	background-size: cover;
 }
-.window-body{
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 100%;
+}
+.window{
+	font-family: "";
+}
+.window-body {
 	display: flex;
 }
-.tree-view{
-    text-align: -webkit-left;
+
+.tree-view {
+	text-align: -webkit-left;
 	font-family: '';
 	width: max-content;
 	position: sticky;
-    top: 27px;
+	top: 27px;
 }
+
 ul.tree-view li, ul.tree-view ul {
-    margin-top: 15px;
-    font-size: initial;
+	margin-top: 15px;
+	font-size: initial;
 }
-label{
+
+label {
 	font-family: '';
 }
+
 input[type=checkbox]+label, input[type=radio]+label {
-    margin-left: 24px;
-    position: relative;
-    font-size: initial;
-    line-height: 25px;
+	margin-left: 24px;
+	position: relative;
+	font-size: initial;
+	line-height: 25px;
 }
+
 input[type=checkbox]:checked+label:after {
-    left: -16px;
-    top: 8px;
+	left: -16px;
+	top: 8px;
+}
+.userInfo tbody td:nth-child(1){
+    text-align: right;
+    padding: 2px 15px;
+    border-bottom: 1px solid;
+    width: 100px;
 }
 </style>
 </head>
+<%-- 마우스 움직임 반짝임 설정 --%>
 <script type="text/javascript">
 
 var colour="random"; 
@@ -241,7 +272,9 @@ function newColour() {
 </script>
 
 <body>
-	<%UserInfo info = new UserInfo();%>
+	<%
+	UserInfo info = (UserInfo)session.getAttribute("info");
+	%>
 	<div class="container">
 	<div class="wrapper">
 	<div class="window" style="width: 800px; position: sticky; top: 0; max-width:100%"align="center">
@@ -261,9 +294,67 @@ function newColour() {
 		  <li id="listOfFollow" style="cursor:pointer;">팔로잉/팔로워</li>  
 		  <li id="listOfMyIdea" style="cursor:pointer;">나의 아이디어<li>
 		  <li id="listOfPortfolio" style="cursor:pointer;">포트폴리오&자소서<li>
+		  <li id="listOfFAQ" style="cursor:pointer;">FAQ<li>
 	</ul>
 	</div>
-	<div id="myPage" style="display:none;">myPage</div>
+	<div id="myPage" style="display:none;">
+		    <div class="container">
+        <div class="wrapper" style="position: sticky; top: 27px;">
+            <div class="window" style="width: 400px; position: sticky; top: 0; max-width: 100%; width: 400px;display: block; margin: 0 100px; margin-bottom: 50px;" align="center">
+                <div class="title-bar">
+                    <div class="title-bar-text">회원 정보</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+                    </div>
+                </div>
+                    <form style="margin:20px">
+                        <table class="userInfo">
+                        	<tbody>
+                            <tr>
+                                <td style="width:140px">회원 이메일</td>
+                                <td style="padding-left:4px"><%=info.getU_email() %></td>
+                            </tr>
+                            <tr>
+                                <td>이름</td>
+                                <td style="padding-left:4px"><%=info.getU_name() %></td>
+                            </tr>
+                            <tr>
+                                <td>닉네임</td>
+                                <td style="padding-left:4px"><%=info.getU_nick() %></td>
+                            </tr>
+                            <tr>
+                                <td>현재비밀번호</td>
+                                <td style="padding-left:4px"><input type="password" name="pw1" placeholder="현재 비밀번호 입력"></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호</td>
+                                <td style="padding-left:4px"><input type="password" name="repw2" placeholder="변경할 비밀번호 입력"></td>
+                            </tr>
+                            <tr>
+                                <td>변경할 비밀번호 확인</td>
+                                <td style="padding-left:4px"><input type="password" name="repw3" placeholder="변경할 비밀번호 확인"></td>
+                            </tr>
+                            <tr>
+                                <td>생년월일</td>
+                                <td style="padding-left:4px"><%=info.getU_birthdate()%></td>
+                            </tr>
+                            <tr>
+                                <td>직업</td>
+                                <td style="padding-left:4px"><%=info.getU_job() %></td>
+                            </tr>
+                            <tr>
+                                <td>활동점수</td>
+                                <td style="padding-left:4px"><%=info.getU_activity_score() %></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                            	<div><input type="submit" value="저장"></div>
+                    </form>
+            </div>
+        </div>
+    </div>
+	</div>
     <div class="window" id="checkInterest" style="display:none; margin-left:8px">
         <div class="title-bar" style="position:sticky; top:27px">
             <div class="title-bar-text">관심 분야 Check!!</div>
@@ -457,14 +548,19 @@ function newColour() {
             </div>
         </div>
     </div>
-	<div id="bookmark" style="display:none;">
+	<div id="bookmark" style="display:none; font-family:auto;">
 	<div class="board_list_wrap">
         <table class="board_list" border="1">
             <caption>북마크 목록</caption>
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <th width="1px">번호</th>
                     <th>제목</th>
+=======
+                    <th>번호</th>
+                    <th style="width:380px">제목</th>
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>조회수</th>
@@ -477,7 +573,7 @@ function newColour() {
                         <a href="#">북마크5</a>
                     </td>
                     <td>개발자</td>
-                    <td>20221226</td>
+                    <td>2022/12/26</td>
                     <td>111</td>
                 </tr>
                 <tr>
@@ -516,12 +612,56 @@ function newColour() {
                     <td>20221226</td>
                     <td>111</td>
                 </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="tit">
+                        <a href="#">북마크1</a>
+                    </td>
+                    <td>개발자</td>
+                    <td>20221226</td>
+                    <td>111</td>
+                </tr>
             </tbody>
         </table>
         <br>
-        <center>
 			<div class="pagination_section">
-							<a href="#" class="bt"><< Previous</a>
+							<a href="#" class="bt">＜＜ Previous</a>
 							<a href="#" class="num on">1</a>
 							<a href="#" class="num">2</a>
 							<a href="#" class="num">3</a>
@@ -529,27 +669,26 @@ function newColour() {
 							<a href="#" class="num">5</a>
 							<a href="#" class="num">6</a>
 							<a href="#" class="num">7</a>
-							<a href="#" class="bt">Next >></a>
+							<a href="#" class="bt">Next ＞＞</a>
 				</div>
-            </center>
     </div>
-	
-	
-	
-	
 	
 	</div>
 	<div id="follow" style="display:none;">follow</div>
 	<div id="myIdea" style="display:none;">myIdea</div>
 	<div id="portfolio" style="display:none;">
 	        <form>
-            <div class="window" style="margin: 10px; width: 400px" id="tablecenter">
+            <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
                 <div class="title-bar">
                     <div class="title-bar-text">
                         이력서 및 포트폴리오
                     </div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+                    </div>
                 </div>
-                <table>
+                <table class="userInfo">
+                	<tbody>
                     <tr>
                         <td> <strong> 이름 </strong></td>
                         <td><input type="text"></td>
@@ -652,30 +791,88 @@ function newColour() {
                         <td> <strong>포트폴리오</strong> </td>
                         <td> <input type="file" name="" id=""><br></td>
                     </tr>
-
+					</tbody>
                 </table>
                 <br>
                 <input type="submit" value="이력서 저장하기">
 			</div>
         </form>
 	</div>
-	<div></div>
+	<div id="faq" style="display:none;">
+        <div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
+            <div class="title-bar">
+              <div class="title-bar-text">HEllo iT</div>
+              <div class="title-bar-controls">
+                <button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
+              </div>
+            </div>
+            <br><br>
+       <img src="./img/window.gif" width="200" alt="">
+    <h3>자주 묻는 질문</h3>
+    <div class="faq-container">
+      <div class="faq">
+        <h4 class="faq-title">"Hello it"은 무슨 웹사이트 인가요?</h4>
+
+        <p class="faq-text">안녕하세요 이용자님 "Hello it"은 국내 모든 개발자들을 위한 SNS로 개발관련 정보공유를 보다 손쉽게 캐치 하실 수 있으십니다. </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h4 class="faq-title">아이디어 토론장은 뭐하는 공간인가요?</h4>
+
+        <p class="faq-text">여러분들의 머리속에 있는 프로젝트 주제를 등록 할수 있으면서 동시에 그 주제에 대해 다른 사용자 분들과 토론이 진행가능 하며 채용자들의 스카우트 대상이 될수도 있어요! </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h4 class="faq-title">입문자들은 이용하는데 어려움은 없을까요?</h4>
+
+        <p class="faq-text">네 당연합니다! 우리 Hello it은 개인 역량에 맞춰 언어별로 자신에게 맞는 눈높이로 정보들을 습득할 수 있습니다. </p>
+
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="faq">
+        <h4 class="faq-title">개발자의 정보를 알고싶어요!</h4>
+        <p class="faq-text"> 여기로 모시겠습니다! 
+            <br> <br>
+         <a href=""> <img src="./img/KakaoTalk_20221207_141006268.png" width="100" alt=""></a>
+        </p>
+        <button class="faq-toggle">
+          <i class="fas fa-chevron-down"></i>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+	
+	</div>
   	</div>
 	</div>
 	</div>
-		<footer class="main_footer">
+		
+	</div>
+	</div>
+	<footer class="main_footer">
 				<div class="window" id="icons" style="width: 800px" align="center">
 					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
 					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
-					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a>
+					<a href="goMainWrite.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a>  
 					<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
 					<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
 					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 				</div>
 		</footer>
-	</div>
 	<script type="text/javascript">
-		$('#listOfMyPage').on('click',function(){
+		$('#listOfMyPage').on('click', function() {
 			$('#myPage').show();
 			$('#checkInterest').hide();
 			$('#posted').hide();
@@ -683,8 +880,10 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
-		$('#listOfInterest').on('click',function(){
+		$('#listOfInterest').on('click', function() {
+
 			$('#myPage').hide();
 			$('#checkInterest').show();
 			$('#posted').hide();
@@ -692,8 +891,9 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
-		$('#listOfPosted').on('click',function(){
+		$('#listOfPosted').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
 			$('#posted').show();
@@ -701,8 +901,9 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
-		$('#listOfBookmark').on('click',function(){
+		$('#listOfBookmark').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
 			$('#posted').hide();
@@ -710,8 +911,9 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
-		$('#listOfFollow').on('click',function(){
+		$('#listOfFollow').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
 			$('#posted').hide();
@@ -719,8 +921,9 @@ function newColour() {
 			$('#follow').show();
 			$('#myIdea').hide();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
-		$('#listOfMyIdea').on('click',function(){
+		$('#listOfMyIdea').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
 			$('#posted').hide();
@@ -728,8 +931,9 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').show();
 			$('#portfolio').hide();
+			$('#faq').hide();
 		});
-		$('#listOfPortfolio').on('click',function(){
+		$('#listOfPortfolio').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
 			$('#posted').hide();
@@ -737,115 +941,137 @@ function newColour() {
 			$('#follow').hide();
 			$('#myIdea').hide();
 			$('#portfolio').show();
-		}); 
+			$('#faq').hide();
+		});
+		$('#listOfFAQ').on('click', function() {
+			$('#myPage').hide();
+			$('#checkInterest').hide();
+			$('#posted').hide();
+			$('#bookmark').hide();
+			$('#follow').hide();
+			$('#myIdea').hide();
+			$('#portfolio').hide();
+			$('#faq').show();
+		});
 	</script>
-	
+
 	<%-- 체크박스 DB 연결전 value값 체크 스크립트 --%>
 	<script>
-	// 역할 관련
-	var frontend_hidden = $("#frontend").prop("checked")? "Y" :"N";
-	$("#frontend_hidden").val(frontend_hidden);
-	var backend_hidden = $("#backend").prop("checked")? "Y" :"N";
-	$("#backend_hidden").val(backend_hidden);
-	var data_etc_hidden = $("#data_etc").prop("checked")? "Y" :"N";
-	$("#data_etc_hidden").val(data_etc_hidden);
-	var other_skill_hidden = $("#other_skill").prop("checked")? "Y" :"N";
-	$("#other_skill_hidden").val(other_skill_hidden);
-	
-	// 스킬
-	var web_hidden = $("#web").prop("checked")? "Y" :"N";
-	$("#web_hidden").val(web_hidden);
-	var ios_hidden = $("#ios").prop("checked")? "Y" :"N";
-	$("#ios_hidden").val(ios_hidden);
-	var android_hidden = $("#android").prop("checked")? "Y" :"N";
-	$("#android_hidden").val(android_hidden);
-	var windows_hidden = $("#windows").prop("checked")? "Y" :"N";
-	$("#windows_hidden").val(windows_hidden);
-	var mac_hidden = $("#mac").prop("checked")? "Y" :"N";
-	$("#mac_hidden").val(mac_hidden);
-	var linux_hidden = $("#linux").prop("checked")? "Y" :"N";
-	$("#linux_hidden").val(linux_hidden);
-	var game_hidden = $("#game").prop("checked")? "Y" :"N";
-	$("#game_hidden").val(game_hidden);
-	var skill_etc_hidden = $("#skill_etc").prop("checked")? "Y" :"N";
-	$("#skill_etc_hidden").val(skill_etc_hidden);
-	
-	// 언어
-  	var html_hidden = $("#html").prop("checked")? "Y" :"N";
- 	$("#html_hidden").val(html_hidden);
- 	var css_hidden = $("#css").prop("checked")? "Y" :"N";
- 	$("#css_hidden").val(css_hidden);
- 	var c_hidden = $("#c").prop("checked")? "Y" :"N";
- 	$("#c_hidden").val(c_hidden);
- 	var c_pp_hidden = $("#c_pp").prop("checked")? "Y" :"N";
- 	$("#c_pp_hidden").val(c_pp_hidden);
- 	var c_sharp_hidden = $("#c_sharp").prop("checked")? "Y" :"N";
- 	$("#c_sharp_hidden").val(c_sharp_hidden);
- 	var java_hidden = $("#java").prop("checked")? "Y" :"N";
- 	$("#java_hidden").val(java_hidden);
- 	var php_hidden = $("#php").prop("checked")? "Y" :"N";
- 	$("#php_hidden").val(php_hidden);
- 	var dart_hidden = $("#dart").prop("checked")? "Y" :"N";
- 	$("#dart_hidden").val(dart_hidden);
- 	
- 	var typescript_hidden = $("#typescript").prop("checked")? "Y" :"N";
- 	$("#typescript_hidden").val(typescript_hidden);
- 	var kotlin_hidden = $("#kotlin").prop("checked")? "Y" :"N";
- 	$("#kotlin_hidden").val(kotlin_hidden);
- 	var go_hidden = $("#go").prop("checked")? "Y" :"N";
- 	$("#go_hidden").val(go_hidden);
- 	var rust_hidden = $("#rust").prop("checked")? "Y" :"N";
- 	$("#rust_hidden").val(rust_hidden);
- 	var swift_hidden = $("#swift").prop("checked")? "Y" :"N";
- 	$("#swift_hidden").val(swift_hidden);
- 	var scala_hidden = $("#scala").prop("checked")? "Y" :"N";
- 	$("#scala_hidden").val(scala_hidden);
- 	var objective_c_hidden = $("#objective_c").prop("checked")? "Y" :"N";
- 	$("#objective_c_hidden").val(objective_c_hidden);
- 	var r_hidden = $("#r").prop("checked")? "Y" :"N";
- 	$("#r_hidden").val(r_hidden);
- 	var ruby_hidden = $("#ruby").prop("checked")? "Y" :"N";
- 	$("#ruby_hidden").val(ruby_hidden);
- 	var haskell_hidden = $("#haskell").prop("checked")? "Y" :"N";
- 	$("#haskell_hidden").val(haskell_hidden);
- 	var sql_hidden = $("#sql").prop("checked")? "Y" :"N";
- 	$("#sql_hidden").val(r_hsql_hiddenidden);
- 	var language_etc_hidden = $("#language_etc").prop("checked")? "Y" :"N";
- 	$("#language_etc_hidden").val(language_etc_hidden);
-        	
-	// DB
-  	var mysql_hidden = $("#mysql").prop("checked")? "Y" :"N";
- 	$("#mysql_hidden").val(mysql_hidden);
- 	var oracle_hidden = $("#oracle").prop("checked")? "Y" :"N";
- 	$("#oracle_hidden").val(oracle_hidden);
- 	var mariadb_hidden = $("#mariadb").prop("checked")? "Y" :"N";
- 	$("#mariadb_hidden").val(mariadb_hidden);
- 	var pstgresql_hidden = $("#pstgresql").prop("checked")? "Y" :"N";
- 	$("#pstgresql_hidden").val(pstgresql_hidden);
- 	var mongodb_hidden = $("#mongodb").prop("checked")? "Y" :"N";
- 	$("#mongodb_hidden").val(mongodb_hidden);
- 	var redis = $("#redis").prop("checked")? "Y" :"N";
- 	$("#redis").val(redis);
- 	var sqlite_hidden = $("#sqlite").prop("checked")? "Y" :"N";
- 	$("#sqlite_hidden").val(sqlite_hidden);
- 	var aws_aurora_hidden = $("#aws_aurora").prop("checked")? "Y" :"N";
- 	$("#aws_aurora_hidden").val(aws_aurora_hidden);
- 	var elasticsearch_hidden = $("#elasticsearch").prop("checked")? "Y" :"N";
- 	$("#elasticsearch_hidden").val(elasticsearch_hidden);
- 	var dynamodb_hidden = $("#dynamodb").prop("checked")? "Y" :"N";
- 	$("#dynamodb_hidden").val(dynamodb_hidden);
- 	var firebase_hidden = $("#firebase").prop("checked")? "Y" :"N";
- 	$("#firebase_hidden").val(firebase_hidden);
- 	var tibero_hidden = $("#tibero").prop("checked")? "Y" :"N";
- 	$("#tibero_hidden").val(tibero_hidden);
- 	var hive_hidden = $("#hive").prop("checked")? "Y" :"N";
- 	$("#hive_hidden").val(hive_hidden);
- 	var cassandra_hidden = $("#cassandra").prop("checked")? "Y" :"N";
- 	$("#cassandra_hidden").val(cassandra_hidden);
- 	var db_etc_hidden = $("#db_etc").prop("checked")? "Y" :"N";
- 	$("#db_etc_hidden").val(db_etc_hidden);
+		// 역할 관련
+		var frontend_hidden = $("#frontend").prop("checked") ? "Y" : "N";
+		$("#frontend_hidden").val(frontend_hidden);
+		var backend_hidden = $("#backend").prop("checked") ? "Y" : "N";
+		$("#backend_hidden").val(backend_hidden);
+		var data_etc_hidden = $("#data_etc").prop("checked") ? "Y" : "N";
+		$("#data_etc_hidden").val(data_etc_hidden);
+		var other_skill_hidden = $("#other_skill").prop("checked") ? "Y" : "N";
+		$("#other_skill_hidden").val(other_skill_hidden);
+
+		// 스킬
+		var web_hidden = $("#web").prop("checked") ? "Y" : "N";
+		$("#web_hidden").val(web_hidden);
+		var ios_hidden = $("#ios").prop("checked") ? "Y" : "N";
+		$("#ios_hidden").val(ios_hidden);
+		var android_hidden = $("#android").prop("checked") ? "Y" : "N";
+		$("#android_hidden").val(android_hidden);
+		var windows_hidden = $("#windows").prop("checked") ? "Y" : "N";
+		$("#windows_hidden").val(windows_hidden);
+		var mac_hidden = $("#mac").prop("checked") ? "Y" : "N";
+		$("#mac_hidden").val(mac_hidden);
+		var linux_hidden = $("#linux").prop("checked") ? "Y" : "N";
+		$("#linux_hidden").val(linux_hidden);
+		var game_hidden = $("#game").prop("checked") ? "Y" : "N";
+		$("#game_hidden").val(game_hidden);
+		var skill_etc_hidden = $("#skill_etc").prop("checked") ? "Y" : "N";
+		$("#skill_etc_hidden").val(skill_etc_hidden);
+
+		// 언어
+		var html_hidden = $("#html").prop("checked") ? "Y" : "N";
+		$("#html_hidden").val(html_hidden);
+		var css_hidden = $("#css").prop("checked") ? "Y" : "N";
+		$("#css_hidden").val(css_hidden);
+		var javascript_hidden = $("#javascript").prop("checked") ? "Y" : "N";
+		$("#javascript_hidden").val(javascript_hidden);
+		var c_hidden = $("#c").prop("checked") ? "Y" : "N";
+		$("#c_hidden").val(c_hidden);
+		var c_pp_hidden = $("#c_pp").prop("checked") ? "Y" : "N";
+		$("#c_pp_hidden").val(c_pp_hidden);
+		var c_sharp_hidden = $("#c_sharp").prop("checked") ? "Y" : "N";
+		$("#c_sharp_hidden").val(c_sharp_hidden);
+		var java_hidden = $("#java").prop("checked") ? "Y" : "N";
+		$("#java_hidden").val(java_hidden);
+		var python_hidden = $("#python").prop("checked") ? "Y" : "N";
+		$("#python_hidden").val(python_hidden);
+		var php_hidden = $("#php").prop("checked") ? "Y" : "N";
+		$("#php_hidden").val(php_hidden);
+		var dart_hidden = $("#dart").prop("checked") ? "Y" : "N";
+		$("#dart_hidden").val(dart_hidden);
+
+		var typescript_hidden = $("#typescript").prop("checked") ? "Y" : "N";
+		$("#typescript_hidden").val(typescript_hidden);
+		var kotlin_hidden = $("#kotlin").prop("checked") ? "Y" : "N";
+		$("#kotlin_hidden").val(kotlin_hidden);
+		var go_hidden = $("#go").prop("checked") ? "Y" : "N";
+		$("#go_hidden").val(go_hidden);
+		var rust_hidden = $("#rust").prop("checked") ? "Y" : "N";
+		$("#rust_hidden").val(rust_hidden);
+		var swift_hidden = $("#swift").prop("checked") ? "Y" : "N";
+		$("#swift_hidden").val(swift_hidden);
+		var scala_hidden = $("#scala").prop("checked") ? "Y" : "N";
+		$("#scala_hidden").val(scala_hidden);
+		var objective_c_hidden = $("#objective_c").prop("checked") ? "Y" : "N";
+		$("#objective_c_hidden").val(objective_c_hidden);
+		var r_hidden = $("#r").prop("checked") ? "Y" : "N";
+		$("#r_hidden").val(r_hidden);
+		var ruby_hidden = $("#ruby").prop("checked") ? "Y" : "N";
+		$("#ruby_hidden").val(ruby_hidden);
+		var haskell_hidden = $("#haskell").prop("checked") ? "Y" : "N";
+		$("#haskell_hidden").val(haskell_hidden);
+		var clojure_hidden = $("#clojure").prop("checked") ? "Y" : "N";
+		$("#clojure_hidden").val(clojure_hidden);
+		var sql_hidden = $("#sql").prop("checked") ? "Y" : "N";
+		$("#sql_hidden").val(r_hsql_hiddenidden);
+		var language_etc_hidden = $("#language_etc").prop("checked") ? "Y"
+				: "N";
+		$("#language_etc_hidden").val(language_etc_hidden);
+
+		// DB
+		var mysql_hidden = $("#mysql").prop("checked") ? "Y" : "N";
+		$("#mysql_hidden").val(mysql_hidden);
+		var oracle_hidden = $("#oracle").prop("checked") ? "Y" : "N";
+		$("#oracle_hidden").val(oracle_hidden);
+		var mariadb_hidden = $("#mariadb").prop("checked") ? "Y" : "N";
+		$("#mariadb_hidden").val(mariadb_hidden);
+		var pstgresql_hidden = $("#pstgresql").prop("checked") ? "Y" : "N";
+		$("#pstgresql_hidden").val(pstgresql_hidden);
+		var mongodb_hidden = $("#mongodb").prop("checked") ? "Y" : "N";
+		$("#mongodb_hidden").val(mongodb_hidden);
+		var redis = $("#redis").prop("checked") ? "Y" : "N";
+		$("#redis").val(redis);
+		var sqlite_hidden = $("#sqlite").prop("checked") ? "Y" : "N";
+		$("#sqlite_hidden").val(sqlite_hidden);
+		var aws_aurora_hidden = $("#aws_aurora").prop("checked") ? "Y" : "N";
+		$("#aws_aurora_hidden").val(aws_aurora_hidden);
+		var elasticsearch_hidden = $("#elasticsearch").prop("checked") ? "Y"
+				: "N";
+		$("#elasticsearch_hidden").val(elasticsearch_hidden);
+		var dynamodb_hidden = $("#dynamodb").prop("checked") ? "Y" : "N";
+		$("#dynamodb_hidden").val(dynamodb_hidden);
+		var firebase_hidden = $("#firebase").prop("checked") ? "Y" : "N";
+		$("#firebase_hidden").val(firebase_hidden);
+		var tibero_hidden = $("#tibero").prop("checked") ? "Y" : "N";
+		$("#tibero_hidden").val(tibero_hidden);
+		var hive_hidden = $("#hive").prop("checked") ? "Y" : "N";
+		$("#hive_hidden").val(hive_hidden);
+		var cassandra_hidden = $("#cassandra").prop("checked") ? "Y" : "N";
+		$("#cassandra_hidden").val(cassandra_hidden);
+		var db_etc_hidden = $("#db_etc").prop("checked") ? "Y" : "N";
+		$("#db_etc_hidden").val(db_etc_hidden);
 	</script>
-	
-	
+
+    <script src="./js/FAQ.js"></script>
+    <script>
+    	
+    </script>
 </body>
 </html>

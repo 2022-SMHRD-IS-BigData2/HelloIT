@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -17,8 +19,13 @@ a {
     color: inherit;
 }
 
+<<<<<<< HEAD
  .board_list_wrap {
     padding: 50px;
+=======
+.board_list_wrap {
+    padding: 5px;
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
 }
 .board_list {
     width: 100%;
@@ -31,8 +38,13 @@ a {
 
 .board_list th,
 .board_list td {
+<<<<<<< HEAD
     padding: 10px;
     font-size: 10px;
+=======
+    padding: 3px;
+    font-size: 14px;
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
 }
 
 .board_list td {
@@ -63,7 +75,11 @@ a {
     margin-left: 0;
 }
 
+<<<<<<< HEAD
  .board_list_wrap .pagination_section a.bt {
+=======
+.board_list_wrap .pagination_section a.bt {
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
     border: 1px solid #eee;
     background: wh;
 }

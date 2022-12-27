@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style type="text/css">
 .wrap{
 	position:absolute;	
@@ -221,11 +222,14 @@ function newColour() {
 <body>
 <div class="container">
 	<div class="wrapper">
-		<form action="join.do" method="post">
 			<div id="joinMain" class="window wrap" style="width: 300px">
 				<div class="title-bar header">
 					<div class="title-bar-text">회원가입</div>
+					<div class="title-bar-controls">
+						<button aria-label="Close" onclick="location.href = 'goLogin.do'"></button>
+					</div>
 				</div>
+		<form action="join.do" method="post">
 				<table style="margin:auto;">
 					<tr>
 						<td colspan="2" align="center"><img src="./img/com.gif" width="250" alt=""></td>
@@ -322,8 +326,8 @@ function newColour() {
 
 					</tr>
 				</table>
-			</div>
 		</form>
+			</div>
 	</div>
 	</div>
 		<div class="status-bar task-bar">
@@ -338,6 +342,9 @@ function newColour() {
 	<script src="./js/move.js"></script>
     <script src="./js/showHideJoin.js"></script>
     <script src="./js/time.js"></script>
+   	<script>
+		
+	</script>
 </body>
 
 </html>

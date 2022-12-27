@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.UserDBInfoDAO">
 	
-	<insert id="insertMyDB"
+	<insert id="checkDB"
 			parameterType="com.smhrd.entity.UserDBInfo">
 			INSERT INTO user_db_info
 			VALUES
-			    (#{u_email}, 
-			     #{mysql}, 
-			     #{oracle}, 
-			     #{mariadb}, 
-			     #{pstgresql}, 
-			     #{mongodb}, 
-			     #{redis},
-			     #{sqlite},
-			     #{aws_aurora},
-			     #{elasticsearch},
-			     #{dynamodb},
-			     #{firebase},
-			     #{tibero},
-			     #{hive},
-			     #{cassandra},
-			     #{db_etc},
-			     )
+			(#{u_email},
+			#{mysql},
+			#{oracle},
+			#{mariadb},
+			#{pstgresql},
+			#{mongodb},
+			#{redis},
+			#{sqlite},
+			#{aws_aurora},
+			#{elasticsearch},
+			#{dynamodb},
+			#{firebase},
+			#{tibero},
+			#{hive},
+			#{cassandra},
+			#{db_etc}
+			)
 	</insert>
-	<update id="updateMyDB"
+	<update id="updateDB"
 			parameterType="com.smhrd.entity.UserDBInfo">
 			UPDATE user_db_info
 			SET
@@ -44,6 +44,6 @@
 			    hive = #{hive},
 			    cassandra = #{cassandra},
 			    db_etc = #{db_etc},
-			WHERE u_email = #{u_email};
+			WHERE u_email = #{u_email}
 	</update>
 </mapper>

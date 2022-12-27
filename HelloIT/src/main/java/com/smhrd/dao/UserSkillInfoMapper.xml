@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.dao.UserSkillInfoDAO">
+	
+	
+	<!-- 회원 역할 선택 -->
+	<insert id="checkSkill"
+			parameterType="com.smhrd.entity.UserSkillInfo">
+			INSERT INTO user_skill_info
+			VALUES
+			    (#{u_email}, 
+			     #{web}, 
+			     #{ios}, 
+			     #{android}, 
+			     #{windows},
+			     #{mac},
+			     #{linux},
+			     #{game},
+			     #{etc}
+			     )
+	</insert>
+	
+	<!-- 회원 역할 수정 -->	
+	<update id="updateSkill"
+			parameterType="com.smhrd.entity.UserSkillInfo">
+			UPDATE user_skill_info
+			SET
+			    u_email = #{u_email}, 
+			    web = #{web}, 
+			    ios = #{ios}, 
+			    android = #{android}, 
+			    windows = #{windows},
+			    mac = #{mac},
+			    linux = #{linux},
+			    game = #{game},
+			    etc = #{etc},
+			WHERE u_email = #{u_email}
+	</update>
+</mapper>

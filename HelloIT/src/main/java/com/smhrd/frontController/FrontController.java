@@ -16,13 +16,12 @@ import com.smhrd.controller.BookmarkCon;
 import com.smhrd.controller.CheckDBCon;
 import com.smhrd.controller.CheckLanguageCon;
 import com.smhrd.controller.CheckRoleCon;
+import com.smhrd.controller.CmtLikeCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
-import com.smhrd.controller.GoJobHuntingCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
-import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoMainWriteCon;
@@ -37,6 +36,7 @@ import com.smhrd.controller.KakaoJoinCon;
 import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.MainBookmarkCon;
+import com.smhrd.controller.MainCmtLikeCon;
 import com.smhrd.controller.MainCommentCon;
 import com.smhrd.controller.MainLikeCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
@@ -44,9 +44,11 @@ import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
 import com.smhrd.controller.UpdateMyPageCon;
+import com.smhrd.controller.UpdateRecruitCon;
 import com.smhrd.controller.UpdateRoleCon;
+import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.WriteCon;
-import com.smhrd.controller.recruitCon;
+import com.smhrd.controller.GoRecruitCon;
 import com.smhrd.dao.GoIdeaCon;
 
 @WebServlet("*.do")
@@ -62,10 +64,9 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
-		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); //
-		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); //
-		handlerMapping.put("/goJobHunting.do", new GoJobHuntingCon()); //
-		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); //
+		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 네이버 회원가입
+		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 마이페이지 이동
+		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 마이페이지 이동
 		
 		
 		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
@@ -79,6 +80,8 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
 		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
 		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/updateSkill.do", new UpdateSkillCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/updateRecruit.do", new UpdateRecruitCon()); // 이력서 포트폴리오
 		
 		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
@@ -97,7 +100,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
 		
 		
-		handlerMapping.put("/recruit.do", new recruitCon());
+		handlerMapping.put("/recruit.do", new GoRecruitCon());
 		
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
@@ -105,6 +108,10 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 메인에서 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
 		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 메인에서 좋아요 컨트롤러 이동
+		
+		
+		handlerMapping.put("/cmtLike.do", new CmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
+		handlerMapping.put("/mainCmtLike.do", new MainCmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
 		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 메인에서 북마크 컨트롤러 이동
 		

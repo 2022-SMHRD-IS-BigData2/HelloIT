@@ -7,7 +7,6 @@ body {
 .container{
 	display: table;
 	margin: 0 auto;
-	height: 100vh;
 }
 .wrapper{
 	display: table-cell;
@@ -18,9 +17,6 @@ body {
  	top: 50%;
  	left: 50%;
  	transform: translate(-50%, -50%);
-}
-td{
-	width: 130px;
 }
 
 #btn{
@@ -144,4 +140,28 @@ body{
 .active{
 	box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
 	padding: 0 12px;
+}
+thead th{
+	border: 2px solid;
+}
+table td{
+	border-bottom:1px solid;
+}
+tr:hover{
+	background:lightgreen;
+}
+
+table a:hover{
+	text-decoration: underline;
+}
+table a{
+	text-decoration: none;
+	color: black; 
+}
+tr>td:nth-child(1){
+	font-weight: bolder;
+}
+tr>td:nth-child(4){
+	font-weight: bolder;
+	text-align: center;
 }

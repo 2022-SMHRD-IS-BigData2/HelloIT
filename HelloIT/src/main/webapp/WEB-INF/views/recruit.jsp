@@ -13,7 +13,8 @@
 	String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 	String sql = "SELECT * from S_CRAWLING"; 
 	String sql2 = "SELECT * from J_CRAWLING";%>
-	
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +23,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<script src="./js/jquery-3.1.1.min.js"></script>
 	<link rel="stylesheet" href="https://unpkg.com/98.css" />
-
+	<link rel="stylesheet" href="./css/style.css">
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<style type="text/css">
 	<style>
 		body {
 			height: 100vh;
@@ -33,9 +35,10 @@
 		}
 
 		table {
-			width: 600px;
-			margin-left: auto;
-			margin-right: auto;
+			width: 750px;
+			margin: auto;
+			border-collapse: collapse;
+			
 		}
 
 		#job-table {
@@ -44,7 +47,7 @@
 		}
 
 		body {
-			margin-top: 100px;
+			/* margin-top: 100px; */
 			font-family: 'Trebuchet MS', serif;
 			line-height: 1.6
 		}
@@ -76,12 +79,37 @@
 
 		.tab-content {
 			display: none;
-			background: #ededed;
+			/* background: #ededed; */
 			padding: 15px;
 		}
 
 		.tab-content.current {
 			display: inherit;
+		}
+		table td{
+			padding: 5px 10px;
+			border-bottom:1px solid;
+		}
+		thead th{
+			border:2px solid;	
+		}
+		tr:hover{
+			background:lightgreen;
+		}
+		
+		table a:hover{
+			text-decoration: underline;
+		}
+		table a{
+			text-decoration: none;
+			color: black; 
+		}
+		tr>td:nth-child(1){
+			font-weight: bolder;
+		}
+		tr>td:nth-child(4){
+			font-weight: bolder;
+			text-align: center;
 		}
 	</style>
 </head>
@@ -282,24 +310,18 @@ function newColour() {
 
 
 <body>
-	<center>
-	<div class="window" style="margin: 10px; width: 800px">
-		<div class="title-bar">
-			<div class="title-bar-text">
-				채용 공고
-	  </div>
+<div class="container">
+<div class="wrapper">
+	<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
+		<div class="title-bar" style="position:sticky; top:0">
+			<div class="title-bar-text">채용 공고</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close" onclick="location.href='goMain.do'"></button>
 			</div>
 		</div>
-		<div class="container">
-			<table>
-				<tr>
-					<td colspan="2">
+		<div class="window-body">
 						<h5 align="center"> 채용 내용을 클릭하면 해당 공고로 이동합니다.</h5>
-					</td>
-
-				</tr>
-			</table>
-			<input type="text" placeholder="원하는 채용을 검색하세요" style="width:100px;height: 20px; font: size 10px;;">
+			<input type="text" placeholder="원하는 채용을 검색하세요" style="width:150px;height: 20px; font: size 10px;;">
 			<button>검색</button>
 			<BR></BR>
 
@@ -327,13 +349,13 @@ function newColour() {
 
 
 
-					<table style="width: 600px; height: 100px; overflow: auto" border="1px">
+					<table style="height: 100px; overflow: auto;">
 						<tbody>
 							<thead>
 								<tr height="30px">
 									<th>기업명</th>
-									<th>채용 내용</th>
-									<th>경력/학력/지역</th>
+									<th style="width:1000px">채용 내용</th>
+									<th style="width:500px">경력/학력/지역</th>
 									<th>마감일</th>
 								</tr>
 							</thead>
@@ -408,7 +430,7 @@ function newColour() {
 			%>
 			
 
-					<table style="width: 600px; height: 100px; overflow: auto" border="1px">
+					<table style="height: 100px; overflow: auto">
 						<tbody>
 							<thead>
 								<tr height="30px">
@@ -473,9 +495,22 @@ function newColour() {
 				
 			</div>
 
-
 		</div>
-
+		</div>
+		<footer class="main_footer">
+				<div class="window" id="icons" style="width: 800px" align="center">
+					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+					<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+					<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+				</div>
+		</footer>
+		</div>
+		</div>
+		
+		<script src="./js/index.js"></script>
 
 		<script>
 
@@ -494,14 +529,6 @@ function newColour() {
 			})
 
 		</script>
-
-		<a href="http://www.naver.com/"><img src="icons/KakaoTalk_20221221_163912885_01.png" alt="인기게시글"
-				width="30px"></a>
-		<a href="#"> <img src="icons/KakaoTalk_20221221_163912885_04.png" alt="아이디어" width="30px"></a>
-		<a href="#"> <img src="icons/KakaoTalk_20221221_163912885.png" alt="메인홈" width="30px"></a>
-		<a href="#"><img src="icons/KakaoTalk_20221221_163912885_02.png" alt="채용공고" width="30px"></a>
-		<a href="#"><img src="icons/KakaoTalk_20221221_163912885_03.png" alt="개인정보" width="30px"></a>
-	</center>
 </body>
 
 </html>
