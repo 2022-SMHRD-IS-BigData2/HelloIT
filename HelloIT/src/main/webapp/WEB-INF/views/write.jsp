@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello IT</title>
 <link rel="stylesheet" href="./css/style.css">
+<script type="text/javascript" src="./js/mousePointer.js"></script>
 <style type="text/css">
 .container{
 	display:flex;
@@ -255,7 +256,6 @@ function newColour() {
 }
 
 </script>
-
 
 
 <body>

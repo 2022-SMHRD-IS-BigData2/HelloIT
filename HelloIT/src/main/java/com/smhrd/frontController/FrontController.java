@@ -35,11 +35,13 @@ import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.KakaoJoinCon;
 import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
+import com.smhrd.controller.LogoutCon;
 import com.smhrd.controller.MainBookmarkCon;
 import com.smhrd.controller.MainCmtLikeCon;
 import com.smhrd.controller.MainCommentCon;
 import com.smhrd.controller.MainLikeCon;
 import com.smhrd.controller.NaverLoginSuccessCon;
+import com.smhrd.controller.RecruitCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
@@ -61,6 +63,10 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 
 		handlerMapping = new HashMap<>();
+
+		
+		handlerMapping.put("/goRecruitTest.do", new RecruitCon()); // 테스트
+		
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
 		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
@@ -87,6 +93,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
 		handlerMapping.put("/join.do", new JoinCon()); // 
 		handlerMapping.put("/kakaoJoin.do", new KakaoJoinCon()); // 
+		handlerMapping.put("/logout.do", new LogoutCon());
 		
 		
 		// google 로그인 테스트
