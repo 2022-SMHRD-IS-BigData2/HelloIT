@@ -111,7 +111,7 @@
 		                            </tbody>
 		                        </table>
 		                        <br>
-		                            	<div><input type="submit" value="저장"></div>
+		                            	<div><input type="submit" onclick="myInfoPopup();" value="저장"></div>
 		                    </form>
 		            </div>
 		        </div>

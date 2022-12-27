@@ -13,3 +13,6 @@ function langPopup(){
 function dbPopup(){
 	alert('DB가 새롭게 저장되었습니다.');
 }
+function myInfoPopup(){
+	alert('회원정보가 새롭게 저장되었습니다.');
+}
