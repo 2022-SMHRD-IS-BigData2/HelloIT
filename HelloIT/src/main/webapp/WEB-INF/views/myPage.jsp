@@ -1122,7 +1122,7 @@ function newColour() {
 					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
 					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
 					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a>
-					<a href="goMainWrite.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a>  
+					<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a>
 					<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
 					<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
 					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
