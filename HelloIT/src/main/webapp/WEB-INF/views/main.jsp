@@ -280,6 +280,7 @@ function newColour() {
 			<div class="title-bar">
 				<div class="title-bar-text">HEllo iT</div>
 					<div class="title-bar-controls">
+						<button><a href ="logout.do">Logout</a></button>
 						<button aria-label="Minimize"></button>
 						<button aria-label="Maximize"></button>
 						<button aria-label="Close"></button>
