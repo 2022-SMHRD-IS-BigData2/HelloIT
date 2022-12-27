@@ -65,9 +65,6 @@
 				<br>
 				<div class="pagination_section">
 					<a href="#">＜＜ Previous</a>
-					<%-- <%for(int i=0;i<cnt.size()/10;i++){ %>
-						<a href="goRecruitTest.do?num=<%=i+1%>"><%=i+1%></a>
-						<%} %>	 --%>	
 						<a href="#">1</a>
 						<a href="#">2</a>
 						<a href="#">3</a>

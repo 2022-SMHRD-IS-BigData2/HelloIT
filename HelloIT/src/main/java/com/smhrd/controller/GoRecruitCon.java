@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.dao.RecruitDAO;
+import com.smhrd.entity.OnclickDTO;
 import com.smhrd.entity.Recruit;
 
 public class GoRecruitCon implements Controller {
@@ -24,15 +25,18 @@ public class GoRecruitCon implements Controller {
 		if(num!=null) {
 			n = Integer.parseInt(num);
 		}
-		System.out.println(num);
-		System.out.println(n);
 //		dto.setN(n);
 		RecruitDAO dao = new RecruitDAO();
 		List<Recruit> cnt = dao.pageCnt();
 		List<Recruit> list  =  dao.paging(n);
+		String on = "on";
+		System.out.println(n);
+		System.out.println(num);
 		System.out.println(cnt.get(0));
 		System.out.println(cnt);
+		System.out.println(on);
 		request.setAttribute("list", list);
+		request.setAttribute("on", on);
 		request.setAttribute("cnt", cnt);
 		
 		return "recruit";

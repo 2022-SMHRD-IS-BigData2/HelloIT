@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
     <!-- message에서 massanger로 이동 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +10,10 @@
     <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Message</title>
     <style>
-       * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
 }
 
 a {
@@ -85,6 +83,7 @@ a {
 }
         </style>
 </head>
+
 <body>
     <div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
         <div class="title-bar">
@@ -96,62 +95,44 @@ a {
             </div>
         </div>
     </div>
-    
-    <div class="window" style="width: 800px" align="center">
-        <div class="window" style="position:sticky; top:26.6px">
-            <div class="title-bar">
-                <div class="title-bar-text">Message</div>
-            </div>
-            <div class="window-body" style="display:flex">
-                
-                
-                
-                <div class="wrap">
-            <div>   
-                <img src="./img/message.gif" width="60px" alt="">
-                </div>
-                <div class="chat ch1">
-                    
-                    <img src="./img/icon_3.png" width="50px" alt="">
-                    
-                    사용자이름
-                    <div class="textbox">안녕하세요. 반갑습니다.</div>
-            </div>
-            <div class="chat ch2">
-                
-                <img src="./img/icon_2.png" width="55px" >
-                <div class="textbox">안녕하세요. 그동안 잘 지내셨어요?</div>
-            </div>
-            <div class="chat ch1">
-                <img src="./img/icon_3.png" width="50px" alt="">
-                사용자이름
-                <div class="textbox">아유~ 그럼요! 요즘 어떻게 지내세요?</div>
-            </div>
-            <div class="chat ch2">
-                <img src="./img/icon_2.png" width="55px" alt="">
-                <div class="textbox">뭐~ 늘 코딩하면서 똑같은 하루 하루를 보내는 중이에요.
-                    너무 힘드네요 살려주세요. js 어떻게해야하지 </div>
-            
-            
-                </div>
-
-               
-                
-                   
-                    
-
-
-                                
-                <input type=text style="width:300pt;height:35pt;" >   
-
-                                <!-- <textarea  id="text" cols="50" rows="2" ></textarea> -->
-                                
-                                <input type=button style="width:60pt;height:35pt;" value="전송">         
-<br><br><br><br>
-                                <button id="btn">뒤로가기</button>
-                                
-                            </div>
-                        </body>
-                        
-                    </body>
+<div class="window" style="width: 800px" align="center">
+	<div class="window" style="position:sticky; top:26.6px">
+		<div class="title-bar">
+			<div class="title-bar-text">Message</div>
+		</div>
+		<div class="window-body" style="display:flex">
+			<div class="wrap">
+				<div>   
+					<img src="./img/message.gif" width="60px" alt="">
+				</div>
+				<div class="chat ch1">
+					<img src="./img/icon_3.png" width="50px" alt="">
+					사용자이름
+					<div class="textbox">안녕하세요. 반갑습니다.</div>
+				</div>
+				<div class="chat ch2">
+					<img src="./img/icon_2.png" width="55px" >
+					<div class="textbox">안녕하세요. 그동안 잘 지내셨어요?</div>
+				</div>
+				<div class="chat ch1">
+					<img src="./img/icon_3.png" width="50px" alt="">
+					사용자이름
+					<div class="textbox">아유~ 그럼요! 요즘 어떻게 지내세요?</div>
+				</div>
+				<div class="chat ch2">
+					<img src="./img/icon_2.png" width="55px" alt="">
+					<div class="textbox">뭐~ 늘 코딩하면서 똑같은 하루 하루를 보내는 중이에요.
+					너무 힘드네요 살려주세요. js 어떻게해야하지 </div>
+				</div>
+				<input type=text style="width:300pt;height:35pt;" >   
+				<!-- <textarea  id="text" cols="50" rows="2" ></textarea> -->
+				<input type=button style="width:60pt;height:35pt;" value="전송">         
+				<br><br><br><br>
+				<button id="btn">뒤로가기</button>
+			                                
+			</div>
+		</div>
+	</div>
+</div>
+</body>
 </html>

@@ -10,12 +10,13 @@
 <head>
 <title>Hello IT</title>
 <meta charset="UTF-8" />
+<meta name="google-signin-client_id" content="950051192851-pin8qfe1mmnd8tkimrfp7j2l32t4ssff.apps.googleusercontent.com">
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/login.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<meta name="google-signin-client_id" content="950051192851-pin8qfe1mmnd8tkimrfp7j2l32t4ssff.apps.googleusercontent.com">
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <script src="https://apis.google.com/js/api:client.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
 <script>

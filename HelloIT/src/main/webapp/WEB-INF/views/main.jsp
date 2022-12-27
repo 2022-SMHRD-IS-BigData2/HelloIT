@@ -18,14 +18,19 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/login.css">
-
+<link rel="stylesheet" href="./css/mypage.css">
+<style type="text/css">
+.board_list td {
+    text-align: left;
+}
+</style>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
 <title>Hello IT</title>
 </head>
 <body>
-<a href="goMyIdea.do" style="position:fixed; top:0;">테스트</a>
-<a href="goCustomizedMain.do">맞춤형게시물조회</a>
+<a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
+<a href="goCustomizedMain.do" style="position:fixed; top: 30px">맞춤형게시물조회</a>
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
@@ -56,7 +61,7 @@
 			<div class="window-body" style="display:flex">
 				<img src="./img/comm.gif" width="50" alt="">
 				<p></p>
-				<ul style="list-style: none; display:flex">
+				<ul style="list-style: none; display:flex; margin-block: auto;">
 					<li>
 						<form action="https://search.naver.com/search.naver" method="GET" target="_blank">
 							<input type="text" placeholder="Naver" name="query">
@@ -85,7 +90,7 @@
 		-->			
 		<%-- 맞춤형 피드 노출 부분 및 검색어 입력 --%>
 		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
-			<div class="window" style="position:sticky; top:118.2px; margin:-3px">
+			<div class="window" style="position:sticky; top:131.2px; margin:-3px">
 				<div class="title-bar">
 				<div class="title-bar-text">전체 게시물</div>
 				<div>
@@ -102,10 +107,10 @@
 			</div>
 			
 			<div class="window-body">
-				<table id="list" border="1" bgcolor="white">
+				<table class="board_list" id="list" bgcolor="white">
 					<tr>
-						<td>작성자</td>
-						<td style="width: 650px"><%=list.get(i).getU_name()%></td>
+						<td id="user">작성자</td>
+						<td style="width: 650px text-align:'';"><%=list.get(i).getU_name()%></td>
 					</tr>
 					<tr>
 						<td colspan="2">내용</td>
@@ -166,9 +171,11 @@
 				%>
 			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table border=1 width=700>
-				<tr>
-					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+			<table class="board_list" width=700>
+				<tr style="width: 0px; padding: 0px;">
+					<%-- <td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td> --%>
+					<td><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
@@ -176,7 +183,6 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
 				</tr>
 			<%}%>	
 			</table>
@@ -199,9 +205,5 @@
 	</div>
 </div>
 	<script src="./js/move.js"></script>
-	<script>
-		var test = '<%=info.getU_email()%>'
-		console.log(test);
-	</script>
 </body>
 </html>

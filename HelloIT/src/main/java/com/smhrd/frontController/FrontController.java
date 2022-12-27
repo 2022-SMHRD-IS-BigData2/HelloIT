@@ -21,6 +21,7 @@ import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoCustomizedMainCon;
+import com.smhrd.controller.GoFollowCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
@@ -66,9 +67,10 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
-		handlerMapping.put("/goMyIdea.do", new GoMyIdea()); // 마이페이지 이동
+		handlerMapping.put("/goMessage.do", new GoMessageCon()); // 마이페이지 이동
+		handlerMapping.put("/goDevInfo.do", new GoDevInfoCon()); // 보고또보고 팀 소개페이지 이동
 		
-		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 테스트
+		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 채용공고 페이지 이동
 		
 		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
 		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
