@@ -40,5 +40,6 @@
     <mapper resource="com/smhrd/dao/UserSkillInfoMapper.xml"/>
     <mapper resource="com/smhrd/dao/BookmarkInfoMapper.xml"/>
     <mapper resource="com/smhrd/dao/LikeInfoMapper.xml"/>
+    <mapper resource="com/smhrd/dao/RecruitMapper.xml"/>
   </mappers>
 </configuration>
