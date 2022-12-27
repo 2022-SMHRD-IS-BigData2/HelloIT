@@ -77,13 +77,12 @@
 </style>
 <body>
 
-<a href="goCustomizedMain.do">맞춤형게시물조회</a>
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
 	
 	// request 영역에서 list 꺼내서 출력하기
-	List<PostInfo> list = (List<PostInfo>) request.getAttribute("list");
+	List<PostInfo> list = (List<PostInfo>) request.getAttribute("ctpList");
 	%>
 	
 <div class="container">
@@ -139,7 +138,7 @@
 		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<div class="window" style="position:sticky; top:118.2px; margin:-3px">
 				<div class="title-bar">
-				<div class="title-bar-text">전체 게시물</div>
+				<div class="title-bar-text">맞춤형</div>
 				<div>
 					<input type="text" style="width: 150pt; height: 15pt;" placeholder="검색창" name="" id=""> 
 					<input type="button" style="width: 30pt; height: 15pt;" value="🔍">

@@ -341,3 +341,19 @@ select *
 		where c.post_seq=13
 		and c.u_email = u.u_email
 		order by cmt_dt
+
+select distinct * from post_info p, user_info u
+		where 
+		post_seq in (select post_seq 
+					from post_level
+					where tag_seq||tag_level in ( select tag_seq||tag_level
+													from user_level
+													where u_email='test@hs.com'))
+		and
+		post_seq in (select post_seq
+					from post_tag
+					where tag_seq in (select tag_seq
+										from user_tag
+										where u_email='test@hs.com'))
+		and p.u_email = u.u_email
+		order by post_dt desc;

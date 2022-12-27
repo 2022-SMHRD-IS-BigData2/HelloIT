@@ -9,6 +9,36 @@
 		order by post_dt desc
 	</select>
 	
+	<!-- 맞춤형 게시글 리스트 조회 -->
+	<select id="customizedPostInfoList" resultType="com.smhrd.entity.PostInfo">
+		select distinct * from post_info p, user_info u
+		where 
+		post_seq in (select post_seq 
+					from post_level
+					where tag_seq||tag_level in ( select tag_seq||tag_level
+													from user_level
+													where u_email=#{u_email}))
+		and
+		post_seq in (select post_seq
+					from post_tag
+					where tag_seq in (select tag_seq
+										from user_tag
+										where u_email=#{u_email}))
+		and p.u_email = u.u_email
+		order by post_dt desc
+	</select>	
+	
+	<!-- 태그별 게시글 리스트 조회 -->
+	<select id="tagPostInfoList" resultType="com.smhrd.entity.PostInfo">
+		select distinct * from post_info p, user_info u
+		where post_seq in (select post_seq
+							from post_tag
+							where tag_seq=#{tag_seq})
+		and p.u_email = u.u_email
+		order by post_dt desc
+	</select>	
+	
+	
 	<!-- 게시글 종류별 전체 리스트 조회 -->
 	<select id="postKindList" resultType="com.smhrd.entity.PostInfo">
 		select *
