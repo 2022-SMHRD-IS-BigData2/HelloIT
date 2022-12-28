@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.dao.RecruitDAO;
-import com.smhrd.entity.OnclickDTO;
 import com.smhrd.entity.Recruit;
 
 public class GoRecruitCon implements Controller {

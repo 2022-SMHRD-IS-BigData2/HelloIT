@@ -12,8 +12,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
-import com.smhrd.entity.PostTag;
-import com.smhrd.entity.Tag;
 import com.smhrd.entity.UserLevel;
 
 public class WriteCon implements Controller {

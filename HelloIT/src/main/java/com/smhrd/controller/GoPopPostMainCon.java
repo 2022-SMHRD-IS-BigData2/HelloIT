@@ -6,12 +6,9 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
-import com.smhrd.entity.Tag;
-import com.smhrd.entity.UserInfo;
 
 public class GoPopPostMainCon implements Controller {
 	

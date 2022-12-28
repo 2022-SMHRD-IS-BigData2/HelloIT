@@ -7,9 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.dao.MyPageInfoDAO;
 import com.smhrd.dao.UserLanguageInfoDAO;
-import com.smhrd.entity.MyPageInfo;
 import com.smhrd.entity.UserLanguageInfo;
 
 public class CheckLanguageCon implements Controller {
