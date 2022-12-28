@@ -100,7 +100,7 @@
 								<th>마감일</th>
 							</tr>
 						</thead>
-						<tbody id="s-recruit">
+						<tbody id="j-recruit">
 							<%for(int i =0;i<10;i++){ %>
 							<tr>
 								<td><%=list_j.get(i).getCompany_list() %></td>
@@ -115,11 +115,11 @@
 
 				<br>
 				<div class="pagination_section">
-					<a href="#">＜＜ Previous</a>
-					<%for(int i=0;i<cnt.size()/10;i++){ %>
-						<a href="goRecruitTest.do?num=<%=i+1%>"><%=i+1%></a>
-						<%} %>		
-					<a href="#">Next ＞＞</a>
+					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
+					<%for(int i=0;i<cnt_j.size()/10;i++){ %>
+					<a id="num<%=i+1 %>" class="num" href="goRecruit.do?&num=<%=i+1%>"><%=i+1%></a>
+					<%} %>	
+					<a href="goRecruit.do?num=<%=cnt_j.size()/10 %>" class="bt">Next ＞＞</a>
 				</div>
 
 
