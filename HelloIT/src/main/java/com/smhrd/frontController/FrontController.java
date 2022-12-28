@@ -21,16 +21,20 @@ import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoCustomizedMainCon;
+import com.smhrd.controller.GoDevInfoCon;
 import com.smhrd.controller.GoFollowCon;
+import com.smhrd.controller.GoIdeaCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoMainWriteCon;
+import com.smhrd.controller.GoMessageCon;
 import com.smhrd.controller.GoMyIdea;
 import com.smhrd.controller.GoMyPageCon;
 import com.smhrd.controller.GoViewCon;
 import com.smhrd.controller.GoWriteCon;
+import com.smhrd.controller.GoWriteIdea;
 import com.smhrd.controller.GoogleJoin;
 import com.smhrd.controller.InsertCareerCon;
 import com.smhrd.controller.InsertMyPageCon;
@@ -54,7 +58,6 @@ import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.WriteCon;
 import com.smhrd.controller.GoTagMainCon;
-import com.smhrd.dao.GoIdeaCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -67,6 +70,7 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
+		handlerMapping.put("/goWriteIdea.do", new GoWriteIdea()); // 마이페이지 이동
 		handlerMapping.put("/goMessage.do", new GoMessageCon()); // 마이페이지 이동
 		handlerMapping.put("/goDevInfo.do", new GoDevInfoCon()); // 보고또보고 팀 소개페이지 이동
 		

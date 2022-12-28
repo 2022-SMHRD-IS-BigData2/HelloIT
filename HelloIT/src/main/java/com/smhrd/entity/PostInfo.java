@@ -35,4 +35,7 @@ public class PostInfo {
 	
 	private int cmts;
 	
+	// 로우넘버
+	private int row_num;
+	
 }
