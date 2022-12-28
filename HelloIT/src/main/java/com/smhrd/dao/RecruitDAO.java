@@ -24,14 +24,11 @@ public class RecruitDAO {
 		session.close();
 		return cnt;
 	}
-	
-<<<<<<< HEAD
-=======
+
 	public List<OnclickDTO> printOn(){
 		SqlSession session = sqlSessionFactory.openSession();
 		List<OnclickDTO> on = session.selectList("onClicktest");
 		session.close();
 		return on;
 	}
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
 }
