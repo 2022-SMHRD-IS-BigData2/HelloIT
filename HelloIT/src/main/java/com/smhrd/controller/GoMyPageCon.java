@@ -16,18 +16,16 @@ public class GoMyPageCon implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
-		// 게시글 전체 목록 가져오기
+		String u_email = request.getParameter("u_email");
 		PostInfoDAO dao = new PostInfoDAO();
 		List<PostInfo> list = dao.postInfoList();
+		List<PostInfo> upList = dao.userPostInfoList(u_email);
+		List<PostInfo> bmList = dao.bookmarkPostInfoList(u_email);
 		
-		// 객체바인딩
-		// request 영역에 list를 저장해뒀다가, jsp로 이동하고 나서 꺼내기
 		request.setAttribute("list", list);
-////////////////////////////////////////////////////////////////////////////////////		
-		// URL요청이 불가능 하기 때문에
-		// JSP파일로 이동시 반드시 forward이동을 해야한다.
+		request.setAttribute("upList", upList);
+		request.setAttribute("bmList", bmList);
 			
-		// 다음페이지가 어디인가를 리턴
 		return "myPage";
 	}
 

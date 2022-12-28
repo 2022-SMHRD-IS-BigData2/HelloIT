@@ -52,6 +52,7 @@ import com.smhrd.controller.UpdateMyPageCon;
 import com.smhrd.controller.UpdateRecruitCon;
 import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.UpdateSkillCon;
+import com.smhrd.controller.UserLevelSettingCon;
 import com.smhrd.controller.WriteCon;
 import com.smhrd.controller.GoTagMainCon;
 import com.smhrd.dao.GoIdeaCon;
@@ -126,6 +127,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
 		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 메인에서 북마크 컨트롤러 이동
 		
+		handlerMapping.put("/userLevelSetting.do", new UserLevelSettingCon()); // 유저 레벨 설정 컨트롤러 이동
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
