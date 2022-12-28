@@ -13,7 +13,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Hello IT</title>
 	<link rel="stylesheet" href="https://unpkg.com/98.css" />
 	<link rel="stylesheet" href="./css/style.css">
 	<link rel="stylesheet" href="./css/recruit.css">
@@ -76,7 +76,7 @@
 				<div class="pagination_section">
 					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
 					<%for(int i=0;i<cnt.size()/10;i++){ %>
-					<a id="num<%=i+1 %>" href="goRecruit.do?num=<%=i+1%>"><%=i+1%></a>
+					<a id="num<%=i+1 %>" class="num" href="goRecruit.do?&num=<%=i+1%>"><%=i+1%></a>
 					<%} %>	
 					<a href="goRecruit.do?num=<%=cnt.size()/10 %>" class="bt">Next ＞＞</a>
 				</div>
@@ -136,9 +136,13 @@
 		</footer>
 		</div>
 		</div>
-		<%String on = (String)request.getAttribute("on");%>
-		<%out.print(on); %>
-				<script>
+		<%String on = (String)request.getAttribute("on");
+			int num = (int)request.getAttribute("num");
+		%>
+		<%out.print(on); 
+			out.print(num);
+		%>
+		<script>
 
 			$(document).ready(function () {
 
@@ -156,7 +160,14 @@
 		
 			
 		</script>
-		
+		<script>
+		console.log($('#num<%=num%>').attr('class'))
+		  for( i=1;i<=<%=cnt.size()/10%>;i++){
+			if($('#num<%=num%>').attr("id")=='num'+i){
+				$('#num<%=num%>').attr("class","num on")
+			}
+		}
+		</script>
 </body>
 
 </html>
