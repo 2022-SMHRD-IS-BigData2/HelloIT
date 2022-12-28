@@ -19,6 +19,7 @@ import com.smhrd.controller.CheckRoleCon;
 import com.smhrd.controller.CmtLikeCon;
 import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
+import com.smhrd.controller.GoAllPostMainCon;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoCustomizedMainCon;
 import com.smhrd.controller.GoDevInfoCon;
@@ -26,6 +27,7 @@ import com.smhrd.controller.GoFollowCon;
 import com.smhrd.controller.GoIdeaCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoNaverJoinCon;
+import com.smhrd.controller.GoPopPostMainCon;
 import com.smhrd.controller.GoLoginCon;
 import com.smhrd.controller.GoMainCon;
 import com.smhrd.controller.GoMainWriteCon;
@@ -119,6 +121,8 @@ public class FrontController extends HttpServlet {
 		
 		handlerMapping.put("/goCustomizedMain.do", new GoCustomizedMainCon());
 		handlerMapping.put("/goTagMain.do", new GoTagMainCon());
+		handlerMapping.put("/goPopPostMain.do", new GoPopPostMainCon());
+		handlerMapping.put("/goAllPostMain.do", new GoAllPostMainCon());
 		
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동

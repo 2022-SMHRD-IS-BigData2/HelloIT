@@ -22,6 +22,14 @@ public class PostInfoDAO {
 		return list;
 	}
 	
+	// 인기게시물 상위 10개 조회
+	public List<PostInfo> popPostInfoList() {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<PostInfo> list = session.selectList("popPostInfoList");
+		session.close();
+		return list;
+	}
+	
 	// 본인 게시글 리스트 조회
 	public List<PostInfo> userPostInfoList(String u_email) {
 		SqlSession session = sqlSessionFactory.openSession(true);

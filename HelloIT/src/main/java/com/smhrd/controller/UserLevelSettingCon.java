@@ -50,7 +50,7 @@ public class UserLevelSettingCon implements Controller {
 		} else {
 			System.out.println("회원 레벨 설정 실패");
 		}
-		return "redirect:/goMyPage.do";
+		return "redirect:/goMyPage.do?u_email="+u_email;
 	}
 
 }
