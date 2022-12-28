@@ -38,6 +38,7 @@ public class GoRecruitCon implements Controller {
 		request.setAttribute("list", list);
 		request.setAttribute("on", on);
 		request.setAttribute("cnt", cnt);
+		request.setAttribute("num", n);
 		
 		return "recruit";
 	}
