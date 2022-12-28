@@ -12,5 +12,15 @@
 	<select id="getListSize" resultType="java.lang.Integer">
 		select * from s_crawling
 	</select>
+ <select id="getListWithPaging_j"
+ 		resultType="com.smhrd.entity.Recruit"> 
+     select * from (select rownum as row_num, j_crawling.* from j_crawling)
+	where row_num between 1+(#{n}-1)*10 and #{n}*10
+
+  </select>
+
+	<select id="getListSize_j" resultType="java.lang.Integer">
+		select * from j_crawling
+	</select>
 	
 </mapper>

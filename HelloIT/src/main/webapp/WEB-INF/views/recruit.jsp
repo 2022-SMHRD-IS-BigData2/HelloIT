@@ -24,6 +24,9 @@
 	<%
 		List<Recruit> list = (List<Recruit>) request.getAttribute("list");
 		List<Recruit> cnt = (List<Recruit>) request.getAttribute("cnt");
+		
+		List<Recruit> list_j = (List<Recruit>) request.getAttribute("list_j");
+		List<Recruit> cnt_j = (List<Recruit>) request.getAttribute("cnt_j");
 	%>
 <div class="container">
 <div class="wrapper">
@@ -100,10 +103,10 @@
 						<tbody id="s-recruit">
 							<%for(int i =0;i<10;i++){ %>
 							<tr>
-								<td><%=list.get(i).getCompany_list() %></td>
-								<td><a href="<%=list.get(i).getLink_list()%>"><%=list.get(i).getJob_list()%></a></td>
-								<td><%=list.get(i).getAddr_list() %></td>
-								<td><%=list.get(i).getDate_list()%></td>
+								<td><%=list_j.get(i).getCompany_list() %></td>
+								<td><a href="<%=list_j.get(i).getLink_list()%>"><%=list_j.get(i).getJob_list()%></a></td>
+								<td><%=list_j.get(i).getAddr_list() %></td>
+								<td><%=list_j.get(i).getDate_list()%></td>
 							</tr>
 							<%}%>
 						</tbody>

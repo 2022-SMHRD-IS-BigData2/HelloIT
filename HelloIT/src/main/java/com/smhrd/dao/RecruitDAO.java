@@ -24,6 +24,18 @@ public class RecruitDAO {
 		session.close();
 		return cnt;
 	}
+	public List<Recruit> paging_j(int n) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<Recruit> list = session.selectList("getListWithPaging_j",n);
+		session.close();
+		return list;
+	}
+	public List<Recruit> pageCnt_j() {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<Recruit> cnt = session.selectList("getListSize_j");
+		session.close();
+		return cnt;
+	}
 
 	public List<OnclickDTO> printOn(){
 		SqlSession session = sqlSessionFactory.openSession();
