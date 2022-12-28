@@ -1,4 +1,4 @@
-package com.smhrd.dao;
+package com.smhrd.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.controller.Controller;
 
-public class GoIdeaCon implements Controller {
+public class GoMessageCon implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
 		// TODO Auto-generated method stub
-		return "idea";
+		return "message";
 	}
 
 }

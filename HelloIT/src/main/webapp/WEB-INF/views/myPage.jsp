@@ -33,7 +33,8 @@
 <body>
 	<%
 	UserInfo info = (UserInfo)session.getAttribute("info");
-	List<PostInfo> list = (List<PostInfo>) request.getAttribute("list");
+	List<PostInfo> upList = (List<PostInfo>)request.getAttribute("upList");
+	List<PostInfo> bmList = (List<PostInfo>)request.getAttribute("bmList");
 	%>
 	
 	<div class="container">
@@ -128,7 +129,8 @@
 		            <p style="font-size: large; font-weight: bold;">관심있는분야나 직장에서 맡고있는 분야를 선택하세요<sub>(중복선택 가능)</sub></p> 
 		            <p style="font-size: small; font-weight: bold;">체크한 분야에 따라서 게시물이 자동 선별됩니다.</p>
 		            <br>
-		       		<form action="updateRole.do" method="post">
+		       		<form action="userLevelSetting.do" method="post">
+		       		<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 				        <table>
 				        <tr class="interest" id="userRole">
 				     	<td><h4>레벨</h4></td>
@@ -177,7 +179,7 @@
 				             </ul>
 				             </td>
 				             <td>
-					             <input type="submit" onclick="rolePopup();" value="저장">
+					             <input type="submit" onclick="levelPopup();" value="저장">
 					             <input type="reset" value="초기화">
 				        	</td>
 				        </tr>
@@ -210,7 +212,7 @@
 				        </tr>
 				        </table>
 					</form>
-		            <form action="" method="post">
+		            <form action="updateSkill.do" method="post">
 						<table>
 							<tr class="interest" id="userSkill">
 								<td><h4>분야</h4></td>
@@ -250,7 +252,7 @@
 						</table>
 		            </form>
 		            
-		            <form action="" method="post">
+		            <form action="updateLanguage.do" method="post">
 			            <table>
 					        <tr class="interest" id="userLanguage">
 					            <td><h4>언어</h4></td>
@@ -320,6 +322,7 @@
 						            <input type="hidden" name="r" id="r_hidden" value="N">
 						            <input type="hidden" name="ruby" id="ruby_hidden" value="N">
 						            <input type="hidden" name="haskell" id="haskell_hidden" value="N">
+						            <input type="hidden" name="clojure" id="clojure" value="N">
 						            <input type="hidden" name="sql" id="sql_hidden" value="N">
 						            <input type="hidden" name="language_etc" id="language_etc_hidden" value="N">
 					            </td>
@@ -330,7 +333,7 @@
 					        </tr>
 				        </table>
 		            </form>
-		            <form action="" method="post">
+		            <form action="updateDB.do" method="post">
 						<table>
 							<tr class="interest" id="userDB">
 							    <td><h4>DB</h4></td>
@@ -392,7 +395,6 @@
 		            </form>
 		        </div>
 		    </div>
-		    
 		    <!-- <div id="posted" style="font-family:auto;">
 				<div class="mypost_list_wrap board_list_wrap">
 			        <table class="mypost_list board_list" border="1">
@@ -513,30 +515,33 @@
 					</div>
 			    </div>
 			</div> -->
+		    <!-- <div id="posted" class="window" style="padding-bottom:20px">style="width: 600px" -->
 		    
-		    <%for(int i = 0; i < list.size(); i++){ %>
-		<div id="checkPost" class="window posted" style="width: 630px">
+		    
+		    <div id="posted">
+			<%for(int i = 0; i < upList.size(); i++){ %>
+			<div id="checkPost" class="window posted" style="width: 700px">
 			<div class="title-bar">
-				<div class="title-bar-text"><%=list.get(i).getPost_title()%></div>
+				<div class="title-bar-text"><%=upList.get(i).getPost_title()%></div>
 			</div>
 			
 			<div class="window-body">
-				<table class="board_list" id="list" bgcolor="white">
+				<table id="list" border="1" bgcolor="white">
 					<tr>
-						<td id="user">작성자</td>
-						<td style="width: 650px text-align:'';"><%=list.get(i).getU_name()%></td>
+						<td>작성자</td>
+						<td style="width: 650px"><%=upList.get(i).getU_name()%></td>
 					</tr>
 					<tr>
 						<td colspan="2">내용</td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><img alt=""
-							src="img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
+							src="img/<%=upList.get(i).getPost_file()%>"><br><br> <b><%=upList.get(i).getPost_content()%></b>
 						</td>
 					</tr>
 					<%
 						PostInfoDAO daoTag = new PostInfoDAO();
-						List<Tag> list2 = daoTag.postTagView(list.get(i).getPost_seq());
+						List<Tag> list2 = daoTag.postTagView(upList.get(i).getPost_seq());
 					%>
 					<tr style="height: 20px">
 						<td colspan="2">
@@ -550,57 +555,61 @@
 
 			<div class="status-bar">
 				<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>
+					<a href="mainBookmark.do?post_seq=<%=upList.get(i).getPost_seq()%>
 					&u_email=<%=info.getU_email()%>">
 					<button	id="btn">
-						<%=list.get(i).getBookmarks()%>
+						<%=upList.get(i).getBookmarks()%>
 						<img src="./img/북마크.png" width="15" alt="">
 					</button>
 					</a>
 				</p>
 				<%-- 좋아요 기능 --%>
 				<p class="status-bar-field">
-					<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-					<button	id="btn"><%=list.get(i).getLikes()%> 💖
+					<a href="mainLike.do?post_seq=<%=upList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=upList.get(i).getLikes()%> 💖
 					</button></a>
 				<%-- 좋아요 기능 끝 --%>
 				</p>
 				<form action="mainCmt.do">
-					<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
+					<input type="hidden" name="post_seq" value="<%=upList.get(i).getPost_seq()%>">
 					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 					<p class="status-bar-field">
 						<input type="text" name="cmt_content" placeholder="댓글"
-						style="width:290px">
+						style="width:360px">
 						<input type="submit" value="등록">
 					</p>
 				</form>
 				
 					
-					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=list.get(i).getCmts()%> </button></a></p>
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=upList.get(i).getCmts()%> </button></a></p>
 				
 				<%
 				// comment 출력
 				CommentInfoDAO dao = new CommentInfoDAO();
-				List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
+				List<CommentInfo> cmtList = dao.commentInfoList(upList.get(i).getPost_seq());
 				%>
 			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table class="board_list" width=700>
-				<tr style="width: 0px; padding: 0px;">
-					<%-- <td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td> --%>
-					<td><b><%=cmtList.get(j).getU_name()%></b></td>
-					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
+			<table border=1 width=700>
+				<tr>
+					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
 					<td>
 					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
 					</button></a>
 					</td>
 				</tr>
+				<tr>
+					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
+				</tr>
 			<%}%>	
 			</table>
 		</div>
-	    <%}%>
-			<div id="bookmark" style="display:none; font-family:auto;">
+		<%}%>
+		</div>
+		<!-- </div> -->
+	    
+			<!-- <div id="bookmark" style="display:none; font-family:auto;">
 				<div class="board_list_wrap">
 			        <table class="board_list" border="1">
 			            <caption>북마크 목록</caption>
@@ -719,7 +728,187 @@
 									<a href="#" class="bt">Next ＞＞</a>
 					</div>
 			    </div>
+			</div> -->
+			
+			<!-- 북마크 -->
+	<%-- 		<div id="bookmark" class="window posted" style="width: 630px">
+			<%for(int i = 0; i < bmList.size(); i++){ %>
+			<div class="title-bar">
+				<div class="title-bar-text"><%=bmList.get(i).getPost_title()%></div>
 			</div>
+			
+			<div class="window-body">
+				<table class="board_list" id="list" bgcolor="white">
+					<tr>
+						<td id="user">작성자</td>
+						<td style="width: 650px text-align:'';"><%=bmList.get(i).getU_name()%></td>
+					</tr>
+					<tr>
+						<td colspan="2">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><img alt=""
+							src="img/<%=bmList.get(i).getPost_file()%>"><br><br> <b><%=bmList.get(i).getPost_content()%></b>
+						</td>
+					</tr>
+					<%
+						PostInfoDAO daoTag = new PostInfoDAO();
+						List<Tag> list2 = daoTag.postTagView(upList.get(i).getPost_seq());
+					%>
+					<tr style="height: 20px">
+						<td colspan="2">
+						<%for(int k = 0; k < list2.size(); k++){ %>
+						<a href="goTagMain.do?tag_seq=<%=list2.get(k).getTag_seq()%>"><%='#'+list2.get(k).getTag_content()%></a>
+						<%};%>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="status-bar">
+				<p class="status-bar-field">
+					<a href="mainBookmark.do?post_seq=<%=bmList.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>">
+					<button	id="btn">
+						<%=bmList.get(i).getBookmarks()%>
+						<img src="./img/북마크.png" width="15" alt="">
+					</button>
+					</a>
+				</p>
+				좋아요 기능
+				<p class="status-bar-field">
+					<a href="mainLike.do?post_seq=<%=bmList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=bmList.get(i).getLikes()%> 💖
+					</button></a>
+				좋아요 기능 끝
+				</p>
+				<form action="mainCmt.do">
+					<input type="hidden" name="post_seq" value="<%=bmList.get(i).getPost_seq()%>">
+					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+					<p class="status-bar-field">
+						<input type="text" name="cmt_content" placeholder="댓글"
+						style="width:290px">
+						<input type="submit" value="등록">
+					</p>
+				</form>
+				
+					
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=bmList.get(i).getCmts()%> </button></a></p>
+				
+				<%
+				// comment 출력
+				CommentInfoDAO dao = new CommentInfoDAO();
+				List<CommentInfo> cmtList = dao.commentInfoList(bmList.get(i).getPost_seq());
+				%>
+			</div>
+			<%for (int j = 0; j < cmtList.size(); j++) {%>			
+			<table class="board_list" width=700>
+				<tr style="width: 0px; padding: 0px;">
+					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
+					<td>
+					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
+					</button></a>
+					</td>
+				</tr>
+			<%};%>	
+			</table>
+		</div>
+	    <%};%> --%>
+	    <div id="bookmark">
+			<%for(int i = 0; i < bmList.size(); i++){ %>
+			<div id="checkPost" class="window posted" style="width: 700px">
+			<div class="title-bar">
+				<div class="title-bar-text"><%=bmList.get(i).getPost_title()%></div>
+			</div>
+			
+			<div class="window-body">
+				<table id="list" border="1" bgcolor="white">
+					<tr>
+						<td>작성자</td>
+						<td style="width: 650px"><%=bmList.get(i).getU_name()%></td>
+					</tr>
+					<tr>
+						<td colspan="2">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><img alt=""
+							src="img/<%=bmList.get(i).getPost_file()%>"><br><br> <b><%=bmList.get(i).getPost_content()%></b>
+						</td>
+					</tr>
+					<%
+						PostInfoDAO daoTag = new PostInfoDAO();
+						List<Tag> list2 = daoTag.postTagView(bmList.get(i).getPost_seq());
+					%>
+					<tr style="height: 20px">
+						<td colspan="2">
+						<%for(int k = 0; k < list2.size(); k++){ %>
+						<a href="goTagMain.do?tag_seq=<%=list2.get(k).getTag_seq()%>"><%='#'+list2.get(k).getTag_content()%></a>
+						<%};%>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="status-bar">
+				<p class="status-bar-field">
+					<a href="mainBookmark.do?post_seq=<%=bmList.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>">
+					<button	id="btn">
+						<%=bmList.get(i).getBookmarks()%>
+						<img src="./img/북마크.png" width="15" alt="">
+					</button>
+					</a>
+				</p>
+				<%-- 좋아요 기능 --%>
+				<p class="status-bar-field">
+					<a href="mainLike.do?post_seq=<%=bmList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=bmList.get(i).getLikes()%> 💖
+					</button></a>
+				<%-- 좋아요 기능 끝 --%>
+				</p>
+				<form action="mainCmt.do">
+					<input type="hidden" name="post_seq" value="<%=bmList.get(i).getPost_seq()%>">
+					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+					<p class="status-bar-field">
+						<input type="text" name="cmt_content" placeholder="댓글"
+						style="width:360px">
+						<input type="submit" value="등록">
+					</p>
+				</form>
+				
+					
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=bmList.get(i).getCmts()%> </button></a></p>
+				
+				<%
+				// comment 출력
+				CommentInfoDAO dao = new CommentInfoDAO();
+				List<CommentInfo> cmtList = dao.commentInfoList(bmList.get(i).getPost_seq());
+				%>
+			</div>
+			<%for (int j = 0; j < cmtList.size(); j++) {%>			
+			<table border=1 width=700>
+				<tr>
+					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td>
+					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
+					</button></a>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
+				</tr>
+			<%}%>	
+			</table>
+		</div>
+		<%}%>
+		</div>
+			
+			
+			
 			
 			<!--팔로잉 팔로워 기능 추가해야함 -->
 			<div id="follow" style="display:none; font-family:auto;">
@@ -1199,7 +1388,7 @@
 		$('#listOfMyPage').on('click', function() {
 			$('#myPage').show();
 			$('#checkInterest').hide();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -1210,7 +1399,7 @@
 
 			$('#myPage').hide();
 			$('#checkInterest').show();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -1220,7 +1409,7 @@
 		$('#listOfPosted').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('.posted').show();
+			$('#posted').show();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -1230,7 +1419,7 @@
 		$('#listOfBookmark').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').show();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -1240,7 +1429,7 @@
 		$('#listOfFollow').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').hide();
 			$('#follow').show();
 			$('#myIdea').hide();
@@ -1250,7 +1439,7 @@
 		$('#listOfMyIdea').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').show();
@@ -1260,7 +1449,7 @@
 		$('#listOfPortfolio').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -1270,7 +1459,7 @@
 		$('#listOfFAQ').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('.posted').hide();
+			$('#posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();

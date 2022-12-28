@@ -22,6 +22,22 @@ public class PostInfoDAO {
 		return list;
 	}
 	
+	// 본인 게시글 리스트 조회
+	public List<PostInfo> userPostInfoList(String u_email) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<PostInfo> list = session.selectList("userPostInfoList", u_email);
+		session.close();
+		return list;
+	}
+	
+	// 북마크 게시글 리스트 조회
+	public List<PostInfo> bookmarkPostInfoList(String u_email) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<PostInfo> list = session.selectList("bookmarkPostInfoList", u_email);
+		session.close();
+		return list;
+	}
+	
 	// 맞춤형 게시글 리스트 조회
 	public List<PostInfo> customizedPostInfoList(String u_email) {
 		SqlSession session = sqlSessionFactory.openSession(true);
@@ -94,7 +110,7 @@ public class PostInfoDAO {
 		return cnt;
 	}
 	
-	// 게시글 전체 조회
+	// 해시태그 전체 조회
 	public List<Tag> tagListView() {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		List<Tag> list = session.selectList("tagListView");

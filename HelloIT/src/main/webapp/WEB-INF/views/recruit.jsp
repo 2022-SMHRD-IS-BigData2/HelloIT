@@ -24,6 +24,9 @@
 	<%
 		List<Recruit> list = (List<Recruit>) request.getAttribute("list");
 		List<Recruit> cnt = (List<Recruit>) request.getAttribute("cnt");
+		
+		List<Recruit> list_j = (List<Recruit>) request.getAttribute("list_j");
+		List<Recruit> cnt_j = (List<Recruit>) request.getAttribute("cnt_j");
 	%>
 <div class="container">
 <div class="wrapper">
@@ -85,40 +88,41 @@
 			
 			
 			<%-- 잡코리아 --%>
-			<div id="tab-2" style="margin-bottom:50px" class="tab-content">
-				<div id="job-table">		
-					<table style="height: 100px; overflow: auto">
+			<div id="tab-2" style="margin-bottom:50px" class="tab-content" >
+				<div id="job-table">
+				<%-- 페이지 불러오는 테이블 --%>
+					<table style="height: 100px; overflow: auto;">
 						<thead>
 							<tr height="30px">
-								<th>기업명</th>
-								<th>채용 내용</th>
+								<th style="width:100px">기업명</th>
+								<th style="width:400px">채용 내용</th>
 								<th>경력/학력/지역</th>
 								<th>마감일</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="j-recruit">
+							<%for(int i =0;i<10;i++){ %>
 							<tr>
+								<td><%=list_j.get(i).getCompany_list() %></td>
+								<td><a href="<%=list_j.get(i).getLink_list()%>"><%=list_j.get(i).getJob_list()%></a></td>
+								<td><%=list_j.get(i).getAddr_list() %></td>
+								<td><%=list_j.get(i).getDate_list()%></td>
 							</tr>
+							<%}%>
 						</tbody>
 					</table>
 				</div>
 
 				<br>
 				<div class="pagination_section">
-					<a href="#">＜＜ Previous</a>
-					<a href="#" title="">1</a>
-					<a href="#" title="">2</a>
-					<a href="#" title="">3</a>
-					<a href="#" title="">4</a>
-					<a href="#" title="">5</a>
-					<a href="#" title="">6</a>
-					<a href="#" title="">7</a>
-					<a href="#" title="">8</a>
-					<a href="#" title="">9</a>
-					<a href="#" title="">10</a>
-					<a href="#">Next ＞＞</a>
+					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
+					<%for(int i=0;i<cnt_j.size()/10;i++){ %>
+					<a id="num<%=i+1 %>" class="num" href="goRecruit.do?&num=<%=i+1%>"><%=i+1%></a>
+					<%} %>	
+					<a href="goRecruit.do?num=<%=cnt_j.size()/10 %>" class="bt">Next ＞＞</a>
 				</div>
-				
+
+
 			</div>
 
 		</div>

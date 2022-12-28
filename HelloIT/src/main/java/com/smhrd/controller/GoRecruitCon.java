@@ -26,6 +26,7 @@ public class GoRecruitCon implements Controller {
 			n = Integer.parseInt(num);
 		}
 //		dto.setN(n);
+		// 사람인
 		RecruitDAO dao = new RecruitDAO();
 		List<Recruit> cnt = dao.pageCnt();
 		List<Recruit> list  =  dao.paging(n);
@@ -38,6 +39,21 @@ public class GoRecruitCon implements Controller {
 		request.setAttribute("list", list);
 		request.setAttribute("on", on);
 		request.setAttribute("cnt", cnt);
+		request.setAttribute("num", n);
+		
+		// 잡코리아
+		RecruitDAO dao_j = new RecruitDAO();
+		List<Recruit> cnt_j = dao.pageCnt_j();
+		List<Recruit> list_j  =  dao.paging_j(n);
+		
+		System.out.println(n);
+		System.out.println(num);
+		System.out.println(cnt.get(0));
+		System.out.println(cnt);
+		System.out.println(on);
+		request.setAttribute("list_j", list_j);
+		request.setAttribute("on", on);
+		request.setAttribute("cnt_j", cnt_j);
 		request.setAttribute("num", n);
 		
 		return "recruit";
