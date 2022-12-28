@@ -97,7 +97,7 @@ public class WriteCon implements Controller {
 			return "redirect:/write.do";
 		}
 		// 5. 페이지이동
-		return "redirect:/goMain.do";
+		return "redirect:/goMain.do?u_email="+u_email;
 	}
 
 }

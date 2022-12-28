@@ -4,8 +4,10 @@
 
 	 <select id="getListWithPagingIdea"
  		resultType="com.smhrd.entity.PostInfo"> 
-     select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc)
-	where row_num between 1+(#{n}-1)*10 and #{n}*10
+     select * from (select rownum as row_num, post_info.* from post_info
+     				where post_kind='idea' order by row_num desc) p, user_info u
+     where  p.u_email=u.u_email  
+     and row_num between 1+(#{n}-1)*10 and #{n}*10
 
   </select>
 

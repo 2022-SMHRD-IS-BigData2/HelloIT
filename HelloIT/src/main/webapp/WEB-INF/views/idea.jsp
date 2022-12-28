@@ -132,12 +132,12 @@
 						List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
 						for (int j = 0; j < cmtList.size(); j++) {
 						%>
-						<table class="board_list">
-							<tr style="width: 0px; padding: 0px;">
+						<table class="board_list" style="width:auto;">
+							<tr style="width: 450px;display: flex;padding: 0px; justify-content: space-between;">
 								<!-- 댓글(아이디어) 작성자 -->
 								<td><b><%=cmtList.get(j).getU_name()%></b></td>
 								<!-- 댓글(아이디어) 내용 -->
-								<td style="text-align:left; padding:5px;"><%=cmtList.get(j).getCmt_content()%></td>
+								<td style="text-align:left; padding:5px; width:290px"><%=cmtList.get(j).getCmt_content()%></td>
 								<td>
 									<!-- 댓글(아이디어) 좋아요 버튼 -->
 									<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -149,7 +149,7 @@
 						<%};%>	
 						</table>
 			  		</div>
-			  		<div>
+			  		<div style="display:flex;">
 				  		<!-- 북마크 버튼 -->
 						<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
 							<!-- 아이디어 주제 북마크 수 -->
@@ -175,53 +175,6 @@
 			  	</div>
 		  	</div>
   		</div>
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-  	
-	
-
-
-	
-	
-	
-	
-  
-  	
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur magni soluta!</p>
-    <button id="closeBtn<%=i+1%>">✖</button>
   </div>
 </div>
 <%}%>
