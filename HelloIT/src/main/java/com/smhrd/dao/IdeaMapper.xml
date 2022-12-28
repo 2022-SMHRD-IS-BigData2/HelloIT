@@ -12,6 +12,10 @@
   </select>
 
 	<select id="getListSizeIdea" resultType="java.lang.Integer">
-		select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc)
+		select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc) 
+		<!-- 
+		유저이메일을 매개변수로 갖고 오기 
+		p, user_info u where p.u_email = u.u_email and u_email=#{u_email} -->
+			
 	</select>
 </mapper>

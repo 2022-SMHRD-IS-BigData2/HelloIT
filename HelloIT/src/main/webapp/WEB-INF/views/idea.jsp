@@ -26,8 +26,33 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
+
+<style type="text/css">
+tbody td:nth-child(1){
+	text-align:center;
+}
+tbody td:nth-child(3){
+	text-align:center;
+}
+tbody td:nth-child(5){
+	text-align:center;
+}
+body{
+	font-family:'';
+}	
+thead th:nth-child(1){
+	width: 50px;
+}
+thead th:nth-child(2){
+	width: 450px;
+}
+thead>tr{
+	height: 30px;
+}
+</style>
+
 </head>
-<body>
+<body style="position:fixed;">
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
@@ -48,7 +73,7 @@
 				<div class="title-bar" style="position: sticky; top: 0">
 					<div class="title-bar-text">아이디어 토론방</div>
 					<div class="title-bar-controls">
-						<button aria-label="Close" onclick="location.href='goMain.do'"></button>
+					<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
 					</div>
 				</div>
 				<div class="window-body">
@@ -67,9 +92,9 @@
 							<%-- 페이지 불러오는 테이블 --%>
 							<table style="height: 100px; overflow: auto;">
 								<thead>
-									<tr height="30px">
-										<th style="width: 100px">번호</th>
-										<th style="width: 400px">주 제</th>
+									<tr>
+										<th>번호</th>
+										<th>주 제</th>
 										<th>작성자</th>
 										<th>작성일</th>
 										<th>조회수</th>
@@ -82,7 +107,7 @@
 									<tr>
 										<td><%=list.get(i).getRow_num()%></td>
 										<td id="openBtn<%=i+1%>"><%=list.get(i).getPost_title()%></td>
-										<td><%=list.get(i).getU_name()%></td>
+										<td><a href="goUserPage.do?u_email=<%=list.get(i).getU_email()%>"><%=list.get(i).getU_name()%></a></td>
 										<td><%=list.get(i).getPost_dt()%></td>
 										<td><%=list.get(i).getCnt()%></td>
 									</tr>
@@ -109,7 +134,7 @@
 			  		<div><%=list.get(i).getPost_title()%></div>
 			  		<div>
 			  			<!-- 이미지 -->
-				  		<img alt="이미지 없음" src="./img/<%=list.get(i).getPost_file()%>">
+				  		<img src="./img/<%=list.get(i).getPost_file()%>">
 				  		<!-- 게시물 텍스트 -->
 				  		<%=list.get(i).getPost_content()%>
 			  		</div>
@@ -195,14 +220,14 @@
 				</div>
 			</div>
 			<footer class="main_footer">
-		<div class="window" id="icons" style="width: 800px" align="center">
-			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
-			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
-			<a href="goMain.do?u_email=<%=info.getU_email()%>"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
-			<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
-			<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
-			<a href="goMyPage.do?u_email=<%=info.getU_email()%>"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
-			<a href="goMessage.do"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+		<div class="window icons" style="width: 800px" align="center">
+			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+			<a href="goIdea.do" title="아이디어토론방"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+			<a href="goMain.do?u_email=<%=info.getU_email()%>" title="맞춤게시물"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+			<a href="goMainWrite.do" title="글쓰기"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
+			<a href="goRecruit.do" title="채용공고게시판"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+			<a href="goMyPage.do?u_email=<%=info.getU_email()%>" title="마이페이지"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
 		</div>

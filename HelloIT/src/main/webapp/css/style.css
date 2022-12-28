@@ -3,7 +3,9 @@
 body {
     background: rgba(0,130,128,255);
 	background-size: cover;
+	margin:0px;
 }
+
 .container{
 	display: table;
 	margin: 0 auto;
@@ -114,12 +116,11 @@ input{
     background-color: red;
     color: aliceblue;
 }
+
 #icons>a>img{
 	margin: 0px 30px;
 }
-body{
-	margin:0px;
-}
+
 .task-bar{
 	margin:0px;
 	position: absolute;
@@ -175,4 +176,11 @@ tr>td:nth-child(4){
 }
 #list{
 	text-align:left;
+}
+
+.icons{
+	width: 800px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }

@@ -35,6 +35,10 @@
 	UserInfo info = (UserInfo)session.getAttribute("info");
 	List<PostInfo> upList = (List<PostInfo>)request.getAttribute("upList");
 	List<PostInfo> bmList = (List<PostInfo>)request.getAttribute("bmList");
+/* 	List<PostInfo> miList = (List<PostInfo>)request.getAttribute("miList");
+	List<PostInfo> cnt = (List<PostInfo>) request.getAttribute("cnt");
+	String on = (String)request.getAttribute("on");
+	int num = (int)request.getAttribute("num");*/
 	%>
 	
 	<div class="container">
@@ -43,7 +47,7 @@
 				<div class="title-bar" style="position:sticky; top:1px">
 				  <div class="title-bar-text">마이 페이지</div>
 				  <div class="title-bar-controls">
-				    <button aria-label="Close" onclick = "location.href ='goMain.do'"></button>
+				  <button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
 				  </div>
 				</div>
 		 	<div class="window-body" style="justify-content: space-between;">
@@ -67,10 +71,10 @@
 		                <div class="title-bar">
 		                    <div class="title-bar-text">회원 정보</div>
 		                    <div class="title-bar-controls">
-		                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+		                        <button aria-label="Close" onclick="location.href ='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
 		                    </div>
 		                </div>
-		                    <form style="margin:20px; font-size:initial">
+		                    <form action="" method="post" style="margin:20px; font-size:initial">
 		                        <table class="userInfo">
 		                        	<tbody>
 		                            <tr>
@@ -122,7 +126,7 @@
 		        <div class="title-bar" style="position:sticky; top:27px">
 		            <div class="title-bar-text">관심 분야 Check!!</div>
 		            <div class="title-bar-controls">
-		              <button aria-label="Close" onclick = "location.href ='goMyPage.do'"></button>
+		            <button aria-label="Close" onclick="location.href ='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
 		            </div>
 		          </div>
 		        <div class="window-body" style="display:block;">
@@ -399,129 +403,7 @@
 		            </form>
 		        </div>
 		    </div>
-		    <!-- <div id="posted" style="font-family:auto;">
-				<div class="mypost_list_wrap board_list_wrap">
-			        <table class="mypost_list board_list" border="1">
-			            <caption>내가올린게시글 목록</caption>
-			            <thead>
-			                <tr>
-			                    <th>번호</th>
-			                    <th>제목</th>
-			                    <th>작성자</th>
-			                    <th>작성일</th>
-			                    <th>조회수</th>
-			                </tr>
-			            </thead>
-			            <tbody>
-			                <tr>
-			                    <td>5</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글5</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>2022/12/26</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>4</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글4</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>3</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글3</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>333</td>
-			                </tr>
-			                <tr>
-			                    <td>2</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글2</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			            </tbody>
-			        </table>
-			        <br>
-					<div class="pagination_section">
-									<a href="#" class="bt">＜＜ Previous</a>
-									<a href="#" class="num on">1</a>
-									<a href="#" class="num">2</a>
-									<a href="#" class="num">3</a>
-									<a href="#" class="num">4</a>
-									<a href="#" class="num">5</a>
-									<a href="#" class="num">6</a>
-									<a href="#" class="num">7</a>
-									<a href="#" class="bt">Next ＞＞</a>
-					</div>
-			    </div>
-			</div> -->
-		    <!-- <div id="posted" class="window" style="padding-bottom:20px">style="width: 600px" -->
-		    
-		    
+
 		    <div id="posted">
 			<%for(int i = 0; i < upList.size(); i++){ %>
 			<div id="checkPost" class="window posted" style="width: 630px">
@@ -609,216 +491,7 @@
 		</div>
 		<%}%>
 		</div>
-		<!-- </div> -->
-	    
-			<!-- <div id="bookmark" style="display:none; font-family:auto;">
-				<div class="board_list_wrap">
-			        <table class="board_list" border="1">
-			            <caption>북마크 목록</caption>
-			            <thead>
-			                <tr>
-			                    <th>번호</th>
-			                    <th>제목</th>
-			                    <th>작성자</th>
-			                    <th>작성일</th>
-			                    <th>조회수</th>
-			                </tr>
-			            </thead>
-			            <tbody>
-			                <tr>
-			                    <td>5</td>
-			                    <td class="tit">
-			                        <a href="#">북마크5</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>2022/12/26</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>4</td>
-			                    <td class="tit">
-			                        <a href="#">북마크4</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>3</td>
-			                    <td class="tit">
-			                        <a href="#">북마크3</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>333</td>
-			                </tr>
-			                <tr>
-			                    <td>2</td>
-			                    <td class="tit">
-			                        <a href="#">북마크2</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			            </tbody>
-			        </table>
-			        <br>
-					<div class="pagination_section">
-									<a href="#" class="bt">＜＜ Previous</a>
-									<a href="#" class="num on">1</a>
-									<a href="#" class="num">2</a>
-									<a href="#" class="num">3</a>
-									<a href="#" class="num">4</a>
-									<a href="#" class="num">5</a>
-									<a href="#" class="num">6</a>
-									<a href="#" class="num">7</a>
-									<a href="#" class="bt">Next ＞＞</a>
-					</div>
-			    </div>
-			</div> -->
-			
-			<!-- 북마크 -->
-	<%-- 		<div id="bookmark" class="window posted" style="width: 630px">
-			<%for(int i = 0; i < bmList.size(); i++){ %>
-			<div class="title-bar">
-				<div class="title-bar-text"><%=bmList.get(i).getPost_title()%></div>
-			</div>
-			
-			<div class="window-body">
-				<table class="board_list" id="list" bgcolor="white">
-					<tr>
-						<td id="user">작성자</td>
-						<td style="width: 650px text-align:'';"><%=bmList.get(i).getU_name()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">내용</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><img alt=""
-							src="img/<%=bmList.get(i).getPost_file()%>"><br><br> <b><%=bmList.get(i).getPost_content()%></b>
-						</td>
-					</tr>
-					<%
-						PostInfoDAO daoTag = new PostInfoDAO();
-						List<Tag> list2 = daoTag.postTagView(upList.get(i).getPost_seq());
-					%>
-					<tr style="height: 20px">
-						<td colspan="2">
-						<%for(int k = 0; k < list2.size(); k++){ %>
-						<a href="goTagMain.do?tag_seq=<%=list2.get(k).getTag_seq()%>"><%='#'+list2.get(k).getTag_content()%></a>
-						<%};%>
-						</td>
-					</tr>
-				</table>
-			</div>
 
-			<div class="status-bar">
-				<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=bmList.get(i).getPost_seq()%>
-					&u_email=<%=info.getU_email()%>">
-					<button	id="btn">
-						<%=bmList.get(i).getBookmarks()%>
-						<img src="./img/북마크.png" width="15" alt="">
-					</button>
-					</a>
-				</p>
-				좋아요 기능
-				<p class="status-bar-field">
-					<a href="mainLike.do?post_seq=<%=bmList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-					<button	id="btn"><%=bmList.get(i).getLikes()%> 💖
-					</button></a>
-				좋아요 기능 끝
-				</p>
-				<form action="mainCmt.do">
-					<input type="hidden" name="post_seq" value="<%=bmList.get(i).getPost_seq()%>">
-					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-					<p class="status-bar-field">
-						<input type="text" name="cmt_content" placeholder="댓글"
-						style="width:290px">
-						<input type="submit" value="등록">
-					</p>
-				</form>
-				
-					
-					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=bmList.get(i).getCmts()%> </button></a></p>
-				
-				<%
-				// comment 출력
-				CommentInfoDAO dao = new CommentInfoDAO();
-				List<CommentInfo> cmtList = dao.commentInfoList(bmList.get(i).getPost_seq());
-				%>
-			</div>
-			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table class="board_list" width=700>
-				<tr style="width: 0px; padding: 0px;">
-					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
-					<td><b><%=cmtList.get(j).getU_name()%></b></td>
-					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
-					<td>
-					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
-					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
-					</button></a>
-					</td>
-				</tr>
-			<%};%>	
-			</table>
-		</div>
-	    <%};%> --%>
 	    <div id="bookmark">
 			<%for(int i = 0; i < bmList.size(); i++){ %>
 			<div id="checkPost" class="window posted" style="width: 630px">
@@ -916,7 +589,7 @@
 					<div class="title-bar">
 						<div class="title-bar-text">팔로우/팔로워</div>
 						<div class="title-bar-controls">
-							<button aria-label="Close" onclick="location.href ='goMain.do'"></button>
+							<button aria-label="Close" onclick="location.href ='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
 						</div>
 					</div>
 					<div class="window-body" style="justify-content: space-between;">
@@ -1081,124 +754,42 @@
 				            </thead>
 				            <tbody>
 				                <tr>
-				                    <td>5</td>
+				                
+				                <!-- 나의 아이디어..  -->
+				         <%--            <td><%=miList.get(0).getRow_num() %></td>
 				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
+				                        <a href="#"><%=miList.get(0).getPost_title() %></a>
 				                    </td>
-				                    <td>개발자</td>
-				                    <td>2022/12/26</td>
-				                    <td>111</td>
+				                    <td><%=miList.get(0).getU_name() %></td>
+				                    <td><%=miList.get(0).getPost_dt() %></td>
+				                    <td><%=miList.get(0).getCnt() %></td> --%>
 				                </tr>
-				                <tr>
-				                    <td>4</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>222</td>
-				                </tr>
-				                <tr>
-				                    <td>3</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>333</td>
-				                </tr>
-				                <tr>
-				                    <td>2</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>222</td>
-				                </tr>
-				                <tr>
-				                    <td>1</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>111</td>
-				                </tr>
-				                <tr>
-				                    <td>1</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>111</td>
-				                </tr>
-				                <tr>
-				                    <td>1</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>111</td>
-				                </tr>
-				                <tr>
-				                    <td>1</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>111</td>
-				                </tr>
-				                <tr>
-				                    <td>1</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>111</td>
-				                </tr>
-				                <tr>
-				                    <td>1</td>
-				                    <td class="tit">
-				                        <a href="#">나의 아이디어5</a>
-				                    </td>
-				                    <td>개발자</td>
-				                    <td>20221226</td>
-				                    <td>111</td>
-				                </tr>
+				              
 				            </tbody>
 			        </table>
 			        <br>
-					<div class="pagination_section">
-						<a href="#" class="bt">＜＜ Previous</a>
-						<a href="#" class="num on">1</a>
-						<a href="#" class="num">2</a>
-						<a href="#" class="num">3</a>
-						<a href="#" class="num">4</a>
-						<a href="#" class="num">5</a>
-						<a href="#" class="num">6</a>
-						<a href="#" class="num">7</a>
-						<a href="#" class="bt">Next ＞＞</a>
-					</div>
+					<%-- <div class="pagination_section">
+						<a href="goIdea.do" class="bt">＜＜ Previous</a>
+						<%for(int i=0;i<cnt.size()/10+1;i++){ %>
+						<a id="num<%=i+1 %>" class="num" href="goIdea.do?&num=<%=i+1%>"><%=i+1%></a>
+						<%} %>	
+						<a href="goIdea.do?num=<%=cnt.size()%>" class="bt">Next ＞＞</a>
+					</div> --%>
 			    </div>
 			</div>
 			
 			<!-- 이력서 및 포트폴리오  -->
 			<div id="portfolio" style="display:none;">
-		        <form>
 		            <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
 		                <div class="title-bar">
 		                    <div class="title-bar-text">
 		                        이력서 및 포트폴리오
 		                    </div>
 		                    <div class="title-bar-controls">
-		                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+		                    	<button aria-label="Close" onclick="location.href='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
 		                    </div>
 		                </div>
+		        <form>
 		                <table class="userInfo">
 		                	<tbody>
 		                    <tr>
@@ -1307,8 +898,8 @@
 		                </table>
 		                <br>
 		                <input type="submit" onclick="pfPopup();" value="이력서 저장하기">
-					</div>
 		        </form>
+					</div>
 			</div>
 				
 			<!-- FAQ -->
@@ -1317,7 +908,7 @@
 					<div class="title-bar">
 						<div class="title-bar-text">HEllo iT</div>
 						<div class="title-bar-controls">
-						<button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
+						<button aria-label="Close" onclick="location.href ='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
 						</div>
 					</div>	
 			        <br><br>
@@ -1372,14 +963,14 @@
 			</div>
 		</div>
 		<footer class="main_footer">
-		<div class="window" id="icons" style="width: 800px" align="center">
-			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
-			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
-			<a href="goMain.do?u_email=<%=info.getU_email()%>"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
-			<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
-			<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
-			<a href="goMyPage.do?u_email=<%=info.getU_email()%>"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
-			<a href="goMessage.do"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+		<div class="window icons" style="width: 800px" align="center">
+			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+			<a href="goIdea.do" title="아이디어토론방"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+			<a href="goMain.do?u_email=<%=info.getU_email()%>" title="맞춤게시물"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+			<a href="goMainWrite.do" title="글쓰기"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
+			<a href="goRecruit.do" title="채용공고게시판"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+			<a href="goMyPage.do?u_email=<%=info.getU_email()%>" title="마이페이지"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
 	</div>
@@ -1607,5 +1198,15 @@
 		}
 	</script>
 	<script src="./js/load.js"></script>
+	
+	<!-- 나의 아이디어 페이징 -->
+<%-- 	<script>
+	console.log($('#num<%=num%>').attr('class'))
+	  for( i=1;i<=<%=cnt.size()/10%>;i++){
+		if($('#num<%=num%>').attr("id")=='num'+i){
+			$('#num<%=num%>').attr("class","num on")
+		}
+	}	
+</script> --%>
 </body>
 </html>

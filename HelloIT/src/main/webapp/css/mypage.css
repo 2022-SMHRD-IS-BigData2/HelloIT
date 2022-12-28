@@ -1,17 +1,21 @@
 @charset "UTF-8";
+
 body {
-    background: rgba(0,130,128,255);
+	background: rgba(0, 130, 128, 255);
 	background-size: cover;
 }
+
 .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	max-width: 100%;
 }
-.window{
+
+.window {
 	font-family: "";
 }
+
 .window-body {
 	display: flex;
 }
@@ -44,106 +48,114 @@ input[type=checkbox]:checked+label:after {
 	left: -16px;
 	top: 8px;
 }
-.userInfo tbody td:nth-child(1){
-    text-align: right;
-    padding: 2px 15px;
-    border-bottom: 1px solid;
-    width: 100px;
+
+.userInfo tbody td:nth-child(1) {
+	text-align: right;
+	padding: 2px 15px;
+	border-bottom: 1px solid;
+	width: 100px;
 }
-	tr>td:nth-child(1){
-    width: 70px;
-    text-align: center;
-	}
-	tr>td:nth-child(3){
-    width: 60px;
-    text-align: center;
-	}
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+tr>td:nth-child(1) {
+	width: 70px;
+	text-align: center;
+}
+
+tr>td:nth-child(3) {
+	width: 60px;
+	text-align: center;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap')
+	;
 
 * {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 table {
-    border-collapse: collapse;
-    border-width:initial;
-} 
-
+	border-collapse: collapse;
+	border-width: initial;
+}
 
 caption {
-    display: none;
+	display: none;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 .board_list_wrap {
-    padding: 5px;
+	padding: 5px;
 }
+
 .board_list {
-    width: 100%;
-    border-top: 2px solid white;
+	width: 100%;
+	border-top: 2px solid white;
 }
 
 .board_list tr {
-    border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 
-.board_list th,
-.board_list td {
-    padding: 3px;
-    font-size: 14px;
+.board_list th, .board_list td {
+	padding: 3px;
+	font-size: 14px;
 }
 
 .board_list td {
-    text-align: center;
+	text-align: center;
 }
 
 .board_list .tit {
-    text-align: left;
+	text-align: left;
 }
 
 .board_list .tit:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .board_list_wrap .paging {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 0;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 0;
 }
+
 .board_list_wrap .paging a {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 5px 10px;
-    border-radius: 100px;
-    font-size: 12px;
+	display: inline-block;
+	margin-left: 10px;
+	padding: 5px 10px;
+	border-radius: 100px;
+	font-size: 12px;
 }
+
 .board_list_wrap .pagination_section a:first-child {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 .board_list_wrap .pagination_section a.bt {
-    border: 1px solid #eee;
-    background: wh;
+	border: 1px solid #eee;
+	background: wh;
 }
 
 .board_list_wrap .pagination_section a.num {
-    border: 1px solid black;
-    font-weight: 600;
-    color: black;
+	border: 1px solid black;
+	font-weight: 600;
+	color: black;
 }
 
 .board_list_wrap .pagination_section a.num.on {
-    background: black;
-    color: #fff;
+	background: black;
+	color: #fff;
 }
+
 .board_list_wrap .pagination_section {
 	font-size: initial;
 }
-.board_list th:nth-child(2){
-	width:342px;
+
+.board_list th:nth-child(2) {
+	width: 342px;
 }

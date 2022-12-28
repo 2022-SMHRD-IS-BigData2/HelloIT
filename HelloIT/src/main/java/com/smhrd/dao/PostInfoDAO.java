@@ -158,4 +158,19 @@ public class PostInfoDAO {
 		return list;
 	}
 	
+	
+	// 마이페이지 아이디어 게시물 조회 
+//	public List<PostInfo> paging(int n) {
+//		SqlSession session = sqlSessionFactory.openSession(true);
+//		List<PostInfo> list = session.selectList("getListWithPagingMyIdea",n);
+//		return list;
+//	}
+//	public List<PostInfo> pageCnt() {
+//		SqlSession session = sqlSessionFactory.openSession();
+//		List<PostInfo> cnt = session.selectList("getListSizeMyIdea");
+//		session.close();
+//		return cnt;
+//	}
+
+	
 }

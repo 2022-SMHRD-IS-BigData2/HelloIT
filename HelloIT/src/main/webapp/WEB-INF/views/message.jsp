@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/message.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<title>Message</title>
-</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="./js/mousePointer.js"></script>
+<title>Hello IT</title>
+</head>	
 
 <body>
 	<% UserInfo info = (UserInfo)session.getAttribute("info");%>
@@ -25,7 +25,7 @@
 					<div class="title-bar-controls">
 						<button aria-label="Minimize"></button>
 						<button aria-label="Maximize"></button>
-						<button aria-label="Close"></button>
+						<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
 					</div>
 				</div>
 			</div>
@@ -76,7 +76,7 @@
 					</div>
 				</div>
 	<footer class="main_footer">
-		<div class="window" id="icons" style="width: 800px" align="center">
+		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
 			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
 			<a href="goMain.do?u_email=<%=info.getU_email()%>"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 

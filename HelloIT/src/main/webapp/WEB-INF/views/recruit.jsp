@@ -25,7 +25,7 @@
 	display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
 }
@@ -46,7 +46,7 @@
 		<div class="title-bar" style="position:sticky; top:0">
 			<div class="title-bar-text">채용 공고</div>
 			<div class="title-bar-controls">
-				<button aria-label="Close" onclick="location.href='goMain.do'"></button>
+				<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
 			</div>
 		</div>
 		<div class="window-body">
@@ -140,15 +140,15 @@
 		</div>
 		</div>
 		<footer class="main_footer">
-		<div class="window" id="icons" style="width: 800px" align="center">
-			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
-			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
-			<a href="goMain.do?u_email=<%=info.getU_email()%>"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
-			<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
-			<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
-			<a href="goMyPage.do?u_email=<%=info.getU_email()%>"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
-			<a href="goMessage.do"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
-		</div>
+			<div class="window icons" style="width: 800px" align="center">
+			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+			<a href="goIdea.do" title="아이디어토론방"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+			<a href="goMain.do?u_email=<%=info.getU_email()%>" title="맞춤게시물"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+			<a href="goMainWrite.do" title="글쓰기"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
+			<a href="goRecruit.do" title="채용공고게시판"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+			<a href="goMyPage.do?u_email=<%=info.getU_email()%>" title="마이페이지"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+			</div>
 	</footer>
 		</div>
 		</div>
@@ -181,8 +181,21 @@
 		  for( i=1;i<=<%=cnt.size()/10%>;i++){
 			if($('#num<%=num%>').attr("id")=='num'+i){
 				$('#num<%=num%>').attr("class","num on")
+				if(1<=<%=num%><=5){					
+					<%for(int i=6;i<=cnt.size()/10;i++){%>
+					$('#num<%=i%>').hide();						
+					<%}%> 
+				}else if(6<=<%=num%><=10){
+					<%for(int i=1;i<=5;i++){%>
+					$('#num<%=i%>').hide();						
+					<%}%> 					
+					<%for(int i=11;i<=cnt.size()/10;i++){%>
+					$('#num<%=i%>').hide();						
+					<%}%> 
+				}
 			}
 		}
+		
 		</script>
 </body>
 

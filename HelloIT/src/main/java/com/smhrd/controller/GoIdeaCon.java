@@ -39,8 +39,6 @@ public class GoIdeaCon implements Controller {
 			request.setAttribute("num", n);
 			// 객체바인딩
 			// request 영역에 list를 저장해뒀다가, jsp로 이동하고 나서 꺼내기
-			request.setAttribute("list", list);
-			////////////////////////////////////////////////////////////////////////////////////
 			// main.jsp로 
 			String nextPage = "idea";
 			// URL요청이 불가능 하기 때문에

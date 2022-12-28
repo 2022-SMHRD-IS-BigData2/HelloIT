@@ -110,7 +110,7 @@
 					<table class="board_list" id="list" bgcolor="white">
 						<tr>
 							<td id="user">작성자</td>
-							<td style="width: 650px text-align:'';"><%=ppList.get(i).getU_name()%></td>
+							<td style="width: 650px text-align:'';"><a href="goUserPage.do?u_email=<%=ppList.get(i).getU_email()%>"><%=ppList.get(i).getU_name()%></a></td>
 						</tr>
 						<tr>
 							<td colspan="2">내용</td>
@@ -174,7 +174,7 @@
 			<table class="board_list" width=700>
 				<tr style="width: 0px; padding: 0px;">
 					<%-- <td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td> --%>
-					<td><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -192,14 +192,14 @@
 		<%-- -------------------------------------------------------------------------------- --%>
 		</div>
 		<footer class="main_footer">
-		<div class="window" id="icons" style="width: 800px" align="center">
-			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
-			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
-			<a href="goMain.do?u_email=<%=info.getU_email()%>"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
-			<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
-			<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
-			<a href="goMyPage.do?u_email=<%=info.getU_email()%>"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
-			<a href="goMessage.do"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+		<div class="window icons" style="width: 800px" align="center">
+			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+			<a href="goIdea.do" title="아이디어토론방"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+			<a href="goMain.do?u_email=<%=info.getU_email()%>" title="맞춤게시물"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+			<a href="goMainWrite.do" title="글쓰기"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
+			<a href="goRecruit.do" title="채용공고게시판"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+			<a href="goMyPage.do?u_email=<%=info.getU_email()%>" title="마이페이지"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
 	</div>
