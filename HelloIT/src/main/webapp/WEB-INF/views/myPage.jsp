@@ -594,17 +594,15 @@
 				%>
 			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table border=1 width=700>
+			<table style="width:630px;">
 				<tr>
-					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
 					</button></a>
 					</td>
-				</tr>
-				<tr>
-					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
 				</tr>
 			<%}%>	
 			</table>
