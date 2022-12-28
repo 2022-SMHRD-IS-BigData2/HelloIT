@@ -29,8 +29,8 @@
 <title>Hello IT</title>
 </head>
 <body>
-<a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
-<a href="goAllPostMain.do" style="position:fixed; top: 30px">모든게시물조회</a>
+<!-- <a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
+<a href="goAllPostMain.do" style="position:fixed; top: 30px">모든게시물조회</a> -->
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
@@ -63,19 +63,19 @@
 				<img src="./img/comm.gif" width="50" alt="">
 				<p></p>
 				<ul style="list-style: none; display:flex; margin-block: auto;">
-					<li>
+					<li style="padding:0 10px">
 						<form action="https://search.naver.com/search.naver" method="GET" target="_blank">
 							<input type="text" placeholder="Naver" name="query">
 							<input id="btn" class="Button" type="submit" value="검색">
 						</form>
 					</li>
-					<li>
+					<li style="padding:0 10px">
 						<form action="https://www.google.com/search" method="GET" target="_blank">
 							<input type="search" placeholder="Google" name="q">
 							<button id="btn" class="Button" type="submit">검색</button>
 						</form>
 					</li>
-					<li>
+					<li style="padding:0 10px">
 						<form action="https://www.youtube.com/results" method="GET" target="_blank">
 							<input type="search" placeholder="Youtube"name="q">
 							<button id="btn" class="Button" type="submit">검색</button>
@@ -93,9 +93,9 @@
 		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<div class="window" style="position:sticky; top:131.2px; margin:-3px">
 				<div class="title-bar">
-				<div class="title-bar-text">전체 게시물</div>
+				<div class="title-bar-text"></div>
 				<div>
-					<input type="text" style="width: 150pt; height: 15pt;" placeholder="검색창" name="" id=""> 
+					<input type="text" style="width: 150pt; height: 15pt;" placeholder="찾고싶은 게시물을 검색하세요" name="" id=""> 
 					<input type="button" style="width: 30pt; height: 15pt;" value="🔍">
 				</div>
 				<div></div>

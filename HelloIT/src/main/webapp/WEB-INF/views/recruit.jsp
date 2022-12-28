@@ -20,6 +20,16 @@
 	<link rel="stylesheet" href="./css/recruit.css">
 	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/mousePointer.js"></script>
+	<style type="text/css">
+	body {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+	</style>
 </head>
 <body>
 	<%
