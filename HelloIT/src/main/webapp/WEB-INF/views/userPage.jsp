@@ -41,7 +41,7 @@
 		<div class="wrapper">
 			<div class="window" style="width: 800px; position: sticky; top: 0; max-width:100%"align="center">
 				<div class="title-bar" style="position:sticky; top:1px">
-				  <div class="title-bar-text">마이 페이지</div>
+				  <div class="title-bar-text"><%=info.getU_name()%></div>
 				  <div class="title-bar-controls">
 				    <button aria-label="Close" onclick = "location.href ='goMain.do'"></button>
 				  </div>
@@ -49,13 +49,10 @@
 		 	<div class="window-body" style="justify-content: space-between;">
 			 	<div>
 			 	<ul class="tree-view" style="font-family:auto;">
-					  <li id="listOfMyPage" style="cursor:pointer;">나의 회원정보</li>
-					  <li id="listOfInterest" style="cursor:pointer;">관심분야 Check</li>
-					  <li id="listOfPosted" style="cursor:pointer;">내가올린 게시물<li>
-					  <li id="listOfBookmark" style="cursor:pointer;">북마크한 게시물<li>
+					  <li id="listOfPosted" style="cursor:pointer;">게시물<li>
+					  <li id="listOfBookmark" style="cursor:pointer;">북마크<li>
 					  <li id="listOfFollow" style="cursor:pointer;">팔로잉/팔로워</li>  
-					  <li id="listOfMyIdea" style="cursor:pointer;">나의 아이디어<li>
-					  <li id="listOfPortfolio" style="cursor:pointer;">포트폴리오&자소서<li>
+					  <li id="listOfMyIdea" style="cursor:pointer;">아이디어<li>
 					  <li id="listOfFAQ" style="cursor:pointer;">FAQ<li>
 				</ul>
 				</div>
@@ -399,127 +396,6 @@
 		            </form>
 		        </div>
 		    </div>
-		    <!-- <div id="posted" style="font-family:auto;">
-				<div class="mypost_list_wrap board_list_wrap">
-			        <table class="mypost_list board_list" border="1">
-			            <caption>내가올린게시글 목록</caption>
-			            <thead>
-			                <tr>
-			                    <th>번호</th>
-			                    <th>제목</th>
-			                    <th>작성자</th>
-			                    <th>작성일</th>
-			                    <th>조회수</th>
-			                </tr>
-			            </thead>
-			            <tbody>
-			                <tr>
-			                    <td>5</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글5</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>2022/12/26</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>4</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글4</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>3</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글3</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>333</td>
-			                </tr>
-			                <tr>
-			                    <td>2</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글2</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">내가올린 게시글1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			            </tbody>
-			        </table>
-			        <br>
-					<div class="pagination_section">
-									<a href="#" class="bt">＜＜ Previous</a>
-									<a href="#" class="num on">1</a>
-									<a href="#" class="num">2</a>
-									<a href="#" class="num">3</a>
-									<a href="#" class="num">4</a>
-									<a href="#" class="num">5</a>
-									<a href="#" class="num">6</a>
-									<a href="#" class="num">7</a>
-									<a href="#" class="bt">Next ＞＞</a>
-					</div>
-			    </div>
-			</div> -->
-		    <!-- <div id="posted" class="window" style="padding-bottom:20px">style="width: 600px" -->
 		    
 		    
 		    <div id="posted">
@@ -594,233 +470,21 @@
 				%>
 			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table border=1 width=700>
+			<table style="width:630px;">
 				<tr>
-					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
 					</button></a>
 					</td>
-				</tr>
-				<tr>
-					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
 				</tr>
 			<%}%>	
 			</table>
 		</div>
 		<%}%>
 		</div>
-		<!-- </div> -->
-	    
-			<!-- <div id="bookmark" style="display:none; font-family:auto;">
-				<div class="board_list_wrap">
-			        <table class="board_list" border="1">
-			            <caption>북마크 목록</caption>
-			            <thead>
-			                <tr>
-			                    <th>번호</th>
-			                    <th>제목</th>
-			                    <th>작성자</th>
-			                    <th>작성일</th>
-			                    <th>조회수</th>
-			                </tr>
-			            </thead>
-			            <tbody>
-			                <tr>
-			                    <td>5</td>
-			                    <td class="tit">
-			                        <a href="#">북마크5</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>2022/12/26</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>4</td>
-			                    <td class="tit">
-			                        <a href="#">북마크4</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>3</td>
-			                    <td class="tit">
-			                        <a href="#">북마크3</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>333</td>
-			                </tr>
-			                <tr>
-			                    <td>2</td>
-			                    <td class="tit">
-			                        <a href="#">북마크2</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>222</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			                <tr>
-			                    <td>1</td>
-			                    <td class="tit">
-			                        <a href="#">북마크1</a>
-			                    </td>
-			                    <td>개발자</td>
-			                    <td>20221226</td>
-			                    <td>111</td>
-			                </tr>
-			            </tbody>
-			        </table>
-			        <br>
-					<div class="pagination_section">
-									<a href="#" class="bt">＜＜ Previous</a>
-									<a href="#" class="num on">1</a>
-									<a href="#" class="num">2</a>
-									<a href="#" class="num">3</a>
-									<a href="#" class="num">4</a>
-									<a href="#" class="num">5</a>
-									<a href="#" class="num">6</a>
-									<a href="#" class="num">7</a>
-									<a href="#" class="bt">Next ＞＞</a>
-					</div>
-			    </div>
-			</div> -->
-			
-			<!-- 북마크 -->
-	<%-- 		<div id="bookmark" class="window posted" style="width: 630px">
-			<%for(int i = 0; i < bmList.size(); i++){ %>
-			<div class="title-bar">
-				<div class="title-bar-text"><%=bmList.get(i).getPost_title()%></div>
-			</div>
-			
-			<div class="window-body">
-				<table class="board_list" id="list" bgcolor="white">
-					<tr>
-						<td id="user">작성자</td>
-						<td style="width: 650px text-align:'';"><%=bmList.get(i).getU_name()%></td>
-					</tr>
-					<tr>
-						<td colspan="2">내용</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><img alt=""
-							src="img/<%=bmList.get(i).getPost_file()%>"><br><br> <b><%=bmList.get(i).getPost_content()%></b>
-						</td>
-					</tr>
-					<%
-						PostInfoDAO daoTag = new PostInfoDAO();
-						List<Tag> list2 = daoTag.postTagView(upList.get(i).getPost_seq());
-					%>
-					<tr style="height: 20px">
-						<td colspan="2">
-						<%for(int k = 0; k < list2.size(); k++){ %>
-						<a href="goTagMain.do?tag_seq=<%=list2.get(k).getTag_seq()%>"><%='#'+list2.get(k).getTag_content()%></a>
-						<%};%>
-						</td>
-					</tr>
-				</table>
-			</div>
-
-			<div class="status-bar">
-				<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=bmList.get(i).getPost_seq()%>
-					&u_email=<%=info.getU_email()%>">
-					<button	id="btn">
-						<%=bmList.get(i).getBookmarks()%>
-						<img src="./img/북마크.png" width="15" alt="">
-					</button>
-					</a>
-				</p>
-				좋아요 기능
-				<p class="status-bar-field">
-					<a href="mainLike.do?post_seq=<%=bmList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-					<button	id="btn"><%=bmList.get(i).getLikes()%> 💖
-					</button></a>
-				좋아요 기능 끝
-				</p>
-				<form action="mainCmt.do">
-					<input type="hidden" name="post_seq" value="<%=bmList.get(i).getPost_seq()%>">
-					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-					<p class="status-bar-field">
-						<input type="text" name="cmt_content" placeholder="댓글"
-						style="width:290px">
-						<input type="submit" value="등록">
-					</p>
-				</form>
-				
-					
-					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=bmList.get(i).getCmts()%> </button></a></p>
-				
-				<%
-				// comment 출력
-				CommentInfoDAO dao = new CommentInfoDAO();
-				List<CommentInfo> cmtList = dao.commentInfoList(bmList.get(i).getPost_seq());
-				%>
-			</div>
-			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table class="board_list" width=700>
-				<tr style="width: 0px; padding: 0px;">
-					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
-					<td><b><%=cmtList.get(j).getU_name()%></b></td>
-					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
-					<td>
-					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
-					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
-					</button></a>
-					</td>
-				</tr>
-			<%};%>	
-			</table>
-		</div>
-	    <%};%> --%>
 	    <div id="bookmark">
 			<%for(int i = 0; i < bmList.size(); i++){ %>
 			<div id="checkPost" class="window posted" style="width: 630px">

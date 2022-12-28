@@ -74,6 +74,7 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
+		
 		handlerMapping.put("/goUserPage.do", new GoUserPageCon()); // 유저페이지 이동
 		handlerMapping.put("/goWriteIdea.do", new GoWriteIdea()); // 마이페이지 이동
 		handlerMapping.put("/goMessage.do", new GoMessageCon()); // 마이페이지 이동
