@@ -110,7 +110,7 @@
 					<table class="board_list" id="list" bgcolor="white">
 						<tr>
 							<td id="user">작성자</td>
-							<td style="width: 650px text-align:'';"><%=list.get(i).getU_name()%></td>
+							<td style="width: 650px text-align:'';"><a href="goUserPage.do?u_email=<%=list.get(i).getU_email()%>"><%=list.get(i).getU_name()%></a></td>
 						</tr>
 						<tr>
 							<td colspan="2">내용</td>

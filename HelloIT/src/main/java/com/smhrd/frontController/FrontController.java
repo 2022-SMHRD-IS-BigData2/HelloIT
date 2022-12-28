@@ -59,6 +59,7 @@ import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.UserLevelSettingCon;
 import com.smhrd.controller.WriteCon;
 import com.smhrd.controller.GoTagMainCon;
+import com.smhrd.controller.GoUserPageCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -71,6 +72,7 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
+		handlerMapping.put("/goUserPage.do", new GoUserPageCon()); // 유저페이지 이동
 		handlerMapping.put("/goWriteIdea.do", new GoWriteIdea()); // 마이페이지 이동
 		handlerMapping.put("/goMessage.do", new GoMessageCon()); // 마이페이지 이동
 		handlerMapping.put("/goDevInfo.do", new GoDevInfoCon()); // 보고또보고 팀 소개페이지 이동
