@@ -2,17 +2,12 @@ package com.smhrd.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.dao.MyPageInfoDAO;
-import com.smhrd.dao.UserRoleInfoDAO;
 import com.smhrd.dao.UserTagDAO;
-import com.smhrd.entity.MyPageInfo;
-import com.smhrd.entity.UserRoleInfo;
 import com.smhrd.entity.UserTag;
 
 public class UpdateRoleCon implements Controller {

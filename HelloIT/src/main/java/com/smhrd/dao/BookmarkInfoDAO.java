@@ -7,7 +7,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.BookmarkInfo;
-import com.smhrd.entity.LikeInfo;
 
 public class BookmarkInfoDAO {
 	

@@ -8,12 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.controller.Controller;
 import com.smhrd.dao.IdeaDAO;
-import com.smhrd.dao.PostInfoDAO;
-import com.smhrd.dao.RecruitDAO;
 import com.smhrd.entity.PostInfo;
-import com.smhrd.entity.Recruit;
 
 public class GoIdeaCon implements Controller {
 

@@ -5,7 +5,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.LikeInfo;
-import com.smhrd.entity.PostInfo;
 
 public class LikeInfoDAO {
 	

@@ -183,8 +183,6 @@
 					</button></a>
 					</td>
 				</tr>
-				<tr>
-				</tr>
 			<%};%>	
 			</table>
 		</div>

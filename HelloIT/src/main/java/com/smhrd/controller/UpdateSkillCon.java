@@ -7,13 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.dao.MyPageInfoDAO;
-import com.smhrd.dao.UserDBInfoDAO;
-import com.smhrd.dao.UserSkillInfoDAO;
 import com.smhrd.dao.UserTagDAO;
-import com.smhrd.entity.MyPageInfo;
-import com.smhrd.entity.UserDBInfo;
-import com.smhrd.entity.UserSkillInfo;
 import com.smhrd.entity.UserTag;
 
 public class UpdateSkillCon implements Controller {

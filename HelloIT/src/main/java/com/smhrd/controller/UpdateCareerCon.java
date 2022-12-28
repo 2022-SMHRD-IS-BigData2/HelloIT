@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.dao.CareerInfoDAO;
-import com.smhrd.dao.MyPageInfoDAO;
 import com.smhrd.entity.CareerInfo;
-import com.smhrd.entity.MyPageInfo;
 
 public class UpdateCareerCon implements Controller {
 

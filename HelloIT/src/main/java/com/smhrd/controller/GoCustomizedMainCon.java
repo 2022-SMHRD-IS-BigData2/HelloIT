@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
-import com.smhrd.entity.Tag;
 import com.smhrd.entity.UserInfo;
 
 public class GoCustomizedMainCon implements Controller {

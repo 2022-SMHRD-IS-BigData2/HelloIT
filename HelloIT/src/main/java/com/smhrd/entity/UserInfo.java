@@ -5,8 +5,6 @@ import java.sql.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 //@RequiredArgsConstructor // @NonNull이 붙은 요소만 초기화해주는 생성자.
 @NoArgsConstructor // 기본 생성자를 생성

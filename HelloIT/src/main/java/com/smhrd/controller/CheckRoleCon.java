@@ -7,11 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.smhrd.dao.MyPageInfoDAO;
-import com.smhrd.dao.UserRoleInfoDAO;
-import com.smhrd.entity.MyPageInfo;
-import com.smhrd.entity.UserRoleInfo;
-
 public class CheckRoleCon implements Controller {
 
 	@Override
