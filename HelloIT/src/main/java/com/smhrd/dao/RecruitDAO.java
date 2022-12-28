@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
+import com.smhrd.entity.OnclickDTO;
 import com.smhrd.entity.Recruit;
 
 public class RecruitDAO {
@@ -24,4 +25,13 @@ public class RecruitDAO {
 		return cnt;
 	}
 	
+<<<<<<< HEAD
+=======
+	public List<OnclickDTO> printOn(){
+		SqlSession session = sqlSessionFactory.openSession();
+		List<OnclickDTO> on = session.selectList("onClicktest");
+		session.close();
+		return on;
+	}
+>>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-BigData2/HelloIT.git
 }

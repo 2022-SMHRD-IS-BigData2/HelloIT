@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.entity.OnclickDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.dao.RecruitDAO"%>
@@ -73,14 +74,12 @@
 
 				<br>
 				<div class="pagination_section">
-					<a href="#">＜＜ Previous</a>
+					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
 					<%for(int i=0;i<cnt.size()/10;i++){ %>
-						<a href="goRecruitTest.do?num=<%=i+1%>"><%=i+1%></a>
-						<%} %>		
-					<a href="#">Next ＞＞</a>
+					<a id="num<%=i+1 %>" href="goRecruit.do?num=<%=i+1%>"><%=i+1%></a>
+					<%} %>	
+					<a href="goRecruit.do?num=<%=cnt.size()/10 %>" class="bt">Next ＞＞</a>
 				</div>
-
-
 			</div>
 			
 			
@@ -137,6 +136,8 @@
 		</footer>
 		</div>
 		</div>
+		<%String on = (String)request.getAttribute("on");%>
+		<%out.print(on); %>
 				<script>
 
 			$(document).ready(function () {
@@ -152,8 +153,10 @@
 				})
 
 			})
-
+		
+			
 		</script>
+		
 </body>
 
 </html>

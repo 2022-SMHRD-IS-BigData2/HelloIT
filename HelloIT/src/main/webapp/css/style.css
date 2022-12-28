@@ -26,6 +26,7 @@ body {
 }
 .window {
     justify-content: space-between;
+    font-family: '';
 } 
 .main_footer{
 	position : sticky;
@@ -165,6 +166,13 @@ tr>td:nth-child(4){
 	font-weight: bolder;
 	text-align: center;
 }
-	.window.posted{
-		margin:4px;
-	}
+.window.posted{
+	margin:4px;
+}
+
+#list #user{
+	text-align:center;
+}
+#list{
+	text-align:left;
+}

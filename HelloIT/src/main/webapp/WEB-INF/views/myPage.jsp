@@ -1,4 +1,11 @@
 <%@page import="com.smhrd.entity.UserInfo"%>
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.smhrd.entity.Tag"%>
+<%@page import="com.smhrd.dao.PostInfoDAO"%>
+<%@page import="com.smhrd.entity.CommentInfo"%>
+<%@page import="com.smhrd.dao.CommentInfoDAO"%>
+<%@page import="com.smhrd.entity.PostInfo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,10 +15,7 @@
 <title>Hello IT</title>
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/bookmark.css">
-<link rel="stylesheet" href="./css/myidea.css">
 <link rel="stylesheet" href="./css/FAQ.css">
-<link rel="stylesheet" href="./css/mypost.css">
 <link rel="stylesheet" href="./css/mypage.css">
 <link
       rel="stylesheet"
@@ -22,895 +26,1125 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
 <style>
-	tr>td:nth-child(1){
-    width: 70px;
-    text-align: center;
-	}
-	tr>td:nth-child(3){
-    width: 1px;
-	}
+
 </style>
 </head>
 
 <body>
 	<%
 	UserInfo info = (UserInfo)session.getAttribute("info");
+	List<PostInfo> list = (List<PostInfo>) request.getAttribute("list");
 	%>
+	
 	<div class="container">
-	<div class="wrapper">
-	<div class="window" style="width: 800px; position: sticky; top: 0; max-width:100%"align="center">
-	<div class="title-bar" style="position:sticky; top:1px">
-	  <div class="title-bar-text">마이 페이지</div>
-	  <div class="title-bar-controls">
-	    <button aria-label="Close" onclick = "location.href ='goMain.do'"></button>
-	  </div>
-	</div>
- 	<div class="window-body" style="justify-content: space-between;">
- 	<div>
- 	<ul class="tree-view" style="font-family:auto;">
-		  <li id="listOfMyPage" style="cursor:pointer;">나의 회원정보</li>
-		  <li id="listOfInterest" style="cursor:pointer;">관심분야 Check</li>
-		  <li id="listOfPosted" style="cursor:pointer;">내가올린 게시물<li>
-		  <li id="listOfBookmark" style="cursor:pointer;">북마크한 게시물<li>
-		  <li id="listOfFollow" style="cursor:pointer;">팔로잉/팔로워</li>  
-		  <li id="listOfMyIdea" style="cursor:pointer;">나의 아이디어<li>
-		  <li id="listOfPortfolio" style="cursor:pointer;">포트폴리오&자소서<li>
-		  <li id="listOfFAQ" style="cursor:pointer;">FAQ<li>
-	</ul>
-	</div>
-	<div id="myPage" style="display:none;">
-		    <div class="container">
-        <div class="wrapper" style="position: sticky; top: 27px;">
-            <div class="window" style="width: 400px; position: sticky; top: 0; max-width: 100%; width: 400px;display: block; margin: 0 100px; margin-bottom: 50px;" align="center">
-                <div class="title-bar">
-                    <div class="title-bar-text">회원 정보</div>
-                    <div class="title-bar-controls">
-                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
-                    </div>
-                </div>
-                    <form style="margin:20px; font-size:initial">
-                        <table class="userInfo">
-                        	<tbody>
-                            <tr>
-                                <td style="width:140px">회원 이메일</td>
-                                <td style="padding-left:4px"><%=info.getU_email() %></td>
-                            </tr>
-                            <tr>
-                                <td>이름</td>
-                                <td style="padding-left:4px"><%=info.getU_name() %></td>
-                            </tr>
-                            <tr>
-                                <td>닉네임</td>
-                                <td style="padding-left:4px"><%=info.getU_nick() %></td>
-                            </tr>
-                            <tr>
-                                <td>현재비밀번호</td>
-                                <td style="padding-left:4px"><input type="password" name="pw1" placeholder="현재 비밀번호 입력"></td>
-                            </tr>
-                            <tr>
-                                <td>변경할 비밀번호</td>
-                                <td style="padding-left:4px"><input type="password" name="repw2" placeholder="변경할 비밀번호 입력"></td>
-                            </tr>
-                            <tr>
-                                <td>변경할 비밀번호 확인</td>
-                                <td style="padding-left:4px"><input type="password" name="repw3" placeholder="변경할 비밀번호 확인"></td>
-                            </tr>
-                            <tr>
-                                <td>생년월일</td>
-                                <td style="padding-left:4px"><%=info.getU_birthdate()%></td>
-                            </tr>
-                            <tr>
-                                <td>직업</td>
-                                <td style="padding-left:4px"><%=info.getU_job() %></td>
-                            </tr>
-                            <tr>
-                                <td>활동점수</td>
-                                <td style="padding-left:4px"><%=info.getU_activity_score() %></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                            	<div><input type="submit" value="저장"></div>
-                    </form>
-            </div>
-        </div>
-    </div>
-	</div>
-    <div class="window" id="checkInterest" style="display:none; margin-left:8px">
-        <div class="title-bar" style="position:sticky; top:27px">
-            <div class="title-bar-text">관심 분야 Check!!</div>
-            <div class="title-bar-controls">
-              <button aria-label="Close" onclick = "location.href ='goMyPage.do'"></button>
-            </div>
-          </div>
-        <div class="window-body" style="display:block;">
-            <h4>관심있는분야나 직장에서 맡고있는 분야를 선택하세요(중복선택 가능), 체크한 분야에 따라서 게시물이 자동 선별됩니다.</h4>
-            <br>
-           	<form action="updateRole.do" method="post">
-            <table>
-            <tr class="interest" id="userRole">
-         	<td><h4>역할</h4></td>
-                <td>
-	                <input type="checkbox" name="frontend" id="frontend" value="Y">
-	                <label for="frontend">프론트엔드</label>
-	                <input type="checkbox" name="backend" id="backend" value="Y">
-	                <label for="backend">백엔드</label>
-	                <input type="checkbox" name="data_etc" id="data_etc" value="Y">
-	                <label for="data_etc">데이터분야(빅데이터,인공지능포함)</label>
-	                <input type="checkbox" name="other_skill" id="other_skill" value="Y">
-	                <label for="other_skill">기타</label>
-	                <br><br>
-	                <input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-	                <input type="hidden" name="frontend" id="frontend_hidden" value="N">
-	                <input type="hidden" name="backend" id="backend_hidden" value="N">
-	                <input type="hidden" name="data_etc" id="data_etc_hidden" value="N">
-	                <input type="hidden" name="other_skill" id="other_skill_hidden" value="N">
-	                </td>
-	                <td>
-	                <input type="submit" value="저장">
-	                <input type="reset" value="초기화">
-            	</td>
-            </tr>
-            </table>
-            </form>
-                <form action="" method="post">
-            <table>
-            <tr class="interest" id="userSkill">
-                <td><h4>분야</h4></td>
-                <td>
-	                <input type="checkbox" name="web" id="web" value="Y">
-	                <label for="web">웹</label>
-	                <input type="checkbox" name="ios" id="ios" value="Y">
-	                <label for="ios">iOS</label>
-	                <input type="checkbox" name="android" id="android" value="Y">
-	                <label for="android">안드로이드</label>
-	                <input type="checkbox" name="windows" id="windows" value="Y">
-	                <label for="windows">윈도우</label>
-	                <input type="checkbox" name="mac" id="mac" value="Y">
-	                <label for="mac">맥</label>
-	                <input type="checkbox" name="linux" id="linux" value="Y">
-	                <label for="linux">리눅스</label>
-	                <input type="checkbox" name="game" id="game" value="Y">
-	                <label for="game">게임</label>
-	                <input type="checkbox" name="skill_etc" id="skill_etc" value="Y">
-	                <label for="skill_etc">기타</label>
-	                <br><br>
-	                <input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-	                <input type="hidden" name="web" id="web_hidden" value="N">
-	                <input type="hidden" name="ios" id="ios_hidden" value="N">
-	                <input type="hidden" name="android" id="android_hidden" value="N">
-	                <input type="hidden" name="windows" id="windows_hidden" value="N">
-	                <input type="hidden" name="mac" id="mac_hidden" value="N">
-	                <input type="hidden" name="linux" id="linux_hidden" value="N">
-	                <input type="hidden" name="game" id="game_hidden" value="N">
-	                <input type="hidden" name="skill_etc" id="skill_etc_hidden" value="N">
-	                </td><td>
-	                <input type="submit" value="저장">
-	                <input type="reset" value="초기화">
-                </td>
-            </tr>
-            </table>
-                </form>
-                
-                <form action="" method="post">
-                <table>
-            <tr class="interest" id="userLanguage">
-                <td><h4>언어</h4></td>
-                <td>
-                <input type="checkbox" name="html" id="html" value="Y">
-                <label for="html">HTML</label>
-                <input type="checkbox" name="css" id="css" value="Y">
-				<label for="css">CSS</label>
-                <input type="checkbox" name="c" id="c" value="Y">
-                <label for="c">C</label>
-                <input type="checkbox" name="c_pp" id="c_pp" value="Y">
-                <label for="c_pp">C++</label>
-                <input type="checkbox" name="c_sharp" id="c_sharp" value="Y">
-                <label for="c_sharp">C#</label>
-                <input type="checkbox" name="java" id="java" value="Y">
-                <label for="java">JAVA</label>
-                <input type="checkbox" name="python" id="python" value="Y">
-                <label for="python">Python</label>
-                <input type="checkbox" name="php" id="php" value="Y">
-                <label for="php">PHP</label>
-                <input type="checkbox" name="dart" id="dart" value="Y">
-                <label for="dart">Dart</label>
-                <input type="checkbox" name="typescript" id="typescript" value="Y">
-                <label for="typescript">TypeScript</label>
-                <input type="checkbox" name="kotlin" id="kotlin" value="Y">
-                <label for="kotlin">Kotlin</label>
-                <input type="checkbox" name="go" id="go" value="Y">
-                <label for="go">Go</label>
-                <input type="checkbox" name="rust" id="rust" value="Y">
-                <label for="rust">Rust</label>
-                <input type="checkbox" name="swift" id="swift" value="Y">
-                <label for="swift">Swift</label>
-                <input type="checkbox" name="scala" id="scala" value="Y">
-                <label for="scala">Scala</label>
-                <input type="checkbox" name="objective_c" id="objective_c" value="Y">
-                <label for="objective_c">Objective_C</label>
-                <input type="checkbox" name="r" id="r" value="Y">
-                <label for="r">R</label>
-                <input type="checkbox" name="ruby" id="ruby" value="Y">
-                <label for="ruby">Ruby</label>
-                <input type="checkbox" name="haskell" id="haskell" value="Y">
-                <label for="haskell">Haskell</label>
-                <input type="checkbox" name="clojure" id="clojure" value="Y">
-                <label for="clojure">Clojure</label>
-                <input type="checkbox" name="sql" id="sql" value="Y">
-                <label for="sql">SQL</label>
-                <input type="checkbox" name="language_etc" id="language_etc" value="Y">
-                <label for="language_etc">기타</label>
-               	<br><br>
-               	<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-               	<input type="hidden" name="html" id="html_hidden" value="N">
-                <input type="hidden" name="css" id="css_hidden" value="N">
-                <input type="hidden" name="c" id="c_hidden" value="N">
-                <input type="hidden" name="c_pp" id="c_pp_hidden" value="N">
-                <input type="hidden" name="c_sharp" id="c_sharp_hidden" value="N">
-                <input type="hidden" name="java" id="java_hidden" value="N">
-                <input type="hidden" name="python" id="python_hidden" value="N">
-                <input type="hidden" name="php" id="php_hidden" value="N">
-                <input type="hidden" name="dart" id="dart_hidden" value="N">
-                <input type="hidden" name="typescript" id="typescript_hidden" value="N">
-                <input type="hidden" name="kotlin" id="kotlin_hidden" value="N">
-                <input type="hidden" name="go" id="go_hidden" value="N">
-                <input type="hidden" name="rust" id="rust_hidden" value="N">
-                <input type="hidden" name="swift" id="swift_hidden" value="N">
-                <input type="hidden" name="scala" id="scala_hidden" value="N">
-                <input type="hidden" name="objective_c" id="objective_c_hidden" value="N">
-                <input type="hidden" name="r" id="r_hidden" value="N">
-                <input type="hidden" name="ruby" id="ruby_hidden" value="N">
-                <input type="hidden" name="haskell" id="haskell_hidden" value="N">
-                <input type="hidden" name="sql" id="sql_hidden" value="N">
-                <input type="hidden" name="language_etc" id="language_etc_hidden" value="N">
-                </td>
-                <td>
-                <input type="submit" value="저장">
-                <input type="reset" value="초기화">
-                
-                </td>
-            </tr>
-            </table>
-                </form>
-                <form action="" method="post">
-                <table>
-            <tr class="interest" id="userDB">
-                <td><h4>DB</h4></td>
-                <td>
-                <input type="checkbox" name="mysql" id="mysql" value="Y">
-                <label for="mysql">MySQL</label>
-                <input type="checkbox" name="oracle" id="oracle" value="Y">
-                <label for="oracle">Oracle</label>
-                <input type="checkbox" name="mariadb" id="mariadb" value="Y">
-                <label for="mariadb">MariaDB</label>
-                <input type="checkbox" name="pstgresql" id="pstgresql" value="Y">
-                <label for="pstgresql">Pstgresql</label>
-                <input type="checkbox" name="mongodb" id="mongodb" value="Y">
-                <label for="mongodb">MongoDB</label>
-                <input type="checkbox" name="redis" id="redis" value="Y">
-                <label for="redis">Redis</label>
-                <input type="checkbox" name="sqlite" id="sqlite" value="Y">
-                <label for="sqlite">SQLite</label>
-                <input type="checkbox" name="aws_aurora" id="aws_aurora" value="Y">
-                <label for="sqlite">AWS_Aurora</label>
-                <input type="checkbox" name="elasticsearch" id="elasticsearch" value="Y">
-                <label for="elasticsearch">Elasticsearch</label>
-                <input type="checkbox" name="dynamodb" id="dynamodb" value="Y">
-                <label for="dynamodb">DynamoDB</label>
-                <input type="checkbox" name="firebase" id="firebase" value="Y">
-                <label for="firebase">Firebase</label>
-                <input type="checkbox" name="tibero" id="tibero" value="Y">
-                <label for="tibero">Tibero</label>
-                <input type="checkbox" name="hive" id="hive" value="Y">
-                <label for="hive">Hive</label>
-                <input type="checkbox" name="cassandra" id="cassandra" value="Y">
-                <label for="cassandra">Cassandra</label>
-                <input type="checkbox" name="db_etc" id="db_etc" value="Y">
-                <label for="db_etc">기타</label>
-                <br><br>
-                <input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-                <input type="hidden" name="mysql" id="mysql_hidden" value="N">
-                <input type="hidden" name="oracle" id="oracle_hidden" value="N">
-                <input type="hidden" name="mariadb" id="mariadb_hidden" value="N">
-                <input type="hidden" name="pstgresql" id="pstgresql_hidden" value="N">
-                <input type="hidden" name="mongodb" id="mongodb_hidden" value="N">
-                <input type="hidden" name="redis" id="redis" value="N">
-                <input type="hidden" name="sqlite" id="sqlite_hidden" value="N">
-                <input type="hidden" name="aws_aurora" id="aws_aurora_hidden" value="N">
-                <input type="hidden" name="elasticsearch" id="elasticsearch_hidden" value="N">
-                <input type="hidden" name="dynamodb" id="dynamodb_hidden" value="N">
-                <input type="hidden" name="firebase" id="firebase_hidden" value="N">
-                <input type="hidden" name="tibero" id="tibero_hidden" value="N">
-                <input type="hidden" name="hive" id="hive_hidden" value="N">
-                <input type="hidden" name="cassandra" id="cassandra_hidden" value="N">
-                <input type="hidden" name="db_etc" id="db_etc_hidden" value="N">
-                </td><td>
-                <input type="submit" value="저장">
-                <input type="reset" value="초기화">
-                </td>
-            </tr>
-            </table>
-                </form>
-        </div>
-    </div>
-    
-    <div id="posted" style="display:none; font-family:auto;">
-	<div class="mypost_list_wrap">
-        <table class="mypost_list" border="1">
-            <caption>내가올린게시글 목록</caption>
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th style="width:380px">제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>2022/12/26</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글4</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>222</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글3</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>333</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글2</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>222</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">내가올린 게시글1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-			<div class="pagination_section">
-							<a href="#" class="bt">＜＜ Previous</a>
-							<a href="#" class="num on">1</a>
-							<a href="#" class="num">2</a>
-							<a href="#" class="num">3</a>
-							<a href="#" class="num">4</a>
-							<a href="#" class="num">5</a>
-							<a href="#" class="num">6</a>
-							<a href="#" class="num">7</a>
-							<a href="#" class="bt">Next ＞＞</a>
+		<div class="wrapper">
+			<div class="window" style="width: 800px; position: sticky; top: 0; max-width:100%"align="center">
+				<div class="title-bar" style="position:sticky; top:1px">
+				  <div class="title-bar-text">마이 페이지</div>
+				  <div class="title-bar-controls">
+				    <button aria-label="Close" onclick = "location.href ='goMain.do'"></button>
+				  </div>
 				</div>
-    </div>
-	
-	</div>
-    
-    
-	<div id="bookmark" style="display:none; font-family:auto;">
-	<div class="board_list_wrap">
-        <table class="board_list" border="1">
-            <caption>북마크 목록</caption>
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th style="width:380px">제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5</td>
-                    <td class="tit">
-                        <a href="#">북마크5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>2022/12/26</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="tit">
-                        <a href="#">북마크4</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>222</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="tit">
-                        <a href="#">북마크3</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>333</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="tit">
-                        <a href="#">북마크2</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>222</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">북마크1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">북마크1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">북마크1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">북마크1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">북마크1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">북마크1</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-			<div class="pagination_section">
-							<a href="#" class="bt">＜＜ Previous</a>
-							<a href="#" class="num on">1</a>
-							<a href="#" class="num">2</a>
-							<a href="#" class="num">3</a>
-							<a href="#" class="num">4</a>
-							<a href="#" class="num">5</a>
-							<a href="#" class="num">6</a>
-							<a href="#" class="num">7</a>
-							<a href="#" class="bt">Next ＞＞</a>
+		 	<div class="window-body" style="justify-content: space-between;">
+			 	<div>
+			 	<ul class="tree-view" style="font-family:auto;">
+					  <li id="listOfMyPage" style="cursor:pointer;">나의 회원정보</li>
+					  <li id="listOfInterest" style="cursor:pointer;">관심분야 Check</li>
+					  <li id="listOfPosted" style="cursor:pointer;">내가올린 게시물<li>
+					  <li id="listOfBookmark" style="cursor:pointer;">북마크한 게시물<li>
+					  <li id="listOfFollow" style="cursor:pointer;">팔로잉/팔로워</li>  
+					  <li id="listOfMyIdea" style="cursor:pointer;">나의 아이디어<li>
+					  <li id="listOfPortfolio" style="cursor:pointer;">포트폴리오&자소서<li>
+					  <li id="listOfFAQ" style="cursor:pointer;">FAQ<li>
+				</ul>
 				</div>
-    </div>
-	
-	</div>
-	
-	
-	<!--팔로잉 팔로워 기능 추가해야함 -->
-	<div id="follow" style="display:none; font-family:auto;"></div>
-	
-	
-	
-	
-	
-	<!-- 나의 아이디어 목록 -->
-	  <div id="myIdea" style="display:none; font-family:auto;">
-	<div class="myIdea_list_wrap">
-        <table class="myIdea_list" border="1">
-            <caption>나의 아이디어 목록</caption>
-            <thead>
-                <tr>
-                    <th>번호</th>
-                    <th style="width:380px">제목</th>
-                    <th>작성자</th>
-                    <th>작성일</th>
-                    <th>조회수</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>2022/12/26</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>222</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>333</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>222</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="tit">
-                        <a href="#">나의 아이디어5</a>
-                    </td>
-                    <td>개발자</td>
-                    <td>20221226</td>
-                    <td>111</td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-			<div class="pagination_section">
-							<a href="#" class="bt">＜＜ Previous</a>
-							<a href="#" class="num on">1</a>
-							<a href="#" class="num">2</a>
-							<a href="#" class="num">3</a>
-							<a href="#" class="num">4</a>
-							<a href="#" class="num">5</a>
-							<a href="#" class="num">6</a>
-							<a href="#" class="num">7</a>
-							<a href="#" class="bt">Next ＞＞</a>
-				</div>
-    </div>
-	
-	</div>
-	<div id="portfolio" style="display:none;">
-	        <form>
-            <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
-                <div class="title-bar">
-                    <div class="title-bar-text">
-                        이력서 및 포트폴리오
-                    </div>
-                    <div class="title-bar-controls">
-                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
-                    </div>
-                </div>
-                <table class="userInfo">
-                	<tbody>
-                    <tr>
-                        <td> <strong> 이름 </strong></td>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <td><strong>이메일</strong></td>
-                        <td><input type="email"></td>
-                    </tr>
-                    <tr>
-                        <td> <strong> 전화번호</strong> </td>
-                        <td><input type="tel"></td>
-                    </tr>
-                    <tr>
-                        <td> <strong>자기소개</strong></td>
-                        <td colspan="2"> <textarea name="talk" cols="50" rows="5"></textarea></td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>관심분야</strong></td>
-                        <td>
-                            <input id="back" type="checkbox" name="hobby">
-                            <label for="back">백엔드</label>
-                            <input id="front" type="checkbox" name="hobby">
-                            <label for="front">프론트엔드</label>
-                            <input id="data" type="checkbox" name="hobby">
-                            <label for="data">데이터분야</label>
-                            <input id="etc" type="checkbox" name="hobby">
-                            <label for="etc">기타</label>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>프론트엔드분야</strong> </td>
-                        <td>
-                            <select name="프론트엔드">
-                                <option value="예비개발자">예비개발자(학생)</option>
-                                <option value="주니어">주니어(사원)</option>
-                                <option value="미드레벨">미드레벨(대리)</option>
-                                <option value="시니어">시니어(과장~ 부장)</option>
-                                <option value="디렉터">디렉터(이사~사장)</option>
-                                <option value="프리랜서">프리랜서</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>백엔드분야</strong> </td>
-                        <td>
-                            <select name="백엔드">
-                                <option value="예비개발자">예비개발자(학생)</option>
-                                <option value="주니어">주니어(사원)</option>
-                                <option value="미드레벨">미드레벨(대리)</option>
-                                <option value="시니어">시니어(과장~ 부장)</option>
-                                <option value="디렉터">디렉터(이사~사장)</option>
-                                <option value="프리랜서">프리랜서</option>
-                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><strong>데이터분야</strong></td>
-                        <td>
-                            <select name="데이터분야">
-                                <option value="예비개발자">예비개발자(학생)</option>
-                                <option value="주니어">주니어(사원)</option>
-                                <option value="미드레벨">미드레벨(대리)</option>
-                                <option value="시니어">시니어(과장~ 부장)</option>
-                                <option value="디렉터">디렉터(이사~사장)</option>
-                                <option value="프리랜서">프리랜서</option>
-                            </select>
-                        </td>
-                    </tr>
-                   
-                    <tr>
-                        <td> <strong> 경력사항</strong></td>
-                    </tr>
-                    <tr>
-                        <td> <strong>근무기간</strong> </td>
-                        
-                    </tr>
-
-                    <tr>
-                        <td> <strong>시작일</strong> </td>
-                        <td> <input type="date" id="start_date"></td>
-                        
-                    </tr>
-                    <tr>
-                        <td> <strong>종료일</strong> </td>
-                        <td> <input type="date" id="start_date"></td>
-                    </tr>
-                    <tr>
-                        <td> <strong>주요성과</strong></td>
-                        <td colspan="2"> <textarea name="talk" cols="50" rows="8"></textarea></td>
-                    </tr>
-
-                    <tr>
-                        <td><strong>사용기술</strong></td>
-                        <td colspan="2"> <textarea name="talk" cols="50" rows="5"></textarea></td>
-                    </tr>
-
-                    <tr>
-                        <td> <strong>포트폴리오</strong> </td>
-                        <td> <input type="file" name="" id=""><br></td>
-                    </tr>
-					</tbody>
-                </table>
-                <br>
-                <input type="submit" value="이력서 저장하기">
+				<div style="display:block;width:632px;">
+			<div id="myPage" style="display:none;">
+			    <div class="container">
+		        <div class="wrapper" style="position: sticky; top: 27px;">
+		            <div class="window" style="width: 400px; position: sticky; top: 0; max-width: 100%; width: 400px;display: block; margin: 0 100px; margin-bottom: 50px;" align="center">
+		                <div class="title-bar">
+		                    <div class="title-bar-text">회원 정보</div>
+		                    <div class="title-bar-controls">
+		                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+		                    </div>
+		                </div>
+		                    <form style="margin:20px; font-size:initial">
+		                        <table class="userInfo">
+		                        	<tbody>
+		                            <tr>
+		                                <td style="width:140px">회원 이메일</td>
+		                                <td style="padding-left:4px"><%=info.getU_email() %></td>
+		                            </tr>
+		                            <tr>
+		                                <td>이름</td>
+		                                <td style="padding-left:4px"><%=info.getU_name() %></td>
+		                            </tr>
+		                            <tr>
+		                                <td>닉네임</td>
+		                                <td style="padding-left:4px"><%=info.getU_nick() %></td>
+		                            </tr>
+		                            <tr>
+		                                <td>현재비밀번호</td>
+		                                <td style="padding-left:4px"><input type="password" name="pw1" placeholder="현재 비밀번호 입력"></td>
+		                            </tr>
+		                            <tr>
+		                                <td>변경할 비밀번호</td>
+		                                <td style="padding-left:4px"><input type="password" name="repw2" placeholder="변경할 비밀번호 입력"></td>
+		                            </tr>
+		                            <tr>
+		                                <td>변경할 비밀번호 확인</td>
+		                                <td style="padding-left:4px"><input type="password" name="repw3" placeholder="변경할 비밀번호 확인"></td>
+		                            </tr>
+		                            <tr>
+		                                <td>생년월일</td>
+		                                <td style="padding-left:4px"><%=info.getU_birthdate()%></td>
+		                            </tr>
+		                            <tr>
+		                                <td>직업</td>
+		                                <td style="padding-left:4px"><%=info.getU_job() %></td>
+		                            </tr>
+		                            <tr>
+		                                <td>활동점수</td>
+		                                <td style="padding-left:4px"><%=info.getU_activity_score() %></td>
+		                            </tr>
+		                            </tbody>
+		                        </table>
+		                        <br>
+		                            	<div><input type="submit" onclick="myInfoPopup();" value="저장"></div>
+		                    </form>
+		            </div>
+		        </div>
+		    </div>
 			</div>
-        </form>
-	</div>
-		
-	
-	<div id="faq" style="display:none;">
-        <div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
-            <div class="title-bar">
-              <div class="title-bar-text">HEllo iT</div>
-              <div class="title-bar-controls">
-                <button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
-              </div>
-            </div>
-            <br><br>
-       <img src="./img/window.gif" width="200" alt="">
-    <h3>자주 묻는 질문</h3>
-    <div class="faq-container">
-      <div class="faq">
-        <h4 class="faq-title">"Hello it"은 무슨 웹사이트 인가요?</h4>
+		    <div class="window" id="checkInterest" style="display:none; margin-left:8px">
+		        <div class="title-bar" style="position:sticky; top:27px">
+		            <div class="title-bar-text">관심 분야 Check!!</div>
+		            <div class="title-bar-controls">
+		              <button aria-label="Close" onclick = "location.href ='goMyPage.do'"></button>
+		            </div>
+		          </div>
+		        <div class="window-body" style="display:block;">
+		            <p style="font-size: large; font-weight: bold;">관심있는분야나 직장에서 맡고있는 분야를 선택하세요<sub>(중복선택 가능)</sub></p> 
+		            <p style="font-size: small; font-weight: bold;">체크한 분야에 따라서 게시물이 자동 선별됩니다.</p>
+		            <br>
+		       		<form action="updateRole.do" method="post">
+				        <table>
+				        <tr class="interest" id="userRole">
+				     	<td><h4>역할</h4></td>
+				            <td>
+				             <input type="checkbox" name="frontend" id="frontend" value="Y">
+				             <label for="frontend">프론트엔드</label>
+				             <input type="checkbox" name="backend" id="backend" value="Y">
+				             <label for="backend">백엔드</label>
+				             <input type="checkbox" name="data_etc" id="data_etc" value="Y">
+				             <label for="data_etc">데이터분야(빅데이터,인공지능포함)</label>
+				             <input type="checkbox" name="other_skill" id="other_skill" value="Y">
+				             <label for="other_skill">기타</label>
+				             <br><br>
+				             <input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+				             <input type="hidden" name="frontend" id="frontend_hidden" value="N">
+				             <input type="hidden" name="backend" id="backend_hidden" value="N">
+				             <input type="hidden" name="data_etc" id="data_etc_hidden" value="N">
+				             <input type="hidden" name="other_skill" id="other_skill_hidden" value="N">
+				             </td>
+				             <td>
+				             <input type="submit" onclick="rolePopup();" value="저장">
+				             <input type="reset" value="초기화">
+				        	</td>
+				        </tr>
+				        </table>
+					</form>
+		            <form action="" method="post">
+						<table>
+							<tr class="interest" id="userSkill">
+								<td><h4>분야</h4></td>
+								<td>
+									<input type="checkbox" name="web" id="web" value="Y">
+									<label for="web">웹</label>
+									<input type="checkbox" name="ios" id="ios" value="Y">
+									<label for="ios">iOS</label>
+									<input type="checkbox" name="android" id="android" value="Y">
+									<label for="android">안드로이드</label>
+									<input type="checkbox" name="windows" id="windows" value="Y">
+									<label for="windows">윈도우</label>
+									<input type="checkbox" name="mac" id="mac" value="Y">
+									<label for="mac">맥</label>
+									<input type="checkbox" name="linux" id="linux" value="Y">
+									<label for="linux">리눅스</label>
+									<input type="checkbox" name="game" id="game" value="Y">
+									<label for="game">게임</label>
+									<input type="checkbox" name="skill_etc" id="skill_etc" value="Y">
+									<label for="skill_etc">기타</label>
+									<br><br>
+									<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+									<input type="hidden" name="web" id="web_hidden" value="N">
+									<input type="hidden" name="ios" id="ios_hidden" value="N">
+									<input type="hidden" name="android" id="android_hidden" value="N">
+									<input type="hidden" name="windows" id="windows_hidden" value="N">
+									<input type="hidden" name="mac" id="mac_hidden" value="N">
+									<input type="hidden" name="linux" id="linux_hidden" value="N">
+									<input type="hidden" name="game" id="game_hidden" value="N">
+									<input type="hidden" name="skill_etc" id="skill_etc_hidden" value="N">
+								</td>
+								<td>
+									<input type="submit" onclick="skillPopup();" value="저장">
+									<input type="reset" value="초기화">
+								</td>
+							</tr>
+						</table>
+		            </form>
+		            
+		            <form action="" method="post">
+			            <table>
+					        <tr class="interest" id="userLanguage">
+					            <td><h4>언어</h4></td>
+					            <td>
+						            <input type="checkbox" name="html" id="html" value="Y">
+						            <label for="html">HTML</label>
+						            <input type="checkbox" name="css" id="css" value="Y">
+									<label for="css">CSS</label>
+						            <input type="checkbox" name="c" id="c" value="Y">
+						            <label for="c">C</label>
+						            <input type="checkbox" name="c_pp" id="c_pp" value="Y">
+						            <label for="c_pp">C++</label>
+						            <input type="checkbox" name="c_sharp" id="c_sharp" value="Y">
+						            <label for="c_sharp">C#</label>
+						            <input type="checkbox" name="java" id="java" value="Y">
+						            <label for="java">JAVA</label>
+						            <input type="checkbox" name="python" id="python" value="Y">
+						            <label for="python">Python</label>
+						            <input type="checkbox" name="php" id="php" value="Y">
+						            <label for="php">PHP</label>
+						            <input type="checkbox" name="dart" id="dart" value="Y">
+						            <label for="dart">Dart</label>
+						            <input type="checkbox" name="typescript" id="typescript" value="Y">
+						            <label for="typescript">TypeScript</label>
+						            <input type="checkbox" name="kotlin" id="kotlin" value="Y">
+						            <label for="kotlin">Kotlin</label>
+						            <input type="checkbox" name="go" id="go" value="Y">
+						            <label for="go">Go</label>
+						            <input type="checkbox" name="rust" id="rust" value="Y">
+						            <label for="rust">Rust</label>
+						            <input type="checkbox" name="swift" id="swift" value="Y">
+						            <label for="swift">Swift</label>
+						            <input type="checkbox" name="scala" id="scala" value="Y">
+						            <label for="scala">Scala</label>
+						            <input type="checkbox" name="objective_c" id="objective_c" value="Y">
+						            <label for="objective_c">Objective_C</label>
+						            <input type="checkbox" name="r" id="r" value="Y">
+						            <label for="r">R</label>
+						            <input type="checkbox" name="ruby" id="ruby" value="Y">
+						            <label for="ruby">Ruby</label>
+						            <input type="checkbox" name="haskell" id="haskell" value="Y">
+						            <label for="haskell">Haskell</label>
+						            <input type="checkbox" name="clojure" id="clojure" value="Y">
+						            <label for="clojure">Clojure</label>
+						            <input type="checkbox" name="sql" id="sql" value="Y">
+						            <label for="sql">SQL</label>
+						            <input type="checkbox" name="language_etc" id="language_etc" value="Y">
+						            <label for="language_etc">기타</label>
+						           	<br><br>
+						           	<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+						           	<input type="hidden" name="html" id="html_hidden" value="N">
+						            <input type="hidden" name="css" id="css_hidden" value="N">
+						            <input type="hidden" name="c" id="c_hidden" value="N">
+						            <input type="hidden" name="c_pp" id="c_pp_hidden" value="N">
+						            <input type="hidden" name="c_sharp" id="c_sharp_hidden" value="N">
+						            <input type="hidden" name="java" id="java_hidden" value="N">
+						            <input type="hidden" name="python" id="python_hidden" value="N">
+						            <input type="hidden" name="php" id="php_hidden" value="N">
+						            <input type="hidden" name="dart" id="dart_hidden" value="N">
+						            <input type="hidden" name="typescript" id="typescript_hidden" value="N">
+						            <input type="hidden" name="kotlin" id="kotlin_hidden" value="N">
+						            <input type="hidden" name="go" id="go_hidden" value="N">
+						            <input type="hidden" name="rust" id="rust_hidden" value="N">
+						            <input type="hidden" name="swift" id="swift_hidden" value="N">
+						            <input type="hidden" name="scala" id="scala_hidden" value="N">
+						            <input type="hidden" name="objective_c" id="objective_c_hidden" value="N">
+						            <input type="hidden" name="r" id="r_hidden" value="N">
+						            <input type="hidden" name="ruby" id="ruby_hidden" value="N">
+						            <input type="hidden" name="haskell" id="haskell_hidden" value="N">
+						            <input type="hidden" name="sql" id="sql_hidden" value="N">
+						            <input type="hidden" name="language_etc" id="language_etc_hidden" value="N">
+					            </td>
+					            <td>
+						            <input type="submit" onclick="langPopup();" value="저장">
+						            <input type="reset" value="초기화">
+					            </td>
+					        </tr>
+				        </table>
+		            </form>
+		            <form action="" method="post">
+						<table>
+							<tr class="interest" id="userDB">
+							    <td><h4>DB</h4></td>
+							    <td>
+								    <input type="checkbox" name="mysql" id="mysql" value="Y">
+								    <label for="mysql">MySQL</label>
+								    <input type="checkbox" name="oracle" id="oracle" value="Y">
+								    <label for="oracle">Oracle</label>
+								    <input type="checkbox" name="mariadb" id="mariadb" value="Y">
+								    <label for="mariadb">MariaDB</label>
+								    <input type="checkbox" name="pstgresql" id="pstgresql" value="Y">
+								    <label for="pstgresql">Pstgresql</label>
+								    <input type="checkbox" name="mongodb" id="mongodb" value="Y">
+								    <label for="mongodb">MongoDB</label>
+								    <input type="checkbox" name="redis" id="redis" value="Y">
+								    <label for="redis">Redis</label>
+								    <input type="checkbox" name="sqlite" id="sqlite" value="Y">
+								    <label for="sqlite">SQLite</label>
+								    <input type="checkbox" name="aws_aurora" id="aws_aurora" value="Y">
+								    <label for="sqlite">AWS_Aurora</label>
+								    <input type="checkbox" name="elasticsearch" id="elasticsearch" value="Y">
+								    <label for="elasticsearch">Elasticsearch</label>
+								    <input type="checkbox" name="dynamodb" id="dynamodb" value="Y">
+								    <label for="dynamodb">DynamoDB</label>
+								    <input type="checkbox" name="firebase" id="firebase" value="Y">
+								    <label for="firebase">Firebase</label>
+								    <input type="checkbox" name="tibero" id="tibero" value="Y">
+								    <label for="tibero">Tibero</label>
+								    <input type="checkbox" name="hive" id="hive" value="Y">
+								    <label for="hive">Hive</label>
+								    <input type="checkbox" name="cassandra" id="cassandra" value="Y">
+								    <label for="cassandra">Cassandra</label>
+								    <input type="checkbox" name="db_etc" id="db_etc" value="Y">
+								    <label for="db_etc">기타</label>
+								    <br><br>
+								    <input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+								    <input type="hidden" name="mysql" id="mysql_hidden" value="N">
+								    <input type="hidden" name="oracle" id="oracle_hidden" value="N">
+								    <input type="hidden" name="mariadb" id="mariadb_hidden" value="N">
+								    <input type="hidden" name="pstgresql" id="pstgresql_hidden" value="N">
+								    <input type="hidden" name="mongodb" id="mongodb_hidden" value="N">
+								    <input type="hidden" name="redis" id="redis" value="N">
+								    <input type="hidden" name="sqlite" id="sqlite_hidden" value="N">
+								    <input type="hidden" name="aws_aurora" id="aws_aurora_hidden" value="N">
+								    <input type="hidden" name="elasticsearch" id="elasticsearch_hidden" value="N">
+								    <input type="hidden" name="dynamodb" id="dynamodb_hidden" value="N">
+								    <input type="hidden" name="firebase" id="firebase_hidden" value="N">
+								    <input type="hidden" name="tibero" id="tibero_hidden" value="N">
+								    <input type="hidden" name="hive" id="hive_hidden" value="N">
+								    <input type="hidden" name="cassandra" id="cassandra_hidden" value="N">
+								    <input type="hidden" name="db_etc" id="db_etc_hidden" value="N">
+							    </td>
+							    <td>
+								    <input type="submit" onclick="dbPopup();" value="저장">
+								    <input type="reset" value="초기화">
+							    </td>
+							</tr>
+						</table>
+		            </form>
+		        </div>
+		    </div>
+		    
+		    <!-- <div id="posted" style="font-family:auto;">
+				<div class="mypost_list_wrap board_list_wrap">
+			        <table class="mypost_list board_list" border="1">
+			            <caption>내가올린게시글 목록</caption>
+			            <thead>
+			                <tr>
+			                    <th>번호</th>
+			                    <th>제목</th>
+			                    <th>작성자</th>
+			                    <th>작성일</th>
+			                    <th>조회수</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr>
+			                    <td>5</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글5</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>2022/12/26</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>4</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글4</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>222</td>
+			                </tr>
+			                <tr>
+			                    <td>3</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글3</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>333</td>
+			                </tr>
+			                <tr>
+			                    <td>2</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글2</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>222</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">내가올린 게시글1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			            </tbody>
+			        </table>
+			        <br>
+					<div class="pagination_section">
+									<a href="#" class="bt">＜＜ Previous</a>
+									<a href="#" class="num on">1</a>
+									<a href="#" class="num">2</a>
+									<a href="#" class="num">3</a>
+									<a href="#" class="num">4</a>
+									<a href="#" class="num">5</a>
+									<a href="#" class="num">6</a>
+									<a href="#" class="num">7</a>
+									<a href="#" class="bt">Next ＞＞</a>
+					</div>
+			    </div>
+			</div> -->
+		    
+		    <%for(int i = 0; i < list.size(); i++){ %>
+		<div id="checkPost" class="window posted" style="width: 630px">
+			<div class="title-bar">
+				<div class="title-bar-text"><%=list.get(i).getPost_title()%></div>
+			</div>
+			
+			<div class="window-body">
+				<table class="board_list" id="list" bgcolor="white">
+					<tr>
+						<td id="user">작성자</td>
+						<td style="width: 650px text-align:'';"><%=list.get(i).getU_name()%></td>
+					</tr>
+					<tr>
+						<td colspan="2">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><img alt=""
+							src="img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
+						</td>
+					</tr>
+					<%
+						PostInfoDAO daoTag = new PostInfoDAO();
+						List<Tag> list2 = daoTag.postTagView(list.get(i).getPost_seq());
+					%>
+					<tr style="height: 20px">
+						<td colspan="2">
+						<%for(int k = 0; k < list2.size(); k++){ %>
+						<a href="goTagMain.do?tag_seq=<%=list2.get(k).getTag_seq()%>"><%='#'+list2.get(k).getTag_content()%></a>
+						<%};%>
+						</td>
+					</tr>
+				</table>
+			</div>
 
-        <p class="faq-text">안녕하세요 이용자님 "Hello it"은 국내 모든 개발자들을 위한 SNS로 개발관련 정보공유를 보다 손쉽게 캐치 하실 수 있으십니다. </p>
-
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="faq">
-        <h4 class="faq-title">아이디어 토론장은 뭐하는 공간인가요?</h4>
-
-        <p class="faq-text">여러분들의 머리속에 있는 프로젝트 주제를 등록 할수 있으면서 동시에 그 주제에 대해 다른 사용자 분들과 토론이 진행가능 하며 채용자들의 스카우트 대상이 될수도 있어요! </p>
-
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="faq">
-        <h4 class="faq-title">입문자들은 이용하는데 어려움은 없을까요?</h4>
-
-        <p class="faq-text">네 당연합니다! 우리 Hello it은 개인 역량에 맞춰 언어별로 자신에게 맞는 눈높이로 정보들을 습득할 수 있습니다. </p>
-
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="faq">
-        <h4 class="faq-title">개발자의 정보를 알고싶어요!</h4>
-        <p class="faq-text"> 여기로 모시겠습니다! 
-            <br> <br>
-         <a href=""> <img src="./img/KakaoTalk_20221207_141006268.png" width="100" alt=""></a>
-        </p>
-        <button class="faq-toggle">
-          <i class="fas fa-chevron-down"></i>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-	</div>
-	</div>
-  	</div>
-	</div>
-	</div>
-		
-	</div>
-	<footer class="main_footer">
-				<div class="window" id="icons" style="width: 800px" align="center">
-					<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
-					<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
-					<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a>
-					<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a>
-					<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
-					<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
-					<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+			<div class="status-bar">
+				<p class="status-bar-field">
+					<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>">
+					<button	id="btn">
+						<%=list.get(i).getBookmarks()%>
+						<img src="./img/북마크.png" width="15" alt="">
+					</button>
+					</a>
+				</p>
+				<%-- 좋아요 기능 --%>
+				<p class="status-bar-field">
+					<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=list.get(i).getLikes()%> 💖
+					</button></a>
+				<%-- 좋아요 기능 끝 --%>
+				</p>
+				<form action="mainCmt.do">
+					<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
+					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+					<p class="status-bar-field">
+						<input type="text" name="cmt_content" placeholder="댓글"
+						style="width:290px">
+						<input type="submit" value="등록">
+					</p>
+				</form>
+				
+					
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=list.get(i).getCmts()%> </button></a></p>
+				
+				<%
+				// comment 출력
+				CommentInfoDAO dao = new CommentInfoDAO();
+				List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
+				%>
+			</div>
+			<%for (int j = 0; j < cmtList.size(); j++) {%>			
+			<table class="board_list" width=700>
+				<tr style="width: 0px; padding: 0px;">
+					<%-- <td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td> --%>
+					<td><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
+					<td>
+					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
+					</button></a>
+					</td>
+				</tr>
+			<%}%>	
+			</table>
+		</div>
+	    <%}%>
+			<div id="bookmark" style="display:none; font-family:auto;">
+				<div class="board_list_wrap">
+			        <table class="board_list" border="1">
+			            <caption>북마크 목록</caption>
+			            <thead>
+			                <tr>
+			                    <th>번호</th>
+			                    <th>제목</th>
+			                    <th>작성자</th>
+			                    <th>작성일</th>
+			                    <th>조회수</th>
+			                </tr>
+			            </thead>
+			            <tbody>
+			                <tr>
+			                    <td>5</td>
+			                    <td class="tit">
+			                        <a href="#">북마크5</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>2022/12/26</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>4</td>
+			                    <td class="tit">
+			                        <a href="#">북마크4</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>222</td>
+			                </tr>
+			                <tr>
+			                    <td>3</td>
+			                    <td class="tit">
+			                        <a href="#">북마크3</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>333</td>
+			                </tr>
+			                <tr>
+			                    <td>2</td>
+			                    <td class="tit">
+			                        <a href="#">북마크2</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>222</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">북마크1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">북마크1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">북마크1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">북마크1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">북마크1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			                <tr>
+			                    <td>1</td>
+			                    <td class="tit">
+			                        <a href="#">북마크1</a>
+			                    </td>
+			                    <td>개발자</td>
+			                    <td>20221226</td>
+			                    <td>111</td>
+			                </tr>
+			            </tbody>
+			        </table>
+			        <br>
+					<div class="pagination_section">
+									<a href="#" class="bt">＜＜ Previous</a>
+									<a href="#" class="num on">1</a>
+									<a href="#" class="num">2</a>
+									<a href="#" class="num">3</a>
+									<a href="#" class="num">4</a>
+									<a href="#" class="num">5</a>
+									<a href="#" class="num">6</a>
+									<a href="#" class="num">7</a>
+									<a href="#" class="bt">Next ＞＞</a>
+					</div>
+			    </div>
+			</div>
+			
+			<!--팔로잉 팔로워 기능 추가해야함 -->
+			<div id="follow" style="display:none; font-family:auto;">
+				<div class="window" style="max-width:100%" align="center">
+					<div class="title-bar">
+						<div class="title-bar-text">팔로우/팔로워</div>
+						<div class="title-bar-controls">
+							<button aria-label="Close" onclick="location.href ='goMain.do'"></button>
+						</div>
+					</div>
+					<div class="window-body" style="justify-content: space-between;">
+						<div>
+							<div>
+								<table>
+									<tr>
+										<td colspan="2">
+											<h5 align="center"> 팔로우, 팔로워 아이디를 검색하세요.</h5>
+										</td>
+				
+									</tr>
+									<tr>
+									<td>
+									<input type="text" placeholder="아이디를 검색하세요"
+										style="width:120px; height: 20px; font: size 10px;;"></td>
+									<td><button>검색</button></td>
+									</tr>
+								</table>
+									<br>
+								<ul class="tabs" style="display:flex;justify-content: space-around; margin: 8px; list-style:none;">
+									<li class="tab-link current" data-tab="tab-1">팔로우</li>
+									<li class="tab-link" data-tab="tab-2">팔로워</li>
+								</ul>
+							</div>
+							
+							
+							<div id="tab-1" class="tab-content current">
+								<div id="job-table">
+									<table style="width: 600px; height: 100px;overflow: auto; text-align: center;">
+										<thead>
+											<tr height="30px">
+												<th>아이디</th>
+												<th>메신저보내기</th>
+												<th>팔로우 삭제</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+			
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+											<td><a href="#">아이디</a></td>
+											<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+											<td><img src="img/delete.png" width="50px"
+													height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+										</tbody>
+									</table>
+							</div>
+							
+								<br>
+							</div>
+							<div id="tab-2" class="tab-content">
+								<div id="job-table">
+									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
+										<thead>
+										<tbody>
+											<tr height="30px">
+												<th>아이디</th>
+												<th>메신저보내기</th>
+												<th>팔로워 삭제</th>
+											</tr>
+										</thead>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+			
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+			
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+			
+											</tr>
+											<tr>
+												<td> <a href="#">아이디</a></td>
+												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td><img src="img/delete.png" width="50px"
+														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+			
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<br>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
+			
+			<!-- 나의 아이디어 목록 -->
+			<div id="myIdea" style="display:none; font-family:auto;">
+				<div class="myIdea_list_wrap board_list_wrap">
+			        <table class="myIdea_list board_list" border="1">
+			            <caption>나의 아이디어 목록</caption>
+				            <thead>
+				                <tr>
+				                    <th>번호</th>
+				                    <th>제목</th>
+				                    <th>작성자</th>
+				                    <th>작성일</th>
+				                    <th>조회수</th>
+				                </tr>
+				            </thead>
+				            <tbody>
+				                <tr>
+				                    <td>5</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>2022/12/26</td>
+				                    <td>111</td>
+				                </tr>
+				                <tr>
+				                    <td>4</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>222</td>
+				                </tr>
+				                <tr>
+				                    <td>3</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>333</td>
+				                </tr>
+				                <tr>
+				                    <td>2</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>222</td>
+				                </tr>
+				                <tr>
+				                    <td>1</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>111</td>
+				                </tr>
+				                <tr>
+				                    <td>1</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>111</td>
+				                </tr>
+				                <tr>
+				                    <td>1</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>111</td>
+				                </tr>
+				                <tr>
+				                    <td>1</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>111</td>
+				                </tr>
+				                <tr>
+				                    <td>1</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>111</td>
+				                </tr>
+				                <tr>
+				                    <td>1</td>
+				                    <td class="tit">
+				                        <a href="#">나의 아이디어5</a>
+				                    </td>
+				                    <td>개발자</td>
+				                    <td>20221226</td>
+				                    <td>111</td>
+				                </tr>
+				            </tbody>
+			        </table>
+			        <br>
+					<div class="pagination_section">
+						<a href="#" class="bt">＜＜ Previous</a>
+						<a href="#" class="num on">1</a>
+						<a href="#" class="num">2</a>
+						<a href="#" class="num">3</a>
+						<a href="#" class="num">4</a>
+						<a href="#" class="num">5</a>
+						<a href="#" class="num">6</a>
+						<a href="#" class="num">7</a>
+						<a href="#" class="bt">Next ＞＞</a>
+					</div>
+			    </div>
+			</div>
+			
+			<!-- 이력서 및 포트폴리오  -->
+			<div id="portfolio" style="display:none;">
+		        <form>
+		            <div class="window" style="width: 400px; display:block; margin:0 100px; margin-bottom:50px;">
+		                <div class="title-bar">
+		                    <div class="title-bar-text">
+		                        이력서 및 포트폴리오
+		                    </div>
+		                    <div class="title-bar-controls">
+		                        <button aria-label="Close" onclick="location.href ='goMyPage.do'"></button>
+		                    </div>
+		                </div>
+		                <table class="userInfo">
+		                	<tbody>
+		                    <tr>
+		                        <td> <strong> 이름 </strong></td>
+		                        <td><input type="text"></td>
+		                    </tr>
+		                    <tr>
+		                        <td><strong>이메일</strong></td>
+		                        <td><input type="email"></td>
+		                    </tr>
+		                    <tr>
+		                        <td> <strong> 전화번호</strong> </td>
+		                        <td><input type="tel"></td>
+		                    </tr>
+		                    <tr>
+		                        <td> <strong>자기소개</strong></td>
+		                        <td colspan="2"> <textarea name="talk" cols="50" rows="5"></textarea></td>
+		                    </tr>
+		
+		                    <tr>
+		                        <td><strong>관심분야</strong></td>
+		                        <td>
+		                            <input id="back" type="checkbox" name="hobby">
+		                            <label for="back">백엔드</label>
+		                            <input id="front" type="checkbox" name="hobby">
+		                            <label for="front">프론트엔드</label>
+		                            <input id="data" type="checkbox" name="hobby">
+		                            <label for="data">데이터분야</label>
+		                            <input id="etc" type="checkbox" name="hobby">
+		                            <label for="etc">기타</label>
+		                        </td>
+		                    </tr>
+		
+		                    <tr>
+		                        <td><strong>프론트엔드분야</strong> </td>
+		                        <td>
+		                            <select name="프론트엔드">
+		                                <option value="예비개발자">예비개발자(학생)</option>
+		                                <option value="주니어">주니어(사원)</option>
+		                                <option value="미드레벨">미드레벨(대리)</option>
+		                                <option value="시니어">시니어(과장~ 부장)</option>
+		                                <option value="디렉터">디렉터(이사~사장)</option>
+		                                <option value="프리랜서">프리랜서</option>
+		                            </select>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td><strong>백엔드분야</strong> </td>
+		                        <td>
+		                            <select name="백엔드">
+		                                <option value="예비개발자">예비개발자(학생)</option>
+		                                <option value="주니어">주니어(사원)</option>
+		                                <option value="미드레벨">미드레벨(대리)</option>
+		                                <option value="시니어">시니어(과장~ 부장)</option>
+		                                <option value="디렉터">디렉터(이사~사장)</option>
+		                                <option value="프리랜서">프리랜서</option>
+		                             </select>
+		                        </td>
+		                    </tr>
+		                    <tr>
+		                        <td><strong>데이터분야</strong></td>
+		                        <td>
+		                            <select name="데이터분야">
+		                                <option value="예비개발자">예비개발자(학생)</option>
+		                                <option value="주니어">주니어(사원)</option>
+		                                <option value="미드레벨">미드레벨(대리)</option>
+		                                <option value="시니어">시니어(과장~ 부장)</option>
+		                                <option value="디렉터">디렉터(이사~사장)</option>
+		                                <option value="프리랜서">프리랜서</option>
+		                            </select>
+		                        </td>
+		                    </tr>
+		                   
+		                    <tr>
+		                        <td> <strong> 경력사항</strong></td>
+		                    </tr>
+		                    <tr>
+		                        <td> <strong>근무기간</strong> </td>
+		                        
+		                    </tr>
+		
+		                    <tr>
+		                        <td> <strong>시작일</strong> </td>
+		                        <td> <input type="date" id="start_date"></td>
+		                        
+		                    </tr>
+		                    <tr>
+		                        <td> <strong>종료일</strong> </td>
+		                        <td> <input type="date" id="start_date"></td>
+		                    </tr>
+		                    <tr>
+		                        <td> <strong>주요성과</strong></td>
+		                        <td colspan="2"> <textarea name="talk" cols="50" rows="8"></textarea></td>
+		                    </tr>
+		
+		                    <tr>
+		                        <td><strong>사용기술</strong></td>
+		                        <td colspan="2"> <textarea name="talk" cols="50" rows="5"></textarea></td>
+		                    </tr>
+		
+		                    <tr>
+		                        <td> <strong>포트폴리오</strong> </td>
+		                        <td> <input type="file" name="" id=""><br></td>
+		                    </tr>
+							</tbody>
+		                </table>
+		                <br>
+		                <input type="submit" onclick="pfPopup();" value="이력서 저장하기">
+					</div>
+		        </form>
+			</div>
+				
+			<!-- FAQ -->
+			<div id="faq" style="display:none;">
+				<div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
+					<div class="title-bar">
+						<div class="title-bar-text">HEllo iT</div>
+						<div class="title-bar-controls">
+						<button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
+						</div>
+					</div>	
+			        <br><br>
+					<img src="./img/window.gif" width="200" alt="">
+					<h3>자주 묻는 질문</h3>
+					<div class="faq-container">
+						<div class="faq">
+							<h4 class="faq-title">"Hello it"은 무슨 웹사이트 인가요?</h4>
+							
+							<p class="faq-text">안녕하세요 이용자님 "Hello it"은 국내 모든 개발자들을 위한 SNS로 개발관련 정보공유를 보다 손쉽게 캐치 하실 수 있으십니다. </p>
+						
+						    <button class="faq-toggle">
+								<i class="fas fa-chevron-down"></i>
+								<i class="fas fa-times"></i>
+					    	</button>
+						</div>		
+						<div class="faq">
+						    <h4 class="faq-title">아이디어 토론장은 뭐하는 공간인가요?</h4>
+						
+						    <p class="faq-text">여러분들의 머리속에 있는 프로젝트 주제를 등록 할수 있으면서 동시에 그 주제에 대해 다른 사용자 분들과 토론이 진행가능 하며 채용자들의 스카우트 대상이 될수도 있어요! </p>
+						
+						    <button class="faq-toggle">
+								<i class="fas fa-chevron-down"></i>
+								<i class="fas fa-times"></i>
+						    </button>
+						</div>
+						<div class="faq">
+							<h4 class="faq-title">입문자들은 이용하는데 어려움은 없을까요?</h4>
+							
+							<p class="faq-text">네 당연합니다! 우리 Hello it은 개인 역량에 맞춰 언어별로 자신에게 맞는 눈높이로 정보들을 습득할 수 있습니다. </p>
+							
+							<button class="faq-toggle">
+								<i class="fas fa-chevron-down"></i>
+								<i class="fas fa-times"></i>
+							</button>
+						</div>
+						<div class="faq">
+							<h4 class="faq-title">개발자의 정보를 알고싶어요!</h4>
+							<p class="faq-text"> 여기로 모시겠습니다! 
+							<br><br>
+							<a href="goDevInfo.do"><img src="./img/KakaoTalk_20221207_141006268.png" width="100" alt=""></a>
+							</p>
+							<button class="faq-toggle">
+								<i class="fas fa-chevron-down"></i>
+								<i class="fas fa-times"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		  	</div>
+			</div>
+		</div>
+		<footer class="main_footer">
+			<div class="window" id="icons" style="width: 800px" align="center">
+				<a href=""><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+				<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+				<a href="goMain.do"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a>
+				<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a>
+				<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+				<a href="goMyPage.do"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+				<a href=""><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+			</div>
 		</footer>
+	</div>
+	</div>
 	<script type="text/javascript">
 		$('#listOfMyPage').on('click', function() {
 			$('#myPage').show();
 			$('#checkInterest').hide();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -921,7 +1155,7 @@
 
 			$('#myPage').hide();
 			$('#checkInterest').show();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -931,7 +1165,7 @@
 		$('#listOfPosted').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('#posted').show();
+			$('.posted').show();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -941,7 +1175,7 @@
 		$('#listOfBookmark').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').show();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -951,7 +1185,7 @@
 		$('#listOfFollow').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').hide();
 			$('#follow').show();
 			$('#myIdea').hide();
@@ -961,7 +1195,7 @@
 		$('#listOfMyIdea').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').show();
@@ -971,7 +1205,7 @@
 		$('#listOfPortfolio').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -981,7 +1215,7 @@
 		$('#listOfFAQ').on('click', function() {
 			$('#myPage').hide();
 			$('#checkInterest').hide();
-			$('#posted').hide();
+			$('.posted').hide();
 			$('#bookmark').hide();
 			$('#follow').hide();
 			$('#myIdea').hide();
@@ -1105,5 +1339,29 @@
 	</script>
 
     <script src="./js/FAQ.js"></script>
+    
+    <%-- 팔로우/팔로워 스크립트 --%>
+	<script>
+		$(document).ready(function () {
+			$('ul.tabs li').click(function () {
+				var tab_id = $(this).attr('data-tab');
+		
+				$('ul.tabs li').removeClass('current');
+				$('.tab-content').removeClass('current');
+		
+				$(this).addClass('current');
+				$("#" + tab_id).addClass('current');
+			})
+		})
+		
+		function test() {
+			if (!confirm("팔로우를 정말 삭제하겠습니까?")) {
+				alert("취소(아니오)를 누르셨습니다.");
+			} else {
+				alert("확인(예)을 누르셨습니다. 삭제됩니다.");
+			}
+		}
+	</script>
+	<script src="./js/load.js"></script>
 </body>
 </html>
