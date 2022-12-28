@@ -90,10 +90,28 @@
 <%for(int i=0;i<list.size();i++){ %>
 <div id="cmtnum<%=i+1%>" class="modal" style="display:none;">
   <div class="bg"></div>
-  <div class="modalBox">
+  <div class="modalBox" style="width:1200px; background:rgba(0,130,128,255);">
+		<div class="window">
+			<div class="title-bar">
+				<div class="title-bar-text">아이디어 토론방</div>
+					<div class="title-bar-controls">
+					<button aria-label="Close" id="closeBtn<%=i+1%>"></button>
+					</div>
+			</div>
+			<div class="window-body" style="display:flex;">
+				<div style="width:750px; display:grid">
+			  		<div>주제</div>
+			  		<div>내용</div>
+			  	</div>
+			  	<div style="width:450px; display:grid">
+			  		<div>작성자이름</div>
+			  		<div>댓글들 (for문사용)</div>
+			  		<div>좋아요,북마크</div>
+			  		<div>댓글달기</div>
+			  	</div>
+		  	</div>
+  		</div>
   	
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur magni soluta!</p>
-    <button id="closeBtn<%=i+1%>">✖</button>
   </div>
 </div>
 <%}%>

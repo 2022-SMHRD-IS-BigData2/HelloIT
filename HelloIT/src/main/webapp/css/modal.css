@@ -1,10 +1,10 @@
 @charset "UTF-8";
-button {
+/* button {
   background-color: #F9B514;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
-}
+} */
 
 .modal {
   position: fixed;
@@ -25,21 +25,21 @@ button {
 
 .modalBox {
   position: absolute;
-  background-color: #fff;
-  width: 400px;
-  height: 200px;
-  padding: 15px;
 }
 
-.modalBox button {
+/* .modalBox button {
   display: block;
   width: 80px;
   margin: 0 auto;
 }
-
+ */
 /* .hidden {
   display: none; 
 }*/
 #openBtn:hover {
 	cursor:pointer;
+}
+
+.modal div{
+	border: 1px solid;
 }
