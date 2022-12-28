@@ -105,14 +105,73 @@
 			</div>
 			<div class="window-body" style="display:flex;">
 				<div style="width:750px; display:grid">
-			  		<div>주제</div>
-			  		<div>내용</div>
+					<!-- 아이디어 주제 -->
+			  		<div><%=list.get(i).getPost_title()%></div>
+			  		<div>
+			  			<!-- 이미지 -->
+				  		<img alt="이미지 없음" src="./img/<%=list.get(i).getPost_file()%>">
+				  		<!-- 게시물 텍스트 -->
+				  		<%=list.get(i).getPost_content()%>
+			  		</div>
+			  		<div>
+			  			<!-- 게시물 해시태그 리스트 (클릭시 해시태그별 게시물 조회 페이지 이동)-->
+				 	 	<%
+					  	List<Tag> tagList = daoTag.postTagView(list.get(i).getPost_seq());
+					  	for(int k = 0; k < tagList.size(); k++){
+					  	%>
+						<a href="goTagMain.do?tag_seq=<%=tagList.get(k).getTag_seq()%>"><%='#'+tagList.get(k).getTag_content()%></a>
+						<%};%>
+			  		</div>
 			  	</div>
 			  	<div style="width:450px; display:grid">
-			  		<div>작성자이름</div>
-			  		<div>댓글들 (for문사용)</div>
-			  		<div>좋아요,북마크</div>
-			  		<div>댓글달기</div>
+			  		<!-- 아이디어 주제 제시자 (클릭시 유저 페이지 이동)-->
+			  		<div><a href="goUserPage.do?u_email=<%=list.get(i).getU_email()%>"><%=list.get(i).getU_name()%></a></div>
+			  		<!-- 댓글(아이디어) 리스트 -->
+			  		<div>
+			  			<%
+						List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
+						for (int j = 0; j < cmtList.size(); j++) {
+						%>
+						<table class="board_list">
+							<tr style="width: 0px; padding: 0px;">
+								<!-- 댓글(아이디어) 작성자 -->
+								<td><b><%=cmtList.get(j).getU_name()%></b></td>
+								<!-- 댓글(아이디어) 내용 -->
+								<td style="text-align:left; padding:5px;"><%=cmtList.get(j).getCmt_content()%></td>
+								<td>
+									<!-- 댓글(아이디어) 좋아요 버튼 -->
+									<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+										<!-- 댓글(아이디어) 좋아요 수 -->
+										<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖</button>
+									</a>
+								</td>
+							</tr>
+						<%};%>	
+						</table>
+			  		</div>
+			  		<div>
+				  		<!-- 북마크 버튼 -->
+						<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+							<!-- 아이디어 주제 북마크 수 -->
+							<button	id="btn"><%=list.get(i).getBookmarks()%><img src="./img/북마크.png" width="15" alt=""></button>
+						</a>
+			  		  	<!-- 좋아요 버튼 -->
+					  	<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					  		<!-- 아이디어 주제 좋아요 수 -->
+					  		<button id="btn"><%=list.get(i).getLikes()%> 💖</button>
+					  	</a>
+			  		</div>
+			  		<div>
+					  	<!-- 댓글 작성 파트 -->
+					  	<form action="mainCmt.do">
+							<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
+							<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+							<p class="status-bar-field">
+								<input type="text" name="cmt_content" placeholder="댓글" style="width:360px">
+								<input type="submit" value="등록">
+							</p>
+						</form>
+			  		</div>
 			  	</div>
 		  	</div>
   		</div>
@@ -151,62 +210,12 @@
   	
   	
   	
-  	<!-- data -->
-  	<!-- 아이디어 주제 -->
-  	<%=list.get(i).getPost_title()%>
-  	<!-- 아이디어 주제 제시자 (클릭시 유저 페이지 이동)-->
-  	<a href="goUserPage.do?u_email=<%=list.get(i).getU_email()%>"><%=list.get(i).getU_name()%></a>
-  	<!-- 이미지 -->
-  	<img alt="이미지 없음" src="./img/<%=list.get(i).getPost_file()%>">
-  	<!-- 게시물 텍스트 -->
-  	<%=list.get(i).getPost_content()%>
-  	<!-- 게시물 해시태그 리스트 (클릭시 해시태그별 게시물 조회 페이지 이동)-->
-  	<%
-  	List<Tag> tagList = daoTag.postTagView(list.get(i).getPost_seq());
-  	for(int k = 0; k < tagList.size(); k++){
-  	%>
-	<a href="goTagMain.do?tag_seq=<%=tagList.get(k).getTag_seq()%>"><%='#'+tagList.get(k).getTag_content()%></a>
-	<%};%>
-	<!-- 북마크 버튼 -->
-	<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-		<!-- 아이디어 주제 북마크 수 -->
-		<button	id="btn"><%=list.get(i).getBookmarks()%><img src="./img/북마크.png" width="15" alt=""></button>
-	</a>
-  	<!-- 좋아요 버튼 -->
-  	<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-  		<!-- 아이디어 주제 좋아요 수 -->
-  		<button id="btn"><%=list.get(i).getLikes()%> 💖</button>
-  	</a>
-  	<!-- 댓글 작성 파트 -->
-  	<form action="mainCmt.do">
-		<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
-		<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-			<p class="status-bar-field">
-		<input type="text" name="cmt_content" placeholder="댓글" style="width:360px">
-		<input type="submit" value="등록">
-			</p>
-	</form>
-	<!-- 댓글(아이디어) 리스트 -->
-	<%
-	List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
-	for (int j = 0; j < cmtList.size(); j++) {
-	%>
-	<table class="board_list" width=700>
-		<tr style="width: 0px; padding: 0px;">
-			<!-- 댓글(아이디어) 작성자 -->
-			<td><b><%=cmtList.get(j).getU_name()%></b></td>
-			<!-- 댓글(아이디어) 내용 -->
-			<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
-			<td>
-				<!-- 댓글(아이디어) 좋아요 버튼 -->
-				<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
-				<!-- 댓글(아이디어) 좋아요 수 -->
-				<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖</button>
-				</a>
-			</td>
-		</tr>
-	<%};%>	
-	</table>
+  	
+	
+
+
+	
+	
 	
 	
   
