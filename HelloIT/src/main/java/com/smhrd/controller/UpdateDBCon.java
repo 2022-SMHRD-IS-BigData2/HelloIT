@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.dao.MyPageInfoDAO;
 import com.smhrd.dao.UserDBInfoDAO;
+import com.smhrd.dao.UserTagDAO;
 import com.smhrd.entity.MyPageInfo;
 import com.smhrd.entity.UserDBInfo;
+import com.smhrd.entity.UserTag;
 
 public class UpdateDBCon implements Controller {
 
@@ -20,56 +22,90 @@ public class UpdateDBCon implements Controller {
 		
 		request.setCharacterEncoding("UTF-8");
 		String u_email = request.getParameter("u_email");
-	    String[] mysql = request.getParameterValues("mysql");
-	    String[] oracle  = request.getParameterValues("oracle");
-	    String[] mariadb = request.getParameterValues("mariadb");
-	    String[] pstgresql = request.getParameterValues("pstgresql");
-	    String[] mongodb = request.getParameterValues("mongodb");
-	    String[] redis = request.getParameterValues("redis");
-	    String[] sqlite = request.getParameterValues("sqlite");
-	    String[] aws_aurora = request.getParameterValues("aws_aurora");
-	    String[] elasticsearch = request.getParameterValues("elasticsearch");
-	    String[] dynamodb = request.getParameterValues("dynamodb");
-	    String[] firebase = request.getParameterValues("firebase");
-	    String[] tibero = request.getParameterValues("tibero");
-	    String[] hive = request.getParameterValues("hive");
-	    String[] cassandra = request.getParameterValues("cassandra");
-	    String[] db_etc = request.getParameterValues("db_etc");
-	    
-	    UserDBInfo dto = new UserDBInfo();
-	    dto.setU_email(u_email);
-	    dto.setMysql(mysql[0]);
-	    dto.setOracle(oracle[0]);
-	    dto.setMariadb(mariadb[0]);
-	    dto.setPstgresql(pstgresql[0]);
-	    dto.setMongodb(mongodb[0]);
-	    dto.setRedis(redis[0]);
-	    dto.setSqlite(sqlite[0]);
-	    dto.setAws_aurora(aws_aurora[0]);
-	    dto.setElasticsearch(elasticsearch[0]);
-	    dto.setDynamodb(dynamodb[0]);
-	    dto.setFirebase(firebase[0]);
-	    dto.setTibero(tibero[0]);
-	    dto.setHive(hive[0]);
-	    dto.setCassandra(cassandra[0]);
-	    dto.setDb_etc(db_etc[0]);
-	    UserDBInfoDAO dao = new UserDBInfoDAO();
-	    int cnt = dao.updateDB(dto);
-	    String nextPage = "";
-		if (cnt > 0) {
-			// 성공
-			System.out.println("회원DB 수정 성공");
-			// 메인페이지로
-			// 이미 이동하는 컨트롤러가 있는경우, 컨트롤러로 이동시키자.
-			// redirect를 하 는경우, 앞에 redirect:/ 를 붙이기로 약속
-			nextPage = "redirect:/goMyPage.do";
-
-		} else {
-			// 실패
-			System.out.println("회원DB 수정 실패");
-			nextPage = "redirect:/goMyPage.do";
+		
+		UserTag dto = new UserTag();
+		dto.setU_email(u_email);
+		
+		UserTagDAO dao = new UserTagDAO();
+		
+		if(request.getParameter("mysql").equals("Y")) {
+			dto.setTag_seq(33);
+			dao.userTagSetting(dto);
+			System.out.println("mysql 체크");
 		}
-		return nextPage;
+		if(request.getParameter("oracle").equals("Y")) {
+			dto.setTag_seq(34);
+			dao.userTagSetting(dto);
+			System.out.println("oracle 체크");
+		}
+		if(request.getParameter("mariadb").equals("Y")) {
+			dto.setTag_seq(35);
+			dao.userTagSetting(dto);
+			System.out.println("mariadb 체크");
+		}
+		if(request.getParameter("pstgresql").equals("Y")) {
+			dto.setTag_seq(36);
+			dao.userTagSetting(dto);
+			System.out.println("pstgresql 체크");
+		}
+		if(request.getParameter("mongodb").equals("Y")) {
+			dto.setTag_seq(37);
+			dao.userTagSetting(dto);
+			System.out.println("mongodb 체크");
+		}
+		if(request.getParameter("redis").equals("Y")) {
+			dto.setTag_seq(38);
+			dao.userTagSetting(dto);
+			System.out.println("redis 체크");
+		}
+		if(request.getParameter("sqlite").equals("Y")) {
+			dto.setTag_seq(39);
+			dao.userTagSetting(dto);
+			System.out.println("sqlite 체크");
+		}
+		if(request.getParameter("aws_aurora").equals("Y")) {
+			dto.setTag_seq(40);
+			dao.userTagSetting(dto);
+			System.out.println("aws_aurora 체크");
+		}
+		if(request.getParameter("elasticsearch").equals("Y")) {
+			dto.setTag_seq(41);
+			dao.userTagSetting(dto);
+			System.out.println("elasticsearch 체크");
+		}
+		if(request.getParameter("dynamodb").equals("Y")) {
+			dto.setTag_seq(42);
+			dao.userTagSetting(dto);
+			System.out.println("dynamodb 체크");
+		}
+		if(request.getParameter("firebase").equals("Y")) {
+			dto.setTag_seq(43);
+			dao.userTagSetting(dto);
+			System.out.println("firebase 체크");
+		}
+		if(request.getParameter("tibero").equals("Y")) {
+			dto.setTag_seq(44);
+			dao.userTagSetting(dto);
+			System.out.println("tibero 체크");
+		}
+		if(request.getParameter("hive").equals("Y")) {
+			dto.setTag_seq(45);
+			dao.userTagSetting(dto);
+			System.out.println("hive 체크");
+		}
+		if(request.getParameter("cassandra").equals("Y")) {
+			dto.setTag_seq(46);
+			dao.userTagSetting(dto);
+			System.out.println("cassandra 체크");
+		}
+		if(request.getParameter("db_etc").equals("Y")) {
+			dto.setTag_seq(102);
+			dao.userTagSetting(dto);
+			System.out.println("db_etc 체크");
+		}
+	    
+	    return "redirect:/goMyPage.do";	
+	    
 	}
 
 }

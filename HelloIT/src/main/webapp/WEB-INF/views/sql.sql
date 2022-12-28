@@ -2,14 +2,26 @@ select * from user_info;
 select * from post_info order by post_dt desc;
 select * from like_info;
 select * from COMMENT_INFO;
+select * from BOOKMARK_INFO;
 select * from USER_SKILL_INFO;
 select * from user_role_info;
 select * from user_db_info;
 select * from user_language_info;
 select * from post_level where post_seq=36;
+select * from user_level;
 select * from post_tag;
 select * from post_tag where post_seq=32;
+select * from user_tag;
+delete from user_tag where u_email ='fire@test.com';
 select * from tag order by tag_seq;
+insert into tag
+values (99, 'etc');
+insert into tag
+values (100, 'skill_etc');
+insert into tag
+values (101, 'language_etc');
+insert into tag
+values (102, 'db_etc');
 
 delete from POST_INFO where post_seq=18;
 
@@ -334,6 +346,19 @@ VALUES
      )     
      
 --
+select * from  post_info p, user_info u
+where p.u_email = u.u_email
+and p.post_seq in (select post_seq
+					from bookmark_info
+					where u_email='test@hs.com'
+)
+order by post_dt desc;
+		
+select * from  post_info p, user_info u
+where p.u_email = u.u_email
+and p.u_email = 'test@hs.com'
+order by post_dt desc;
+     
 select* from s_crawling;
 select*from j_crawling;
 select *

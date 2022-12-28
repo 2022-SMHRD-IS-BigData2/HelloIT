@@ -16,3 +16,8 @@ function dbPopup(){
 function myInfoPopup(){
 	alert('회원정보가 새롭게 저장되었습니다.');
 }
+
+
+function levelPopup(){
+	alert('레벨이 설정되었습니다.');
+}
