@@ -131,12 +131,12 @@
 		            <br>
 		       		<form action="userLevelSetting.do" method="post">
 		       		<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-				        <table>
+				        <table style="width:600px">
 				        <tr class="interest" id="userRole">
 				     	<td><h4>레벨</h4></td>
-				            <td>
-				            <ul>
-				            <li>프론트엔드
+				            <td style="display:flex; justify-content: center; height:50px;">
+				            <div style="text-align:end; margin: 0 5px">
+				            <div>프론트엔드
 				             <select name="frontend_level" id="frontend_level">
 				             	<option value="1">예비개발자(학생)</option>
 				             	<option value="2">사원(주니어)</option>
@@ -145,9 +145,10 @@
 				             	<option value="5">이사~사장(디렉터)</option>
 				             	<option value="6">프리랜서</option>
 				             </select>
-				             </li>
-				             <li>백엔드
-				             <select name="backend_level" id="backend_level">
+				             </div>
+				             <div>
+				             	백엔드
+				             	<select name="backend_level" id="backend_level">
 				             	<option value="1">예비개발자(학생)</option>
 				             	<option value="2">사원(주니어)</option>
 				             	<option value="3">대리(미드레벨)</option>
@@ -155,8 +156,10 @@
 				             	<option value="5">이사~사장(디렉터)</option>
 				             	<option value="6">프리랜서</option>
 				             </select>
-				             </li>
-				             <li>데이터
+				             </div>
+				             </div>
+				             <div style="text-align:end; margin: 0 5px">
+				             <div>데이터
 				             <select name="data_level" id="data_level">
 				             	<option value="1">예비개발자(학생)</option>
 				             	<option value="2">사원(주니어)</option>
@@ -165,8 +168,9 @@
 				             	<option value="5">이사~사장(디렉터)</option>
 				             	<option value="6">프리랜서</option>
 				             </select>
-				             </li>
-				              <li>기타
+				             </div>
+				             <div>
+				             기타
 				             <select name="etc_level" id="etc_level">
 				             	<option value="1">예비개발자(학생)</option>
 				             	<option value="2">사원(주니어)</option>
@@ -175,8 +179,8 @@
 				             	<option value="5">이사~사장(디렉터)</option>
 				             	<option value="6">프리랜서</option>
 				             </select>
-				             </li>
-				             </ul>
+				             </div>
+				             </div>
 				             </td>
 				             <td>
 					             <input type="submit" onclick="levelPopup();" value="저장">
@@ -520,7 +524,7 @@
 		    
 		    <div id="posted">
 			<%for(int i = 0; i < upList.size(); i++){ %>
-			<div id="checkPost" class="window posted" style="width: 700px">
+			<div id="checkPost" class="window posted" style="width: 630px">
 			<div class="title-bar">
 				<div class="title-bar-text"><%=upList.get(i).getPost_title()%></div>
 			</div>
@@ -575,7 +579,7 @@
 					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 					<p class="status-bar-field">
 						<input type="text" name="cmt_content" placeholder="댓글"
-						style="width:360px">
+						style="width:290px">
 						<input type="submit" value="등록">
 					</p>
 				</form>
@@ -819,7 +823,7 @@
 	    <%};%> --%>
 	    <div id="bookmark">
 			<%for(int i = 0; i < bmList.size(); i++){ %>
-			<div id="checkPost" class="window posted" style="width: 700px">
+			<div id="checkPost" class="window posted" style="width: 630px">
 			<div class="title-bar">
 				<div class="title-bar-text"><%=bmList.get(i).getPost_title()%></div>
 			</div>
@@ -874,7 +878,7 @@
 					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 					<p class="status-bar-field">
 						<input type="text" name="cmt_content" placeholder="댓글"
-						style="width:360px">
+						style="width:290px">
 						<input type="submit" value="등록">
 					</p>
 				</form>
@@ -889,17 +893,15 @@
 				%>
 			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table border=1 width=700>
+			<table style="width:630px;">
 				<tr>
-					<td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
 					</button></a>
 					</td>
-				</tr>
-				<tr>
-					<td colspan="6" height="50"><%=cmtList.get(j).getCmt_content()%></td>
 				</tr>
 			<%}%>	
 			</table>
