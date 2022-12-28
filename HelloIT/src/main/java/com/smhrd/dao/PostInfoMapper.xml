@@ -9,6 +9,18 @@
 		order by post_dt desc
 	</select>
 	
+	<!-- 인기게시물 상위 10개 조회 -->
+	<select id="popPostInfoList" resultType="com.smhrd.entity.PostInfo">
+		select *
+		from POST_INFO p, user_info u
+		where p.u_email = u.u_email
+		and post_seq in (select post_seq
+							from (select post_seq, bookmarks+likes+cmts as pop
+									from post_info
+									order by pop desc)
+							where <![CDATA[rownum <= 10]]>)
+	</select>
+	
 	<!-- 본인 게시글 리스트 조회 -->
 	<select id="userPostInfoList" resultType="com.smhrd.entity.PostInfo">
 		select * from  post_info p, user_info u

@@ -29,16 +29,15 @@
 <title>Hello IT</title>
 </head>
 <body>
-<a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
-<a href="goAllPostMain.do" style="position:fixed; top: 30px">모든게시물조회</a>
 	<%
 	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
 	
 	// request 영역에서 list 꺼내서 출력하기
-	
-	List<PostInfo> list = (List<PostInfo>) request.getAttribute("ctpList");
+	List<PostInfo> ppList = (List<PostInfo>) request.getAttribute("ppList");
 	%>
+<a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
+<a href="goMain.do?u_email=<%=info.getU_email()%>" style="position:fixed; top: 30px">맞춤형게시물조회</a>
 	
 <div class="container">
 	<div class="wrapper">
@@ -101,29 +100,29 @@
 				<div></div>
 				</div>
 			</div>
-			<%for(int i = 0; i < list.size(); i++){ %>
+			<%for(int i = 0; i < ppList.size(); i++){ %>
 			<div id="checkPost" class="window posted" style="width: 700px">
 				<div class="title-bar">
-					<div class="title-bar-text"><%=list.get(i).getPost_title()%></div>
+					<div class="title-bar-text"><%=ppList.get(i).getPost_title()%></div>
 				</div>
 			
 				<div class="window-body">
 					<table class="board_list" id="list" bgcolor="white">
 						<tr>
 							<td id="user">작성자</td>
-							<td style="width: 650px text-align:'';"><%=list.get(i).getU_name()%></td>
+							<td style="width: 650px text-align:'';"><%=ppList.get(i).getU_name()%></td>
 						</tr>
 						<tr>
 							<td colspan="2">내용</td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center"><img alt=""
-								src="img/<%=list.get(i).getPost_file()%>"><br><br> <b><%=list.get(i).getPost_content()%></b>
+								src="img/<%=ppList.get(i).getPost_file()%>"><br><br> <b><%=ppList.get(i).getPost_content()%></b>
 							</td>
 						</tr>
 						<%
 							PostInfoDAO daoTag = new PostInfoDAO();
-							List<Tag> list2 = daoTag.postTagView(list.get(i).getPost_seq());
+							List<Tag> list2 = daoTag.postTagView(ppList.get(i).getPost_seq());
 						%>
 						<tr style="height: 20px">
 							<td colspan="2">
@@ -137,23 +136,23 @@
 
 				<div class="status-bar">
 					<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>
+					<a href="mainBookmark.do?post_seq=<%=ppList.get(i).getPost_seq()%>
 					&u_email=<%=info.getU_email()%>">
 						<button	id="btn">
-							<%=list.get(i).getBookmarks()%>
+							<%=ppList.get(i).getBookmarks()%>
 							<img src="./img/북마크.png" width="15" alt="">
 						</button>
 					</a>
 					</p>
 				<%-- 좋아요 기능 --%>
 					<p class="status-bar-field">
-						<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-						<button	id="btn"><%=list.get(i).getLikes()%> 💖
+						<a href="mainLike.do?post_seq=<%=ppList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+						<button	id="btn"><%=ppList.get(i).getLikes()%> 💖
 						</button></a>
 				<%-- 좋아요 기능 끝 --%>
 					</p>
 					<form action="mainCmt.do">
-						<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
+						<input type="hidden" name="post_seq" value="<%=ppList.get(i).getPost_seq()%>">
 						<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 						<p class="status-bar-field">
 						<input type="text" name="cmt_content" placeholder="댓글"
@@ -163,12 +162,12 @@
 					</form>
 				
 					
-					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=list.get(i).getCmts()%> </button></a></p>
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=ppList.get(i).getCmts()%> </button></a></p>
 				
 				<%
 				// comment 출력
 				CommentInfoDAO dao = new CommentInfoDAO();
-				List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
+				List<CommentInfo> cmtList = dao.commentInfoList(ppList.get(i).getPost_seq());
 				%>
 			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			

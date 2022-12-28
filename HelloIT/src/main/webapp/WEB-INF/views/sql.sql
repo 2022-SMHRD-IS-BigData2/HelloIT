@@ -23,6 +23,17 @@ values (101, 'language_etc');
 insert into tag
 values (102, 'db_etc');
 
+-- 인기게시물
+select *
+from POST_INFO p, user_info u
+where p.u_email = u.u_email
+and post_seq in (select post_seq
+					from (select post_seq, bookmarks+likes+cmts as pop
+							from post_info
+							order by pop desc)
+					where rownum <= 10);
+
+
 delete from POST_INFO where post_seq=18;
 
 update USER_INFO set u_name = '박해성';
