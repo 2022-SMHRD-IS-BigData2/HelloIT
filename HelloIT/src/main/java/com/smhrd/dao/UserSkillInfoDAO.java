@@ -4,7 +4,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
-import com.smhrd.entity.UserRoleInfo;
 import com.smhrd.entity.UserSkillInfo;
 
 public class UserSkillInfoDAO {
