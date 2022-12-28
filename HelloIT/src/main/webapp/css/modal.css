@@ -37,9 +37,9 @@ button {
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
+/* .hidden {
+  display: none; 
+}*/
 #openBtn:hover {
 	cursor:pointer;
 }

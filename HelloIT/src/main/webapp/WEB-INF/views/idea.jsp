@@ -76,71 +76,34 @@
 									%>
 									<tr>
 										<td><%=list.get(i).getRow_num()%></td>
-										<td class="openBtn<%=i%>"><%=list.get(i).getPost_title()%></td>
+										<td id="openBtn<%=i+1%>"><%=list.get(i).getPost_title()%></td>
 										<td><%=list.get(i).getU_name()%></td>
 										<td><%=list.get(i).getPost_dt()%></td>
 										<td><%=list.get(i).getCnt()%></td>
 									</tr>
-									
-								<div class="modal hidden">
-							  <div class="bg"></div>
-							  <div id="modal<%=i%>" class="modalBox">
-							  <!-- 주제, 내용 적는 부분 -->
-							  	<div>
-							  	
-						  			<div><%=list.get(i).getPost_title() %></div>
-						  			<div><%=list.get(i).getPost_content() %></div>
-						  	
-						  		</div>
-							  <!-- 작성자, 댓글, 좋아요 공유, 댓글달기 적는 부분  -->
-							  <%
-				// comment 출력
-				CommentInfoDAO dao = new CommentInfoDAO();
-				List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
-				%>
-							  	<div>
-							  	<div><%=list.get(i).getU_name()%></div>
-							  	<%for(int j=0;j<cmtList.size();j++){%>
-							  	<div><%=cmtList.get(j).getU_name() %></div>
-							  	<div><%=cmtList.get(j).getCmt_content() %></div>
-							  	<a href="">
-								<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
-								</button></a>
-							  	<%} %>
-							  	<div>
-								<p class="status-bar-field">
-								<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-								<button	id="btn"><%=list.get(i).getLikes()%> 💖
-								</button></a>
-								</div>
-							  	<div>
-							  	<form action="mainCmt.do">
-								<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
-								<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
-								<p class="status-bar-field">
-									<input type="text" name="cmt_content" placeholder="댓글"
-									style="width:360px">
-									<input type="submit" value="등록">
-								</p>
-								</form>	
-							  	</div>
-							  	</div>
-				  				<% }%>	
-							    <button class="closeBtn">✖</button>
-							  </div>
-							</div>
+									<%} %>
+								
 								</tbody>
 							</table>
 
 						</div>
-
+<%for(int i=0;i<list.size();i++){ %>
+<div id="cmtnum<%=i+1%>" class="modal" style="display:none;">
+  <div class="bg"></div>
+  <div class="modalBox">
+  	
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consectetur quam nobis quis corrupti amet maxime neque, optio, in illo, voluptatibus consequuntur! Rerum quo ea nulla qui, maxime consectetur magni soluta!</p>
+    <button id="closeBtn<%=i+1%>">✖</button>
+  </div>
+</div>
+<%}%>
 						<br>
 						<div class="pagination_section">
 						<a href="goIdea.do" class="bt">＜＜ Previous</a>
-						<%for(int i=0;i<cnt.size()/10;i++){ %>
+						<%for(int i=0;i<cnt.size()/10+1;i++){ %>
 						<a id="num<%=i+1 %>" class="num" href="goIdea.do?&num=<%=i+1%>"><%=i+1%></a>
 						<%} %>	
-						<a href="goIdea.do?num=<%=cnt.size()/10 %>" class="bt">Next ＞＞</a>
+						<a href="goIdea.do?num=<%=cnt.size()%>" class="bt">Next ＞＞</a>
 				</div>
 
 
@@ -150,40 +113,38 @@
 
 				</div>
 			</div>
-			<footer class="main_footer" style="display:">
-				<div class="window" id="icons" style="width: 800px" align="center">
-					<a href=""><img src="./img/dfsfg.png" id="fire" width="50"
-						alt=""></a> <a href="goIdea.do"><img src="./img/123.png"
-						id="idea" width="40" alt=""></a> <a href="goMain.do"><img
-						src="./img/dff.gif" id="goMain" width="50" alt="error"></a> <a
-						href="goRecruit.do"><img src="./img/xml-0.png" id="job"
-						width="40" alt=""></a> <a href="goMyPage.do"><img
-						src="./img/icon_15.png" id="my_page" width="40" alt=""></a> <a
-						href="goMessage.do"><img src="./img/sfsdffd.png" id="message"
-						alt="" width="30"></a>
-				</div>
-			</footer>
+			<footer class="main_footer">
+		<div class="window" id="icons" style="width: 800px" align="center">
+			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
+			<a href="goIdea.do"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
+			<a href="goMain.do?u_email=<%=info.getU_email()%>"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
+			<a href="goMainWrite.do"><img src="./img/dfsee.gif" id="goMain" width="41" alt="error"></a> 
+			<a href="goRecruit.do"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
+			<a href="goMyPage.do?u_email=<%=info.getU_email()%>"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
+			<a href="goMessage.do"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
+		</div>
+	</footer>
 		</div>
 	</div>
 							
 </body>
 <script>
-  const open = () => {
-    document.querySelector(".modal").classList.remove("hidden");
-    $('.main_footer').css('position','static');
-    $('.window').css('position','static');
-  }
-
-  const close = () => {
-    document.querySelector(".modal").classList.add("hidden");
-    $('.window').css('position','sticky');
-  }
-<% for(int i=0;i<10;i++){%>
-  document.querySelector(".openBtn<%=i%>").addEventListener("click", open);
+  <%for(int i=1;i<=10;i++){%>
+   $('#openBtn<%=i%>').on('click', function(){
+	   $('#cmtnum<%=i%>').show();
+	   $('bg').show();
+	   $('.main_footer').css('position','static');
+	   $('.window').css('position','static');
+   });
   <%}%>
-  document.querySelector(".closeBtn").addEventListener("click", close);
-/*   document.querySelector(".bg").addEventListener("click", close);
- */
+  <%for(int i=1;i<=10;i++){%>
+   $('#closeBtn<%=i%>').on('click', function(){
+	   $('#cmtnum<%=i%>').hide();
+	   $('bg').hide();
+	   $('.main_footer').css('position','static');
+	   $('.window').css('position','static');
+   });
+  <%}%>
 </script>
 <script>
 console.log($('#num<%=num%>').attr('class'))

@@ -10,6 +10,6 @@
   </select>
 
 	<select id="getListSizeIdea" resultType="java.lang.Integer">
-		select rownum from post_info
+		select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc)
 	</select>
 </mapper>
