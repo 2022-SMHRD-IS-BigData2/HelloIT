@@ -15,7 +15,7 @@ public class GoMessageCon implements Controller {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, ParseException {
 		// TODO Auto-generated method stub
-		return "customizedMain";
+		return "message";
 	}
 
 }

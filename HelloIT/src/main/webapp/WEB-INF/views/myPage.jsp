@@ -131,6 +131,61 @@
 		       		<form action="updateRole.do" method="post">
 				        <table>
 				        <tr class="interest" id="userRole">
+				     	<td><h4>레벨</h4></td>
+				            <td>
+				            <ul>
+				            <li>프론트엔드
+				             <select name="frontend_level" id="frontend_level">
+				             	<option value="1">예비개발자(학생)</option>
+				             	<option value="2">사원(주니어)</option>
+				             	<option value="3">대리(미드레벨)</option>
+				             	<option value="4">과장~부장(시니어)</option>
+				             	<option value="5">이사~사장(디렉터)</option>
+				             	<option value="6">프리랜서</option>
+				             </select>
+				             </li>
+				             <li>백엔드
+				             <select name="backend_level" id="backend_level">
+				             	<option value="1">예비개발자(학생)</option>
+				             	<option value="2">사원(주니어)</option>
+				             	<option value="3">대리(미드레벨)</option>
+				             	<option value="4">과장~부장(시니어)</option>
+				             	<option value="5">이사~사장(디렉터)</option>
+				             	<option value="6">프리랜서</option>
+				             </select>
+				             </li>
+				             <li>데이터
+				             <select name="data_level" id="data_level">
+				             	<option value="1">예비개발자(학생)</option>
+				             	<option value="2">사원(주니어)</option>
+				             	<option value="3">대리(미드레벨)</option>
+				             	<option value="4">과장~부장(시니어)</option>
+				             	<option value="5">이사~사장(디렉터)</option>
+				             	<option value="6">프리랜서</option>
+				             </select>
+				             </li>
+				              <li>기타
+				             <select name="etc_level" id="etc_level">
+				             	<option value="1">예비개발자(학생)</option>
+				             	<option value="2">사원(주니어)</option>
+				             	<option value="3">대리(미드레벨)</option>
+				             	<option value="4">과장~부장(시니어)</option>
+				             	<option value="5">이사~사장(디렉터)</option>
+				             	<option value="6">프리랜서</option>
+				             </select>
+				             </li>
+				             </ul>
+				             </td>
+				             <td>
+					             <input type="submit" onclick="rolePopup();" value="저장">
+					             <input type="reset" value="초기화">
+				        	</td>
+				        </tr>
+				        </table>
+					</form>
+		       		<form action="updateRole.do" method="post">
+				        <table>
+				        <tr class="interest" id="userRole">
 				     	<td><h4>역할</h4></td>
 				            <td>
 				             <input type="checkbox" name="frontend" id="frontend" value="Y">
