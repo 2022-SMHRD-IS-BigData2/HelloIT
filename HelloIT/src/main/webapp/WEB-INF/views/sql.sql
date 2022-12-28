@@ -393,3 +393,5 @@ select distinct * from post_info p, user_info u
 										where u_email='test@hs.com'))
 		and p.u_email = u.u_email
 		order by post_dt desc;
+		
+select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc)	;	
