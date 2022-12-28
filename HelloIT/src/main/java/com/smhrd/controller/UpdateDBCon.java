@@ -104,8 +104,7 @@ public class UpdateDBCon implements Controller {
 			System.out.println("db_etc 체크");
 		}
 	    
-	    return "redirect:/goMyPage.do";	
-	    
+	    return "redirect:/goMyPage.do?u_email="+u_email;
 	}
 
 }

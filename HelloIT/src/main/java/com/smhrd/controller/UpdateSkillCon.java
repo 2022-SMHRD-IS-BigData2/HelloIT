@@ -71,7 +71,7 @@ public class UpdateSkillCon implements Controller {
 			System.out.println("skill_etc 체크");
 		}
 	    
-		return "redirect:/goMyPage.do";		
+		return "redirect:/goMyPage.do?u_email="+u_email;
 	}
 
 }
