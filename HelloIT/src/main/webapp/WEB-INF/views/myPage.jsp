@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/FAQ.css">
 <link rel="stylesheet" href="./css/mypage.css">
+<link rel="stylesheet" href="./css/follow.css">
+
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -619,16 +621,21 @@
 									</tr>
 								</table>
 									<br>
-								<ul class="tabs" style="display:flex;justify-content: space-around; margin: 8px; list-style:none;">
+			
+		
+			
+				
+																														
+								<ul class="tabs" >
+								<!-- style="display:flex;justify-content: space-around; margin: 8px; list-style:none;" -->
 									<li class="tab-link current" data-tab="tab-1">팔로우</li>
 									<li class="tab-link" data-tab="tab-2">팔로워</li>
 								</ul>
-							</div>
+						
 							
-							
-							<div id="tab-1" class="tab-content current">
-								<div id="job-table">
-									<table style="width: 600px; height: 100px;overflow: auto; text-align: center;">
+							<div id="tab-1" style="margin-bottom:50px" class="tab-content current" >
+				<div id="job-table">
+									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;">
 										<thead>
 											<tr height="30px">
 												<th>아이디</th>
@@ -656,7 +663,7 @@
 							
 								<br>
 							</div>
-							<div id="tab-2" class="tab-content">
+							<div id="tab-2" style="margin-bottom:50px" class="tab-content">
 								<div id="job-table">
 									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
 										<thead>
@@ -666,7 +673,7 @@
 												<th>팔로워 삭제</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody id="follower">
 											<%for(int i = 0; i < follower.size(); i++){%>
 											<tr>
 												<td><a href="#"><%=follower.get(i).getU_name()%></a></td>
@@ -687,9 +694,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
+		<!-- 		</div>
 			</div>
-			
+ -->			
 			<!-- 나의 아이디어 목록 -->
 			<div id="myIdea" style="display:none; font-family:auto;">
 				<div class="myIdea_list_wrap board_list_wrap">
