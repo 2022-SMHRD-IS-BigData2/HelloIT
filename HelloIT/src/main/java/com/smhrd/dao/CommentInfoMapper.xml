@@ -33,17 +33,17 @@
 	</update>
 	
 
-<!-- 	<update id="cmtLike">
+ 	<update id="cmtLike">
 		update comment_info
 		set cmt_likes = (select count(*)
 							from like_info
 							where cmt_seq=#{cmt_seq})
-	</update> -->
+	</update>
 	
-<!-- 	<select id="cmtLikesView" resultType="int">
+ 	<select id="cmtLikesView" resultType="int">
 		select cmt_likes
 		from comment_info
 		where cmt_seq=#{cmt_seq}
-	</select> -->
+	</select>
 	
 </mapper>

@@ -137,54 +137,161 @@
 
 				<div class="status-bar">
 					<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>
-					&u_email=<%=info.getU_email()%>">
-						<button	id="btn">
+					<%-- <a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>"> --%>
+						<button	id="btn-book-like<%=i%>">
 							<%=list.get(i).getBookmarks()%>
 							<img src="./img/북마크.png" width="15" alt="">
 						</button>
-					</a>
+					<!-- </a> -->
 					</p>
+					<script type="text/javascript">
+							$('#btn-book-like<%=i%>').on('click',function(){
+								$.ajax({
+									url:'mainBookmarkConAjax.do',
+									data:{'post_seq':'<%=list.get(i).getPost_seq()%>','u_email':'<%=info.getU_email()%>'},
+									dataType:'json',
+									success:function(res){
+										console.log(res)
+										$('#btn-book-like<%=i%>').html(res+' <img src="./img/북마크.png" width="15" alt="">');
+									},
+									error:function(res){
+										console.log('error')
+									}
+								})
+							});
+						</script>
 				<%-- 좋아요 기능 --%>
 					<p class="status-bar-field">
-						<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
-						<button	id="btn"><%=list.get(i).getLikes()%> 💖
+						<%-- <a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>"> --%>
+						<button	id="btn-post-like<%=i%>"><%=list.get(i).getLikes()%> 💖
 						</button></a>
+						
 				<%-- 좋아요 기능 끝 --%>
 					</p>
-					<form action="mainCmt.do">
-						<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
-						<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+					<script type="text/javascript">
+							$('#btn-post-like<%=i%>').on('click',function(){
+								$.ajax({
+									url:'mainLikeConAjax.do',
+									data:{'post_seq':'<%=list.get(i).getPost_seq()%>','u_email':'<%=info.getU_email()%>'},
+									dataType:'json',
+									success:function(res){
+										console.log(res)
+										$('#btn-post-like<%=i%>').text(res+' 💖');
+									},
+									error:function(res){
+										console.log('error')
+									}
+								})
+							});
+						</script>
+					<!-- <form action="mainCmt.do"> -->
+					<form name="comment<%=i%>" method="post">
+						<%-- <input id="" type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>"> --%>
+						<%-- <input id="" type="hidden" name="u_email" value="<%=info.getU_email()%>"> --%>
 						<p class="status-bar-field">
-						<input type="text" name="cmt_content" placeholder="댓글"
+						<input id="inputCmt<%=i%>" type="text" name="cmt_content" placeholder="댓글"
 							style="width:360px">
-						<input type="submit" value="등록">
+						<button type="button" id="comment<%=i%>">등록</button>
 					</p>
 					</form>
 				
 					
-					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=list.get(i).getCmts()%> </button></a></p>
+					<p class="status-bar-field"><a href=""><button>댓글<span id="btn-cmts<%=i%>"><%=list.get(i).getCmts()%></span> </button></a></p>
 				
-				<%
+				
+			 	<%
 				// comment 출력
 				CommentInfoDAO dao = new CommentInfoDAO();
 				List<CommentInfo> cmtList = dao.commentInfoList(list.get(i).getPost_seq());
-				%>
+				%> 
 			</div>
-			<%for (int j = 0; j < cmtList.size(); j++) {%>			
+ 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table class="board_list" width=700>
 				<tr style="width: 0px; padding: 0px;">
-					<%-- <td colspan="5"><b><%=cmtList.get(j).getU_name()%></b></td> --%>
 					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
-					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
-					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
-					</button></a>
+					<%-- <a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>"> --%>
+					<button	id="btn-cmt-like<%=j%>"><%=cmtList.get(j).getCmt_likes()%> 💖
+					</button>
+					<!-- </a> -->
 					</td>
 				</tr>
-			<%};%>	
+				</table>
+				<script type="text/javascript">
+							$('#btn-cmt-like<%=j%>').on('click',function(){
+								$.ajax({
+									url:'mainCmtLikeConAjax.do',
+									data:{'cmt_seq':'<%=cmtList.get(j).getCmt_seq()%>','u_email':'<%=info.getU_email()%>'},
+									dataType:'json',
+									success:function(res){
+										console.log(res)
+										$('#btn-cmt-like<%=j%>').text(res+' 💖');
+									},
+									error:function(res){
+										console.log('error')
+									}
+								})
+							});
+						</script>
+			<%};%>
+			<table id="cmtList<%=i %>" class="board_list" width=700>
+				
 			</table>
+			<script>
+				console.log($('#inputCmt<%=i%>').val())
+			</script>
+			<script type="text/javascript">
+						var formValues = $("form[name=comment<%=i%>]").serialize() ;
+							$('#comment<%=i%>').on('click',function(){
+								$.ajax({
+									url:'mainCommentConAjax.do',
+									data:{post_seq:<%=list.get(i).getPost_seq()%>,
+										  u_email:'<%=info.getU_email()%>',
+										  cmt_content:$('#inputCmt<%=i%>').val()},
+									dataType:'json',
+									success:function(res){
+										console.log(res);
+										var tr = `
+									<tr style="width: 0px; padding: 0px;">
+									<td><a href="goUserPage.do?u_email=`+res[res.length-1].u_email+`"><b>`+res[res.length-1].u_name+`</b></a></td>
+									<td style="text-align:left; padding:5px;" colspan="6">`+res[res.length-1].cmt_content+`</td>
+									<td>
+									<%-- /* <a href="mainCmtLike.do?cmt_seq=cmtList<%=i %>.get(j).getCmt_seq()&u_email=info.getU_email()"> */ --%>
+									<button	id="btn-cmt-like">`+res[res.length-1].cmt_likes+` 💖
+									</button></a>
+									</td>
+									</tr>
+								`;
+										$('#cmtList<%=i %>').append(tr);
+										$('#inputCmt<%=i%>').val('');
+										document.getElementById('btn-cmts<%=i%>').innerHTML++;
+									},
+									error:function(res){
+										console.log('error')
+									}
+								})
+							});
+						</script>
+						<script>
+						<%-- for(i=0;i<100;i++){
+						$('#btn-cmt-like<%=i%>').on('click',function(){
+							$.ajax({
+								url:'mainLikeConAjax.do',
+								data:{'post_seq':'<%=list.get(i).getPost_seq()%>','u_email':'<%=info.getU_email()%>'},
+								dataType:'json',
+								success:function(res){
+									console.log(res)
+									$('#btn-cmt-like<%=i%>').text(res+' 💖');
+								},
+								error:function(res){
+									console.log('error')
+								}
+							})
+						});							
+						} --%>
+						</script>
 		</div>
 		<%};%>
 		</div>
@@ -203,6 +310,8 @@
 	</footer>
 	</div>
 </div>
-	<script src="./js/move.js"></script>
+	<!-- <script src="./js/move.js"></script> -->
+	
+
 </body>
 </html>

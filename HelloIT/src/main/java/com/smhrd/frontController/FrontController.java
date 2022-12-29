@@ -48,10 +48,14 @@ import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.LogoutCon;
 import com.smhrd.controller.MainBookmarkCon;
+import com.smhrd.controller.MainBookmarkConAjax;
 import com.smhrd.controller.MainCmtLikeCon;
+import com.smhrd.controller.MainCmtLikeConAjax;
+import com.smhrd.controller.MainCommentConAjax;
 import com.smhrd.controller.MainCommentCon;
-import com.smhrd.controller.MainLikeCon;
+import com.smhrd.controller.MainLikeConAjax;
 import com.smhrd.controller.NaverLoginSuccessCon;
+import com.smhrd.controller.PostLikeCon;
 import com.smhrd.controller.UpdateCareerCon;
 import com.smhrd.controller.UpdateDBCon;
 import com.smhrd.controller.UpdateLanguageCon;
@@ -73,6 +77,10 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
+		handlerMapping.put("/mainCmtLikeConAjax.do", new MainCmtLikeConAjax()); // 유저페이지 이동
+		handlerMapping.put("/mainCommentConAjax.do", new MainCommentConAjax()); // 유저페이지 이동
+		handlerMapping.put("/mainBookmarkConAjax.do", new MainBookmarkConAjax()); // 유저페이지 이동
+		handlerMapping.put("/mainLikeConAjax.do", new MainLikeConAjax()); // 유저페이지 이동
 		
 		handlerMapping.put("/goUserPage.do", new GoUserPageCon()); // 유저페이지 이동
 		handlerMapping.put("/goWriteIdea.do", new GoWriteIdea()); // 마이페이지 이동
@@ -126,9 +134,9 @@ public class FrontController extends HttpServlet {
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
 		handlerMapping.put("/comment.do", new CommentCon()); // 댓글 등록 컨트롤러 이동
-		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 메인에서 댓글 등록 컨트롤러 이동
+		handlerMapping.put("/mainCmt.do", new MainCommentConAjax()); // 메인에서 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
-		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 메인에서 좋아요 컨트롤러 이동
+		handlerMapping.put("/mainLike.do", new MainLikeConAjax()); // 메인에서 좋아요 컨트롤러 이동
 		handlerMapping.put("/cmtLike.do", new CmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
 		handlerMapping.put("/mainCmtLike.do", new MainCmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
