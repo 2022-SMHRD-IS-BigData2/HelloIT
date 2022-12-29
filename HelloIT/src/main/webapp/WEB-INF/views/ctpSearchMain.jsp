@@ -29,16 +29,12 @@
 <title>Hello IT</title>
 </head>
 <body>
+<!-- <a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
+<a href="goAllPostMain.do" style="position:fixed; top: 30px">모든게시물조회</a> -->
 	<%
-	// session 에서 user_info 가져오기
 	UserInfo info = (UserInfo) session.getAttribute("info");
-	
-	// request 영역에서 list 꺼내서 출력하기
-	List<PostInfo> list = (List<PostInfo>) request.getAttribute("tpList");
-	Tag tag = (Tag)request.getAttribute("tag");
+	List<PostInfo> list = (List<PostInfo>) request.getAttribute("ctpSearchList");
 	%>
-<a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
-<a href="goMain.do?u_email=<%=info.getU_email()%>" style="position:fixed; top: 30px">맞춤형게시물조회</a>
 	
 <div class="container">
 	<div class="wrapper">
@@ -63,19 +59,19 @@
 				<img src="./img/comm.gif" width="50" alt="">
 				<p></p>
 				<ul style="list-style: none; display:flex; margin-block: auto;">
-					<li>
+					<li style="padding:0 10px">
 						<form action="https://search.naver.com/search.naver" method="GET" target="_blank">
 							<input type="text" placeholder="Naver" name="query">
 							<input id="btn" class="Button" type="submit" value="검색">
 						</form>
 					</li>
-					<li>
+					<li style="padding:0 10px">
 						<form action="https://www.google.com/search" method="GET" target="_blank">
 							<input type="search" placeholder="Google" name="q">
 							<button id="btn" class="Button" type="submit">검색</button>
 						</form>
 					</li>
-					<li>
+					<li style="padding:0 10px">
 						<form action="https://www.youtube.com/results" method="GET" target="_blank">
 							<input type="search" placeholder="Youtube"name="q">
 							<button id="btn" class="Button" type="submit">검색</button>
@@ -93,10 +89,13 @@
 		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<div class="window" style="position:sticky; top:131.2px; margin:-3px">
 				<div class="title-bar">
-				<div class="title-bar-text">#<%=tag.getTag_content()%></div>
+				<div class="title-bar-text"><%=request.getAttribute("search_word")%></div>
 				<div>
-					<input type="text" style="width: 150pt; height: 15pt;" placeholder="검색창" name="" id=""> 
-					<input type="button" style="width: 30pt; height: 15pt;" value="🔍">
+					<form action="goCtpSearchMain.do">
+						<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+						<input type="text" style="width: 150pt; height: 15pt;" placeholder="찾고싶은 게시물을 검색하세요" name="search_word"> 
+						<input type="submit" style="width: 30pt; height: 15pt;" value="🔍">
+					</form>
 				</div>
 				<div></div>
 				</div>
@@ -183,8 +182,6 @@
 					</button></a>
 					</td>
 				</tr>
-				<tr>
-				</tr>
 			<%};%>	
 			</table>
 		</div>
@@ -193,7 +190,7 @@
 		<%-- -------------------------------------------------------------------------------- --%>
 		</div>
 		<footer class="main_footer">
-			<div class="window icons" style="width: 800px" align="center">
+		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
 			<a href="goIdea.do" title="아이디어토론방"><img src="./img/123.png" id="idea" width="40" alt=""></a> 
 			<a href="goMain.do?u_email=<%=info.getU_email()%>" title="맞춤게시물"><img src="./img/dff.gif" id="goMain" width="50" alt="error"></a> 
@@ -201,7 +198,7 @@
 			<a href="goRecruit.do" title="채용공고게시판"><img src="./img/xml-0.png" id="job" width="40" alt=""></a> 
 			<a href="goMyPage.do?u_email=<%=info.getU_email()%>" title="마이페이지"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
 			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
-			</div>
+		</div>
 	</footer>
 	</div>
 </div>

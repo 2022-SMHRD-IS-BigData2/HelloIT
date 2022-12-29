@@ -93,10 +93,13 @@
 		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<div class="window" style="position:sticky; top:131.2px; margin:-3px">
 				<div class="title-bar">
-				<div class="title-bar-text"></div>
+				<div class="title-bar-text">맞춤형</div>
 				<div>
-					<input type="text" style="width: 150pt; height: 15pt;" placeholder="찾고싶은 게시물을 검색하세요" name="" id=""> 
-					<input type="button" style="width: 30pt; height: 15pt;" value="🔍">
+					<form action="goCtpSearchMain.do">
+						<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+						<input type="text" style="width: 150pt; height: 15pt;" placeholder="찾고싶은 게시물을 검색하세요" name="search_word"> 
+						<input type="submit" style="width: 30pt; height: 15pt;" value="🔍">
+					</form>
 				</div>
 				<div></div>
 				</div>

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.PostInfo;
+import com.smhrd.entity.SearchUemail;
 import com.smhrd.entity.Tag;
 import com.smhrd.entity.UserLevel;
 
@@ -50,6 +51,14 @@ public class PostInfoDAO {
 	public List<PostInfo> customizedPostInfoList(String u_email) {
 		SqlSession session = sqlSessionFactory.openSession(true);
 		List<PostInfo> list = session.selectList("customizedPostInfoList", u_email);
+		session.close();
+		return list;
+	}
+	
+	// 맞춤형 게시글에서 검색
+	public List<PostInfo> ctpSearch(SearchUemail dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<PostInfo> list = session.selectList("ctpSearch", dto);
 		session.close();
 		return list;
 	}
@@ -124,6 +133,14 @@ public class PostInfoDAO {
 		List<Tag> list = session.selectList("tagListView");
 		session.close();
 		return list;
+	}
+	
+	// 해시태그 내용 조회
+	public Tag tagContentView(int tag_seq) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		Tag result = session.selectOne("tagContentView", tag_seq);
+		session.close();
+		return result;
 	}
 	
 	// 해시태그 시퀀스 조회

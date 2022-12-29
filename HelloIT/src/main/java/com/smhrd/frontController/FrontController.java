@@ -21,6 +21,7 @@ import com.smhrd.controller.CommentCon;
 import com.smhrd.controller.Controller;
 import com.smhrd.controller.GoAllPostMainCon;
 import com.smhrd.controller.GoBoardCon;
+import com.smhrd.controller.GoCtpSearchMainCon;
 import com.smhrd.controller.GoCustomizedMainCon;
 import com.smhrd.controller.GoDevInfoCon;
 import com.smhrd.controller.FollowCon;
@@ -120,6 +121,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
 		handlerMapping.put("/goCustomizedMain.do", new GoCustomizedMainCon());
 		handlerMapping.put("/goTagMain.do", new GoTagMainCon());
+		handlerMapping.put("/goCtpSearchMain.do", new GoCtpSearchMainCon());
 		handlerMapping.put("/goPopPostMain.do", new GoPopPostMainCon());
 		handlerMapping.put("/goAllPostMain.do", new GoAllPostMainCon());
 		

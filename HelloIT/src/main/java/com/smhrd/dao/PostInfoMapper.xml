@@ -44,20 +44,20 @@
 	<select id="customizedPostInfoList" resultType="com.smhrd.entity.PostInfo">
 		select distinct * from post_info p, user_info u
 		where 
-		post_seq in (select post_seq 
+		p.post_seq in (select post_seq 
 					from post_level
 					where tag_seq||tag_level in ( select tag_seq||tag_level
 													from user_level
 													where u_email=#{u_email}))
 		and
-		post_seq in (select post_seq
+		p.post_seq in (select post_seq
 					from post_tag
 					where tag_seq in (select tag_seq
 										from user_tag
 										where u_email=#{u_email}))
 		and p.u_email = u.u_email
 		order by post_dt desc
-	</select>	
+	</select>
 	
 	<!-- 태그별 게시글 리스트 조회 -->
 	<select id="tagPostInfoList" resultType="com.smhrd.entity.PostInfo">
@@ -149,6 +149,13 @@
 	</select>
 	
 	<!-- 해시태그 시퀀스 조회 -->
+	<select id="tagContentView" parameterType="com.smhrd.entity.Tag"
+	resultType="com.smhrd.entity.Tag">
+		select * from tag
+		where tag_seq=#{tag_seq}
+	</select>
+	
+	<!-- 해시태그 시퀀스 조회 -->
 	<select id="tagSeqView" parameterType="com.smhrd.entity.Tag"
 	resultType="com.smhrd.entity.Tag">
 		select * from tag
@@ -172,6 +179,39 @@
 							where post_seq=#{post_seq}
 		)
 	</select>
+	
+	<!-- 맞춤형 게시글에서 검색 -->
+	<select id="ctpSearch" parameterType="com.smhrd.entity.SearchUemail"
+	resultType="com.smhrd.entity.PostInfo">
+		select distinct * from post_info p, user_info u
+		where 
+		p.post_seq in (select post_seq 
+					from post_level
+					where tag_seq||tag_level in ( select tag_seq||tag_level
+													from user_level
+													where u_email=#{u_email}))
+		and
+		p.post_seq in (select post_seq
+					from post_tag
+					where tag_seq in (select tag_seq
+										from user_tag
+										where u_email=#{u_email}))
+		and p.u_email = u.u_email
+		and (u.u_name like '%'||#{search_word}||'%'
+				or p.post_title like '%'||#{search_word}||'%'
+				or p.post_content like '%'||#{search_word}||'%'
+				or p.post_seq in (select post_seq
+									from post_tag pt, tag
+									where pt.tag_seq = tag.tag_seq
+									and tag.tag_content like '%'||#{search_word}||'%')
+				)
+		order by post_dt desc
+	</select>
+	
+	
+	
+	
+	
 	
 	<!-- 본인 아이디어 게시물 리스트 조회 -->
 	
