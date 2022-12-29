@@ -200,7 +200,7 @@
 					</form>
 				
 					
-					<p class="status-bar-field"><a href=""><button>댓글<span id="btn-cmts<%=i%>"><%=list.get(i).getCmts()%></span> </button></a></p>
+					<p class="status-bar-field"><a href=""><button id="cmtbtn<%=i%>">댓글<span id="btn-cmts<%=i%>"><%=list.get(i).getCmts()%></span> </button></a></p>
 				
 				
 			 	<%
@@ -210,7 +210,7 @@
 				%> 
 			</div>
  			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table class="board_list" width=700>
+			<table class="board_list showed-cmtlist" width=700>
 				<tr style="width: 0px; padding: 0px;">
 					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="text-align:left; padding:5px;" colspan="6"><%=cmtList.get(j).getCmt_content()%></td>
@@ -277,6 +277,19 @@
 								})
 							});
 						</script>
+						<!-- 댓글 숨김 기능 만들기 중 -->
+					<%-- 	<script>
+					$('#cmtbtn<%=i%>').on('click',function(){
+						<%for (int j = 0; j < cmtList.size(); j++) {%>
+						$('.showed-cmtlist').hide();
+						$('.showed-cmtlist').attr('class','cmt-hide');
+					})
+					$('#cmtbtn<%=i%>').on('click',function(){
+						<%for (int j = 0; j < cmtList.size(); j++) {%>
+						$('.showed-cmtlist').hide();
+						$('.showed-cmtlist').attr('class','cmt-hide');
+					})
+				</script> --%>
 						<script>
 						<%-- for(i=0;i<100;i++){
 						$('#btn-cmt-like<%=i%>').on('click',function(){

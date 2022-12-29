@@ -31,6 +31,10 @@
 tbody td:nth-child(1){
 	text-align:center;
 }
+tbody td:nth-child(2):hover{
+	cursor: pointer;
+}
+
 tbody td:nth-child(3){
 	text-align:center;
 }
@@ -106,7 +110,7 @@ thead>tr{
 									%>
 									<tr>
 										<td><%=list.get(i).getRow_num()%></td>
-										<td id="openBtn<%=i+1%>"><%=list.get(i).getPost_title()%></td>
+										<td id="openBtn<%=i+1%>"><a><%=list.get(i).getPost_title()%></a></td>
 										<td><a href="goUserPage.do?u_email=<%=list.get(i).getU_email()%>"><%=list.get(i).getU_name()%></a></td>
 										<td><%=list.get(i).getPost_dt()%></td>
 										<td><%=list.get(i).getCnt()%></td>

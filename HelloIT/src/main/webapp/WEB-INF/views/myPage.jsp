@@ -131,7 +131,7 @@
 		        </div>
 		    </div>
 			</div>
-		    <div class="window" id="checkInterest" style="display:none; margin-left:8px">
+		    <div id="checkInterest" class="window" style="display:none; margin-left:8px">
 		        <div class="title-bar" style="position:sticky; top:27px">
 		            <div class="title-bar-text">관심 분야 Check!!</div>
 		            <div class="title-bar-controls">
@@ -475,16 +475,13 @@
 						<input type="submit" value="등록">
 					</p>
 				</form>
-				
-					
 					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=upList.get(i).getCmts()%> </button></a></p>
-				
+			</div>
 				<%
 				// comment 출력
 				CommentInfoDAO dao = new CommentInfoDAO();
 				List<CommentInfo> cmtList = dao.commentInfoList(upList.get(i).getPost_seq());
 				%>
-			</div>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
@@ -568,12 +565,13 @@
 					
 					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=bmList.get(i).getCmts()%> </button></a></p>
 				
+			</div>
 				<%
 				// comment 출력
 				CommentInfoDAO dao = new CommentInfoDAO();
 				List<CommentInfo> cmtList = dao.commentInfoList(bmList.get(i).getPost_seq());
 				%>
-			</div>
+			
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
@@ -585,8 +583,8 @@
 					</button></a>
 					</td>
 				</tr>
-			<%}%>	
 			</table>
+			<%}%>	
 		</div>
 		<%}%>
 		</div>
@@ -632,37 +630,37 @@
 									<li class="tab-link" data-tab="tab-2">팔로워</li>
 								</ul>
 						
-							<div id="tab-1" style="margin-bottom:50px" class="tab-content current" >
-				<div id="follow-table">
-									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;">
-										<thead>
-											<tr height="30px">
-												<th>아이디</th>
-												<th>메신저보내기</th>
-												<th>팔로우 삭제</th>
-											</tr>
-										</thead>
-										<tbody>
-											<%for(int i = 0; i < following.size(); i++){%>
-											<tr>
-												<td><a href="goUserPage.do?u_email=<%=following.get(i).getU_email()%>"><%=following.get(i).getU_name()%></a></td>
-												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td>
-													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=following.get(i).getU_email()%>">
-													<button	id="btn"> 삭제
-													</button></a>
-													<!-- <img src="img/delete.png" width="50px"
-													height="50px" alt="팔로워 삭제" onclick="test()"> -->
-												</td>
-											</tr>
-											<%}%>
-										</tbody>
-									</table>
-							</div>
-							
-								<br>
-							</div>
-							<div id="tab-2" style="margin-bottom:50px" class="tab-content">
+								<div id="tab-1" style="margin-bottom:50px" class="tab-content current" >
+									<div id="follow-table">
+											<table style="width: 600px; height: 100px; overflow: auto; text-align: center;">
+												<thead>
+													<tr height="30px">
+														<th>아이디</th>
+														<th>메신저보내기</th>
+														<th>팔로우 삭제</th>
+													</tr>
+												</thead>
+												<tbody>
+													<%for(int i = 0; i < following.size(); i++){%>
+													<tr>
+														<td><a href="goUserPage.do?u_email=<%=following.get(i).getU_email()%>"><%=following.get(i).getU_name()%></a></td>
+														<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
+														<td>
+															<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=following.get(i).getU_email()%>">
+															<button	id="btn"> 삭제
+															</button></a>
+															<!-- <img src="img/delete.png" width="50px"
+															height="50px" alt="팔로워 삭제" onclick="test()"> -->
+														</td>
+													</tr>
+													<%}%>
+												</tbody>
+											</table>
+									</div>
+								
+									<br>
+								</div>
+								<div id="tab-2" style="margin-bottom:50px" class="tab-content">
 								<div id="follow-table">
 									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
 										<thead>
@@ -690,12 +688,12 @@
 									</table>
 								</div>
 								<br>
+								</div>
 							</div>
-						</div>
 					</div>
 				</div>
 			</div>
-			
+			</div>
 			<!-- 나의 아이디어 목록 -->
 			<div id="myIdea" style="display:none; font-family:auto;">
 				<div class="myIdea_list_wrap board_list_wrap">
@@ -747,7 +745,7 @@
 		                    	<button aria-label="Close" onclick="location.href='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
 		                    </div>
 		                </div>
-		        <form>
+		        <form method="post">
 		                <table class="userInfo">
 		                	<tbody>
 		                    <tr>
@@ -917,7 +915,7 @@
 					</div>
 				</div>
 			</div>
-		  	</div>
+		  	
 			</div>
 		</div>
 		<footer class="main_footer">
