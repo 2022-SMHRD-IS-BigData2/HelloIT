@@ -38,4 +38,6 @@ public class PostInfo {
 	// 로우넘버
 	private int row_num;
 	
+	private String search_word;
+	
 }

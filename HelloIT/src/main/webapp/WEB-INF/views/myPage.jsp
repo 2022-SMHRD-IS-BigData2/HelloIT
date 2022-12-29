@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/FAQ.css">
 <link rel="stylesheet" href="./css/mypage.css">
+<link rel="stylesheet" href="./css/follow.css">
+
 <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -486,7 +488,7 @@
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
-					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?req_page=myPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -511,7 +513,7 @@
 				<table id="list" border="1" bgcolor="white">
 					<tr>
 						<td>작성자</td>
-						<td style="width: 650px"><%=bmList.get(i).getU_name()%></td>
+						<td style="width: 650px"><a href="goUserPage.do?u_email=<%=bmList.get(i).getU_email()%>"><%=bmList.get(i).getU_name()%></a></td>
 					</tr>
 					<tr>
 						<td colspan="2">내용</td>
@@ -575,7 +577,7 @@
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
-					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?req_page=myPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -619,16 +621,20 @@
 									</tr>
 								</table>
 									<br>
-								<ul class="tabs" style="display:flex;justify-content: space-around; margin: 8px; list-style:none;">
+			
+		
+			
+				
+																														
+								<ul class="tabs" >
+								<!-- style="display:flex;justify-content: space-around; margin: 8px; list-style:none;" -->
 									<li class="tab-link current" data-tab="tab-1">팔로우</li>
 									<li class="tab-link" data-tab="tab-2">팔로워</li>
 								</ul>
-							</div>
-							
-							
-							<div id="tab-1" class="tab-content current">
-								<div id="job-table">
-									<table style="width: 600px; height: 100px;overflow: auto; text-align: center;">
+						
+							<div id="tab-1" style="margin-bottom:50px" class="tab-content current" >
+				<div id="follow-table">
+									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;">
 										<thead>
 											<tr height="30px">
 												<th>아이디</th>
@@ -639,11 +645,11 @@
 										<tbody>
 											<%for(int i = 0; i < following.size(); i++){%>
 											<tr>
-												<td><a href="#"><%=following.get(i).getU_name()%></a></td>
+												<td><a href="goUserPage.do?u_email=<%=following.get(i).getU_email()%>"><%=following.get(i).getU_name()%></a></td>
 												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
 												<td>
 													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=following.get(i).getU_email()%>">
-													<button	id="btn"> 팔로우
+													<button	id="btn"> 삭제
 													</button></a>
 													<!-- <img src="img/delete.png" width="50px"
 													height="50px" alt="팔로워 삭제" onclick="test()"> -->
@@ -656,24 +662,24 @@
 							
 								<br>
 							</div>
-							<div id="tab-2" class="tab-content">
-								<div id="job-table">
+							<div id="tab-2" style="margin-bottom:50px" class="tab-content">
+								<div id="follow-table">
 									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
 										<thead>
 											<tr height="30px">
 												<th>아이디</th>
 												<th>메신저보내기</th>
-												<th>팔로워 삭제</th>
+												<th>팔로잉</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody id="follower">
 											<%for(int i = 0; i < follower.size(); i++){%>
 											<tr>
-												<td><a href="#"><%=follower.get(i).getU_name()%></a></td>
+												<td><a href="goUserPage.do?u_email=<%=follower.get(i).getU_email()%>"><%=follower.get(i).getU_name()%></a></td>
 												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
 												<td>
 													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=follower.get(i).getU_email()%>">
-													<button	id="btn"> 팔로우
+													<button	id="btn"> 팔로잉
 													</button></a>
 													<!-- <img src="img/delete.png" width="50px"
 													height="50px" alt="팔로워 삭제" onclick="test()"> -->

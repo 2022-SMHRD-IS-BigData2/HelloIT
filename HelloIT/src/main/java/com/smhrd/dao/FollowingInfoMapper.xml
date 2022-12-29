@@ -38,10 +38,8 @@
 	
 	<!-- 팔로잉 수 조회 -->
 	<select id="cntFollowing" resultType="int">
-		select count(*) from user_info
-		where u_email in (select u_email from following_info 
-							where follower_email = #{follower_email}
-		)
+		select count(*) from following_info 
+		where follower_email = #{follower_email}
 	</select>
 	
 	<!-- 팔로워 조회 -->
@@ -54,10 +52,8 @@
 	
 	<!-- 팔로워 수 조회 -->
 	<select id="cntFollower" resultType="int">
-		select count(*) from user_info
-		where u_email in (select u_email from following_info 
-							where u_email=#{u_email}
-		)
+		select count(*) from following_info 
+		where u_email=#{u_email}
 	</select>
 	
 </mapper>

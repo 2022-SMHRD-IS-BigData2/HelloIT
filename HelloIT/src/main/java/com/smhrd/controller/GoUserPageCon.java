@@ -37,10 +37,11 @@ public class GoUserPageCon implements Controller {
 			request.setAttribute("bmList", bmList);	
 			
 			FollowingInfoDAO dao3 = new FollowingInfoDAO();
-			int followingCnt = dao3.cntFollowing(u_email);
 			int followerCnt = dao3.cntFollower(u_email);
-			List<UserInfo> following = dao3.viewFollowing(u_email);
+			String follower_email = u_email;
+			int followingCnt = dao3.cntFollowing(follower_email);
 			List<UserInfo> follower = dao3.viewFollower(u_email);
+			List<UserInfo> following = dao3.viewFollowing(u_email);
 			
 			request.setAttribute("followingCnt", followingCnt);
 			request.setAttribute("followerCnt", followerCnt);

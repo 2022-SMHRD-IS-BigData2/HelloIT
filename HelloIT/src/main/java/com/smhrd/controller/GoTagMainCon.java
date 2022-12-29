@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
+import com.smhrd.entity.Tag;
 
 public class GoTagMainCon implements Controller {
 	
@@ -20,10 +21,12 @@ public class GoTagMainCon implements Controller {
 		int tag_seq = Integer.parseInt(request.getParameter("tag_seq"));
 		PostInfoDAO dao = new PostInfoDAO();
 		List<PostInfo> tpList = dao.tagPostInfoList(tag_seq);
+		Tag tag = dao.tagContentView(tag_seq);
 		
 		// 객체바인딩
 		// request 영역에 list를 저장해뒀다가, jsp로 이동하고 나서 꺼내기
 		request.setAttribute("tpList", tpList);
+		request.setAttribute("tag", tag);
 ////////////////////////////////////////////////////////////////////////////////////		
 		// main.jsp로 이동
 		String nextPage = "tagMain";

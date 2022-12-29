@@ -11,21 +11,27 @@ import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
 import com.smhrd.entity.SearchUemail;
 
-public class GoMainCon implements Controller {
+public class GoCtpSearchMainCon implements Controller {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException{
 		
 		String u_email = request.getParameter("u_email");
+		String search_word = request.getParameter("search_word");
+		
+		SearchUemail dto = new SearchUemail();
+		dto.setU_email(u_email);
+		dto.setSearch_word(search_word);
 		
 		PostInfoDAO dao = new PostInfoDAO();
 		/* List<PostInfo> list = dao.postInfoList(); */
-		List<PostInfo> ctpList = dao.customizedPostInfoList(u_email);
+		List<PostInfo> ctpSearchList = dao.ctpSearch(dto);
 		
-		request.setAttribute("ctpList", ctpList);
+		request.setAttribute("ctpSearchList", ctpSearchList);
+		request.setAttribute("search_word", search_word);
 		
-		return "main";
+		return "ctpSearchMain";
 	}
 	
 }

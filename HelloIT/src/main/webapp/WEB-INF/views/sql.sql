@@ -402,3 +402,27 @@ select distinct * from post_info p, user_info u
 		order by post_dt desc;
 		
 select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc)	;	
+
+select distinct * from post_info p, user_info u
+		where 
+		p.post_seq in (select post_seq 
+					from post_level
+					where tag_seq||tag_level in ( select tag_seq||tag_level
+													from user_level
+													where u_email='test@hs.com'))
+		and
+		p.post_seq in (select post_seq
+					from post_tag
+					where tag_seq in (select tag_seq
+										from user_tag
+										where u_email='test@hs.com'))
+		and p.u_email = u.u_email
+		and (u.u_name like ('%java%')
+				or p.post_title like ('%java%')
+				or p.post_content like ('%java%')
+				or p.post_seq in (select post_seq
+									from post_tag pt, tag
+									where pt.tag_seq = tag.tag_seq
+									and tag.tag_content like ('%java%'))
+				)
+		order by post_dt desc;
