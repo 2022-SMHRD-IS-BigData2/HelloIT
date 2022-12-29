@@ -594,6 +594,7 @@
 			
 			
 			<!--팔로잉 팔로워 기능 추가해야함 -->
+			
 			<div id="follow" style="display:none; font-family:auto;">
 				<div class="window" style="max-width:100%" align="center">
 					<div class="title-bar">
@@ -620,7 +621,9 @@
 									</tr>
 								</table>
 									<br>
-								<ul class="tabs" style="display:flex;justify-content: space-around; margin: 8px; list-style:none;">
+									
+								<ul class="tabs" >
+								<!-- style="display:flex;justify-content: space-around; margin: 8px; list-style:none;" -->
 									<li class="tab-link current" data-tab="tab-1">팔로우</li>
 									<li class="tab-link" data-tab="tab-2">팔로워</li>
 								</ul>
@@ -628,14 +631,14 @@
 							
 							
 							<!-- 팔로잉 유저 리스트 -->
-							<div id="tab-1" class="tab-content current">
-								<div id="job-table">
+							<div id="tab-1"  style="margin-bottom: 50px" class="tab-content current">
+								<div id="follow-table">
 									<table style="width: 600px; height: 100px;overflow: auto; text-align: center;">
 										<thead>
 											<tr height="30px">
 												<th>아이디</th>
 												<th>메세지보내기</th>
-												<th>팔로우 삭제</th>
+												<th>팔로잉</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -645,7 +648,7 @@
 												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
 												<td>
 													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=following.get(i).getU_email()%>">
-													<button	id="btn"> 팔로우
+													<button	id="btn"> 팔로잉
 													</button></a>
 													<!-- <img src="img/delete.png" width="50px"
 													height="50px" alt="팔로워 삭제" onclick="test()"> -->
@@ -661,23 +664,23 @@
 							
 							<!-- 팔로워 유저 리스트 -->
 							<div id="tab-2" class="tab-content">
-								<div id="job-table">
+								<div id="follow-table">
 									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
 										<thead>
 											<tr height="30px">
 												<th>아이디</th>
 												<th>메신저보내기</th>
-												<th>팔로워 삭제</th>
+												<th>팔로잉</th>
 											</tr>
 										</thead>
-										<tbody>
+										<tbody id="follower">
 										<%for(int i = 0; i < follower.size(); i++){%>
 											<tr>
 												<td><a href="#"><%=follower.get(i).getU_name()%></a></td>
 												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
 												<td>
 													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=follower.get(i).getU_email()%>">
-													<button	id="btn"> 팔로우
+													<button	id="btn"> 팔로잉
 													</button></a>
 													<!-- <img src="img/delete.png" width="50px"
 													height="50px" alt="팔로워 삭제" onclick="test()"> -->
