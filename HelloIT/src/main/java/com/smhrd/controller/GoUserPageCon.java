@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.smhrd.dao.FollowingInfoDAO;
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.dao.UserPageDAO;
 import com.smhrd.entity.PostInfo;
@@ -35,11 +36,22 @@ public class GoUserPageCon implements Controller {
 			request.setAttribute("upList", upList);
 			request.setAttribute("bmList", bmList);	
 			
+			FollowingInfoDAO dao3 = new FollowingInfoDAO();
+			int followingCnt = dao3.cntFollowing(u_email);
+			int followerCnt = dao3.cntFollower(u_email);
+			List<UserInfo> following = dao3.viewFollowing(u_email);
+			List<UserInfo> follower = dao3.viewFollower(u_email);
+			
+			request.setAttribute("followingCnt", followingCnt);
+			request.setAttribute("followerCnt", followerCnt);
+			request.setAttribute("following", following);
+			request.setAttribute("follower", follower);
+			
 			if(info != null) {
 				System.out.println("페이지이동 성공");
 				
 				HttpSession session = request.getSession();
-				session.setAttribute("info", info);
+				session.setAttribute("pageInfo", info);
 				return "userPage";
 			} else {
 				System.out.println("페이지이동 실패");

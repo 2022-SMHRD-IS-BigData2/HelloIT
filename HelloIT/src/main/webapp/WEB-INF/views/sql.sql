@@ -12,6 +12,7 @@ select * from user_level;
 select * from post_tag;
 select * from post_tag where post_seq=32;
 select * from user_tag;
+select * from FOLLOWING_INFO;
 delete from user_tag where u_email ='fire@test.com';
 select * from tag order by tag_seq;
 insert into tag
@@ -57,7 +58,7 @@ where post_seq=2;
 
 2 4 6 8 9 12 13 14 15 16
 
-
+DROP TRIGGER following_info_AI_TRG; 
 
 insert into USER_INFO
 SELECT *
@@ -357,6 +358,12 @@ VALUES
      )     
      
 --
+select * from user_info
+where u_email in (select follower_email from following_info 
+					where u_email='xeph123@naver.com'
+);
+     
+     
 select * from  post_info p, user_info u
 where p.u_email = u.u_email
 and p.post_seq in (select post_seq

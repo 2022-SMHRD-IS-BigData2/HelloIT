@@ -23,6 +23,7 @@ import com.smhrd.controller.GoAllPostMainCon;
 import com.smhrd.controller.GoBoardCon;
 import com.smhrd.controller.GoCustomizedMainCon;
 import com.smhrd.controller.GoDevInfoCon;
+import com.smhrd.controller.FollowCon;
 import com.smhrd.controller.GoIdeaCon;
 import com.smhrd.controller.GoJoinCon;
 import com.smhrd.controller.GoLoginCon;
@@ -117,7 +118,6 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
 		handlerMapping.put("/goMainWrite.do", new GoMainWriteCon()); // 메인에서 게시물 작성 페이지 이동
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
-		
 		handlerMapping.put("/goCustomizedMain.do", new GoCustomizedMainCon());
 		handlerMapping.put("/goTagMain.do", new GoTagMainCon());
 		handlerMapping.put("/goPopPostMain.do", new GoPopPostMainCon());
@@ -129,14 +129,18 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/mainCmt.do", new MainCommentCon()); // 메인에서 댓글 등록 컨트롤러 이동
 		handlerMapping.put("/like.do", new LikeCon()); // 좋아요 컨트롤러 이동
 		handlerMapping.put("/mainLike.do", new MainLikeCon()); // 메인에서 좋아요 컨트롤러 이동
-		
-		
 		handlerMapping.put("/cmtLike.do", new CmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
 		handlerMapping.put("/mainCmtLike.do", new MainCmtLikeCon()); // 메인에서 댓글 좋아요 컨트롤러 이동
 		handlerMapping.put("/bookmark.do", new BookmarkCon()); // 북마크 컨트롤러 이동
 		handlerMapping.put("/mainBookmark.do", new MainBookmarkCon()); // 메인에서 북마크 컨트롤러 이동
-		
 		handlerMapping.put("/userLevelSetting.do", new UserLevelSettingCon()); // 유저 레벨 설정 컨트롤러 이동
+		handlerMapping.put("/follow.do", new FollowCon()); // 유저 레벨 설정 컨트롤러 이동
+		
+		
+		
+		
+		
+		
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

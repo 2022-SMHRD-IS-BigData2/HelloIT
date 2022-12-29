@@ -39,6 +39,9 @@
 	List<PostInfo> cnt = (List<PostInfo>) request.getAttribute("cnt");
 	String on = (String)request.getAttribute("on");
 	int num = (int)request.getAttribute("num");*/
+	
+	List<UserInfo> following = (List<UserInfo>)request.getAttribute("following");
+	List<UserInfo> follower = (List<UserInfo>)request.getAttribute("follower");
 	%>
 	
 	<div class="container">
@@ -62,6 +65,10 @@
 					  <li id="listOfPortfolio" style="cursor:pointer;">포트폴리오&자소서<li>
 					  <li id="listOfFAQ" style="cursor:pointer;">FAQ<li>
 				</ul>
+				<p class="status-bar-field">
+					<b>팔로잉 : <%=request.getAttribute("followingCnt")%></b>
+					<b>팔로워 : <%=request.getAttribute("followerCnt")%></b>
+				</p>
 				</div>
 				<div style="display:block;width:632px;">
 			<div id="myPage" style="display:none;">
@@ -628,49 +635,19 @@
 											</tr>
 										</thead>
 										<tbody>
+											<%for(int i = 0; i < following.size(); i++){%>
 											<tr>
-												<td><a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+												<td><a href="#"><%=following.get(i).getU_name()%></a></td>
+												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td>
+													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=following.get(i).getU_email()%>">
+													<button	id="btn"> 팔로우
+													</button></a>
+													<!-- <img src="img/delete.png" width="50px"
+													height="50px" alt="팔로워 삭제" onclick="test()"> -->
+												</td>
 											</tr>
-											<tr>
-			
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
-											<tr>
-											<td><a href="#">아이디</a></td>
-											<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-											<td><img src="img/delete.png" width="50px"
-													height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
+											<%}%>
 										</tbody>
 									</table>
 							</div>
@@ -681,53 +658,26 @@
 								<div id="job-table">
 									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
 										<thead>
-										<tbody>
 											<tr height="30px">
 												<th>아이디</th>
 												<th>메신저보내기</th>
 												<th>팔로워 삭제</th>
 											</tr>
 										</thead>
+										<tbody>
+											<%for(int i = 0; i < follower.size(); i++){%>
 											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
+												<td><a href="#"><%=follower.get(i).getU_name()%></a></td>
+												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
+												<td>
+													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=follower.get(i).getU_email()%>">
+													<button	id="btn"> 팔로우
+													</button></a>
+													<!-- <img src="img/delete.png" width="50px"
+													height="50px" alt="팔로워 삭제" onclick="test()"> -->
+												</td>
 											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-			
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-			
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-			
-											</tr>
-											<tr>
-												<td> <a href="#">아이디</a></td>
-												<td><a href="#"> <img src="img/message.png" alt="메세지보내기"></img></a></td>
-												<td><img src="img/delete.png" width="50px"
-														height="50px" alt="팔로워 삭제" onclick="test()"></td>
-			
-											</tr>
+											<%}%>
 										</tbody>
 									</table>
 								</div>

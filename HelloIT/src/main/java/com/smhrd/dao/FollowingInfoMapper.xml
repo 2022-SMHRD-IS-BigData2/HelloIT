@@ -2,14 +2,62 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.FollowingInfoDAO">
 
-	<insert id="followingInfo"
-			parameterType="com.smhrd.entity.FollowingInfo">
+	<!-- 팔로우 기록 조회 -->
+	<select id="followSearch" parameterType="com.smhrd.entity.FollowingInfo" 
+	resultType="com.smhrd.entity.FollowingInfo">
+		select * from following_info 
+		where u_email = #{u_email}
+		and follower_email=#{follower_email}
+	</select>
+
+	<!-- 팔로우 -->
+	<insert id="insertFollowing" parameterType="com.smhrd.entity.FollowingInfo">
 			INSERT INTO following_info
-			VALUES
-				(following_info_seq.nextval,
+			VALUES(
+				following_info_seq.nextval,
 				#{u_email},
 				#{follower_email},
-				#{following_dt}
+				sysdate
 				)
 	</insert>
+	
+	<!-- 언팔로우 -->
+	<delete id="deleteFollowing" parameterType="com.smhrd.entity.FollowingInfo">
+		delete from following_info
+		where u_email=#{u_email}
+		and follower_email=#{follower_email}
+	</delete>
+	
+	<!-- 팔로잉 조회 -->
+	<select id="viewFollowing" resultType="com.smhrd.entity.UserInfo">
+		select * from user_info
+		where u_email in (select u_email from following_info 
+							where follower_email = #{follower_email}
+		)
+	</select>
+	
+	<!-- 팔로잉 수 조회 -->
+	<select id="cntFollowing" resultType="int">
+		select count(*) from user_info
+		where u_email in (select u_email from following_info 
+							where follower_email = #{follower_email}
+		)
+	</select>
+	
+	<!-- 팔로워 조회 -->
+	<select id="viewFollower" resultType="com.smhrd.entity.UserInfo">
+		select * from user_info
+		where u_email in (select follower_email from following_info 
+							where u_email=#{u_email}
+		)
+	</select>
+	
+	<!-- 팔로워 수 조회 -->
+	<select id="cntFollower" resultType="int">
+		select count(*) from user_info
+		where u_email in (select u_email from following_info 
+							where u_email=#{u_email}
+		)
+	</select>
+	
 </mapper>

@@ -8,8 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.smhrd.dao.FollowingInfoDAO;
 import com.smhrd.dao.PostInfoDAO;
 import com.smhrd.entity.PostInfo;
+import com.smhrd.entity.UserInfo;
 
 public class GoMyPageCon implements Controller {
 
@@ -36,6 +38,20 @@ public class GoMyPageCon implements Controller {
 //		request.setAttribute("miList", miList);
 //		request.setAttribute("cnt", cnt);
 
+		FollowingInfoDAO dao3 = new FollowingInfoDAO();
+		int followingCnt = dao3.cntFollowing(u_email);
+		int followerCnt = dao3.cntFollower(u_email);
+		List<UserInfo> following = dao3.viewFollowing(u_email);
+		List<UserInfo> follower = dao3.viewFollower(u_email);
+		
+		request.setAttribute("followingCnt", followingCnt);
+		request.setAttribute("followerCnt", followerCnt);
+		request.setAttribute("following", following);
+		request.setAttribute("follower", follower);
+		
+		
+		
+		
 		return "myPage";
 	}
 
