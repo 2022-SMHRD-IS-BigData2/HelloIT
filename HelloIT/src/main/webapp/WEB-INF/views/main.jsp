@@ -124,7 +124,6 @@
 						<%
 							PostInfoDAO daoTag = new PostInfoDAO();
 							List<Tag> list2 = daoTag.postTagView(list.get(i).getPost_seq());
-							System.out.println(list2);
 						%>
 						<tr style="height: 20px">
 							<td colspan="2">

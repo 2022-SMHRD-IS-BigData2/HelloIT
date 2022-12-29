@@ -22,6 +22,9 @@ public class MainCommentCon implements Controller {
 		int post_seq = Integer.parseInt(request.getParameter("post_seq"));
 		String u_email = request.getParameter("u_email");
 		String cmt_content = request.getParameter("cmt_content");
+		String req_page = request.getParameter("req_page");
+		String page_email = request.getParameter("page_email");
+
 
 		System.out.println(post_seq + u_email + cmt_content);
 		
@@ -43,7 +46,22 @@ public class MainCommentCon implements Controller {
 			System.out.println("댓글 작성 실패");
 		}
 		// 5. 페이지이동
-		return "redirect:/goMain.do";
+		String nextPage = "goMain.do?u_email="+u_email;
+		
+		if(req_page == null) {
+			nextPage = "goMain.do?u_email="+u_email;
+		}else if(req_page.equals("popPostMain")) {
+			nextPage = "goPopPostMain.do";
+		}else if(req_page.equals("myPage")) {
+			nextPage = "goMyPage.do?u_email="+u_email;
+		}else if(req_page.equals("userPage")) {
+			nextPage = "goUserPage.do?u_email="+page_email;
+		}else if(req_page.equals("idea")) {
+			nextPage = "goIdea.do";
+		}
+		
+		// 5. 페이지이동
+		return "redirect:/" + nextPage;
 	}
 
 }

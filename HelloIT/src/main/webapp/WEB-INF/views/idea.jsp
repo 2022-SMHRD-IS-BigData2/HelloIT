@@ -165,7 +165,7 @@ thead>tr{
 								<td style="text-align:left; padding:5px; width:290px"><%=cmtList.get(j).getCmt_content()%></td>
 								<td>
 									<!-- 댓글(아이디어) 좋아요 버튼 -->
-									<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+									<a href="mainCmtLike.do?req_page=idea&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 										<!-- 댓글(아이디어) 좋아요 수 -->
 										<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖</button>
 									</a>
@@ -176,12 +176,12 @@ thead>tr{
 			  		</div>
 			  		<div style="display:flex;">
 				  		<!-- 북마크 버튼 -->
-						<a href="mainBookmark.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+						<a href="mainBookmark.do?req_page=idea&post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
 							<!-- 아이디어 주제 북마크 수 -->
 							<button	id="btn"><%=list.get(i).getBookmarks()%><img src="./img/북마크.png" width="15" alt=""></button>
 						</a>
 			  		  	<!-- 좋아요 버튼 -->
-					  	<a href="mainLike.do?post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					  	<a href="mainLike.do?req_page=idea&post_seq=<%=list.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
 					  		<!-- 아이디어 주제 좋아요 수 -->
 					  		<button id="btn"><%=list.get(i).getLikes()%> 💖</button>
 					  	</a>
@@ -189,6 +189,7 @@ thead>tr{
 			  		<div>
 					  	<!-- 댓글 작성 파트 -->
 					  	<form action="mainCmt.do">
+					  		<input type="hidden" name="req_page" value="idea">
 							<input type="hidden" name="post_seq" value="<%=list.get(i).getPost_seq()%>">
 							<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 							<p class="status-bar-field">

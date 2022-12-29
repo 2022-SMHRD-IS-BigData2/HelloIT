@@ -448,7 +448,7 @@
 
 			<div class="status-bar">
 				<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=upList.get(i).getPost_seq()%>
+					<a href="mainBookmark.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&post_seq=<%=upList.get(i).getPost_seq()%>
 					&u_email=<%=info.getU_email()%>">
 					<button	id="btn">
 						<%=upList.get(i).getBookmarks()%>
@@ -458,12 +458,14 @@
 				</p>
 				<%-- 좋아요 기능 --%>
 				<p class="status-bar-field">
-					<a href="mainLike.do?post_seq=<%=upList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<a href="mainLike.do?req_page=userPage&page_email=<%=pageInfo.getU_email()%>&post_seq=<%=upList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=upList.get(i).getLikes()%> 💖
 					</button></a>
 				</p>
 				<%-- 좋아요 기능 끝 --%>
 				<form action="mainCmt.do">
+					<input type="hidden" name="page_email" value="<%=pageInfo.getU_email()%>">
+					<input type="hidden" name="req_page" value="userPage">
 					<input type="hidden" name="post_seq" value="<%=upList.get(i).getPost_seq()%>">
 					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 					<p class="status-bar-field">
@@ -488,7 +490,7 @@
 					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
-					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<a href="mainCmtLike.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
 					</button></a>
 					</td>
@@ -535,7 +537,7 @@
 
 			<div class="status-bar">
 				<p class="status-bar-field">
-					<a href="mainBookmark.do?post_seq=<%=bmList.get(i).getPost_seq()%>
+					<a href="mainBookmark.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&post_seq=<%=bmList.get(i).getPost_seq()%>
 					&u_email=<%=info.getU_email()%>">
 					<button	id="btn">
 						<%=bmList.get(i).getBookmarks()%>
@@ -545,12 +547,14 @@
 				</p>
 				<%-- 좋아요 기능 --%>
 				<p class="status-bar-field">
-					<a href="mainLike.do?post_seq=<%=bmList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<a href="mainLike.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&post_seq=<%=bmList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=bmList.get(i).getLikes()%> 💖
 					</button></a>
 				<%-- 좋아요 기능 끝 --%>
 				</p>
 				<form action="mainCmt.do">
+					<input type="hidden" name="page_email" value="<%=pageInfo.getU_email()%>">
+					<input type="hidden" name="req_page" value="userPage">
 					<input type="hidden" name="post_seq" value="<%=bmList.get(i).getPost_seq()%>">
 					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
 					<p class="status-bar-field">
@@ -575,7 +579,7 @@
 					<td ><b><%=cmtList.get(j).getU_name()%></b></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
-					<a href="mainCmtLike.do?cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<a href="mainCmtLike.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
 					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
 					</button></a>
 					</td>

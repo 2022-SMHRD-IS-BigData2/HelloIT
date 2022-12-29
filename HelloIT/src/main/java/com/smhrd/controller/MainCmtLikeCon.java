@@ -19,6 +19,9 @@ public class MainCmtLikeCon implements Controller {
 		// 1. 데이터(파라미터) 수집
 		int cmt_seq = Integer.parseInt(request.getParameter("cmt_seq"));
 		String u_email = request.getParameter("u_email");
+		String req_page = request.getParameter("req_page");
+		String page_email = request.getParameter("page_email");
+
 
 		// 2. DTO에 데이터 묶기
 		LikeInfo dto = new LikeInfo();
@@ -44,7 +47,22 @@ public class MainCmtLikeCon implements Controller {
 			System.out.println("like/unlike 실패");
 		}
 		// 5. 페이지이동
-		return "redirect:/goMain.do";
+		String nextPage = "goMain.do?u_email="+u_email;
+		
+		if(req_page == null) {
+			nextPage = "goMain.do?u_email="+u_email;
+		}else if(req_page.equals("popPostMain")) {
+			nextPage = "goPopPostMain.do";
+		}else if(req_page.equals("myPage")) {
+			nextPage = "goMyPage.do?u_email="+u_email;
+		}else if(req_page.equals("userPage")) {
+			nextPage = "goUserPage.do?u_email="+page_email;
+		}else if(req_page.equals("idea")) {
+			nextPage = "goIdea.do";
+		}
+		
+		// 5. 페이지이동
+		return "redirect:/" + nextPage;
 	}
 
 }
