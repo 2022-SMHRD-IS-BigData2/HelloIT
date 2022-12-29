@@ -487,7 +487,7 @@
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
-					<td><a href="goUserPage.do?u_email=<%=cmtList.get(i).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -576,7 +576,7 @@
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
-					<td ><a href="goUserPage.do?u_email=<%=cmtList.get(i).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
+					<td ><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?page_email=<%=pageInfo.getU_email()%>&req_page=userPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">

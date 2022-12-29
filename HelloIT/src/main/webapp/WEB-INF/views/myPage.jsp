@@ -488,7 +488,7 @@
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
-					<td><%-- <a href="goUserPage.do?u_email=<%=cmtList.get(i).getU_email()%>"> --%><b><%=cmtList.get(j).getU_name()%></b><!-- </a> --></td>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?req_page=myPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -513,7 +513,7 @@
 				<table id="list" border="1" bgcolor="white">
 					<tr>
 						<td>작성자</td>
-						<td style="width: 650px"><%-- <a href="goUserPage.do?u_email=<%=bmList.get(i).getU_email()%>"> --%><%=bmList.get(i).getU_name()%><!-- </a> --></td>
+						<td style="width: 650px"><a href="goUserPage.do?u_email=<%=bmList.get(i).getU_email()%>"><%=bmList.get(i).getU_name()%></a></td>
 					</tr>
 					<tr>
 						<td colspan="2">내용</td>
@@ -577,7 +577,7 @@
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
 			<table style="width:630px;">
 				<tr>
-					<td><%-- <a href="goUserPage.do?u_email=<%=cmtList.get(i).getU_email()%>"> --%><b><%=cmtList.get(j).getU_name()%></b><!-- </a> --></td>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
 					<td>
 					<a href="mainCmtLike.do?req_page=myPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
@@ -675,7 +675,7 @@
 										<tbody id="follower">
 											<%for(int i = 0; i < follower.size(); i++){%>
 											<tr>
-												<td><%-- <a href="goUserPage.do?u_email=<%=follower.get(i).getU_email()%>"> --%><%=follower.get(i).getU_name()%><!-- </a> --></td>
+												<td><a href="goUserPage.do?u_email=<%=follower.get(i).getU_email()%>"><%=follower.get(i).getU_name()%></a></td>
 												<td><a href="#"><img src="img/message.png" alt="메세지보내기"></img></a></td>
 												<td>
 													<a href="follow.do?follower_email=<%=info.getU_email()%>&u_email=<%=follower.get(i).getU_email()%>">
