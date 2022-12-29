@@ -89,11 +89,12 @@ thead>tr{
 					<div style="display: flex; flex-direction: row-reverse;">
 						<button onclick="location.href='goWriteIdea.do'">글쓰기</button>
 					</div>
-					<%-- 사람인 --%>
+					
 					<div id="tab-1" style="margin-bottom: 50px"
 						class="tab-content current">
 						<div id="job-table">
-							<%-- 페이지 불러오는 테이블 --%>
+						
+							<%-- 아이디어 게시판 테이블 --%>
 							<table style="height: 100px; overflow: auto;">
 								<thead>
 									<tr>
@@ -110,10 +111,10 @@ thead>tr{
 									%>
 									<tr>
 										<td><%=list.get(i).getRow_num()%></td>
-										<td id="openBtn<%=i+1%>"><a><%=list.get(i).getPost_title()%></a></td>
+										<td id="openBtn<%=i%>"><a><%=list.get(i).getPost_title()%></a></td>
 										<td><a href="goUserPage.do?u_email=<%=list.get(i).getU_email()%>"><%=list.get(i).getU_name()%></a></td>
 										<td><%=list.get(i).getPost_dt()%></td>
-										<td><%=list.get(i).getCnt()%></td>
+										<td id="idea-post-cnt<%=i%>"><%=list.get(i).getCnt()%></td>
 									</tr>
 									<%} %>
 								
@@ -122,14 +123,14 @@ thead>tr{
 
 						</div>
 <%for(int i=0;i<list.size();i++){ %>
-<div id="cmtnum<%=i+1%>" class="modal" style="display:none;">
+<div id="cmtnum<%=i%>" class="modal" style="display:none;">
   <div class="bg"></div>
   <div class="modalBox" style="width:1200px; background:rgba(0,130,128,255);">
 		<div class="window">
 			<div class="title-bar">
 				<div class="title-bar-text">아이디어 토론방</div>
 					<div class="title-bar-controls">
-					<button aria-label="Close" id="closeBtn<%=i+1%>"></button>
+					<button aria-label="Close" id="closeBtn<%=i%>"></button>
 					</div>
 			</div>
 			<div class="window-body" style="display:flex;">
@@ -211,8 +212,8 @@ thead>tr{
 						<br>
 						<div class="pagination_section">
 						<a href="goIdea.do" class="bt">＜＜ Previous</a>
-						<%for(int i=0;i<cnt.size()/10+1;i++){ %>
-						<a id="num<%=i+1 %>" class="num" href="goIdea.do?&num=<%=i+1%>"><%=i+1%></a>
+						<%for(int i=1;i<cnt.size()/10+1;i++){ %>
+						<a id="num<%=i %>" class="num" href="goIdea.do?&num=<%=i%>"><%=i%></a>
 						<%} %>	
 						<a href="goIdea.do?num=<%=cnt.size()%>" class="bt">Next ＞＞</a>
 				</div>
@@ -240,26 +241,40 @@ thead>tr{
 							
 </body>
 <script>
-  <%for(int i=1;i<=10;i++){%>
+  <%for(int i=0;i<10;i++){%>
    $('#openBtn<%=i%>').on('click', function(){
+
 	   $('#cmtnum<%=i%>').show();
 	   $('bg').show();
 	   $('.main_footer').css('position','static');
 	   $('.window').css('position','static');
+	  
    });
-  <%}%>
-  <%for(int i=1;i<=10;i++){%>
+   <%}%>
+   <%for(int i=0;i<10;i++){%>
    $('#closeBtn<%=i%>').on('click', function(){
 	   $('#cmtnum<%=i%>').hide();
 	   $('bg').hide();
 	   $('.main_footer').css('position','static');
 	   $('.window').css('position','static');
+	   $.ajax({
+		   url:'ideaPostCnt.do',
+		   data:{'post_seq':<%=list.get(i).getPost_seq()%>},
+		   dataType:'json',
+		   success:function(res){
+			   console.log(res);
+			   $('#idea-post-cnt<%=i%>').text(res);
+		   },
+		   error:function(res){
+			   console.log('error');
+		   }
+	   });
    });
   <%}%>
 </script>
 <script>
 console.log($('#num<%=num%>').attr('class'))
-  for( i=1;i<=<%=cnt.size()/10%>;i++){
+  for( i=1;i<=<%=cnt.size()/10+1%>;i++){
 	if($('#num<%=num%>').attr("id")=='num'+i){
 		$('#num<%=num%>').attr("class","num on")
 	}

@@ -90,8 +90,8 @@
 				<br>
 				<div class="pagination_section">
 					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
-					<%for(int i=0;i<cnt.size()/10;i++){ %>
-					<a id="num<%=i+1 %>" class="num" href="goRecruit.do?&num=<%=i+1%>"><%=i+1%></a>
+					<%for(int i=1;i<=cnt.size()/10;i++){ %>
+					<a id="num<%=i %>" class="num" href="goRecruit.do?&num=<%=i%>"><%=i%></a>
 					<%} %>	
 					<a href="goRecruit.do?num=<%=cnt.size()/10 %>" class="bt">Next ＞＞</a>
 				</div>
@@ -128,10 +128,10 @@
 				<br>
 				<div class="pagination_section">
 					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
-					<%for(int i=0;i<cnt_j.size()/10;i++){ %>
-					<a id="num<%=i+1 %>" class="num" href="goRecruit.do?&num=<%=i+1%>"><%=i+1%></a>
+					<%for(int i=0;i<=cnt_j.size()/10;i++){ %>
+					<a id="numj<%=i+1 %>" class="num" href="goRecruit.do?&numj=<%=i+1%>"><%=i+1%></a>
 					<%} %>	
-					<a href="goRecruit.do?num=<%=cnt_j.size()/10 %>" class="bt">Next ＞＞</a>
+					<a href="goRecruit.do?numj=<%=cnt_j.size()/10 %>" class="bt">Next ＞＞</a>
 				</div>
 
 
@@ -154,6 +154,7 @@
 		</div>
 		<%String on = (String)request.getAttribute("on");
 			int num = (int)request.getAttribute("num");
+			int numj = (int)request.getAttribute("numj");
 		%>
 		<%out.print(on); 
 			out.print(num);
@@ -174,6 +175,7 @@
 
 			})
 		
+		
 			
 		</script>
 		<script>
@@ -181,21 +183,16 @@
 		  for( i=1;i<=<%=cnt.size()/10%>;i++){
 			if($('#num<%=num%>').attr("id")=='num'+i){
 				$('#num<%=num%>').attr("class","num on")
-				if(1<=<%=num%><=5){					
-					<%for(int i=6;i<=cnt.size()/10;i++){%>
-					$('#num<%=i%>').hide();						
-					<%}%> 
-				}else if(6<=<%=num%><=10){
-					<%for(int i=1;i<=5;i++){%>
-					$('#num<%=i%>').hide();						
-					<%}%> 					
-					<%for(int i=11;i<=cnt.size()/10;i++){%>
-					$('#num<%=i%>').hide();						
-					<%}%> 
+				
 				}
 			}
-		}
-		
+		console.log($('#numj<%=numj%>').attr('class'))
+		  for( i=1;i<=<%=cnt_j.size()/10%>;i++){
+			if($('#numj<%=numj%>').attr("id")=='numj'+i){
+				$('#numj<%=numj%>').attr("class","num on")
+				
+				}
+			}
 		</script>
 </body>
 

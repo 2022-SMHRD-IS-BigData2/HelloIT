@@ -175,6 +175,7 @@ public class PostInfoDAO {
 		return list;
 	}
 	
+	// 아이디어 토론방 
 	
 	// 마이페이지 아이디어 게시물 조회 
 //	public List<PostInfo> paging(int n) {

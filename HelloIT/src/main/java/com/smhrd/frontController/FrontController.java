@@ -66,6 +66,7 @@ import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.UserLevelSettingCon;
 import com.smhrd.controller.WriteCon;
+import com.smhrd.controller.ajax.IdeaPostCntCon;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -78,6 +79,7 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
+		handlerMapping.put("/ideaPostCnt.do", new IdeaPostCntCon()); // 유저페이지 이동
 		handlerMapping.put("/mainCmtLikeConAjax.do", new MainCmtLikeConAjax()); // 유저페이지 이동
 		handlerMapping.put("/mainCommentConAjax.do", new MainCommentConAjax()); // 유저페이지 이동
 		handlerMapping.put("/mainBookmarkConAjax.do", new MainBookmarkConAjax()); // 유저페이지 이동

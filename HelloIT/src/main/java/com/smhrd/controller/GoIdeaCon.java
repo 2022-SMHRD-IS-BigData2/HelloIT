@@ -29,9 +29,7 @@ public class GoIdeaCon implements Controller {
 			List<PostInfo> cnt = dao.pageCnt();
 			String on = "on";
 			System.out.println(n);
-			System.out.println(num);
 			System.out.println(cnt.get(0));
-			System.out.println(cnt);
 			System.out.println(on);
 			request.setAttribute("list", list);
 			request.setAttribute("on", on);

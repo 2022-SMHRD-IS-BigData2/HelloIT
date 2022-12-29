@@ -78,7 +78,6 @@
                 </form>
                 </div>
                 </div>
-                </div>
 			<footer class="main_footer">
 		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
@@ -90,6 +89,7 @@
 			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 		</footer>
+                </div>
 
 <script>
 /* test/박해성 */
