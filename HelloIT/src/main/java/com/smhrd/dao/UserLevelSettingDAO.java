@@ -18,6 +18,13 @@ public class UserLevelSettingDAO {
 		return cnt;
 	}
 	
+	public int userLevelFirstSetting(UserLevel dto) {
+		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
+		int cnt = session.insert("userLevelFirstSetting", dto);
+		session.close();
+		return cnt;
+	}
+	
 
 	
 }

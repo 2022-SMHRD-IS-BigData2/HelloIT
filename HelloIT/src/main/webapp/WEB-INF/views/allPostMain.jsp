@@ -23,6 +23,29 @@
 .board_list td {
     text-align: left;
 }
+body{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+::-webkit-scrollbar-button:start:increment, 
+::-webkit-scrollbar-button:end:decrement {
+					/*  스크롤의 화살표가 포함된 영역   */
+  display:none !important;
+}
+.window-body.main-content{
+background: silver;
+    margin: auto;
+    padding-bottom:20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    overflow-x: auto;
+    height: 600px;
+}
 </style>
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
@@ -36,9 +59,6 @@
 	// request 영역에서 list 꺼내서 출력하기
 	List<PostInfo> list = (List<PostInfo>) request.getAttribute("list");
 	%>
-<a href="goMessage.do" style="position:fixed; top:0;">테스트</a>
-<a href="goMain.do?u_email=<%=info.getU_email()%>" style="position:fixed; top: 30px">맞춤형게시물조회</a>
-	
 <div class="container">
 	<div class="wrapper">
 		<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
@@ -51,8 +71,6 @@
 						<button aria-label="Close"></button>
 					</div>
 				</div>
-		</div>
-		<div class="window" style="width: 800px" align="center">
 		<%-- 네이버 구글 유튜브 검색 창 -----------------------------------  --%>
 		<div class="window" style="position:sticky; top:26.6px"><!--style="--width: 400px"-->
 			<div class="title-bar">
@@ -82,14 +100,6 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-		<%-- ------------------------------------------------------------------- --%>
-		<!-- 
-						<div class="window-body" style="padding-bottom: 100px;"
-							align="center">
-		-->			
-		<%-- 맞춤형 피드 노출 부분 및 검색어 입력 --%>
-		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<div class="window" style="position:sticky; top:131.2px; margin:-3px">
 				<div class="title-bar">
 				<div class="title-bar-text">전체 게시물</div>
@@ -100,6 +110,16 @@
 				<div></div>
 				</div>
 			</div>
+		</div>
+		<%-- ------------------------------------------------------------------- --%>
+		</div>
+		<div class="window-body main-content" style="width: 800px" align="center">
+		<!-- 
+						<div class="window-body" style="padding-bottom: 100px;"
+							align="center">
+		-->			
+		<%-- 맞춤형 피드 노출 부분 및 검색어 입력 --%>
+		<div class="window" style="padding-bottom:20px"><!-- style="width: 600px" -->
 			<%for(int i = 0; i < list.size(); i++){ %>
 			<div id="checkPost" class="window posted" style="width: 700px">
 				<div class="title-bar">
@@ -191,6 +211,7 @@
 		</div>
 		<%-- -------------------------------------------------------------------------------- --%>
 		</div>
+	</div>
 		<footer class="main_footer">
 		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
@@ -202,7 +223,6 @@
 			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
-	</div>
 </div>
 	<script src="./js/move.js"></script>
 </body>

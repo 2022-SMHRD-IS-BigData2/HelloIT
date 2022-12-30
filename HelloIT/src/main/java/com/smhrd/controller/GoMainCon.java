@@ -20,12 +20,21 @@ public class GoMainCon implements Controller {
 		String u_email = request.getParameter("u_email");
 		
 		PostInfoDAO dao = new PostInfoDAO();
-		/* List<PostInfo> list = dao.postInfoList(); */
+		List<PostInfo> list = dao.postInfoList();
 		List<PostInfo> ctpList = dao.customizedPostInfoList(u_email);
 		
-		request.setAttribute("ctpList", ctpList);
+		System.out.println(ctpList);
 		
-		return "main";
+		if(ctpList.size()==0) {
+			request.setAttribute("list", list);
+			return "allPostMain";
+		}else {
+			request.setAttribute("ctpList", ctpList);
+			return "main";
+		}
+		
+		
+		
 	}
 	
 }

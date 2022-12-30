@@ -231,8 +231,8 @@ display: flex;
 						<div class="pagination_section">
 						<a href="goIdea.do" class="bt">처음</a>
 						<a href="goIdea.do" class="bt">이전</a>
-						<%for(int i=1;i<cnt.size()/10+1;i++){ %>
-						<a id="num<%=i %>" class="num" href="goIdea.do?&num=<%=i%>"><%=i%></a>
+						<%for(int i=0;i<cnt.size()/10+1;i++){ %>
+						<a id="num<%=i+1 %>" class="num" href="goIdea.do?&num=<%=i+1%>"><%=i+1%></a>
 						<%} %>	
 						<a href="goIdea.do?num=<%=cnt.size()%>" class="bt">다음</a>
 						<a href="goIdea.do?num=<%=cnt.size()%>" class="bt">마지막</a>
@@ -294,7 +294,7 @@ display: flex;
 </script>
 <script>
 console.log($('#num<%=num%>').attr('class'))
-  for( i=1;i<=<%=cnt.size()/10+1%>;i++){
+  for( i=1;i<=<%=cnt.size()/10%>;i++){
 	if($('#num<%=num%>').attr("id")=='num'+i){
 		$('#num<%=num%>').attr("class","num on")
 	}

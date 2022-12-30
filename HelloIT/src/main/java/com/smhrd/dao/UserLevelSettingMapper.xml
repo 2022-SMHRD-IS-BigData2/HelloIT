@@ -10,7 +10,16 @@
 			#{tag_level}
 		)
 	</insert>	
-
+	
+ 	<insert id="userLevelFirstSetting" parameterType="com.smhrd.entity.UserLevel">
+		insert into user_level
+		values(
+			#{u_email},
+			#{tag_seq},
+			1
+		)
+	</insert>	
+	
 <!-- 	<select id="commentInfoList" resultType="com.smhrd.entity.CommentInfo">
 		select *
 		from comment_info c, user_info u

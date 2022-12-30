@@ -14,12 +14,14 @@ import com.smhrd.dao.MyPageInfoDAO;
 import com.smhrd.dao.UserDBInfoDAO;
 import com.smhrd.dao.UserInfoDAO;
 import com.smhrd.dao.UserLanguageInfoDAO;
+import com.smhrd.dao.UserLevelSettingDAO;
 import com.smhrd.dao.UserRoleInfoDAO;
 import com.smhrd.dao.UserSkillInfoDAO;
 import com.smhrd.entity.MyPageInfo;
 import com.smhrd.entity.UserDBInfo;
 import com.smhrd.entity.UserInfo;
 import com.smhrd.entity.UserLanguageInfo;
+import com.smhrd.entity.UserLevel;
 import com.smhrd.entity.UserRoleInfo;
 import com.smhrd.entity.UserSkillInfo;
 
@@ -148,6 +150,25 @@ public class JoinCon implements Controller {
 		MyPageInfoDAO mypagedao = new MyPageInfoDAO();
 		mypagedao.insertMyPage(mypage);
 		
+		//6. 유저 레벨 기본데이터 생성
+		UserLevel leveldto = new UserLevel();
+		UserLevelSettingDAO level = new UserLevelSettingDAO();
+		leveldto.setU_email(u_email);
+		leveldto.setTag_seq(1);
+		int cnt1 = level.userLevelFirstSetting(leveldto);
+		leveldto.setTag_seq(2);
+		int cnt2 = level.userLevelFirstSetting(leveldto);
+		leveldto.setTag_seq(3);
+		int cnt3 = level.userLevelFirstSetting(leveldto);
+		leveldto.setTag_seq(99);
+		int cnt4 = level.userLevelFirstSetting(leveldto);
+		int cntlevel = cnt1+cnt2+cnt3+cnt4;
+		if (cntlevel == 4) {
+			System.out.println("회원 레벨 설정 성공");
+
+		} else {
+			System.out.println("회원 레벨 설정 실패");
+		}
 		
 				// ========================================
 				
