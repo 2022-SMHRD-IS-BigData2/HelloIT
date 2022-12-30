@@ -30,11 +30,13 @@ public class GoMyPageCon implements Controller {
 		List<PostInfo> list = dao.postInfoList();
 		List<PostInfo> upList = dao.userPostInfoList(u_email);
 		List<PostInfo> bmList = dao.bookmarkPostInfoList(u_email);
+		List<PostInfo> ideaList = dao.userIdeaPostInfoList(u_email);
 //		List<PostInfo> miList = dao.paging(n);
 //		List<PostInfo> cnt = dao.pageCnt();
 		request.setAttribute("list", list);
 		request.setAttribute("upList", upList);
 		request.setAttribute("bmList", bmList);
+		request.setAttribute("ideaList", ideaList);
 //		request.setAttribute("miList", miList);
 //		request.setAttribute("cnt", cnt);
 

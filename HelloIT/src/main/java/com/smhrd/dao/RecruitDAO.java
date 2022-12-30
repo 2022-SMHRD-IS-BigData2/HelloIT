@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import com.smhrd.database.SessionManager;
 import com.smhrd.entity.OnclickDTO;
 import com.smhrd.entity.Recruit;
+import com.smhrd.entity.SearchRecruit;
 
 public class RecruitDAO {
 
@@ -43,4 +44,33 @@ public class RecruitDAO {
 		session.close();
 		return on;
 	}
+	
+	public List<Recruit> sSearchListWithPaging(SearchRecruit dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<Recruit> list = session.selectList("sSearchListWithPaging", dto);
+		session.close();
+		return list;
+	}
+	public List<Recruit> sSearchListSize(String search_word) {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<Recruit> cnt = session.selectList("sSearchListSize", search_word);
+		session.close();
+		return cnt;
+	}
+	public List<Recruit> jSearchListWithPaging(SearchRecruit dto) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<Recruit> list = session.selectList("jSearchListWithPaging", dto);
+		session.close();
+		return list;
+	}
+	public List<Recruit> jSearchListSize(String search_word) {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<Recruit> cnt = session.selectList("jSearchListSize", search_word);
+		session.close();
+		return cnt;
+	}
+	
+	
+	
+	
 }

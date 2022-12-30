@@ -29,6 +29,18 @@
 		order by post_dt desc
 	</select>
 	
+	<!-- 본인 아이디어 댓글 리스트 조회 -->
+	<select id="userIdeaPostInfoList" resultType="com.smhrd.entity.PostInfo">
+		select distinct * from  post_info p, user_info u
+		where p.u_email = u.u_email
+		and post_kind = 'idea'
+		and post_seq in (select post_seq
+							from comment_info
+							where u_email=#{u_email}
+		)
+		order by post_dt desc
+	</select>
+	
 	<!-- 북마크 게시글 리스트 조회 -->
 	<select id="bookmarkPostInfoList" resultType="com.smhrd.entity.PostInfo">
 		select * from  post_info p, user_info u
@@ -207,11 +219,6 @@
 				)
 		order by post_dt desc
 	</select>
-	
-	
-
-	
-	
 	
 	<!-- 본인 아이디어 게시물 리스트 조회 -->
 	
