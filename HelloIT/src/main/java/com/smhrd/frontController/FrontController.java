@@ -35,6 +35,7 @@ import com.smhrd.controller.GoMyPageCon;
 import com.smhrd.controller.GoNaverJoinCon;
 import com.smhrd.controller.GoPopPostMainCon;
 import com.smhrd.controller.GoRecruitCon;
+import com.smhrd.controller.GoRecruitSearchCon;
 import com.smhrd.controller.GoTagMainCon;
 import com.smhrd.controller.GoUserPageCon;
 import com.smhrd.controller.GoViewCon;
@@ -134,6 +135,7 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/goCtpSearchMain.do", new GoCtpSearchMainCon());
 		handlerMapping.put("/goPopPostMain.do", new GoPopPostMainCon());
 		handlerMapping.put("/goAllPostMain.do", new GoAllPostMainCon());
+		handlerMapping.put("/goRecruitSearch.do", new GoRecruitSearchCon());
 		
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동

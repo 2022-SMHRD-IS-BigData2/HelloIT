@@ -39,16 +39,19 @@
 		
 		List<Recruit> list_j = (List<Recruit>) request.getAttribute("list_j");
 		List<Recruit> cnt_j = (List<Recruit>) request.getAttribute("cnt_j");
+		String search_word = (String)request.getAttribute("search_word");
+		System.out.println(search_word);
 	%>
+	
 <div class="container">
 <div class="wrapper">
 	<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
 		<div class="title-bar" style="position:sticky; top:0">
-			<div class="title-bar-text">채용 공고</div>
-			<div class="title-bar-controls">
-				<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
+			<div class="title-bar-text">채용 공고 (검색어 : <%=search_word%>)</div>
+				<div class="title-bar-controls">
+					<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
+				</div>
 			</div>
-		</div>
 		<div class="window-body">
 						<h5 align="center"> 채용 내용을 클릭하면 해당 공고로 이동합니다.</h5>
 						<div>
@@ -93,11 +96,11 @@
 
 				<br>
 				<div class="pagination_section">
-					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
+					<a href="goRecruitSearch.do?search_word=<%=search_word%>" class="bt">＜＜ Previous</a>
 					<%for(int i=1;i<=cnt.size()/10;i++){ %>
-					<a id="num<%=i %>" class="num" href="goRecruit.do?&num=<%=i%>"><%=i%></a>
+					<a id="num<%=i%>" class="num" href="goRecruitSearch.do?search_word=<%=search_word%>&num=<%=i%>"><%=i%></a>
 					<%} %>	
-					<a href="goRecruit.do?num=<%=cnt.size()/10 %>" class="bt">Next ＞＞</a>
+					<a href="goRecruitSearch.do?search_word=<%=search_word%>&num=<%=cnt.size()/10%>" class="bt">Next ＞＞</a>
 				</div>
 			</div>
 			
@@ -131,11 +134,11 @@
 
 				<br>
 				<div class="pagination_section">
-					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
+					<a href="goRecruitSearch.do?search_word=<%=search_word%>" class="bt">＜＜ Previous</a>
 					<%for(int i=0;i<=cnt_j.size()/10;i++){ %>
-					<a id="numj<%=i+1 %>" class="num" href="goRecruit.do?&numj=<%=i+1%>"><%=i+1%></a>
+					<a id="numj<%=i+1 %>" class="num" href="goRecruitSearch.do?search_word=<%=search_word%>&numj=<%=i+1%>"><%=i+1%></a>
 					<%} %>	
-					<a href="goRecruit.do?numj=<%=cnt_j.size()/10 %>" class="bt">Next ＞＞</a>
+					<a href="goRecruitSearch.do?search_word=<%=search_word%>&numj=<%=cnt_j.size()/10%>" class="bt">Next ＞＞</a>
 				</div>
 
 
@@ -153,9 +156,11 @@
 			<a href="goMyPage.do?u_email=<%=info.getU_email()%>" title="마이페이지"><img src="./img/icon_15.png" id="my_page" width="40" alt=""></a> 
 			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 			</div>
-	</footer>
-		</div>
-		</div>
+		</footer>
+</div>
+</div>
+
+
 		<%String on = (String)request.getAttribute("on");
 			int num = (int)request.getAttribute("num");
 			int numj = (int)request.getAttribute("numj");
@@ -199,5 +204,4 @@
 			}
 		</script>
 </body>
-
 </html>

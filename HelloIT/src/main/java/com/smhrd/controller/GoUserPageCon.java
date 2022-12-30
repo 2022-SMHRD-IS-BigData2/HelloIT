@@ -31,10 +31,12 @@ public class GoUserPageCon implements Controller {
 			List<PostInfo> list = dao2.postInfoList();
 			List<PostInfo> upList = dao2.userPostInfoList(u_email);
 			List<PostInfo> bmList = dao2.bookmarkPostInfoList(u_email);
+			List<PostInfo> ideaList = dao2.userIdeaPostInfoList(u_email);
 			
 			request.setAttribute("list", list);
 			request.setAttribute("upList", upList);
 			request.setAttribute("bmList", bmList);	
+			request.setAttribute("ideaList", ideaList);	
 			
 			FollowingInfoDAO dao3 = new FollowingInfoDAO();
 			int followerCnt = dao3.cntFollower(u_email);
