@@ -42,14 +42,14 @@
 	%>
 <div class="container">
 <div class="wrapper">
-	<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
+	<div class="window" style="width: 800px; height:800px; position: sticky; top: 0; font-size:12px" align="center">
 		<div class="title-bar" style="position:sticky; top:0">
 			<div class="title-bar-text">채용 공고</div>
 			<div class="title-bar-controls">
 				<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
 			</div>
 		</div>
-		<div class="window-body">
+		<div class="window-body" style="margin-top: 70px">
 						<h5 align="center"> 채용 내용을 클릭하면 해당 공고로 이동합니다.</h5>
 			<input type="text" placeholder="원하는 채용을 검색하세요" style="width:150px;height: 20px; font: size 10px;;">
 			<button>검색</button>
@@ -127,11 +127,13 @@
 
 				<br>
 				<div class="pagination_section">
-					<a href="goRecruit.do" class="bt">＜＜ Previous</a>
-					<%for(int i=0;i<=cnt_j.size()/10;i++){ %>
+					<a href="goRecruit.do" class="bt">처음</a>
+					<a href="goRecruit.do" class="bt">이전</a>
+					<%for(int i=0;i<cnt_j.size()/10;i++){ %>
 					<a id="numj<%=i+1 %>" class="num" href="goRecruit.do?&numj=<%=i+1%>"><%=i+1%></a>
 					<%} %>	
-					<a href="goRecruit.do?numj=<%=cnt_j.size()/10 %>" class="bt">Next ＞＞</a>
+					<a href="goRecruit.do?numj=<%=cnt_j.size()/10 %>" class="bt">다음</a>
+					<a href="goRecruit.do?numj=<%=cnt_j.size()/10 %>" class="bt">마지막</a>
 				</div>
 
 
@@ -155,9 +157,6 @@
 		<%String on = (String)request.getAttribute("on");
 			int num = (int)request.getAttribute("num");
 			int numj = (int)request.getAttribute("numj");
-		%>
-		<%out.print(on); 
-			out.print(num);
 		%>
 		<script>
 

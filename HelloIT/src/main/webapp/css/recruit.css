@@ -93,7 +93,6 @@ tr>td:nth-child(4){
 
 .pagination_section a.bt {
     border: 1px solid #eee;
-    background: white;
 }
 
 .pagination_section a.num {
@@ -105,4 +104,8 @@ tr>td:nth-child(4){
 .pagination_section a.num.on {
     background: black;
     color: #fff;
+}
+a{
+	color: black;
+	text-decoration: none;
 }

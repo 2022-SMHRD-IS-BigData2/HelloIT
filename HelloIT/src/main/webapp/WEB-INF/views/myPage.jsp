@@ -28,7 +28,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
 <style>
-
+body{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+::-webkit-scrollbar-button:start:increment, 
+::-webkit-scrollbar-button:end:decrement {
+					/*  스크롤의 화살표가 포함된 영역   */
+  display:none !important;
+}
+.window-body.main-content{
+background: silver;
+    margin: auto;
+    padding-bottom:20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    overflow-x: auto;
+    height: 600px;
+}
+#follow-table table{
+	width:550px;
+}
 </style>
 </head>
 
@@ -48,7 +73,7 @@
 	
 	<div class="container">
 		<div class="wrapper">
-			<div class="window" style="width: 800px; position: sticky; top: 0; max-width:100%"align="center">
+			<div class="window" style="width: 800px; height:800px; position: sticky; top: 0; max-width:100%"align="center">
 				<div class="title-bar" style="position:sticky; top:1px">
 				  <div class="title-bar-text">마이 페이지</div>
 				  <div class="title-bar-controls">
@@ -72,7 +97,7 @@
 					<b>팔로워 : <%=request.getAttribute("followerCnt")%></b>
 				</p>
 				</div>
-				<div style="display:block;width:632px;">
+				<div class="window-body main-content" style="display:block;width:632px;">
 			<div id="myPage" style="display:none;">
 			    <div class="container">
 		        <div class="wrapper" style="position: sticky; top: 27px;">
@@ -132,7 +157,7 @@
 		    </div>
 			</div>
 		    <div id="checkInterest" class="window" style="display:none; margin-left:8px">
-		        <div class="title-bar" style="position:sticky; top:27px">
+		        <div class="title-bar" style="position:sticky">
 		            <div class="title-bar-text">관심 분야 Check!!</div>
 		            <div class="title-bar-controls">
 		            <button aria-label="Close" onclick="location.href ='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
@@ -147,7 +172,7 @@
 				        <table style="width:600px">
 				        <tr class="interest" id="userRole">
 				     	<td><h4>레벨</h4></td>
-				            <td style="display:flex; justify-content: center; height:50px;">
+				            <td style="display:flex; justify-content: center; height:70px;">
 				            <div style="text-align:end; margin: 0 5px">
 				            <div>프론트엔드
 				             <select name="frontend_level" id="frontend_level">
@@ -415,7 +440,7 @@
 
 		    <div id="posted">
 			<%for(int i = 0; i < upList.size(); i++){ %>
-			<div id="checkPost" class="window posted" style="width: 630px">
+			<div id="checkPost" class="window posted" style="width: 600px">
 			<div class="title-bar">
 				<div class="title-bar-text"><%=upList.get(i).getPost_title()%></div>
 			</div>
@@ -483,7 +508,7 @@
 				List<CommentInfo> cmtList = dao.commentInfoList(upList.get(i).getPost_seq());
 				%>
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table style="width:630px;">
+			<table style="width:600px;">
 				<tr>
 					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
@@ -501,7 +526,7 @@
 
 	    <div id="bookmark">
 			<%for(int i = 0; i < bmList.size(); i++){ %>
-			<div id="checkPost" class="window posted" style="width: 630px">
+			<div id="checkPost" class="window posted" style="width: 600px">
 			<div class="title-bar">
 				<div class="title-bar-text"><%=bmList.get(i).getPost_title()%></div>
 			</div>
@@ -573,7 +598,7 @@
 				%>
 			
 			<%for (int j = 0; j < cmtList.size(); j++) {%>			
-			<table style="width:630px;">
+			<table style="width:600px;">
 				<tr>
 					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
 					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
@@ -594,7 +619,7 @@
 			
 			<!--팔로잉 팔로워 기능 추가해야함 -->
 			<div id="follow" style="display:none; font-family:auto;">
-				<div class="window" style="max-width:100%" align="center">
+				<div class="window" style="max-width:100%; width:600px" align="center">
 					<div class="title-bar">
 						<div class="title-bar-text">팔로우/팔로워</div>
 						<div class="title-bar-controls">
@@ -602,7 +627,7 @@
 						</div>
 					</div>
 					<div class="window-body" style="justify-content: space-between;">
-						<div>
+						<div style="width:576px;">
 							<div>
 								<table>
 									<tr>
@@ -632,7 +657,7 @@
 						
 								<div id="tab-1" style="margin-bottom:50px" class="tab-content current" >
 									<div id="follow-table">
-											<table style="width: 600px; height: 100px; overflow: auto; text-align: center;">
+											<table style="overflow: auto; text-align: center;">
 												<thead>
 													<tr height="30px">
 														<th>아이디</th>
@@ -662,7 +687,7 @@
 								</div>
 								<div id="tab-2" style="margin-bottom:50px" class="tab-content">
 								<div id="follow-table">
-									<table style="width: 600px; height: 100px; overflow: auto; text-align: center;" >
+									<table style="overflow: auto; text-align: center;" >
 										<thead>
 											<tr height="30px">
 												<th>아이디</th>
@@ -860,7 +885,7 @@
 				
 			<!-- FAQ -->
 			<div id="faq" style="display:none;">
-				<div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
+				<div class="window" style="width: 600px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
 					<div class="title-bar">
 						<div class="title-bar-text">HEllo iT</div>
 						<div class="title-bar-controls">
@@ -918,6 +943,7 @@
 		  	
 			</div>
 		</div>
+	</div>
 		<footer class="main_footer">
 		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
@@ -929,7 +955,6 @@
 			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
-	</div>
 	</div>
 	<script type="text/javascript">
 		$('#listOfMyPage').on('click', function() {

@@ -11,9 +11,53 @@
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script	src="./js/mousePointer.js"></script>
 <style type="text/css">
-	.window.posted{
-		margin:4px;
-	}
+.window.posted{
+	margin:4px;
+}
+.board_list td {
+    text-align: left;
+}
+body{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    font-size:large;
+}
+::-webkit-scrollbar-button:start:increment, 
+::-webkit-scrollbar-button:end:decrement {
+					/*  스크롤의 화살표가 포함된 영역   */
+  display:none !important;
+}
+.window-body.main-content{
+background: silver;
+    margin: auto;
+    padding-bottom:20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    overflow-x: auto;
+    height: 600px;
+    font-size:large;
+}
+.bgdbg{
+	width:200px;
+	height:200px;
+	font-size:small;
+}
+.window-body.member{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.member img{
+	width: 130px;
+	height: 130px;
+}
 </style>
 <title>Hello IT</title>
 </head>
@@ -22,7 +66,7 @@
 
 <div class="container">
 	<div class="wrapper">
-		<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
+		<div class="window" style="width: 800px; height:800px; position: sticky; top: 0;" align="center">
 			<div class="title-bar">
 				<div class="title-bar-text">HEllo iT</div>
 					<div class="title-bar-controls">
@@ -31,33 +75,31 @@
 						<button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
 					</div>
 				</div>
-		</div>
-		<div class="window" style="width: 800px" align="center">
-				<p></p>
-                        <div class="window-body">
-                    
-                            <img src="img/2.png" alt="" width="150px" onmouseover=" this.src= 'img/1.png'  " width="150px"
-                            onmouseout=" this.src= 'img/2.png' " width="150px"
+		<div class="window" align="center">
+                        <div class="window-body main-content" style="height:760px">
+                    	
+                    	<div style="padding:15px">
+                            <img src="img/2.png" alt="" width="180px" onmouseover=" this.src= 'img/1.png'  " width="180px"
+                            onmouseout=" this.src= 'img/2.png' " width="180px"
                             >
                 
-                            <h4
+                            <h4 style="margin:20px 0"
                             > <팀장> 유남욱  </h4> 
                             tel:010-9401-9458
                             <br>email:xeph123@naver.com
                             
-                     <br><br><br><br>
-                
+                		</div>
                 
                           <div class="window" style="width: 700px" >
                             <div class="title-bar">
                                 <div class="title-bar-text">개발자 팀원 정보  </div>
                             </div>
-                            <div class="window-body">
+               			<div class="window-body member">
                                 
                 
                 
-                
-                
+                		<div>
+                			<div class="bgdbg">
                                 <img style="
                                 
                                 border-radius: 70px;
@@ -72,13 +114,13 @@
                                 <!-- <div class="box" style="background: #BDBDBD;">
                                     <img src="./img/박해성_고양이.jpeg" width="100px" alt="">
                                 </div> -->
-                <br> 박해성
-                <br> tel:010-2202-5508
-                <br>email:5un9.hae@gmail.com
-                <br><br><br>
-                
-                
-                <img style="
+				                <br> <b>박해성</b>
+				                <br> tel:010-2202-5508
+				                <br>email:5un9.hae@gmail.com
+				                <br><br><br>
+			                </div>
+			                <div class="bgdbg">
+			                	<img style="
                                 
                                 border-radius: 70px;
                                 -moz-border-radius: 70px;
@@ -88,13 +130,15 @@
                                 src="./img/김세희_돌고래.jpeg" width="128px" />
                 
                 
-                <br>김세희
-                <br>tel:010 5848 2336
-                <br>email:sh58482336@gmail.com
-                <br><br><br>
-                
-                
-                <img style="
+				                <br><b>김세희</b>
+				                <br>tel:010 5848 2336
+				                <br>email:sh58482336@gmail.com
+				                <br><br><br>
+			                </div>
+						</div>
+						<div>
+			                <div class="bgdbg">
+				                <img style="
                                 
                                 border-radius: 70px;
                                 -moz-border-radius: 70px;
@@ -104,12 +148,12 @@
                                 src="./img/이예지_강아지.jpeg" width="130px" />
                 
                 
-                <br>이예지
-                <br>tel:010-6364-0945
-                <br>email:dldpwl877757@gmail.com
-                <br><br><br>
-                
-                
+				                <br><b>이예지</b>
+				                <br>tel:010-6364-0945
+				                <br>email:dldpwl877757@gmail.com
+				                <br><br><br>
+			                </div>
+			                <div class="bgdbg">
                 
                                 <img style="
                                 
@@ -120,11 +164,13 @@
                                 "
                                 src="./img/김여울_호랑이.jpeg" width="130px" />
                 
-                <br>김여울
-                <br>tel:010-7320-6036
-                <br>email:hanbyeol0415@gmail.com
-                <br> 
-                </div>
+				                <br><b>김여울</b>
+				                <br>tel:010-7320-6036
+				                <br>email:hanbyeol0415@gmail.com
+				                <br> 
+			                </div>
+		                </div>
+		                </div>
 			</div>
 		</div>
 		
@@ -135,7 +181,6 @@
 		
 		</div>
 		</div>
-	</div>
 	<footer class="main_footer">
 		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do" title="인기게시물"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
@@ -147,5 +192,7 @@
 			<a href="goMessage.do" title="메시지"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
+		</div>
+	</div>
 </body>
 </html>

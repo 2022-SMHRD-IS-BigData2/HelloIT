@@ -25,7 +25,7 @@
 		
 	<div class="container">
 		<div class="wrapper">
-			<div class="window" style="width: 800px">
+			<div class="window" style="width: 800px; height:800px">
 				<div class="title-bar">
 					<div class="title-bar-text">게시물 작성하기</div>
 					<div class="title-bar-controls">
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 
-				<form action="write.do" method="post" enctype="multipart/form-data" style="margin-bottom:5px">
+				<form action="write.do" method="post" enctype="multipart/form-data" style="margin-top:8px">
 					<!-- <img src="./img/69719.png" width="50" alt=""> -->
 
 					<div class="window-body"
@@ -64,7 +64,7 @@
 					</div>
 					<input type="file" name="post_file"
 						style="margin-left: auto; margin-top: 10px;"> <br> <br>
-					<div class="tag" style="width: 500px;">
+					<div class="tag" style="width: 500px; margin:-8px">
 						<label for="tag">해시태그</label>
 						<div class="tr_hashTag_area">
 							<div class="form-group">

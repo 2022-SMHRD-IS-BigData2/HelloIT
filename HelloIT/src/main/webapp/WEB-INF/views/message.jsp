@@ -12,13 +12,38 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="./js/mousePointer.js"></script>
 <title>Hello IT</title>
+<style type="text/css">
+body{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+::-webkit-scrollbar-button:start:increment, 
+::-webkit-scrollbar-button:end:decrement {
+					/*  스크롤의 화살표가 포함된 영역   */
+  display:none !important;
+}
+.window-body.main-content{
+background: silver;
+    margin: auto;
+    padding-bottom:20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    overflow-x: auto;
+    height: 600px;
+}
+</style>
 </head>	
 
 <body>
 	<% UserInfo info = (UserInfo)session.getAttribute("info");%>
 	<div class="container">
 		<div class="wrap">
-			<div class="window" style="width: 800px; position: sticky; top: 0;"
+			<div class="window" style="width: 800px; height:800px; position: sticky; top: 0;"
 				align="center">
 				<div class="title-bar">
 					<div class="title-bar-text">HEllo iT</div>
@@ -28,13 +53,12 @@
 						<button aria-label="Close" onclick="location.href='goMain.do?u_email=<%=info.getU_email()%>'"></button>
 					</div>
 				</div>
-			</div>
-			<div class="window" style="width: 800px" align="center">
-				<div class="window" style="position: sticky; top: 26.6px">
+			
+			<div class="window" style="width: 770px;position: sticky; top: 26.6px" align="center">
 					<div class="title-bar">
 						<div class="title-bar-text">Message</div>
 					</div>
-					<div class="window-body" style="display: flex">
+					<div class="window-body main-content" style="display: flex; height:735px">
 						<div class="wrap wd">
 							<div>
 								<img src="./img/message.gif" width="60px" alt="">
@@ -75,6 +99,8 @@
 						</div>
 					</div>
 				</div>
+				</div>
+		</div>
 	<footer class="main_footer">
 		<div class="window icons" style="width: 800px" align="center">
 			<a href="goPopPostMain.do"><img src="./img/dfsfg.png" id="fire" width="50" alt=""></a> 
@@ -86,8 +112,6 @@
 			<a href="goMessage.do"><img src="./img/sfsdffd.png" id="message" alt="" width="30"></a>
 		</div>
 	</footer>
-			</div>
-		</div>
 	</div>
 </body>
 </html>

@@ -40,9 +40,9 @@
 	cursor:pointer;
 }
 
-.modal div{
+/* .modal div{
 	border: 1px solid;
-}
+} */
 
 body{
 	display: flex;
