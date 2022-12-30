@@ -1056,7 +1056,7 @@ background: silver;
 			<div id="faq" style="display:none;">
 				<div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
 					<div class="title-bar">
-						<div class="title-bar-text">HEllo iT</div>
+						<div class="title-bar-text">Hello IT</div>
 						<div class="title-bar-controls">
 						<button aria-label="Close" onclick="location.href='goMyPage.do'"></button>
 						</div>

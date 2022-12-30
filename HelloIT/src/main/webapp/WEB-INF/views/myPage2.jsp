@@ -865,7 +865,7 @@
          <div id="faq" style="display:none;">
             <div class="window" style="width: 630px; margin-bottom:40px" align="center"><span style="display: flex; flex-direction: column;"></span>
                <div class="title-bar">
-                  <div class="title-bar-text">HEllo iT</div>
+                  <div class="title-bar-text">Hello IT</div>
                   <div class="title-bar-controls">
                   <button aria-label="Close" onclick="location.href ='goMyPage.do?u_email=<%=info.getU_email()%>'"></button>
                   </div>
@@ -875,9 +875,9 @@
                <h3>자주 묻는 질문</h3>
                <div class="faq-container">
                   <div class="faq">
-                     <h4 class="faq-title">"Hello it"은 무슨 웹사이트 인가요?</h4>
+                     <h4 class="faq-title">"Hello IT"은 무슨 웹사이트 인가요?</h4>
                      
-                     <p class="faq-text">안녕하세요 이용자님 "Hello it"은 국내 모든 개발자들을 위한 SNS로 개발관련 정보공유를 보다 손쉽게 캐치 하실 수 있으십니다. </p>
+                     <p class="faq-text">안녕하세요 이용자님 "Hello IT"은 국내 모든 개발자들을 위한 SNS로 개발관련 정보공유를 보다 손쉽게 캐치 하실 수 있으십니다. </p>
                   
                       <button class="faq-toggle">
                         <i class="fas fa-chevron-down"></i>
@@ -897,7 +897,7 @@
                   <div class="faq">
                      <h4 class="faq-title">입문자들은 이용하는데 어려움은 없을까요?</h4>
                      
-                     <p class="faq-text">네 당연합니다! 우리 Hello it은 개인 역량에 맞춰 언어별로 자신에게 맞는 눈높이로 정보들을 습득할 수 있습니다. </p>
+                     <p class="faq-text">네 당연합니다! 우리 Hello IT은 개인 역량에 맞춰 언어별로 자신에게 맞는 눈높이로 정보들을 습득할 수 있습니다. </p>
                      
                      <button class="faq-toggle">
                         <i class="fas fa-chevron-down"></i>

@@ -78,7 +78,7 @@
 	<div class="wrapper">
 		<div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
 			<div class="title-bar">
-				<div class="title-bar-text">HEllo iT</div>
+				<div class="title-bar-text">Hello IT</div>
 				<div class="title-bar-controls">
 					<button aria-label="Minimize"></button>
 					<button aria-label="Maximize"></button>

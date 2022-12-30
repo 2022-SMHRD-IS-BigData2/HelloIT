@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://unpkg.com/98.css" />
 <link rel="stylesheet" href="./css/style.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<title>Message</title>
+<title>Hello IT</title>
 <style>
 * {
 	padding: 0;
@@ -86,7 +86,7 @@ a {
 까꿍
     <div class="window" style="width: 800px; position: sticky; top: 0;" align="center">
         <div class="title-bar">
-            <div class="title-bar-text">HEllo iT</div>
+            <div class="title-bar-text">Hello IT</div>
             <div class="title-bar-controls">
                 <button aria-label="Minimize"></button>
                 <button aria-label="Maximize"></button>
