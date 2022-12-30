@@ -62,6 +62,7 @@ background: silver;
 	UserInfo info = (UserInfo)session.getAttribute("info");
 	List<PostInfo> upList = (List<PostInfo>)request.getAttribute("upList");
 	List<PostInfo> bmList = (List<PostInfo>)request.getAttribute("bmList");
+	List<PostInfo> ideaList = (List<PostInfo>)request.getAttribute("ideaList");
 /* 	List<PostInfo> miList = (List<PostInfo>)request.getAttribute("miList");
 	List<PostInfo> cnt = (List<PostInfo>) request.getAttribute("cnt");
 	String on = (String)request.getAttribute("on");
@@ -720,7 +721,93 @@ background: silver;
 			</div>
 			</div>
 			<!-- 나의 아이디어 목록 -->
-			<div id="myIdea" style="display:none; font-family:auto;">
+			<div id="myIdea">
+			<%for(int i = 0; i < ideaList.size(); i++){ %>
+			<div id="checkPost" class="window posted" style="width: 630px">
+			<div class="title-bar">
+				<div class="title-bar-text"><%=ideaList.get(i).getPost_title()%></div>
+			</div>
+			
+			<div class="window-body">
+				<table id="list" border="1" bgcolor="white">
+					<tr>
+						<td>작성자</td>
+						<td style="width: 650px"><%=ideaList.get(i).getU_name()%></td>
+					</tr>
+					<tr>
+						<td colspan="2">내용</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><img alt=""
+							src="img/<%=ideaList.get(i).getPost_file()%>"><br><br> <b><%=ideaList.get(i).getPost_content()%></b>
+						</td>
+					</tr>
+					<%
+						PostInfoDAO daoTag = new PostInfoDAO();
+						List<Tag> list2 = daoTag.postTagView(ideaList.get(i).getPost_seq());
+					%>
+					<tr style="height: 20px">
+						<td colspan="2">
+						<%for(int k = 0; k < list2.size(); k++){ %>
+						<a href="goTagMain.do?tag_seq=<%=list2.get(k).getTag_seq()%>"><%='#'+list2.get(k).getTag_content()%></a>
+						<%};%>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="status-bar">
+				<p class="status-bar-field">
+					<a href="mainBookmark.do?req_page=myPage&post_seq=<%=ideaList.get(i).getPost_seq()%>
+					&u_email=<%=info.getU_email()%>">
+					<button	id="btn">
+						<%=ideaList.get(i).getBookmarks()%>
+						<img src="./img/북마크.png" width="15" alt="">
+					</button>
+					</a>
+				</p>
+				<%-- 좋아요 기능 --%>
+				<p class="status-bar-field">
+					<a href="mainLike.do?req_page=myPage&post_seq=<%=ideaList.get(i).getPost_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=ideaList.get(i).getLikes()%> 💖
+					</button></a>
+				<%-- 좋아요 기능 끝 --%>
+				</p>
+				<form action="mainCmt.do">
+					<input type="hidden" name="req_page" value="myPage">
+					<input type="hidden" name="post_seq" value="<%=ideaList.get(i).getPost_seq()%>">
+					<input type="hidden" name="u_email" value="<%=info.getU_email()%>">
+					<p class="status-bar-field">
+						<input type="text" name="cmt_content" placeholder="댓글"
+						style="width:290px">
+						<input type="submit" value="등록">
+					</p>
+				</form>
+					<p class="status-bar-field"><a href=""><button id="btn">댓글<%=ideaList.get(i).getCmts()%> </button></a></p>
+			</div>
+				<%
+				// comment 출력
+				CommentInfoDAO dao = new CommentInfoDAO();
+				List<CommentInfo> cmtList = dao.commentInfoList(ideaList.get(i).getPost_seq());
+				%>
+			<%for (int j = 0; j < cmtList.size(); j++) {%>			
+			<table style="width:630px;">
+				<tr>
+					<td><a href="goUserPage.do?u_email=<%=cmtList.get(j).getU_email()%>"><b><%=cmtList.get(j).getU_name()%></b></a></td>
+					<td style="width:360px;"><%=cmtList.get(j).getCmt_content()%></td>
+					<td>
+					<a href="mainCmtLike.do?req_page=myPage&cmt_seq=<%=cmtList.get(j).getCmt_seq()%>&u_email=<%=info.getU_email()%>">
+					<button	id="btn"><%=cmtList.get(j).getCmt_likes()%> 💖
+					</button></a>
+					</td>
+				</tr>
+			<%}%>	
+			</table>
+			</div>
+			<%}%>
+			</div>
+			
+			<%-- <div id="myIdea" style="display:none; font-family:auto;">
 				<div class="myIdea_list_wrap board_list_wrap">
 			        <table class="myIdea_list board_list" border="1">
 			            <caption>나의 아이디어 목록</caption>
@@ -737,27 +824,27 @@ background: silver;
 				                <tr>
 				                
 				                <!-- 나의 아이디어..  -->
-				         <%--            <td><%=miList.get(0).getRow_num() %></td>
+				                    <td><%=miList.get(0).getRow_num() %></td>
 				                    <td class="tit">
 				                        <a href="#"><%=miList.get(0).getPost_title() %></a>
 				                    </td>
 				                    <td><%=miList.get(0).getU_name() %></td>
 				                    <td><%=miList.get(0).getPost_dt() %></td>
-				                    <td><%=miList.get(0).getCnt() %></td> --%>
+				                    <td><%=miList.get(0).getCnt() %></td>
 				                </tr>
 				              
 				            </tbody>
 			        </table>
 			        <br>
-					<%-- <div class="pagination_section">
+					<div class="pagination_section">
 						<a href="goIdea.do" class="bt">＜＜ Previous</a>
 						<%for(int i=0;i<cnt.size()/10+1;i++){ %>
 						<a id="num<%=i+1 %>" class="num" href="goIdea.do?&num=<%=i+1%>"><%=i+1%></a>
 						<%} %>	
 						<a href="goIdea.do?num=<%=cnt.size()%>" class="bt">Next ＞＞</a>
-					</div> --%>
+					</div>
 			    </div>
-			</div>
+			</div> --%>
 			
 			<!-- 이력서 및 포트폴리오  -->
 			<div id="portfolio" style="display:none;">

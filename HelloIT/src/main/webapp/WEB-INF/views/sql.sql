@@ -36,6 +36,8 @@ and post_seq in (select post_seq
 
 
 delete from POST_INFO where post_seq=18;
+delete from user_info where u_email='5un9.hae@gmail.com';
+commit
 
 update USER_INFO set u_name = '박해성';
 
@@ -426,3 +428,44 @@ select distinct * from post_info p, user_info u
 									and tag.tag_content like ('%java%'))
 				)
 		order by post_dt desc;
+
+		
+select distinct * from  post_info p, user_info u
+		where p.u_email = u.u_email
+		and post_kind = 'idea'
+		and post_seq in (select post_seq
+							from comment_info
+							where u_email='test@hs.com'
+		)
+		order by post_dt desc
+		
+select * from s_crawling;
+select * from j_crawling;
+
+select * from s_crawling
+union
+select * from j_crawling;
+order by 1;
+
+select count(*) from (select rownum as row_num, s_crawling.* from s_crawling
+					where company_list like '%신입%'
+					or job_list like '%신입%'
+					or addr_list like  '%신입%')
+where row_num between 1+(3-1)*10 and 3*10;
+
+select * from (select rownum as row_num, s_crawling.* from s_crawling)
+where row_num between 1+(1-1)*10 and 1*10
+and (company_list like '%신입%'
+		or job_list like '%신입%'
+		or addr_list like  '%신입%');
+		
+select * from (select rownum as row_num, j_crawling.* from j_crawling)
+where row_num between 1+(1-1)*10 and 1*10
+and (company_list like '%채용%'
+		or job_list like '%채용%'
+		or addr_list like  '%채용%');
+		
+select * from s_crawling
+where company_list like '%신입%'
+		or job_list like '%신입%'
+		or addr_list like  '%신입%';

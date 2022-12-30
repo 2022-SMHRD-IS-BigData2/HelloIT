@@ -2,25 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.RecruitDAO">
 
- <select id="getListWithPaging"
- 		resultType="com.smhrd.entity.Recruit"> 
-     select * from (select rownum as row_num, s_crawling.* from s_crawling)
-	where row_num between 1+(#{n}-1)*10 and #{n}*10
-
-  </select>
+	<select id="getListWithPaging" resultType="com.smhrd.entity.Recruit"> 
+    	select * from (select rownum as row_num, s_crawling.* from s_crawling)
+		where row_num between 1+(#{n}-1)*10 and #{n}*10
+	</select>
+	
+	<!-- 사람인 채용 공고 검색 -->
+	<select id="sSearchListWithPaging" parameterType="com.smhrd.entity.SearchRecruit" 
+	resultType="com.smhrd.entity.Recruit">
+		select * from (select rownum as row_num, s_crawling.* from s_crawling
+						where company_list like '%'||#{search_word}||'%'
+						or job_list like '%'||#{search_word}||'%'
+						or addr_list like  '%'||#{search_word}||'%')
+		where row_num between 1+(#{n}-1)*10 and #{n}*10
+	</select>
 
 	<select id="getListSize" resultType="java.lang.Integer">
 		select * from s_crawling
 	</select>
- <select id="getListWithPaging_j"
- 		resultType="com.smhrd.entity.Recruit"> 
-     select * from (select rownum as row_num, j_crawling.* from j_crawling)
-	where row_num between 1+(#{n}-1)*10 and #{n}*10
+	
+	<!-- 사람인 채용 공고 검색 사이즈 -->
+	<select id="sSearchListSize" 
+	resultType="java.lang.Integer">
+		select * from s_crawling
+		where company_list like '%'||#{search_word}||'%'
+		or job_list like '%'||#{search_word}||'%'
+		or addr_list like  '%'||#{search_word}||'%'
+	</select>
+	
+	
+	
+ 	<select id="getListWithPaging_j" resultType="com.smhrd.entity.Recruit"> 
+    	select * from (select rownum as row_num, j_crawling.* from j_crawling)
+		where row_num between 1+(#{n}-1)*10 and #{n}*10
+	</select>
 
-  </select>
+	<!-- 잡코리아 채용 공고 검색 -->
+	<select id="jSearchListWithPaging" parameterType="com.smhrd.entity.SearchRecruit" 
+	resultType="com.smhrd.entity.Recruit"> 
+    	select * from (select rownum as row_num, j_crawling.* from j_crawling
+						where company_list like '%'||#{search_word}||'%'
+						or job_list like '%'||#{search_word}||'%'
+						or addr_list like  '%'||#{search_word}||'%')
+		where row_num between 1+(#{n}-1)*10 and #{n}*10
+	</select>
 
 	<select id="getListSize_j" resultType="java.lang.Integer">
 		select * from j_crawling
+	</select>
+	
+	<!-- 잡코리아 채용 공고 검색 사이즈-->
+	<select id="jSearchListSize" resultType="java.lang.Integer"> 
+    	select * from j_crawling
+		where company_list like '%'||#{search_word}||'%'
+		or job_list like '%'||#{search_word}||'%'
+		or addr_list like  '%'||#{search_word}||'%'
 	</select>
 	
 </mapper>

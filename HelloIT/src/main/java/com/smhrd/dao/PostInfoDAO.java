@@ -39,6 +39,14 @@ public class PostInfoDAO {
 		return list;
 	}
 	
+	// 본인 아이디어 게시글 리스트 조회
+	public List<PostInfo> userIdeaPostInfoList(String u_email) {
+		SqlSession session = sqlSessionFactory.openSession(true);
+		List<PostInfo> list = session.selectList("userIdeaPostInfoList", u_email);
+		session.close();
+		return list;
+	}
+	
 	// 북마크 게시글 리스트 조회
 	public List<PostInfo> bookmarkPostInfoList(String u_email) {
 		SqlSession session = sqlSessionFactory.openSession(true);
