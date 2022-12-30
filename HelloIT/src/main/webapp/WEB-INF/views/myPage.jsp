@@ -49,7 +49,7 @@ background: silver;
     flex-direction: column; 
     align-items: center; 
     overflow-x: auto;
-    height: 600px;
+    height: 755px;
 }
 #follow-table table{
 	width:550px;

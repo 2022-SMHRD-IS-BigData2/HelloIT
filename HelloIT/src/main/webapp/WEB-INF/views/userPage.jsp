@@ -23,11 +23,35 @@
       integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
       crossorigin="anonymous"
     />
+<style>
+body{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+::-webkit-scrollbar-button:start:increment, 
+::-webkit-scrollbar-button:end:decrement {
+					/*  스크롤의 화살표가 포함된 영역   */
+  display:none !important;
+}
+.window-body.main-content{
+background: silver;
+    margin: auto;
+    padding-bottom:20px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    height: 755px;
+}
+#follow-table table{
+	width:550px;
+}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="./js/mousePointer.js"></script>
-<style>
-
-</style>
 </head>
 
 <body>
@@ -44,16 +68,16 @@
 	
 	<div class="container">
 		<div class="wrapper">
-			<div class="window" style="width: 800px; position: sticky; top: 0; max-width:100%"align="center">
+			<div class="window" style="width: 800px; height:800px; position: sticky; top: 0; max-width:100%"align="center">
 				<div class="title-bar" style="position:sticky; top:1px">
 				  <div class="title-bar-text"><%=pageInfo.getU_name()%></div>
 				  <div class="title-bar-controls">
 				    <button aria-label="Close" onclick = "location.href ='goMain.do'"></button>
 				  </div>
 				</div>
-		 	<div class="window-body" style="justify-content: space-between;">
-			 	<div>
-			 	<ul class="tree-view" style="font-family:auto;">
+		 	<div class="window-body main-content" style="justify-content: space-between;">
+			 	<div style="position:fixed; padding:5px">
+			 	<ul class="tree-view" style="font-family:auto; width:140px">
 					  <li id="listOfPosted" style="cursor:pointer;">게시물<li>
 					  <li id="listOfBookmark" style="cursor:pointer;">북마크<li>
 					  <li id="listOfFollow" style="cursor:pointer;">팔로잉/팔로워</li>  
@@ -69,7 +93,7 @@
 					</button></a>
 				</p>
 				</div>
-				<div style="display:block;width:632px;">
+				<div style="display: flex;width: 800px;flex-direction: column; align-items: flex-end;">
 			<div id="myPage" style="display:none;">
 			    <div class="container">
 		        <div class="wrapper" style="position: sticky; top: 27px;">
