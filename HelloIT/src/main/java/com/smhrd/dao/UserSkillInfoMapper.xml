@@ -3,7 +3,7 @@
 <mapper namespace="com.smhrd.dao.UserSkillInfoDAO">
 	
 	
-	<!-- 회원 역할 선택 -->
+	<!-- 회원 스킬 선택 -->
 	<insert id="checkSkill"
 			parameterType="com.smhrd.entity.UserSkillInfo">
 			INSERT INTO user_skill_info
@@ -20,7 +20,7 @@
 			     )
 	</insert>
 	
-	<!-- 회원 역할 수정 -->	
+	<!-- 회원 스킬 수정 -->	
 	<update id="updateSkill"
 			parameterType="com.smhrd.entity.UserSkillInfo">
 			UPDATE user_skill_info

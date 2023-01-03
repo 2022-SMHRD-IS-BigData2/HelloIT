@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 @Data // 기본 method 생성(Getter / Setter / toString)
 public class UserTag {
 
+	// 회원 이메일
 	private String u_email;
+	
+	// 태그 순번
 	private int tag_seq;
 
 }

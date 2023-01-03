@@ -11,7 +11,7 @@ public class MyPageInfoDAO {
 	// SqlSessionFactory 받아오기
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
-	// 1. 회원가입 SQL문을 실행하는 메소드
+	// 1. 마이페이지 정보 저장
 	public int insertMyPage( MyPageInfo dto) {
 		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession( true );
@@ -26,6 +26,8 @@ public class MyPageInfoDAO {
 		return cnt;
 	}
 	
+	
+	// 2. 마이페이지 업데이트
 	public int updateMyPage( MyPageInfo dto ) {
 		
 		SqlSession session = sqlSessionFactory.openSession( true );

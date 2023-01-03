@@ -10,7 +10,7 @@ public class UserLevelSettingDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
-
+	// 1. 유저 레벨 세팅
 	public int userLevelSetting(UserLevel dto) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
 		int cnt = session.insert("userLevelSetting", dto);
@@ -18,6 +18,7 @@ public class UserLevelSettingDAO {
 		return cnt;
 	}
 	
+	// 1. 유저 레벨 초기 세팅
 	public int userLevelFirstSetting(UserLevel dto) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
 		int cnt = session.insert("userLevelFirstSetting", dto);

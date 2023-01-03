@@ -15,8 +15,6 @@ public class UserInfo {
 	// 필드(Field) 변경시 자동으로 메소드 변경이 일어난다.
 	// @~~ : class에 어노테이션(Annotation)을 붙여서 기능을 사용한다.
 	
-	// 이메일
-    // 회원 이메일 
     // 회원 이메일 
     private String u_email;
 

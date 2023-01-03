@@ -11,6 +11,7 @@ public class UserDBInfoDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
+	// 마이페이지 DB 체크
 	public int checkDB( UserDBInfo dto) {
 		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession( true );
@@ -24,7 +25,9 @@ public class UserDBInfoDAO {
 		// 4) 실행결과 리턴
 		return cnt;
 	}
+
 	
+	// 마이페이지 DB 수정
 	public int updateDB( UserDBInfo dto ) {
 		
 		SqlSession session = sqlSessionFactory.openSession( true );
@@ -41,3 +44,4 @@ public class UserDBInfoDAO {
 	}
 	
 }
+

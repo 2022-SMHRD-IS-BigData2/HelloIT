@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.CommentInfoDAO">
-
+	
+	<!-- 마이페지이 레벨 저장 -->
  	<insert id="userLevelSetting" parameterType="com.smhrd.entity.UserLevel">
 		insert into user_level
 		values(
@@ -11,6 +12,7 @@
 		)
 	</insert>	
 	
+	<!-- 마이페이지 레벨 초기저장 -->
  	<insert id="userLevelFirstSetting" parameterType="com.smhrd.entity.UserLevel">
 		insert into user_level
 		values(
@@ -20,34 +22,5 @@
 		)
 	</insert>	
 	
-<!-- 	<select id="commentInfoList" resultType="com.smhrd.entity.CommentInfo">
-		select *
-		from comment_info c, user_info u
-		where c.post_seq=#{post_seq}
-		and c.u_email = u.u_email
-		order by cmt_dt
-	</select>
-	
- 	<insert id="commentInfoWrite" parameterType="com.smhrd.entity.CommentInfo">
-		insert into comment_info
-		values(
-			comment_info_seq.nextval,
-			#{post_seq},
-			#{cmt_content},
-			sysdate,
-			#{u_email},
-			0,
-			0
-		)
-	</insert>
-	
-	댓글수 갱신
-	<update id="cmtCntUpdate" parameterType="com.smhrd.entity.CommentInfo">
-		update post_info
-		set cmts = (select count(*)
-						from comment_info
-						where post_seq=#{post_seq})
-		where post_seq=#{post_seq}
-	</update> -->
 	
 </mapper>

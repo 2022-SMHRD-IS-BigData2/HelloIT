@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.IdeaDAO">
-
-	 <select id="getListWithPagingIdea"
+	
+	
+	<!-- 아이디어토론방 게시물 페이징 -->
+	<select id="getListWithPagingIdea"
  		resultType="com.smhrd.entity.PostInfo"> 
 		select rownum as row_num, idea.* 
 		from (select p.*,u_name from post_info p, user_info u
@@ -12,6 +14,7 @@
 
 	</select>
 
+	<!-- 아이디어토론방 게시물 -->
 	<select id="getListSizeIdea" resultType="java.lang.Integer">
 		select * from (select rownum as row_num, post_info.* from post_info where post_kind='idea' order by row_num desc) 
 		<!-- 

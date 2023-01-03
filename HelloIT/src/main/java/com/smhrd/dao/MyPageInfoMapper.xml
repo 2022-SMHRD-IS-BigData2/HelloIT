@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.MyPageInfoDAO">
 	
-	<!-- 1. 회원가입 -->
+	<!-- 마이페이지 저장 -->
 	<insert id="insertMyPage" 
 			parameterType="com.smhrd.entity.MyPageInfo"> 
 			INSERT INTO my_page_info
@@ -13,6 +13,8 @@
 			     #{u_interest}
 			     )
 	</insert>
+	
+	<!-- 마이페이지 수정 -->
 	<update id="updateMyPage"
 			parameterType="com.smhrd.entity.MyPageInfo">
 			UPDATE my_page_info

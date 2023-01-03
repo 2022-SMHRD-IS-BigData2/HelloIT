@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.CareerInfoDAO">
-	
+		
+		<!-- 커리어 저장 -->
 		<insert id="insertMyCareer" 
 			parameterType="com.smhrd.entity.CareerInfo"> 
 			INSERT INTO career_info
@@ -12,6 +13,8 @@
 			     #{u_email}
 			     )
 		</insert>
+		
+		<!-- 커리어 수정 -->
 		<update id="updateMyCareer"
 				parameterType="com.smhrd.entity.CareerInfo">
 				UPDATE career_info

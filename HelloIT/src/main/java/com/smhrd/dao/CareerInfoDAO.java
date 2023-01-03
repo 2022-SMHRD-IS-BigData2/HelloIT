@@ -10,7 +10,7 @@ public class CareerInfoDAO {
 
 SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
-	// 1. 회원가입 SQL문을 실행하는 메소드
+	// 1. 커리어 저장
 	public int insertMyCareer( CareerInfo dto) {
 		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession( true );
@@ -25,8 +25,10 @@ SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 		return cnt;
 	}
 	
+	
+	// 2. 커리어 업데이트
 	public int updateCareer( CareerInfo dto ) {
-		
+		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession( true );
 		
 		// 2) SQL문 실행

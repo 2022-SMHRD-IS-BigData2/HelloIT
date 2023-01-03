@@ -13,7 +13,7 @@ import com.smhrd.controller.Controller;
 import com.smhrd.dao.IdeaDAO;
 import com.smhrd.entity.PostInfo;
 
-public class IdeaPostCntCon implements Controller {
+public class IdeaPostCntConAjax implements Controller {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)

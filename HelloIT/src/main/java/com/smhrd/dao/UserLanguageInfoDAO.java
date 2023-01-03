@@ -10,6 +10,7 @@ public class UserLanguageInfoDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
+	// 1. 마이페이지 언어 체크
 	public int checkLanguage( UserLanguageInfo dto) {
 		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession( true );
@@ -24,6 +25,7 @@ public class UserLanguageInfoDAO {
 		return cnt;
 	}
 	
+	// 2. 마이페이지 언어 수정
 	public int updateLanguage( UserLanguageInfo dto ) {
 		
 		SqlSession session = sqlSessionFactory.openSession( true );

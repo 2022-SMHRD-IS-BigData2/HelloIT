@@ -9,6 +9,7 @@ import com.smhrd.entity.UserSkillInfo;
 public class UserSkillInfoDAO {
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 
+	// 1. 마이페이지 스킬 저장
 	public int checkSkill(UserSkillInfo dto) {
 		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession(true);
@@ -23,6 +24,7 @@ public class UserSkillInfoDAO {
 		return cnt;
 	}
 
+	// 2. 마이페이지 스킬 수정
 	public int updateSkill(UserSkillInfo dto) {
 
 		SqlSession session = sqlSessionFactory.openSession(true);

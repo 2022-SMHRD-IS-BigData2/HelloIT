@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.smhrd.dao.RecruitDAO">
-
+	
+	
+	<!-- 사람인 채용공고 게시물 페이징 -->
 	<select id="getListWithPaging" resultType="com.smhrd.entity.Recruit"> 
     	select * from (select rownum as row_num, s_crawling.* from s_crawling)
 		where row_num between 1+(#{n}-1)*10 and #{n}*10
@@ -16,7 +18,8 @@
 						or addr_list like  '%'||#{search_word}||'%')
 		where row_num between 1+(#{n}-1)*10 and #{n}*10
 	</select>
-
+	
+	<!-- 사람인 리스트 개수 확인 -->
 	<select id="getListSize" resultType="java.lang.Integer">
 		select * from s_crawling
 	</select>
@@ -32,6 +35,7 @@
 	
 	
 	
+	<!-- 잡코리아 채용공고 게시물 페이징 -->
  	<select id="getListWithPaging_j" resultType="com.smhrd.entity.Recruit"> 
     	select * from (select rownum as row_num, j_crawling.* from j_crawling)
 		where row_num between 1+(#{n}-1)*10 and #{n}*10
@@ -46,7 +50,8 @@
 						or addr_list like  '%'||#{search_word}||'%')
 		where row_num between 1+(#{n}-1)*10 and #{n}*10
 	</select>
-
+	
+	<!-- 잡코리아 리스트갯수 확인 -->
 	<select id="getListSize_j" resultType="java.lang.Integer">
 		select * from j_crawling
 	</select>

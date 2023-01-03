@@ -10,7 +10,7 @@ public class UserTagDAO {
 	
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
-
+	// 태그 세팅
 	public int userTagSetting(UserTag dto) {
 		SqlSession session = sqlSessionFactory.openSession(true); // true >> commit
 		int cnt = session.insert("userTagSetting", dto);

@@ -50,12 +50,8 @@ import com.smhrd.controller.LikeCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.LogoutCon;
 import com.smhrd.controller.MainBookmarkCon;
-import com.smhrd.controller.MainBookmarkConAjax;
 import com.smhrd.controller.MainCmtLikeCon;
-import com.smhrd.controller.MainCmtLikeConAjax;
-import com.smhrd.controller.MainCommentConAjax;
 import com.smhrd.controller.MainCommentCon;
-import com.smhrd.controller.MainLikeConAjax;
 import com.smhrd.controller.NaverLoginSuccessCon;
 import com.smhrd.controller.PostLikeCon;
 import com.smhrd.controller.UpdateCareerCon;
@@ -67,7 +63,9 @@ import com.smhrd.controller.UpdateRoleCon;
 import com.smhrd.controller.UpdateSkillCon;
 import com.smhrd.controller.UserLevelSettingCon;
 import com.smhrd.controller.WriteCon;
-import com.smhrd.controller.ajax.IdeaPostCntCon;
+import com.smhrd.controller.ajax.IdeaPostCntConAjax;
+import com.smhrd.controller.ajax.MainCommentConAjax;
+import com.smhrd.controller.ajax.MainLikeConAjax;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -80,62 +78,33 @@ public class FrontController extends HttpServlet {
 
 		handlerMapping = new HashMap<>();
 
-		handlerMapping.put("/ideaPostCnt.do", new IdeaPostCntCon()); // 유저페이지 이동
-		handlerMapping.put("/mainCmtLikeConAjax.do", new MainCmtLikeConAjax()); // 유저페이지 이동
-		handlerMapping.put("/mainCommentConAjax.do", new MainCommentConAjax()); // 유저페이지 이동
-		handlerMapping.put("/mainBookmarkConAjax.do", new MainBookmarkConAjax()); // 유저페이지 이동
-		handlerMapping.put("/mainLikeConAjax.do", new MainLikeConAjax()); // 유저페이지 이동
-		
-		handlerMapping.put("/goUserPage.do", new GoUserPageCon()); // 유저페이지 이동
-		handlerMapping.put("/goWriteIdea.do", new GoWriteIdea()); // 마이페이지 이동
-		handlerMapping.put("/goMessage.do", new GoMessageCon()); // 마이페이지 이동
-		handlerMapping.put("/goDevInfo.do", new GoDevInfoCon()); // 보고또보고 팀 소개페이지 이동
-		
-		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 채용공고 페이지 이동
-		
-		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인 이동
-		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입창 이동
-		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인창 이동 
-		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 네이버 회원가입
-		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 마이페이지 이동
-		
-		
-		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
-		handlerMapping.put("/insertCareer.do", new InsertCareerCon()); // 커리어 정보 저장 컨트롤러
-		handlerMapping.put("/checkDB.do", new CheckDBCon()); // 회원 DB 정보 저장 컨트롤러
-		handlerMapping.put("/checkLanguage.do", new CheckLanguageCon()); // 회원 언어 정보 저장 컨트롤러
-		handlerMapping.put("/checkRole.do", new CheckRoleCon()); // 회원 역할 저장 컨트롤러
-		
-		handlerMapping.put("/updateMyPage.do", new UpdateMyPageCon()); // 마이페이지 정보 수정 컨트롤러 
-		handlerMapping.put("/updateCareer.do", new UpdateCareerCon()); // 커리어 정보 수정 컨트롤러
-		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
-		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
-		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
-		handlerMapping.put("/updateSkill.do", new UpdateSkillCon()); // 회원 역할 수정 컨트롤러
-		handlerMapping.put("/updateRecruit.do", new UpdateRecruitCon()); // 이력서 포트폴리오
-		
-		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
-		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 
-		handlerMapping.put("/join.do", new JoinCon()); // 
-		handlerMapping.put("/kakaoJoin.do", new KakaoJoinCon()); // 
-		handlerMapping.put("/logout.do", new LogoutCon());
 		
 		
 		// google 로그인 테스트
-		handlerMapping.put("/google.do", new GoogleJoin()); // 
+		handlerMapping.put("/google.do", new GoogleJoin()); // 구글 회원가입 컨트롤러 테스트
 		
 		
-		handlerMapping.put("/goIdea.do", new GoIdeaCon()); // 
+		handlerMapping.put("/goRecruit.do", new GoRecruitCon()); // 채용공고 페이지 이동
+		handlerMapping.put("/goMain.do", new GoMainCon()); // 메인페이지 이동
+		handlerMapping.put("/goJoin.do", new GoJoinCon()); // 회원가입페이지 이동
+		handlerMapping.put("/goLogin.do", new GoLoginCon()); // 로그인페이지 이동 
+		handlerMapping.put("/goNaverJoin.do", new GoNaverJoinCon()); // 네이버 회원가입
+		handlerMapping.put("/goMyPage.do", new GoMyPageCon()); // 마이페이지 이동
+		handlerMapping.put("/goIdea.do", new GoIdeaCon()); // 아이디어 페이지 이동
 		handlerMapping.put("/goBoard.do", new GoBoardCon()); // 게시판 페이지 이동
 		handlerMapping.put("/goWrite.do", new GoWriteCon()); // 게시물 작성 페이지 이동
 		handlerMapping.put("/goMainWrite.do", new GoMainWriteCon()); // 메인에서 게시물 작성 페이지 이동
 		handlerMapping.put("/goView.do", new GoViewCon()); // 게시물 조회 페이지 이동
-		handlerMapping.put("/goCustomizedMain.do", new GoCustomizedMainCon());
-		handlerMapping.put("/goTagMain.do", new GoTagMainCon());
-		handlerMapping.put("/goCtpSearchMain.do", new GoCtpSearchMainCon());
-		handlerMapping.put("/goPopPostMain.do", new GoPopPostMainCon());
-		handlerMapping.put("/goAllPostMain.do", new GoAllPostMainCon());
-		handlerMapping.put("/goRecruitSearch.do", new GoRecruitSearchCon());
+		handlerMapping.put("/goCustomizedMain.do", new GoCustomizedMainCon()); // 맞춤형게시물 이동
+		handlerMapping.put("/goTagMain.do", new GoTagMainCon()); // 태그메인 이동
+		handlerMapping.put("/goCtpSearchMain.do", new GoCtpSearchMainCon()); // 
+		handlerMapping.put("/goPopPostMain.do", new GoPopPostMainCon()); // 인기게시물 페이지 이동
+		handlerMapping.put("/goAllPostMain.do", new GoAllPostMainCon()); // 모든 게시물 페이지 이동
+		handlerMapping.put("/goRecruitSearch.do", new GoRecruitSearchCon()); // 채용공고 검색 컨트롤러
+		handlerMapping.put("/goUserPage.do", new GoUserPageCon()); // 유저페이지 이동
+		handlerMapping.put("/goWriteIdea.do", new GoWriteIdea()); // 아이디어토론방 글쓰기페이지 이동
+		handlerMapping.put("/goMessage.do", new GoMessageCon()); // 마이페이지 이동
+		handlerMapping.put("/goDevInfo.do", new GoDevInfoCon()); // 보고또보고 팀 소개페이지 이동
 		
 		
 		handlerMapping.put("/write.do", new WriteCon()); // 게시물 등록 컨트롤러 이동
@@ -151,6 +120,32 @@ public class FrontController extends HttpServlet {
 		handlerMapping.put("/follow.do", new FollowCon()); // 유저 레벨 설정 컨트롤러 이동
 		
 		
+		
+		
+		handlerMapping.put("/insertMyPage.do", new InsertMyPageCon()); // 마이페이지 정보 저장 컨트롤러 
+		handlerMapping.put("/insertCareer.do", new InsertCareerCon()); // 커리어 정보 저장 컨트롤러
+		handlerMapping.put("/checkDB.do", new CheckDBCon()); // 회원 DB 정보 저장 컨트롤러
+		handlerMapping.put("/checkLanguage.do", new CheckLanguageCon()); // 회원 언어 정보 저장 컨트롤러
+		handlerMapping.put("/checkRole.do", new CheckRoleCon()); // 회원 역할 저장 컨트롤러
+		handlerMapping.put("/updateMyPage.do", new UpdateMyPageCon()); // 마이페이지 정보 수정 컨트롤러 
+		handlerMapping.put("/updateCareer.do", new UpdateCareerCon()); // 커리어 정보 수정 컨트롤러
+		handlerMapping.put("/updateDB.do", new UpdateDBCon()); // 회원 DB 정보 수정 컨트롤러
+		handlerMapping.put("/updateLanguage.do", new UpdateLanguageCon()); // 회원 언어 정보 수정 컨트롤러
+		handlerMapping.put("/updateRole.do", new UpdateRoleCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/updateSkill.do", new UpdateSkillCon()); // 회원 역할 수정 컨트롤러
+		handlerMapping.put("/updateRecruit.do", new UpdateRecruitCon()); // 이력서 포트폴리오
+		handlerMapping.put("/login.do", new LoginCon()); // 로그인 컨트롤러
+		handlerMapping.put("/naverLoginSuccess.do", new NaverLoginSuccessCon()); // 네이버로그인 성공 컨트롤러
+		handlerMapping.put("/join.do", new JoinCon()); // 회원가입 컨트롤러
+		handlerMapping.put("/kakaoJoin.do", new KakaoJoinCon()); // 카카오 회원가입 컨트롤러
+		handlerMapping.put("/logout.do", new LogoutCon()); // 로그아웃 컨트롤러
+		
+		
+		handlerMapping.put("/ideaPostCnt.do", new IdeaPostCntConAjax()); // 아이디어토론방 게시물 조회수 컨트롤러 Ajax
+		handlerMapping.put("/mainCmtLikeConAjax.do", new com.smhrd.controller.ajax.MainCmtLikeConAjax()); // 메인페이지 댓글 좋아요 컨트롤러 Ajax
+		handlerMapping.put("/mainCommentConAjax.do", new com.smhrd.controller.ajax.MainCommentConAjax()); // 메인페이지 댓글 컨트롤러 Ajax
+		handlerMapping.put("/mainBookmarkConAjax.do", new com.smhrd.controller.ajax.MainBookmarkConAjax()); // 메인페이지 게시물 북마크 컨트롤러 Ajax
+		handlerMapping.put("/mainLikeConAjax.do", new com.smhrd.controller.ajax.MainLikeConAjax()); // 메인페이지 게시물 좋아요 컨트롤러 Ajax
 		
 		
 		

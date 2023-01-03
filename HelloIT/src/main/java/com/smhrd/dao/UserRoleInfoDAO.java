@@ -9,6 +9,7 @@ import com.smhrd.entity.UserRoleInfo;
 public class UserRoleInfoDAO {
 	SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 	
+	// 1. 마이페이지 역할 저장
 	public int checkRole( UserRoleInfo dto) {
 		// 1) connection 빌려오기
 		SqlSession session = sqlSessionFactory.openSession( true );
@@ -23,6 +24,7 @@ public class UserRoleInfoDAO {
 		return cnt;
 	}
 	
+	// 2. 마이페이지 역할 수정
 	public int updateRole( UserRoleInfo dto ) {
 		
 		SqlSession session = sqlSessionFactory.openSession( true );

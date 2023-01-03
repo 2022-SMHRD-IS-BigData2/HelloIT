@@ -14,7 +14,7 @@ public class UserPageDAO {
 		SqlSessionFactory sqlSessionFactory = SessionManager.getSqlSessionFactory();
 		
 		
-		
+		// 유저 페이지 이동 
 		public UserInfo goUserPage(String u_email) {
 			// 1) connection 빌려오기
 			SqlSession session = sqlSessionFactory.openSession(true);
